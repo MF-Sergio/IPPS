@@ -1,3 +1,6 @@
+body{
+    background-color: #FFF3D9;
+}
 
 header {
     width: 100%;
@@ -7,6 +10,21 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
+}
+
+.btn:hover{
+    background-color: #FFF3D9;
+    border: 2px solid #A40201;
+}
+
+.btn-header{
+    background-color: #A40201;
+    border: 2px solid #A40201;
+}
+
+.btn-footer{
+    width: 250px;
+    height: 50px;
 }
 
 .nav-link, .btn-header{
@@ -58,11 +76,47 @@ header {
     font-weight: bold;
 }
 
+.patrocinadores{
+    text-align: center;
+    background-color: white;
+}
+
+.img-premio{
+    max-width: 90%;
+}
+
+
+.logo-footer{
+    width: 200px;
+}
+
+.whats {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+}
+
+
+
 @media screen and (max-width: 775px) {
     .navbar{
         padding: 0 10px;
     }
     .nav-item{
         text-align: center;
+    }
+
+    .row{
+        margin-right: 0 !important
+    }
+
+    footer > div {
+        align-items: center;
+        text-align: center;
+    }
+
+    .div-logo-footer{
+        justify-content: center;
     }
 }
