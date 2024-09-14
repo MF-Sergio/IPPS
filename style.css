@@ -40,10 +40,21 @@ header {
     width: 75px;
 }
 
-.header-scrolled {
+.dropdown-menu{
+    background-color: transparent;
+    border: none;
+}
+
+.dropdown-item{
+    color: white;
+    font-weight: bolder;
+}
+
+.header-scrolled{
     background-color: #FFF3D9;
-    .nav-link{
+    .nav-link, .dropdown-item{
         color: #8AA895;
+        background-color: #FFF3D9;
     }
 }
 
@@ -105,6 +116,10 @@ header {
     }
     .nav-item{
         text-align: center;
+    }
+
+    .dropdown{
+        margin: 0 auto;
     }
 
     .row{
