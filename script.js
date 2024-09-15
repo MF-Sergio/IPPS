@@ -10,7 +10,8 @@ window.onscroll = function() {
 document.addEventListener("DOMContentLoaded", function() {
     const header = document.querySelector('#header');
     const targetElement = document.querySelector('.collapse');
-    const navlink = document.querySelectorAll('.nav-link'); 
+    const navlink = document.querySelectorAll('.nav-link');
+    const dropdownitem = document.querySelectorAll('.dropdown-item'); 
 
     // Função para verificar se a classe 'show' está presente e pintar o cabeçalho de preto
     function checkClass() {
@@ -19,9 +20,15 @@ document.addEventListener("DOMContentLoaded", function() {
             navlink.forEach(item => {
                 item.style.color = "#8AA895"
             });
+            dropdownitem.forEach(item => {
+                item.style.color = "#8AA895"
+            });
         } else {
             header.style.backgroundColor = ''; // Volta ao estado original
             navlink.forEach(item => {
+                item.style.color = ""
+            });
+            dropdownitem.forEach(item => {
                 item.style.color = ""
             });
         }
