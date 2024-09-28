@@ -1,3 +1,8 @@
+.card-title{
+    text-align: center;
+    font-size: 1.5em;
+}
+
 .timeline {
     border-left: 3px solid #8AA895;
     border-bottom-right-radius: 4px;
@@ -69,8 +74,8 @@
     left: -207px;
     content: attr(data-date);
     text-align: right;
-    font-weight: 100;
-    font-size: 0.9em;
+    font-weight: 500;
+    font-size: 1em;
     min-width: 120px;
 }
 
