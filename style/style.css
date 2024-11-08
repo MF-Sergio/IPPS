@@ -41,7 +41,7 @@ header {
 }
 
 .logo-head{
-    width: 75px;
+    width: 124px;
 }
 
 .dropdown-menu{
@@ -115,6 +115,13 @@ header {
 a{
     text-decoration: none;
 }
+
+.partner-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
 
 .btn-transp{
     margin: 0 5px;
