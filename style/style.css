@@ -137,7 +137,19 @@ a {
 }
 
 /* PÁGINA PARCEIROS */
+.parceiro .logo-img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}
 
+.parceiro a {
+  display: block;
+}
+
+.parceiro .texto {
+  font-size: 20px;
+}
 /*****/
 
 @media screen and (max-width: 775px) {
