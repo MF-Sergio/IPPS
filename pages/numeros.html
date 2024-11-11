@@ -8,6 +8,7 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="/style/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>IPPS Social</title>
 </head>
 
@@ -81,33 +82,96 @@
         </div>
       </div>
     </section>
-    <section class="container mt-5">
-      <img src="../assets/img/constru.png" alt="em breve!"
-        style="max-width: 500px; width:100%; height: auto; display: flex; margin: 0 auto;">
+
+    <section id="tabela-numeros" class="container mt-5">
+      <h2 class="text-center mb-4">Atendimentos por Ano e Projeto</h2>
+      <div class="table-responsive">
+        <table class="table-custom table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Ano</th>
+              <th>Saúde Integral</th>
+              <th>Vivendo e Acolhendo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2011</td>
+              <td>1780</td>
+              <td>3439</td>
+            </tr>
+            <tr>
+              <td>2012</td>
+              <td>3304</td>
+              <td>6227</td>
+            </tr>
+            <tr>
+              <td>2013</td>
+              <td>3534</td>
+              <td>4114</td>
+            </tr>
+            <tr>
+              <td>2014</td>
+              <td>4773</td>
+              <td>3308</td>
+            </tr>
+            <tr>
+              <td>2015</td>
+              <td>6978</td>
+              <td>4637</td>
+            </tr>
+            <tr>
+              <td>2016</td>
+              <td>5141</td>
+              <td>4555</td>
+            </tr>
+            <tr>
+              <td>2017</td>
+              <td>4755</td>
+              <td>5488</td>
+            </tr>
+            <tr>
+              <td>2018</td>
+              <td>4257</td>
+              <td>4604</td>
+            </tr>
+            <tr>
+              <td>2019</td>
+              <td>3912</td>
+              <td>4477</td>
+            </tr>
+            <tr>
+              <td>2020</td>
+              <td>1839</td>
+              <td>2614</td>
+            </tr>
+            <tr>
+              <td>2021</td>
+              <td>2698</td>
+              <td>1429</td>
+            </tr>
+            <tr>
+              <td>2022</td>
+              <td>1781</td>
+              <td>1167</td>
+            </tr>
+            <tr>
+              <td>2023</td>
+              <td>1605</td>
+              <td>2400</td>
+            </tr>
+            <tr>
+              <td>2024 (até 18/09)</td>
+              <td>1087</td>
+              <td>1300</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <canvas id="myChart" width="320" height="120"></canvas>
     </section>
-    <!--
-    
-    <section class="container mt-5">
-      <h1>Doação</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat itaque, facilis alias eum a libero dolorum
-        modi asperiores in, temporibus natus, explicabo porro dolore. Fugiat alias nesciunt sint id doloribus! Lorem
-        ipsum dolor sit amet consectetur adipisicing elit. Molestiae expedita quae delectus dolores nisi, perspiciatis
-        nam obcaecati a ipsum dolor, repellendus facilis quidem, odit aspernatur et hic. Aliquam, quibusdam ipsam! Lorem
-        ipsum, dolor sit amet consectetur adipisicing elit. Sit temporibus quam facilis corrupti magnam recusandae qui
-        expedita tenetur voluptas pariatur. Ipsa iure quasi, asperiores maxime repellendus reprehenderit modi beatae
-        nesciunt?</p>
-    </section>
-    <section class="container mt-5">
-      <h1>Usuarios</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat itaque, facilis alias eum a libero dolorum
-        modi asperiores in, temporibus natus, explicabo porro dolore. Fugiat alias nesciunt sint id doloribus! Lorem
-        ipsum dolor sit amet consectetur adipisicing elit. Molestiae expedita quae delectus dolores nisi, perspiciatis
-        nam obcaecati a ipsum dolor, repellendus facilis quidem, odit aspernatur et hic. Aliquam, quibusdam ipsam! Lorem
-        ipsum, dolor sit amet consectetur adipisicing elit. Sit temporibus quam facilis corrupti magnam recusandae qui
-        expedita tenetur voluptas pariatur. Ipsa iure quasi, asperiores maxime repellendus reprehenderit modi beatae
-        nesciunt?</p>
-    </section>
-    -->
+
   </main>
   <div class="container">
     <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5 border-top text-center">
@@ -157,6 +221,9 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="../script/script.js"></script>
+
+  <script src="../script/grafico-numeros.js"></script>
+
 </body>
 
 </html>

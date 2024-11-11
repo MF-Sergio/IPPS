@@ -136,6 +136,27 @@ a {
   }
 }
 
+/* PÁGINA NUMEROS */
+.tabela-numeros,
+.table-responsive {
+  text-align: center;
+}
+
+.table-custom {
+  width: 80%;
+  margin: 0 auto;
+}
+
+thead th {
+  background-color: #8aa895 !important;
+  font-size: 1.25em;
+}
+
+#myChart {
+  margin-top: 10px;
+}
+/*****/
+
 /* PÁGINA PARCEIROS */
 .parceiro .logo-img {
   width: 100%;
