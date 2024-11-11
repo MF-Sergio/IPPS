@@ -233,3 +233,24 @@ a {
     justify-content: center;
   }
 }
+
+/* PÁGINA PARCEIROS */
+.parceiro .logo-img {
+  width: 100%; /* Ajuste conforme necessário */
+  max-width: 150px; /* Limite a largura máxima */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+.parceiro a {
+  display: block; /* Faz com que o link envolva completamente a imagem */
+}
+/* *** */
+
+/* PÁGINA NUMEROS */
+thead th {
+  background-color: #8aa895 !important;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/* *** */
