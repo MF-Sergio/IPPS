@@ -143,6 +143,169 @@ a {
   }
 }
 
+.Estagio {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: justify;
+  font-size: larger;
+  gap: 5rem;
+}
+
+.Estagio img {
+  width: 100%;
+}
+
+.Estagio__MensagemChamativa {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3rem;
+}
+
+.Estagio__MensagemChamativa__Imagem {
+  width: 50%;
+}
+.Estagio__MensagemChamativa__Texto {
+  width: 50%;
+}
+
+.Estagio__Carreira {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3rem;
+}
+
+.Estagio__Carreira__Texto {
+  width: 50%;
+}
+
+.Estagio__Carreira__Imagem {
+  width: 50%;
+}
+
+.Estagio__Vagas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3rem;
+}
+
+.Estagio__Vagas__Texto {
+  font-size: xx-large;
+  text-align: center;
+  width: 100%;
+}
+
+.Estagio__Vagas__Texto button {
+  font-size: xx-large;
+}
+
+.Estagio__inscricao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+  text-align: center;
+}
+
+.Estagio__inscricao button {
+  font-size: xx-large;
+}
+
+.Estagio__Documentacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3rem;
+}
+
+.Estagio__Documentacao__Botoes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 3rem;
+}
+
+.Estagio__Documentacao__Botoes button {
+  font-size: x-large;
+}
+
+.Estagio__Beneficios {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3rem;
+}
+
+.Estagio__Beneficios__MenuCards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.Estagio__Beneficios__MenuCards__card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: x-large;
+  gap: 1rem;
+}
+
+.Estagio__Beneficios__MenuCards__card img {
+  width: 4rem;
+  height: auto;
+  mix-blend-mode: darken;
+}
+
+.Estagio__Depoimentos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3rem;
+}
+
+.Estagio__Depoimentos__MenuCards {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.Estagio__Depoimentos__MenuCards__cards {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .DoacoesFinanceiras {
   display: flex;
   flex-direction: column;
