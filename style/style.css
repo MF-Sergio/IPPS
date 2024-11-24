@@ -250,7 +250,7 @@ a {
 }
 
 .Estagio__Beneficios {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -282,7 +282,7 @@ a {
 }
 
 .Estagio__Depoimentos {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
