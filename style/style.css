@@ -106,11 +106,30 @@ header {
   width: 200px;
 }
 
-.whats {
+/* Container para os ícones de evento e WhatsApp */
+.social-icons-container {
   position: fixed;
   bottom: 30px;
   right: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
   z-index: 999;
+}
+
+/* Ícone do WhatsApp */
+.whatsapp-icon img {
+  width: 75px;
+  cursor: pointer;
+}
+
+.present-button img {
+  width: 75px;
+  height: 75px;
+  border: none;
+  object-fit: contain;
+  cursor: pointer;
 }
 
 a {
@@ -417,3 +436,34 @@ thead th {
 }
 
 /* *** */
+
+.modal-content {
+  background-color: #222; 
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.modal-body img{
+  height: 700px;
+}
+
+.modal-header .btn-close {
+  background-color: #fff;
+  opacity: 1;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-danger {
+  background-color: #f01a61;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #d01754;
+}

@@ -12,6 +12,26 @@
 </head>
 
 <body>
+  <!-- modal de evento especial -->
+  <div class="modal fade" id="natalModal" tabindex="-1" aria-labelledby="natalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img
+            src="assets/img/natal.jpeg"
+            alt="Guia de Natal"
+            class="img-fluid mb-3 rounded shadow"
+          />
+          <a href="#" class="btn btn-danger text-uppercase fw-bold px-5">
+            Doar Agora
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
   <header id="header">
     <nav class="navbar navbar-expand-lg my-3">
       <div class="container-fluid">
@@ -167,12 +187,7 @@
       </p>
 
       <h3>- Valores</h3>
-      <p class="lead my-4">
-        Tem por objetivo o bem-estar das pessoas com deficiências, seus familiares em situação de vulnerabilidade
-        social, em sua maioria, da Zona Oeste, promovendo a melhora na qualidade de vida e buscando diminuir as
-        barreiras atitudinais, arquitetônicas e de convivência na sociedade, por meio de ações na política
-        socioassistencial, promovendo a autonomia da pessoa com deficiência.
-      <ul>
+      <ul class="lead my-3">
         <li>Sustentabilidade</li>
         <li>Respeito</li>
         <li>Integralidade</li>
@@ -341,17 +356,31 @@
     </footer>
   </div>
 
-  <div class="whats animate__animated animate__headShake animate__slower animate__delay-3s animate__infinite">
-    <a href="https://wa.me/5521985856380?text=Olá." target="_blank">
-      <img src="./assets/img/whats.png" width="75" alt="Fale Conosco pelo Whatsapp"
-        title="Fale Conosco pelo Whatsapp" />
-    </a>
+  <div class="social-icons-container">
+    <!-- Botão do Presente com animação -->
+    <div id="presentButton" class="animate__animated animate__bounceIn animate__slower animate__delay-2s">
+      <span id="openModalButton" aria-label="Abrir Modal" class="present-button">
+        <img src="assets/img/presente_icon.png" alt="Evento de natal" title="Evento de natal">
+      </span>
+    </div>
+  
+    <!-- Ícone do WhatsApp com animação -->
+    <div class="whatsapp-icon animate__animated animate__headShake animate__slower animate__delay-3s animate__infinite">
+      <a href="https://wa.me/5521985856380?text=Olá." target="_blank">
+        <img
+          src="./assets/img/whats.png"
+          alt="Fale Conosco pelo Whatsapp"
+          title="Fale Conosco pelo Whatsapp"
+        />
+      </a>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="./script/script.js"></script>
+  <script src="./script/modal-natal.js"></script>
 </body>
 
 </html>
