@@ -631,3 +631,14 @@ thead th {
 .btn-danger:hover {
   background-color: #d01754;
 }
+
+/* *** */
+
+/* PÁGINA PROJETO */
+.definicao {
+  margin: 1em;
+}
+
+.definicao h3 {
+  margin: 1em;
+}
