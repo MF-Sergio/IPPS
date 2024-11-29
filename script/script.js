@@ -1,4 +1,4 @@
-window.onscroll = function() {
+window.onscroll = function () {
     const header = document.getElementById("header");
     if (window.scrollY > 75) {
         header.classList.add("header-scrolled");
@@ -7,11 +7,11 @@ window.onscroll = function() {
     }
 };
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const header = document.querySelector('#header');
     const targetElement = document.querySelector('.collapse');
     const navlink = document.querySelectorAll('.nav-link');
-    const dropdownitem = document.querySelectorAll('.dropdown-item'); 
+    const dropdownitem = document.querySelectorAll('.dropdown-item');
 
     // Função para verificar se a classe 'show' está presente e pintar o cabeçalho de preto
     function checkClass() {
@@ -44,4 +44,45 @@ document.addEventListener("DOMContentLoaded", function() {
     checkClass();
 
     window.addEventListener('resize', checkClass);
+});
+
+// Botões da timeline Nossa História
+document.addEventListener("DOMContentLoaded", function () {
+    const timelineButtons = document.querySelectorAll(".timeline-btn");
+    const timelineItems = document.querySelectorAll(".timeline-item");
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    let currentIndex = 0;
+
+    timelineButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            // Remove a classe 'active' de todos os botões
+            timelineButtons.forEach(btn => btn.classList.remove("active"));
+            // Adiciona 'active' ao botão clicado
+            button.classList.add("active");
+
+            // Exibe o conteúdo correspondente
+            const year = button.getAttribute("data-year");
+            timelineItems.forEach(item => {
+                item.classList.remove("active");
+                if (item.id === `year-${year}`) {
+                    item.classList.add("active");
+                }
+            });
+        });
+    });
+
+    // Ativar o primeiro ano por padrão
+    timelineButtons[0].click();
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? timelineButtons.length - 1 : currentIndex - 1;
+        timelineButtons[currentIndex].click();
+    });
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex === timelineButtons.length - 1) ? 0 : currentIndex + 1;
+        timelineButtons[currentIndex].click();
+    });
+
+
 });
