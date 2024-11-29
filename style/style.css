@@ -418,13 +418,13 @@ a {
 
 /* PÁGINA PARCEIROS */
 .parceiro .logo-img {
-  width: 100%; /* Ajuste conforme necessário */
-  max-width: 150px; /* Limite a largura máxima */
-  height: auto; /* Mantém a proporção da imagem */
+  width: 100%;
+  max-width: 150px;
+  height: auto;
 }
 
 .parceiro a {
-  display: block; /* Faz com que o link envolva completamente a imagem */
+  display: block;
 }
 /* *** */
 
@@ -433,6 +433,10 @@ thead th {
   background-color: #8aa895 !important;
   text-align: center;
   font-size: 1.2em;
+}
+
+td {
+  text-align: center;
 }
 
 /*/* *** */
@@ -517,9 +521,6 @@ thead th {
   background-color: #0056b3;
 }
 
-/*/* *** */
-
-/* PÁGINA NOSSA HISTÓRIA */
 .timeline-container {
   display: flex;
   flex-direction: column;

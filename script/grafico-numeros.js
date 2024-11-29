@@ -12,7 +12,7 @@ const myChart = new Chart(ctx, {
                 borderWidth: 2
             },
             {
-                label: 'PSE',
+                label: 'Vivendo e Acolhendo',
                 data: [3439, 6227, 4114, 3308, 4637, 4555, 5488, 4604, 4477, 2614, 1429, 1167, 2400, 1300],
                 borderColor: 'rgba(153, 102, 255, 1)',
                 backgroundColor: 'rgba(153, 102, 255, 0.2)',
