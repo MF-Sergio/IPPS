@@ -7,7 +7,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="stylesheet" href="/style/style.css" />
-  <link rel="stylesheet" href="/style/timeline.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <title>IPPS Social</title>
 </head>
@@ -82,7 +81,111 @@
           </div>
         </div>
     </section>
-    <div class="container">
+    <div class="timeline-container">
+      <!-- Linha do tempo -->
+      <div class="timeline">
+        <button class="timeline-btn" data-year="2002">2002</button>
+        <button class="timeline-btn" data-year="2003">2003</button>
+        <button class="timeline-btn" data-year="2004">2004</button>
+        <button class="timeline-btn" data-year="2005">2005</button>
+        <button class="timeline-btn" data-year="2017">2017</button>
+        <button class="timeline-btn" data-year="2019">2019</button>
+        <button class="timeline-btn" data-year="2020">2020</button>
+        <button class="timeline-btn" data-year="2021">2021</button>
+        <button class="timeline-btn" data-year="2022">2022</button>
+        <button class="timeline-btn" data-year="2023">2023</button>
+        <button class="timeline-btn" data-year="2024">2024</button>
+      </div>
+
+      <!-- Conteúdo dinâmico -->
+      <div class="timeline-content">
+        <div class="timeline-item" id="year-2002">
+          <h3>2002</h3>
+          <p>Fundado em 05 de fevereiro de 2002 por Ana Paula Costa
+            Gissoni, Marina Célia Pereira, Maria Alfonso Toledo,
+            Carlos Alberto da Silva Pacheco, Carlos Alberto da Cruz
+            Wenceslau, e Luiz Fernando Couto de Oliveira.</p>
+        </div>
+        <div class="timeline-item" id="year-2003">
+          <h3>2003</h3>
+          <p>Inicio do Convénio entre a prefeitura e o IPPS através
+            da Secretaria Municipal da Assistência Social - SMAS Com
+            a meta de 10 Atendimentos.</p>
+        </div>
+        <div class="timeline-item" id="year-2004">
+          <h3>2004</h3>
+          <p>No dia 25/06 de 2004 o IPPS Recebe o certificado de
+            inscrição do conselho Municipal da Assistência Social do
+            RJ O IPPS passa a ter a meta de 100 atendimentos.</p>
+        </div>
+        <div class="timeline-item" id="year-2005">
+          <h3>2005</h3>
+          <p>Recebemos o Certificado de inscrição no Conselho
+            Municipal dos Direitos da Criança e Adolescente.</p>
+        </div>
+        <div class="timeline-item" id="year-2017">
+          <h3>2017</h3>
+          <p>IPPS inicia a parceria com a FEBIEX - Federação Estadual
+            das Instituições de Reabilitação do Estado do Rio de
+            Janeiro.</p>
+        </div>
+        <div class="timeline-item" id="year-2019">
+          <h3>2019</h3>
+          <p>O IPPS inicia parceira com Sesc Mesa Brasil combate o
+            desperdício a partir de doações de parceiros e contribui
+            para a garantia da segurança alimentar e nutricional de
+            crianças, jovens, adultos e idosos em situação de
+            vulnerabilidade.</p>
+        </div>
+        <div class="timeline-item" id="year-2020">
+          <h3>2020</h3>
+          <p>Foi celebrado através do IPPS e SMAS - Secretaria
+            Municipal da Assistência Social Termo de Cessão de uso
+            do veiculo Renault Van Minibus Standard 16 lugares.</p>
+        </div>
+        <div class="timeline-item" id="year-2021">
+          <h3>2021</h3>
+          <p>IPPS inicia parceria com o CEASA - Programa Branco de
+            Alimentos, O Banco de Alimentos da CEASA-RJ é um
+            programa que arrecada, processa e distribui alimentos
+            que não foram comercializados, mas que ainda estão em
+            condições de serem consumidos. O IPPS recebe os
+            alimentos e faz as doações para nossos atendidos e suas
+            família.</p>
+        </div>
+        <div class="timeline-item" id="year-2022">
+          <h3>2022</h3>
+          <p>Após uma pandemia de COVID-19 O IPPS renovou o Convénio
+            entre Prefeitura do RJ com que agora passa a ser através
+            da Secretaria Municipal da Pessoa com Deficiência - SMPD
+            e aumentado sua meta para 200 atendimentos.</p>
+        </div>
+        <div class="timeline-item" id="year-2023">
+          <h3>2023</h3>
+          <p>O IPPS participou do programa Sesc Voe sendo premiado
+            com o selo coruja. O programa oferece formação e
+            aceleração para organizações sociais do Rio de Janeiro.
+            O objetivo e melhorar a gestão das ONGs estimular
+            captação de recursos e aumentar o impacto social delas.</p>
+        </div>
+        <div class="timeline-item" id="year-2024">
+          <h3>2024</h3>
+          <p>O IPPS realizou várias atividades dentre elas a palestra
+            para famílias sobre a Dengue com participação do CAP 51
+            - Conscientização as famílias de que a melhor forma de
+            prevenir a dengue e evitar a proliferação do mosquito
+            Aedes Aegypti.</p>
+        </div>
+
+        <div class="content-buttons">
+          <button id="prev">&#8592</button>
+          <button id="next">&#8594</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -183,8 +286,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
   </main>
   <div class="container">
     <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5 border-top text-center">
@@ -199,7 +302,7 @@
         <h5>Contato</h5>
         <p class="text-start">
           ⦁ CNPJ: 05.039.198/0001-30 <br>
-          ⦁	Endereço: Avenida de Santa Cruz 1631 <br>
+          ⦁ Endereço: Avenida de Santa Cruz 1631 <br>
           ⦁ Cidade: Rio de Janeiro <br>
           ⦁ Bairro: Realengo <br>
           ⦁ CEP: 21.710-255 <br>
