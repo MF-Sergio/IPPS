@@ -519,6 +519,88 @@ thead th {
 
 /*/* *** */
 
+/* PÁGINA NOSSA HISTÓRIA */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.timeline-btn {
+  background: #8aa895;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.timeline-btn:hover {
+  transform: scale(1.1);
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.timeline-item {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-item.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.content-buttons button {
+  cursor: pointer;
+  background-color: #8aa895;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  border-radius: 5px;
+  font-size: 30px;
+  transition: background-color 0.3s;
+}
+
+.content-buttons button:hover {
+  background-color: #0056b3;
+}
+
+/*/* *** */
+
 .modal-content {
   background-color: #222;
   color: #fff;
