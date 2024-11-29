@@ -537,12 +537,13 @@ td {
 }
 
 .timeline-btn {
+  font-size: 1.5em;
   background: #8aa895;
   color: black;
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s;
@@ -553,16 +554,20 @@ td {
 }
 
 .timeline-content {
+  font-size: 1.5em;
   display: flex;
   flex-direction: column;
-  height: auto;
   width: 100%;
-  max-width: 600px;
+  max-width: 1200px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background: #f9f9f9;
   text-align: center;
+}
+
+.timeline-content h3 {
+  font-size: 2em;
 }
 
 .timeline-item {
