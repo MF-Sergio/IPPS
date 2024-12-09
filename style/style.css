@@ -10,20 +10,22 @@ header {
   width: 100%;
   background-color: transparent;
   transition: background-color 0.3s ease;
-  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
 }
 
 .btn-header:hover {
   background-color: #fff3d9;
   border: 2px solid #a40201;
+  color: black;
 }
 
 .btn-header {
   background-color: #a40201;
   border: 2px solid #a40201;
+  margin-left: 10px;
+  color: white;
+  font-weight: bold;
 }
 
 .btn-footer {
@@ -32,36 +34,51 @@ header {
 }
 
 .nav-link,
-.btn-header {
-  color: white;
+.dropdown-item {
+  color: black;
   font-weight: bolder;
+}
+
+.nav-link:hover {
+  color: #8aa895;
 }
 
 .navbar {
   padding: 0px 100px;
 }
 
+#navbarNav {
+  margin-right: 3rem;
+}
+
+.navbar-brand {
+  display: inline-block;
+  width: 10%;
+}
+
 .logo-head {
-  width: 124px;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .dropdown-menu {
-  background-color: transparent;
+  background-color: #fff3d9;
   border: none;
-}
-
-.dropdown-item {
-  color: white;
-  font-weight: bolder;
 }
 
 .header-scrolled {
   background-color: #fff3d9;
   .nav-link,
   .dropdown-item {
-    color: #8aa895;
+    color: black;
     background-color: #fff3d9;
   }
+}
+
+.dropdown-item:hover {
+  color: #8aa895;
+  background-color: transparent;
 }
 
 .carousel-inner {
