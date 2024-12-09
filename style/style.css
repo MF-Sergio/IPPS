@@ -47,6 +47,10 @@ header {
   padding: 0px 100px;
 }
 
+#navbarNav {
+  margin-right: 3rem;
+}
+
 .navbar-brand {
   display: inline-block;
   width: 10%;
@@ -67,9 +71,14 @@ header {
   background-color: #fff3d9;
   .nav-link,
   .dropdown-item {
-    color: #8aa895;
+    color: black;
     background-color: #fff3d9;
   }
+}
+
+.dropdown-item:hover {
+  color: #8aa895;
+  background-color: transparent;
 }
 
 .carousel-inner {
