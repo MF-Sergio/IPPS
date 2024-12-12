@@ -203,6 +203,7 @@ a {
   justify-content: space-between;
   width: 100%;
   gap: 3rem;
+  box-sizing: border-box;
 }
 
 .Estagio__MensagemChamativa__Imagem {
@@ -219,6 +220,7 @@ a {
   justify-content: space-between;
   width: 100%;
   gap: 3rem;
+  box-sizing: border-box;
 }
 
 .Estagio__Carreira__Texto {
@@ -230,7 +232,7 @@ a {
 }
 
 .Estagio__Vagas {
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -249,7 +251,7 @@ a {
 }
 
 .Estagio__inscricao {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -508,6 +510,29 @@ a {
 
   .div-logo-footer {
     justify-content: center;
+  }
+
+  .Estagio__MensagemChamativa {
+    flex-direction: column;
+  }
+
+  .Estagio__MensagemChamativa__Imagem {
+    width: 90%;
+  }
+  .Estagio__MensagemChamativa__Texto {
+    width: 90%;
+  }
+
+  .Estagio__Carreira {
+    flex-direction: column;
+  }
+
+  .Estagio__Carreira__Texto {
+    width: 90%;
+  }
+
+  .Estagio__Carreira__Imagem {
+    width: 90%;
   }
 }
 
