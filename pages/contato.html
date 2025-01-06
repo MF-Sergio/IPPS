@@ -84,6 +84,9 @@
                 <a class="nav-link" href="parceiros.html">Parceiros</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="contato.html">Contatos</a>
+              </li>
+              <li class="nav-item">
                 <a href="doeagora.html"
                   ><button type="button" class="btn btn-header">
                     DOE AGORA
@@ -148,30 +151,49 @@
             <form
               id="contato-formulario"
               class="Contato__Formulario__Campos"
-              action="process-form.php"
-              method="post"
+              action="https://formsubmit.co/${Coloque a chave do IPPS aqui}
+              method="POST"
             >
+              <!-- Honeypot -->
+              <input type="text" name="_honey" style="display: none" />
+
+              <!-- Disable Captcha -->
+              <!-- <input type="hidden" name="_captcha" value="false" /> -->
+
+              <!-- Outro email -->
+              <input
+                type="hidden"
+                name="_cc"
+                value="${Colocar o gmail do IPPS}"
+              />
+
+              <input
+                type="hidden"
+                name="_next"
+                value="https://www.ipps.com.br/pages/contatoSucesso.html"
+              />
+
               <label for="fnome">Nome</label>
-              <input type="text" id="fnome" name="fnome" required />
+              <input type="text" id="fnome" name="Nome" required />
               <p></p>
               <label for="fmail">Email</label>
-              <input type="email" id="fmail" name="fmail" required />
+              <input type="email" id="fmail" name="Email" required />
               <p></p>
               <label for="ftel">Telefone</label>
-              <input type="text" id="ftel" name="ftel" required />
+              <input type="text" id="ftel" name="Telefone" required />
               <p></p>
               <label for="fmensagem">Mensagem</label>
               <textarea
                 type="text"
                 id="fmensagem"
-                name="fmensagem"
+                name="Mensagem"
                 rows="4"
                 cols="55"
                 required
               ></textarea>
               <p></p>
               <p></p>
-              <input type="submit" value="Enviar" />
+              <input type="submit" value="Enviar" class="btn btn-header" />
             </form>
             <div class="Contato__Formulario__InfoAdicionais">
               <iframe
@@ -183,11 +205,6 @@
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
-              <!-- <img
-                src="/assets/img/maps_ipps.png"
-                alt="Imagem do Google Maps da IPPS"
-              /> -->
-              <p>Sede IPPS</p>
               <p>
                 Av. de Santa Cruz, 1631 - Realengo, Rio de Janeiro - RJ,
                 21710-255
@@ -198,29 +215,7 @@
           </div>
         </div>
       </section>
-      <!--
-    
-    <section class="container mt-5">
-      <h1>Doação</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat itaque, facilis alias eum a libero dolorum
-        modi asperiores in, temporibus natus, explicabo porro dolore. Fugiat alias nesciunt sint id doloribus! Lorem
-        ipsum dolor sit amet consectetur adipisicing elit. Molestiae expedita quae delectus dolores nisi, perspiciatis
-        nam obcaecati a ipsum dolor, repellendus facilis quidem, odit aspernatur et hic. Aliquam, quibusdam ipsam! Lorem
-        ipsum, dolor sit amet consectetur adipisicing elit. Sit temporibus quam facilis corrupti magnam recusandae qui
-        expedita tenetur voluptas pariatur. Ipsa iure quasi, asperiores maxime repellendus reprehenderit modi beatae
-        nesciunt?</p>
-    </section>
-    <section class="container mt-5">
-      <h1>Usuarios</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat itaque, facilis alias eum a libero dolorum
-        modi asperiores in, temporibus natus, explicabo porro dolore. Fugiat alias nesciunt sint id doloribus! Lorem
-        ipsum dolor sit amet consectetur adipisicing elit. Molestiae expedita quae delectus dolores nisi, perspiciatis
-        nam obcaecati a ipsum dolor, repellendus facilis quidem, odit aspernatur et hic. Aliquam, quibusdam ipsam! Lorem
-        ipsum, dolor sit amet consectetur adipisicing elit. Sit temporibus quam facilis corrupti magnam recusandae qui
-        expedita tenetur voluptas pariatur. Ipsa iure quasi, asperiores maxime repellendus reprehenderit modi beatae
-        nesciunt?</p>
-    </section>
-    --></main>
+    </main>
     <div class="container">
       <footer
         class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5 border-top text-center"
