@@ -123,6 +123,45 @@ header {
   width: 200px;
 }
 
+.carousel-indicators button {
+  background-color: #999;
+  border: 1px solid #333;
+  margin: 0 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-indicators button.active {
+  background-color: #333;
+  transform: scale(1.2);
+}
+
+.carousel-indicators button:hover {
+  background-color: #555;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-size: 50%;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-inner .carousel-item {
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease;
+}
+
 /* Container para os ícones de evento e WhatsApp */
 .social-icons-container {
   position: fixed;
@@ -342,6 +381,82 @@ a {
   justify-content: space-around;
 }
 
+.Contato {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: justify;
+  font-size: larger;
+  gap: 3rem;
+}
+
+.Contato img {
+  width: 100%;
+}
+
+.Contato iframe {
+  width: 100%;
+}
+
+.Contato__Titulo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Contato__Formulario {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 2rem;
+}
+
+.Contato__Formulario__Sucesso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  box-sizing: border-box;
+  width: 50%;
+  margin-top: 10rem;
+  flex-wrap: wrap;
+}
+
+.Contato__Formulario__Sucesso button {
+  font-size: x-large;
+}
+
+.Contato__Formulario__Campos {
+  display: flex;
+  flex-direction: column;
+}
+
+.Contato__Formulario__Campos input[type="text"],
+.Contato__Formulario__Campos input[type="email"],
+.Contato__Formulario__Campos textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.Contato__Formulario__Campos input[type="submit"] {
+  font-size: x-large;
+}
+
+.Contato__Formulario__InfoAdicionais {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
 .DoacoesFinanceiras {
   display: flex;
   flex-direction: column;
@@ -453,6 +568,38 @@ a {
 
   .div-logo-footer {
     justify-content: center;
+  }
+
+  .Contato__Formulario {
+    flex-direction: column;
+  }
+
+  .Contato__Formulario__Sucesso {
+    margin-top: 0rem;
+    width: 100%;
+  }
+
+  .Estagio__MensagemChamativa {
+    flex-direction: column;
+  }
+
+  .Estagio__MensagemChamativa__Imagem {
+    width: 90%;
+  }
+  .Estagio__MensagemChamativa__Texto {
+    width: 90%;
+  }
+
+  .Estagio__Carreira {
+    flex-direction: column;
+  }
+
+  .Estagio__Carreira__Texto {
+    width: 90%;
+  }
+
+  .Estagio__Carreira__Imagem {
+    width: 90%;
   }
 }
 
