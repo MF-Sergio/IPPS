@@ -157,9 +157,6 @@
               <!-- Honeypot -->
               <input type="text" name="_honey" style="display: none" />
 
-              <!-- Disable Captcha -->
-              <!-- <input type="hidden" name="_captcha" value="false" /> -->
-
               <!-- Outro email -->
               <input
                 type="hidden"
@@ -174,13 +171,31 @@
               />
 
               <label for="fnome">Nome</label>
-              <input type="text" id="fnome" name="Nome" required />
+              <input
+                type="text"
+                id="fnome"
+                name="Nome"
+                placeholder="Obrigatório"
+                required
+              />
               <p></p>
               <label for="fmail">Email</label>
-              <input type="email" id="fmail" name="Email" required />
+              <input
+                type="email"
+                id="fmail"
+                name="Email"
+                placeholder="Obrigatório"
+                required
+              />
               <p></p>
               <label for="ftel">Telefone</label>
-              <input type="text" id="ftel" name="Telefone" required />
+              <input
+                type="text"
+                id="ftel"
+                name="Telefone"
+                placeholder="Opcional"
+                required
+              />
               <p></p>
               <label for="fmensagem">Mensagem</label>
               <textarea
@@ -189,6 +204,7 @@
                 name="Mensagem"
                 rows="4"
                 cols="55"
+                placeholder="Digite aqui a sua mensagem..."
                 required
               ></textarea>
               <p></p>
