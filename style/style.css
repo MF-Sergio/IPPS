@@ -162,7 +162,6 @@ header {
   transition: transform 0.6s ease-in-out, opacity 0.6s ease;
 }
 
-
 /* Container para os ícones de evento e WhatsApp */
 .social-icons-container {
   position: fixed;
@@ -296,7 +295,7 @@ a {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 2rem;
+  gap: 3rem;
   text-align: center;
 }
 
@@ -332,7 +331,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 95%;
   gap: 3rem;
 }
 
