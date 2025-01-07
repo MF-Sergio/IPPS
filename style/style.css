@@ -269,8 +269,8 @@ a {
 }
 
 .Estagio__Vagas {
-  display: flex;
   flex-direction: row;
+  display: none;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -288,8 +288,8 @@ a {
 }
 
 .Estagio__inscricao {
-  display: flex;
   flex-direction: column;
+  display: none;
   align-items: center;
   justify-content: space-between;
   width: 100%;
