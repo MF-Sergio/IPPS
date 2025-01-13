@@ -1,5 +1,16 @@
+:root {
+  --primary-color: #f2d9b5;
+  --light-primary: #fff3d9;
+  --secondary-color: #6e8f76;
+  --light-secondary: #9cb7a1;
+  --lightest-secondary: #c8d5ca;
+  --third-color: #a40201;
+  --nav-link-oldColor: #8aa895;
+  --primary-font: Inter, sans-serif;
+}
+
 body {
-  background-color: #fff3d9;
+  background-color: var(--light-primary);
 }
 
 .lead {
@@ -15,14 +26,14 @@ header {
 }
 
 .btn-header:hover {
-  background-color: #fff3d9;
-  border: 2px solid #a40201;
+  background-color: var(--light-primary);
+  border: 2px solid var(--third-color);
   color: black;
 }
 
 .btn-header {
-  background-color: #a40201;
-  border: 2px solid #a40201;
+  background-color: var(--third-color);
+  border: 2px solid var(--third-color);
   margin-left: 10px;
   color: white;
   font-weight: bold;
@@ -40,7 +51,7 @@ header {
 }
 
 .nav-link:hover {
-  color: #8aa895;
+  color: var(--secondary-color);
 }
 
 .navbar {
@@ -63,21 +74,21 @@ header {
 }
 
 .dropdown-menu {
-  background-color: #fff3d9;
+  background-color: var(--light-primary);
   border: none;
 }
 
 .header-scrolled {
-  background-color: #fff3d9;
+  background-color: var(--light-primary);
   .nav-link,
   .dropdown-item {
     color: black;
-    background-color: #fff3d9;
+    background-color: var(--light-primary);
   }
 }
 
 .dropdown-item:hover {
-  color: #8aa895;
+  color: var(--secondary-color);
   background-color: transparent;
 }
 
@@ -106,7 +117,7 @@ header {
 }
 
 .slogan > div > h1 {
-  color: #fff3d9;
+  color: var(--light-primary);
   font-weight: bold;
 }
 
@@ -619,7 +630,7 @@ a {
 
 /* PÁGINA NUMEROS */
 thead th {
-  background-color: #8aa895 !important;
+  background-color: var(--secondary-color) !important;
   text-align: center;
   font-size: 1.2em;
 }
@@ -647,7 +658,7 @@ td {
 }
 
 .timeline-btn {
-  background: #8aa895;
+  background: var(--secondary-color);
   color: black;
   border: none;
   border-radius: 50%;
@@ -697,7 +708,7 @@ td {
 
 .content-buttons button {
   cursor: pointer;
-  background-color: #8aa895;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   padding: 0 15px;
@@ -727,7 +738,7 @@ td {
 
 .timeline-btn {
   font-size: 1.5em;
-  background: #8aa895;
+  background: var(--secondary-color);
   color: black;
   border: none;
   border-radius: 50%;
@@ -781,7 +792,7 @@ td {
 
 .content-buttons button {
   cursor: pointer;
-  background-color: #8aa895;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   padding: 0 15px;
