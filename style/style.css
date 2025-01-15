@@ -75,7 +75,7 @@ header {
   border: none;
 }
 
-/*Edições no scroll da página principal*/
+/*Edições no scroll do cabeçalho*/
 .header-scrolled {
   height: 100px;
 }
@@ -105,7 +105,7 @@ header {
 
 .slogan {
   position: absolute;
-  margin-left: 10%;
+  margin: 0 10% 0;
   top: 0px;
   left: 0px;
   max-width: 100%;
@@ -117,6 +117,7 @@ header {
 .slogan > h1 {
   color: #fff3d9;
   font-weight: bold;
+  font-size: 3rem;
 }
 
 .patrocinadores {
@@ -543,6 +544,20 @@ a {
 }
 
 @media screen and (max-width: 775px) {
+  header {
+    position: absolute;
+    background-color: inherit;
+  }
+
+  .header-scrolled {
+    height: inherit;
+  }
+
+  .header-scrolled .logo-head {
+    height: inherit;
+    width: inherit;
+  }
+
   .navbar {
     padding: 0 10px;
   }
