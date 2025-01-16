@@ -1,3 +1,12 @@
+const mostrarSMPD = function () {
+    const btnSMPD = document.querySelector(".mostrar-smpd");
+    const secaoSMPD = document.querySelector(".secao-smpd");
+
+    btnSMPD.addEventListener("click", () => {
+        secaoSMPD.classList.toggle("mostrar");
+    });
+}
+
 window.onscroll = function () {
     const header = document.getElementById("header");
     if (window.scrollY > 75) {
@@ -86,3 +95,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
+
+mostrarSMPD();
