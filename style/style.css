@@ -203,9 +203,9 @@ a {
 }
 
 .partner-logo {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
   border-radius: 8px;
 }
 
