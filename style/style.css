@@ -543,6 +543,16 @@ a {
   align-items: center;
 }
 
+/* PÁGINA TRANSPARÊNCIA */
+.secao-smpd {
+  display: none;
+}
+
+.mostrar {
+  display: block;
+}
+/*  */
+
 @media screen and (max-width: 775px) {
   header {
     position: absolute;
