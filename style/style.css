@@ -662,6 +662,10 @@ td {
   text-align: center;
 }
 
+#legend > label {
+  padding: 5px;
+}
+
 /*/* *** */
 
 /* PÁGINA NOSSA HISTÓRIA */
