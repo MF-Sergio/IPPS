@@ -171,5 +171,4 @@ function filterData() {
   //resetar os valores
   myChart.data.datasets[0].data = saudeIntegralCumulative;
   myChart.data.datasets[1].data = vivendoEAcolhendoCumulative;
-  myChart.data.labels = anosLabelsCopia;
 }
