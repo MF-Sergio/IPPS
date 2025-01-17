@@ -24,25 +24,27 @@ const vivendoEAcolhendoData = [
 const saudeIntegralCumulative = calculateCumulative(saudeIntegralData);
 const vivendoEAcolhendoCumulative = calculateCumulative(vivendoEAcolhendoData);
 
+const anosLabels = [
+  "2011",
+  "2012",
+  "2013",
+  "2014",
+  "2015",
+  "2016",
+  "2017",
+  "2018",
+  "2019",
+  "2020",
+  "2021",
+  "2022",
+  "2023",
+  "2024",
+];
+
 const myChart = new Chart(ctx, {
   type: "line",
   data: {
-    labels: [
-      "2011",
-      "2012",
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017",
-      "2018",
-      "2019",
-      "2020",
-      "2021",
-      "2022",
-      "2023",
-      "2024",
-    ],
+    labels: anosLabels,
     datasets: [
       {
         label: "Saúde Integral",
@@ -94,7 +96,6 @@ const myChart = new Chart(ctx, {
 function checkbox() {
   const legend = document.getElementById("legend");
   myChart.data.datasets.forEach((dataset, index) => {
-    console.log(dataset);
     //adiciona checkboxes inputs do tipo "checkbox"
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -139,3 +140,36 @@ dataset0.addEventListener("change", (e) => {
 dataset1.addEventListener("change", (e) => {
   checkboxEffect(myChart, e);
 });
+
+// Funcao para criar Filtro de datas
+
+function filterData() {
+  const anosLabelsCopia = [...anosLabels];
+
+  const startDate = document.getElementById("startDate");
+  const endDate = document.getElementById("endDate");
+
+  // Pegar o numero do indice do array
+
+  const indexStartDate = anosLabelsCopia.indexOf(startDate.value);
+  const indexEndDate = anosLabelsCopia.indexOf(endDate.value);
+
+  // Fazer um slice do array para mostrar somente o intervalo selecionado
+
+  const filtroAnos = anosLabelsCopia.slice(indexStartDate, indexEndDate + 1);
+
+  //Substituir as labels do gráfico
+  myChart.data.labels = filtroAnos;
+
+  //datapoints
+  myChart.data.datasets.forEach((dataset, index) => {
+    const datapoints = dataset.data;
+    const filtroDatapoints = datapoints.slice(indexStartDate, indexEndDate + 1);
+    dataset.data = filtroDatapoints;
+    myChart.update();
+  });
+  //resetar os valores
+  myChart.data.datasets[0].data = saudeIntegralCumulative;
+  myChart.data.datasets[1].data = vivendoEAcolhendoCumulative;
+  myChart.data.labels = anosLabelsCopia;
+}

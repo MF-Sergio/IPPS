@@ -269,9 +269,47 @@
             </tbody>
           </table>
         </div>
-        <section class="grafico-numeros">
+        <section
+          class="grafico-numeros"
+          style="display: flex; flex-direction: column"
+        >
           <h2 class="text-center mb-4">Crescimento no decorrer dos anos</h2>
-          <div id="legend"></div>
+          <div
+            class="grafico-numeros__Elementos"
+            style="
+              display: flex;
+              justify-content: space-evenly;
+              flex-direction: row;
+            "
+          >
+            <div id="legend"></div>
+            <div
+              id="filtroAno"
+              style="display: block; justify-content: space-between"
+            >
+              <label for="startDate">Ano inicial: </label>
+              <input
+                onchange="filterData()"
+                min="2011"
+                max="2099"
+                step="1"
+                type="number"
+                id="startDate"
+                value="2011"
+              />
+              <label for="endDate">Ano final: </label>
+              <input
+                onchange="filterData()"
+                min="2011"
+                max="2099"
+                step="1"
+                type="number"
+                id="endDate"
+                value="2024"
+              />
+            </div>
+          </div>
+          <p></p>
           <canvas id="myChart" width="320" height="120"></canvas>
         </section>
       </section>
