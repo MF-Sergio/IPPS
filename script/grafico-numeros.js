@@ -61,6 +61,9 @@ const myChart = new Chart(ctx, {
     ],
   },
   options: {
+    animation: {
+      duration: 0,
+    },
     responsive: true,
     scales: {
       y: {
