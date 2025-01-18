@@ -274,19 +274,9 @@
           style="display: flex; flex-direction: column"
         >
           <h2 class="text-center mb-4">Crescimento no decorrer dos anos</h2>
-          <div
-            class="grafico-numeros__Elementos"
-            style="
-              display: flex;
-              justify-content: space-evenly;
-              flex-direction: row;
-            "
-          >
-            <div id="legend"></div>
-            <div
-              id="filtroAno"
-              style="display: block; justify-content: space-between"
-            >
+          <div class="grafico-numeros__Elementos">
+            <div class="grafico-numeros__Elementos__legenda" id="legend"></div>
+            <div id="filtroAno" class="grafico-numeros__Elementos__filtroAno">
               <label for="startDate">Ano inicial: </label>
               <input
                 onchange="filterData()"

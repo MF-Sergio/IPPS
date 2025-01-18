@@ -100,7 +100,6 @@ function checkbox() {
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.name = dataset.label;
-
     checkbox.value = index;
     checkbox.id = `dataset${index}`;
     checkbox.checked = true;
@@ -109,6 +108,7 @@ function checkbox() {
 
     let label = document.createElement("label");
     label.htmlFor = `dataset${index}`;
+    label.id = `labelDataset${index}`;
 
     //adicionar textnode
 
