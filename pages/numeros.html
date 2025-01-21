@@ -278,7 +278,10 @@
             <div class="grafico-numeros__Elementos__legenda" id="legend"></div>
             <div id="filtroAno" class="grafico-numeros__Elementos__filtroAno">
               <label for="startDate">Ano inicial: </label>
-              <input
+
+              <select id="startDate" onchange="filterData()"></select>
+
+              <!-- <input
                 onchange="filterData()"
                 min="2011"
                 max="2099"
@@ -286,17 +289,18 @@
                 type="number"
                 id="startDate"
                 value="2011"
-              />
+              /> -->
               <label for="endDate">Ano final: </label>
-              <input
+              <select id="endDate" onchange="filterData()"></select>
+              <!-- <input
                 onchange="filterData()"
                 min="2011"
-                max="2099"
+                max="2024"
                 step="1"
                 type="number"
                 id="endDate"
                 value="2024"
-              />
+              /> -->
             </div>
           </div>
           <p></p>

@@ -20,10 +20,6 @@ const vivendoEAcolhendoData = [
   1300,
 ];
 
-// Dados acumulados
-const saudeIntegralCumulative = calculateCumulative(saudeIntegralData);
-const vivendoEAcolhendoCumulative = calculateCumulative(vivendoEAcolhendoData);
-
 const anosLabels = [
   "2011",
   "2012",
@@ -40,6 +36,32 @@ const anosLabels = [
   "2023",
   "2024",
 ];
+
+//Fazer a seleção do ano com dropdown
+
+var selectStartDate = document.getElementById("startDate");
+
+for (var i = 0; i < anosLabels.length; i++) {
+  var opt = anosLabels[i];
+  var el = document.createElement("option");
+  el.textContent = opt;
+  el.value = opt;
+  selectStartDate.appendChild(el);
+}
+
+var selectEndDate = document.getElementById("endDate");
+
+for (var i = anosLabels.length - 1; i >= 0; i--) {
+  var opt = anosLabels[i];
+  var el = document.createElement("option");
+  el.textContent = opt;
+  el.value = opt;
+  selectEndDate.appendChild(el);
+}
+
+// Dados acumulados
+const saudeIntegralCumulative = calculateCumulative(saudeIntegralData);
+const vivendoEAcolhendoCumulative = calculateCumulative(vivendoEAcolhendoData);
 
 const myChart = new Chart(ctx, {
   type: "line",
@@ -122,6 +144,8 @@ function checkbox() {
 
 checkbox();
 
+// Funcao para criar efeitos de checkboxes
+
 function checkboxEffect(chart, element) {
   const index = element.target.value;
   if (chart.isDatasetVisible(index)) {
@@ -141,11 +165,18 @@ dataset1.addEventListener("change", (e) => {
   checkboxEffect(myChart, e);
 });
 
-// Funcao para criar Filtro de datas
+// Funcao para criar Filtro de Datas
 
 function filterData() {
+  // Cópia Dados originais
+  const saudeIntegralDataCopia = [...saudeIntegralData];
+  const vivendoEAcolhendoDataCopia = [...vivendoEAcolhendoData];
   const anosLabelsCopia = [...anosLabels];
 
+  //Array contendo os arrays das cópias
+  const arrayDadosCopia = [saudeIntegralDataCopia, vivendoEAcolhendoDataCopia];
+
+  // Pegar as datas limite
   const startDate = document.getElementById("startDate");
   const endDate = document.getElementById("endDate");
 
@@ -163,12 +194,10 @@ function filterData() {
 
   //datapoints
   myChart.data.datasets.forEach((dataset, index) => {
-    const datapoints = dataset.data;
+    const datapoints = arrayDadosCopia[index];
     const filtroDatapoints = datapoints.slice(indexStartDate, indexEndDate + 1);
-    dataset.data = filtroDatapoints;
+    const filtroDatapointsCumulative = calculateCumulative(filtroDatapoints);
+    dataset.data = filtroDatapointsCumulative;
     myChart.update();
   });
-  //resetar os valores
-  myChart.data.datasets[0].data = saudeIntegralCumulative;
-  myChart.data.datasets[1].data = vivendoEAcolhendoCumulative;
 }
