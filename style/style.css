@@ -773,6 +773,49 @@ td {
   text-align: center;
 }
 
+.grafico-numeros__Elementos {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+}
+
+.grafico-numeros__Elementos__legenda {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#legend > label {
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+#labelDataset0 {
+  color: rgba(75, 192, 192, 1);
+  font-weight: 700;
+}
+#labelDataset1 {
+  color: rgba(153, 102, 255, 1);
+  font-weight: 700;
+}
+
+.grafico-numeros__Elementos__filtroAno {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 700;
+}
+
+.grafico-numeros__Elementos__filtroAno > label {
+  margin-right: 0.5rem;
+}
+
+.grafico-numeros__Elementos__filtroAno > select {
+  margin-right: 0.5rem;
+}
+
 /*/* *** */
 
 /* PÁGINA NOSSA HISTÓRIA */
