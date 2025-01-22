@@ -93,6 +93,14 @@ document.addEventListener("DOMContentLoaded", function () {
         timelineButtons[currentIndex].click();
     });
 
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+            prevButton.click();
+        } else if (event.key === "ArrowRight") {
+            nextButton.click();
+        }
+    });
+
 
 });
 
