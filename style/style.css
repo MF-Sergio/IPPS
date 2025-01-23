@@ -560,93 +560,6 @@ a {
   display: block;
 }
 /*  */
-
-@media screen and (max-width: 775px) {
-  header {
-    position: absolute;
-    background-color: inherit;
-  }
-
-  .header-scrolled {
-    height: inherit;
-  }
-
-  .header-scrolled .logo-head {
-    height: inherit;
-    width: inherit;
-  }
-
-  .navbar {
-    padding: 0 10px;
-  }
-  .nav-item {
-    text-align: center;
-  }
-
-  .dropdown {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .div-buttons-tranp {
-    flex-direction: column;
-  }
-
-  .btn-transp {
-    margin: 5px 0px;
-  }
-
-  .row {
-    margin-right: 0 !important;
-  }
-
-  .div-smpd {
-    justify-content: flex-start !important;
-  }
-
-  footer > div {
-    align-items: center;
-    text-align: center;
-  }
-
-  .div-logo-footer {
-    justify-content: center;
-  }
-
-  .Contato__Formulario {
-    flex-direction: column;
-  }
-
-  .Contato__Formulario__Sucesso {
-    margin-top: 0rem;
-    width: 100%;
-  }
-
-  .Estagio__MensagemChamativa {
-    flex-direction: column;
-  }
-
-  .Estagio__MensagemChamativa__Imagem {
-    width: 90%;
-  }
-  .Estagio__MensagemChamativa__Texto {
-    width: 90%;
-  }
-
-  .Estagio__Carreira {
-    flex-direction: column;
-  }
-
-  .Estagio__Carreira__Texto {
-    width: 90%;
-  }
-
-  .Estagio__Carreira__Imagem {
-    width: 90%;
-  }
-}
-
 /* PÁGINA PARCEIROS */
 
 .titulo-parceiros {
@@ -905,4 +818,90 @@ td {
 
 .definicao h3 {
   margin: 1em;
+}
+
+@media screen and (max-width: 775px) {
+  header {
+    position: absolute;
+    background-color: inherit;
+  }
+
+  .header-scrolled {
+    height: inherit;
+  }
+
+  .header-scrolled .logo-head {
+    height: inherit;
+    width: inherit;
+  }
+
+  .navbar {
+    padding: 0 10px;
+  }
+  .nav-item {
+    text-align: center;
+  }
+
+  .dropdown {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .div-buttons-tranp {
+    flex-direction: column;
+  }
+
+  .btn-transp {
+    margin: 5px 0px;
+  }
+
+  .row {
+    margin-right: 0 !important;
+  }
+
+  .div-smpd {
+    justify-content: flex-start !important;
+  }
+
+  footer > div {
+    align-items: center;
+    text-align: center;
+  }
+
+  .div-logo-footer {
+    justify-content: center;
+  }
+
+  .Contato__Formulario {
+    flex-direction: column;
+  }
+
+  .Contato__Formulario__Sucesso {
+    margin-top: 0rem;
+    width: 100%;
+  }
+
+  .Estagio__MensagemChamativa {
+    flex-direction: column;
+  }
+
+  .Estagio__MensagemChamativa__Imagem {
+    width: 90%;
+  }
+  .Estagio__MensagemChamativa__Texto {
+    width: 90%;
+  }
+
+  .Estagio__Carreira {
+    flex-direction: column;
+  }
+
+  .Estagio__Carreira__Texto {
+    width: 90%;
+  }
+
+  .Estagio__Carreira__Imagem {
+    width: 90%;
+  }
 }
