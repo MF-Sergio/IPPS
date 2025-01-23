@@ -70,6 +70,14 @@ header {
   transition: all 0.3s ease; /* Transição suave */
 }
 
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+  pointer-events: none;
+}
+
 .dropdown-menu {
   background-color: #fff3d9;
   border: none;
