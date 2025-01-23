@@ -648,14 +648,65 @@ a {
 }
 
 /* PÁGINA PARCEIROS */
-.parceiro .logo-img {
-  width: 100%;
-  max-width: 150px;
-  height: auto;
+
+.titulo-parceiros {
+  margin-bottom: 5rem;
 }
 
-.parceiro a {
-  display: block;
+.parceiro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 200px;
+  transition: all 0.5s ease-in-out;
+  margin: 1rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.logo-img {
+  width: 150px;
+  height: 150px;
+  transition: transform 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
+.texto {
+  z-index: -1;
+  width: 60%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.parceiro:hover .logo-container {
+  transform: translateX(-37%); /* Move o logo para a esquerda */
+}
+
+#logo-dupla:hover {
+  transform: translateX(-42%); /* Move o logo para a esquerda */
+}
+
+#logo-dupla a {
+  margin-right: 5px;
+}
+
+.parceiro:hover .texto {
+  opacity: 1;
 }
 /* *** */
 
