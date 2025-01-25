@@ -70,6 +70,14 @@ header {
   transition: all 0.3s ease; /* Transição suave */
 }
 
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+  pointer-events: none;
+}
+
 .dropdown-menu {
   background-color: #fff3d9;
   border: none;
@@ -203,9 +211,9 @@ a {
 }
 
 .partner-logo {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
   border-radius: 8px;
 }
 
@@ -660,14 +668,58 @@ td {
   text-align: center;
 }
 
+.grafico-numeros__Elementos {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+}
+
+.grafico-numeros__Elementos__legenda {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#legend > label {
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+#labelDataset0 {
+  color: rgba(75, 192, 192, 1);
+  font-weight: 700;
+}
+#labelDataset1 {
+  color: rgba(153, 102, 255, 1);
+  font-weight: 700;
+}
+
+.grafico-numeros__Elementos__filtroAno {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 700;
+}
+
+.grafico-numeros__Elementos__filtroAno > label {
+  margin-right: 0.5rem;
+}
+
+.grafico-numeros__Elementos__filtroAno > select {
+  margin-right: 0.5rem;
+}
+
 /*/* *** */
 
 /* PÁGINA NOSSA HISTÓRIA */
 .timeline-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 100px;
 }
 
 .timeline {
@@ -676,35 +728,6 @@ td {
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
-}
-
-.timeline-btn {
-  background: #8aa895;
-  color: black;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.timeline-btn:hover {
-  transform: scale(1.1);
-}
-
-.timeline-content {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background: #f9f9f9;
-  text-align: center;
 }
 
 .timeline-item {
@@ -721,10 +744,9 @@ td {
 }
 
 .content-buttons {
+  position: absolute;
+  top: 83%;
   margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
 }
 
 .content-buttons button {
@@ -742,19 +764,14 @@ td {
   background-color: #0056b3;
 }
 
-.timeline-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
+#prev {
+  position: absolute;
+  right: 520px;
 }
 
-.timeline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+#next {
+  position: absolute;
+  left: 520px;
 }
 
 .timeline-btn {
@@ -778,7 +795,9 @@ td {
   font-size: 1.5em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
+  height: 350px;
   max-width: 1200px;
   padding: 20px;
   border: 1px solid #ddd;
@@ -789,41 +808,6 @@ td {
 
 .timeline-content h3 {
   font-size: 2em;
-}
-
-.timeline-item {
-  display: none;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.timeline-item.active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.content-buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-}
-
-.content-buttons button {
-  cursor: pointer;
-  background-color: #8aa895;
-  color: white;
-  border: none;
-  padding: 0 15px;
-  border-radius: 5px;
-  font-size: 30px;
-  transition: background-color 0.3s;
-}
-
-.content-buttons button:hover {
-  background-color: #0056b3;
 }
 
 /*/* *** */

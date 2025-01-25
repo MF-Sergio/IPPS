@@ -52,7 +52,6 @@
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="./pages/vivendoeacolhendo.html">Vivendo e Acolhendo</a></li>
-                <li><a class="dropdown-item" href="./pages/estagio.html">Estágio</a></li>
                 <li><a class="dropdown-item" href="./pages/saudeintegral.html">Saúde Integral</a></li>
               </ul>
             </div>
@@ -64,6 +63,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./pages/transparencia.html">Transparência</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/estagio.html">Trabalhe Conosco</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./pages/parceiros.html">Parceiros</a>
@@ -82,6 +84,18 @@
   <main>
     <section class="carrosel">
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="3"
+            aria-label="Slide 4"></button>
+        </div>
+
         <div class="carousel-inner">
           <div class="carousel-item foto-carousel active" style="background-image: url(./assets/img/foto1.jpg);">
           </div>
@@ -92,6 +106,18 @@
           <div class="carousel-item foto-carousel" style="background-image: url(./assets/img/foto4.jpg);">
           </div>
         </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+
         <div class="d-flex slogan">
           <h1 id="quemsomos">IPPS SOCIAL <br> Instituto de Pesquisa <br> e Promoção da Saúde</h1>
         </div>
@@ -275,122 +301,109 @@
         </ul>
       </div>
 
-      <div class="row mt-4" style="width: 100%;">
+      <div class="col-12 mt-4" style="width: 100%; height: 250px;">
         <h5>Parceiras Institucionais</h5>
         <div class="carousel slide mt-4" id="partnersCarousel" data-bs-ride="carousel" data-bs-interval="3000">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+          <div class="carousel-inner" style="height: 150px;">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="row justify-content-center">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                  <a href="https://prefeitura.rio" target="_blank">
+                    <img src="../assets/img/logos/LogoSMPD.png"
+                      alt="Convênio com a Secretaria Municipal da Pessoa com Deficiência."
+                      title="Convênio com a Secretaria Municipal da Pessoa com Deficiência." width="100px"
+                      class="img-fluid partner-logo">
+                  </a>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                  <a href="#" target="_blank">
+                    <img src="../assets/img/logos/BancoDeAlimentos.png"
+                      alt="Banco de Alimentos do CEASA/RJ – Doação de alimentos"
+                      title="Banco de Alimentos do CEASA/RJ – Doação de alimentos" width="100px"
+                      class="img-fluid partner-logo">
+                  </a>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                  <a href="https://www.tjrj.jus.br/web/guest" target="_blank">
+                    <img src="../assets/img/logos/PJERJ.jpg" alt="Tribunal de Justiça do Estado do Rio de Janeiro."
+                      title="Tribunal de Justiça do Estado do Rio de Janeiro." width="100px"
+                      class="img-fluid partner-logo">
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="carousel-inner" style="height: 150px;">
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="row justify-content-center">
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                            <a href="https://prefeitura.rio" target="_blank">
-                                <img src="../assets/img/logos/LogoSMPD.png" 
-                                     alt="Convênio com a Secretaria Municipal da Pessoa com Deficiência." 
-                                     title="Convênio com a Secretaria Municipal da Pessoa com Deficiência." 
-                                     width="100px"
-                                     class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                            <a href="#" target="_blank">
-                                <img src="../assets/img/logos/BancoDeAlimentos.png" 
-                                     alt="Banco de Alimentos do CEASA/RJ – Doação de alimentos" 
-                                     title="Banco de Alimentos do CEASA/RJ – Doação de alimentos" 
-                                     width="100px"
-                                     class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                            <a href="https://www.tjrj.jus.br/web/guest" target="_blank">
-                                <img src="../assets/img/logos/PJERJ.jpg" 
-                                     alt="Tribunal de Justiça do Estado do Rio de Janeiro." 
-                                     title="Tribunal de Justiça do Estado do Rio de Janeiro." 
-                                     width="100px"
-                                     class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                    </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="row justify-content-center">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                  <a href="https://www.agenciadobem.org.br" target="_blank">
+                    <img src="../assets/img/logos/ADB.png" alt="Parceria para fortalecimento institucional."
+                      title="Parceria para fortalecimento institucional." width="100px" class="img-fluid partner-logo">
+                  </a>
                 </div>
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                            <a href="https://www.agenciadobem.org.br" target="_blank">
-                                <img src="../assets/img/logos/ADB.png" 
-                                     alt="Parceria para fortalecimento institucional." 
-                                     title="Parceria para fortalecimento institucional." 
-                                     width="100px"
-                                     class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                            <a href="https://www.sesc.com.br" target="_blank">
-                                <img src="../assets/img/logos/Sesc.png" 
-                                     alt="Promove ações nas áreas de cultura, Educação, Esporte." 
-                                     title="Promove ações nas áreas de cultura, Educação, Esporte."
-                                     width="100px" 
-                                     class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                            <a href="https://www.sesc.com.br/atuacoes/assistencia/sesc-mesa-brasil/" target="_blank">
-                                <img src="../assets/img/logos/MesaBrasilSesc.png" 
-                                     alt="Rede nacional de banco de alimentos." 
-                                     title="Rede nacional de banco de alimentos." 
-                                     width="100px"
-                                     class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                    </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                  <a href="https://www.sesc.com.br" target="_blank">
+                    <img src="../assets/img/logos/Sesc.png" alt="Promove ações nas áreas de cultura, Educação, Esporte."
+                      title="Promove ações nas áreas de cultura, Educação, Esporte." width="100px"
+                      class="img-fluid partner-logo">
+                  </a>
                 </div>
-                <!-- Slide 3 -->
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
-                            <a href="https://www.febiexrj.org.br" target="_blank">
-                                <img src="../assets/img/logos/FebiexLogo.jpg"
-                                    alt="A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)." 
-                                    title="A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)." 
-                                    width="100px"
-                                    class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
-                            <a href="https://ucb.catolica.edu.br" target="_blank">
-                                <img src="../assets/img/logos/UCBLogo.jpg"
-                                    alt="Atividades e atendimentos através dos cursos da Universidade Castelo Branco." 
-                                    title="Atividades e atendimentos através dos cursos da Universidade Castelo Branco." 
-                                    width="100px"
-                                    class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
-                            <a href="#" target="_blank">
-                                <img src="../assets/img/logos/CLinicaECB.png"
-                                    alt="Atividades e atendimentos através da Clínica Escola." 
-                                    title="Atividades e atendimentos através da Clínica Escola." 
-                                    width="100px"
-                                    class="img-fluid partner-logo">
-                            </a>
-                        </div>
-                    </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                  <a href="https://www.sesc.com.br/atuacoes/assistencia/sesc-mesa-brasil/" target="_blank">
+                    <img src="../assets/img/logos/MesaBrasilSesc.png" alt="Rede nacional de banco de alimentos."
+                      title="Rede nacional de banco de alimentos." width="100px" class="img-fluid partner-logo">
+                  </a>
                 </div>
+              </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#partnersCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#partnersCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Próximo</span>
-            </button>
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+              <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
+                  <a href="https://www.febiexrj.org.br" target="_blank">
+                    <img src="../assets/img/logos/FebiexLogo.jpg"
+                      alt="A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)."
+                      title="A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)." width="100px"
+                      class="img-fluid partner-logo">
+                  </a>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
+                  <a href="https://ucb.catolica.edu.br" target="_blank">
+                    <img src="../assets/img/logos/UCBLogo.jpg"
+                      alt="Atividades e atendimentos através dos cursos da Universidade Castelo Branco."
+                      title="Atividades e atendimentos através dos cursos da Universidade Castelo Branco." width="100px"
+                      class="img-fluid partner-logo">
+                  </a>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
+                  <a href="#" target="_blank">
+                    <img src="../assets/img/logos/CLinicaECB.png"
+                      alt="Atividades e atendimentos através da Clínica Escola."
+                      title="Atividades e atendimentos através da Clínica Escola." width="100px"
+                      class="img-fluid partner-logo">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-indicators mb-0">
+            <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#partnersCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#partnersCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
         </div>
-    </div>
+      </div>
 
     </footer>
   </div>
@@ -411,11 +424,9 @@
     </div>
 
     <!-- Ícone do Instagram com animação -->
-    <div
-      class="whatsapp-icon animate__animated animate__headShake animate__slower animate__delay-3s animate__infinite">
+    <div class="whatsapp-icon animate__animated animate__headShake animate__slower animate__delay-3s animate__infinite">
       <a href="https://www.instagram.com/ippsrealengo/" target="_blank">
-        <img src="../assets/img/instagram.png" alt="Siga-nos no Instagram"
-          title="Siga-nos no Instagram" />
+        <img src="../assets/img/instagram.png" alt="Siga-nos no Instagram" title="Siga-nos no Instagram" />
       </a>
     </div>
   </div>
