@@ -30,7 +30,7 @@ header {
   color: white;
   font-weight: bold;
   transition: font-size 0.3s ease;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .btn-footer {
@@ -56,7 +56,7 @@ header {
   position: relative;
   margin-right: 3rem;
   margin-bottom: 8px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .navbar-brand {
@@ -83,7 +83,7 @@ header {
 .dropdown-menu {
   background-color: #fff3d9;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 /*Edições no scroll do cabeçalho*/
