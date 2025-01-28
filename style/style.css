@@ -29,7 +29,8 @@ header {
   margin-left: 10px;
   color: white;
   font-weight: bold;
-  transition: font-size 0.3s ease; /* Transição suave */
+  transition: font-size 0.3s ease;
+  font-size: 1.3rem;
 }
 
 .btn-footer {
@@ -44,7 +45,7 @@ header {
 }
 
 .nav-link:hover {
-  color: #8aa895;
+  color: #a40201;
 }
 
 .navbar {
@@ -55,6 +56,7 @@ header {
   position: relative;
   margin-right: 3rem;
   margin-bottom: 8px;
+  font-size: 1.2rem;
 }
 
 .navbar-brand {
@@ -81,6 +83,7 @@ header {
 .dropdown-menu {
   background-color: #fff3d9;
   border: none;
+  font-size: 1.2rem;
 }
 
 /*Edições no scroll do cabeçalho*/
