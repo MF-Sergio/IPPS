@@ -17,6 +17,11 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.img__rasgo {
+  display: flex;
+  width: 100%;
+}
+
 .btn-header:hover {
   background-color: #fff3d9;
   border: 2px solid #a40201;
