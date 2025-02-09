@@ -93,15 +93,38 @@ document.addEventListener("DOMContentLoaded", function () {
         timelineButtons[currentIndex].click();
     });
 
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") {
-            prevButton.click();
-        } else if (event.key === "ArrowRight") {
-            nextButton.click();
-        }
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const botoes = document.querySelectorAll(".carrossel__botoes h3");
+    const itens = document.querySelectorAll(".carrossel__item");
+
+    let itemAtual = document.querySelector(".carrossel__item.ativo");
+
+    botoes.forEach(botao => {
+        botao.addEventListener("click", () => {
+            const proximoItem = document.getElementById(botao.dataset.target);
+
+            if (proximoItem === itemAtual) return; // Se já está ativo, não faz nada
+
+            // Remove a classe 'ativo' dos botões
+            botoes.forEach(b => b.classList.remove("ativo"));
+            botao.classList.add("ativo");
+
+            // Anima a saída do item atual
+            itemAtual.classList.add("saindo");
+
+            setTimeout(() => {
+                // Remove a classe 'ativo' e 'saindo' do item atual
+                itemAtual.classList.remove("ativo", "saindo");
+
+                // Ativa o próximo item
+                proximoItem.classList.add("ativo");
+                itemAtual = proximoItem;
+            }, 300);
+        });
     });
-
-
 });
 
 mostrarSMPD();
