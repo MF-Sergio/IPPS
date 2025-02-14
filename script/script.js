@@ -127,4 +127,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const titulosProjetos = document.querySelectorAll(".titulo-projeto");
+    const projetos = document.querySelectorAll(".projeto-container");
+    const containerProjetos = document.querySelector(".container-projetos");
+
+    titulosProjetos.forEach(titulo => {
+        titulo.addEventListener("mouseenter", () => {
+            const target = titulo.getAttribute("data-target");
+
+            // Oculta todos os projetos
+            projetos.forEach(projeto => {
+                projeto.classList.remove("ativo");
+            });
+
+            // Exibe o projeto correspondente
+            const projetoAtivo = document.getElementById(target);
+            if (projetoAtivo) {
+                projetoAtivo.classList.add("ativo");
+
+                // Ajusta a altura do container-projetos para o conteúdo do projeto ativo
+                containerProjetos.style.height = `600px`;
+            } else {
+                // Se nenhum projeto estiver ativo, reseta a altura do container
+                containerProjetos.style.height = "0";
+            }
+        });
+    });
+
+    // Garante que nenhum projeto esteja visível inicialmente
+    projetos.forEach(projeto => {
+        projeto.classList.remove("ativo");
+    });
+});
+
 mostrarSMPD();
