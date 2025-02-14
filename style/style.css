@@ -823,6 +823,14 @@ a {
 /* *** */
 
 /* PÁGINA NUMEROS */
+#nossos-numeros {
+  display: inline;
+}
+
+.container-numeros {
+  margin: 3rem 100px;
+}
+
 thead th {
   background-color: #8aa895 !important;
   text-align: center;
@@ -831,6 +839,15 @@ thead th {
 
 td {
   text-align: center;
+}
+
+.tabela-numeros {
+  width: 30%;
+  margin-right: 20px;
+}
+
+.grafico-numeros {
+  width: 70%;
 }
 
 .grafico-numeros__Elementos {
@@ -884,7 +901,7 @@ td {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 100px;
+  margin: 0 100px;
 }
 
 .timeline {
