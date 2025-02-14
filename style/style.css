@@ -3,6 +3,10 @@ body {
   background-color: #f2d9b5;
 }
 
+section {
+  scroll-margin-top: 100px;
+}
+
 .lead {
   font-weight: 400;
 }
@@ -789,15 +793,33 @@ a {
 }
 
 /* PÁGINA PARCEIROS */
-.parceiro .logo-img {
-  width: 100%;
-  max-width: 150px;
-  height: auto;
+.container-parceiros {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
-.parceiro a {
-  display: block;
+.parceiro {
+  margin-right: 10px;
 }
+
+.container-logo {
+  height: 150px;
+}
+
+.parceiro .texto {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.parceiro:hover .texto {
+  opacity: 1;
+}
+
+.parceiro .logo-img {
+  width: 150px;
+}
+
 /* *** */
 
 /* PÁGINA NUMEROS */
