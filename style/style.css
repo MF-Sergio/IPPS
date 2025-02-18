@@ -1,6 +1,7 @@
 body {
   position: relative;
-  background-color: #f2d9b5;
+  background-color: #fff3d9;
+  /* background-color: #f2d9b5; */
 }
 
 section {
@@ -11,14 +12,10 @@ section {
   font-weight: 400;
 }
 
-.rasgo {
-  background-color: #fff3d9;
-}
-
 .img__rasgo {
   display: flex;
   width: 100%;
-  height: 65px;
+  height: auto;
 }
 
 header {
@@ -896,6 +893,7 @@ td {
 /*/* *** */
 
 /* PÁGINA NOSSA HISTÓRIA */
+
 .timeline-container {
   position: relative;
   display: flex;
@@ -1028,6 +1026,11 @@ td {
 /* *** */
 
 /* PÁGINA PROJETO */
+
+#projetos {
+  background-color: #c8d5ca;
+}
+
 .definicao {
   margin: 1em;
 }
@@ -1079,3 +1082,5 @@ td {
   opacity: 1;
   transform: translateX(25%) !important;
 }
+
+/* Trabalhe conosco */
