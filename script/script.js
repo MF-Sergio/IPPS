@@ -132,33 +132,49 @@ document.addEventListener("DOMContentLoaded", () => {
     const projetos = document.querySelectorAll(".projeto-container");
     const containerProjetos = document.querySelector(".container-projetos");
 
-    titulosProjetos.forEach(titulo => {
-        titulo.addEventListener("mouseenter", () => {
-            const target = titulo.getAttribute("data-target");
+    // Função para ajustar a altura do container de projetos
+    function ajustarAlturaProjetos() {
+        const larguraTela = window.innerWidth; // Largura da tela do usuário
+        let alturaProjeto = "600px"; // Altura padrão para telas maiores que 1024px
 
-            // Oculta todos os projetos
-            projetos.forEach(projeto => {
-                projeto.classList.remove("ativo");
+        if (larguraTela <= 1024) {
+            alturaProjeto = "1024px"; // Altura para telas menores ou iguais a 1024px
+        }
+
+        titulosProjetos.forEach(titulo => {
+            titulo.addEventListener("mouseenter", () => {
+                const target = titulo.getAttribute("data-target");
+
+                // Oculta todos os projetos
+                projetos.forEach(projeto => {
+                    projeto.classList.remove("ativo");
+                });
+
+                // Exibe o projeto correspondente
+                const projetoAtivo = document.getElementById(target);
+                if (projetoAtivo) {
+                    projetoAtivo.classList.add("ativo");
+
+                    // Ajusta a altura do container-projetos para o conteúdo do projeto ativo
+                    containerProjetos.style.height = alturaProjeto;
+                } else {
+                    // Se nenhum projeto estiver ativo, reseta a altura do container
+                    containerProjetos.style.height = "0";
+                }
             });
-
-            // Exibe o projeto correspondente
-            const projetoAtivo = document.getElementById(target);
-            if (projetoAtivo) {
-                projetoAtivo.classList.add("ativo");
-
-                // Ajusta a altura do container-projetos para o conteúdo do projeto ativo
-                containerProjetos.style.height = `600px`;
-            } else {
-                // Se nenhum projeto estiver ativo, reseta a altura do container
-                containerProjetos.style.height = "0";
-            }
         });
-    });
 
-    // Garante que nenhum projeto esteja visível inicialmente
-    projetos.forEach(projeto => {
-        projeto.classList.remove("ativo");
-    });
+        // Garante que nenhum projeto esteja visível inicialmente
+        projetos.forEach(projeto => {
+            projeto.classList.remove("ativo");
+        });
+    }
+
+    // Chama a função para ajustar a altura dos projetos
+    ajustarAlturaProjetos();
+
+    // Adiciona um listener para ajustar a altura dos projetos quando a janela for redimensionada
+    window.addEventListener("resize", ajustarAlturaProjetos);
 });
 
 mostrarSMPD();
