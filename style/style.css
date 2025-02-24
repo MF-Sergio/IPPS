@@ -1,6 +1,7 @@
 body {
   position: relative;
   background-color: #f2d9b5;
+  padding-top: 162px;
 }
 
 section {
@@ -199,6 +200,36 @@ header {
 }
 
 /* Parte do quem é o IPPS */
+#quem-somos p {
+  position: relative;
+}
+
+#quem-somos .quem-e-o-ipps::before {
+  content: "";
+  position: absolute;
+  top: -7%;
+  left: 1%;
+  width: 50px;
+  height: 60px;
+  background-image: url(../assets/png/pins-154959_1920-red.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+#quem-somos .quem-e-o-ipps::after {
+  content: "";
+  position: absolute;
+  top: 87%;
+  left: 95%;
+  width: 50px;
+  height: 60px;
+  background-image: url(../assets/png/pins-154959_1920-red.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
 .quemsomos {
   max-width: 1400px;
 }
@@ -210,6 +241,10 @@ header {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  font-size: 2rem;
 }
 
 .quemsomos span {
@@ -255,6 +290,7 @@ header {
 }
 
 .container__identidade {
+  position: relative;
   max-width: 80%;
   height: 500px;
   margin: auto auto 50px auto;
@@ -262,6 +298,32 @@ header {
   background-color: #a1c2ae;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container__identidade::before {
+  content: "";
+  position: absolute;
+  top: -5%;
+  left: 93%;
+  width: 64px;
+  height: 50px;
+  background-image: url(../assets/png/pins-154959_1920-blue-inverted.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.container__identidade::after {
+  content: "";
+  position: absolute;
+  top: 87%;
+  left: 1%;
+  width: 50px;
+  height: 65px;
+  background-image: url(../assets/png/pins-154959_1920-blue.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
 }
 
 .carrossel__botoes {
@@ -880,6 +942,9 @@ a {
 
 .container-numeros {
   margin: 3rem 100px;
+  /* background-image: url(../assets/png/quadro-verde.png);
+  background-position: center;
+  background-size: auto; */
 }
 
 thead th {
