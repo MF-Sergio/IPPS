@@ -261,6 +261,20 @@ header {
   width: 100%;
 }
 
+@media (max-width: 1024px) {
+  .quemsomos .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quemsomos .d-flex p,
+  .quemsomos span {
+    margin: 0;
+    width: 90%;
+    transform: none;
+  }
+}
+
 /* ESTILO DO INDEX */
 .titulo-quemsomos {
   text-align: center;
@@ -317,6 +331,16 @@ header {
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .container__identidade {
+    max-width: 90%;
+  }
+
+  .carrossel__botoes{
+    margin-top: 40px;
+  }
 }
 
 .carrossel__botoes h3 {
@@ -882,6 +906,23 @@ a {
   width: 150px;
 }
 
+.certificate-img {
+  width: 100%;        
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  #parceiros .row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 /* *** */
 
 /* PÁGINA NUMEROS */
@@ -958,6 +999,17 @@ td {
   margin-right: 0.5rem;
 }
 
+@media (max-width: 1024px){
+  .tabela-numeros{
+    width: 50%;
+    margin: 0;
+  }
+
+  .container-numeros{
+    flex-direction: column;
+  }
+}
+
 /*/* *** */
 
 /* PÁGINA NOSSA HISTÓRIA */
@@ -991,37 +1043,30 @@ td {
 }
 
 .content-buttons {
-  position: absolute;
-  top: 83%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
   margin-top: 20px;
 }
 
-.content-buttons button {
+#prev, #next {
   cursor: pointer;
   background-color: #8aa895;
   color: white;
   border: none;
-  padding: 0 15px;
+  padding: 10px 20px;
   border-radius: 5px;
   font-size: 30px;
   transition: background-color 0.3s;
 }
 
-.content-buttons button:hover {
+#prev:hover, #next:hover {
   background-color: #0056b3;
 }
 
-#prev {
-  position: absolute;
-  right: 520px;
-}
-
-#next {
-  position: absolute;
-  left: 520px;
-}
-
 .timeline-btn {
+  flex: 0 0 auto;
   font-size: 1.5em;
   background: #8aa895;
   color: black;
@@ -1044,7 +1089,6 @@ td {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 350px;
   max-width: 1200px;
   padding: 20px;
   border: 1px solid #ddd;
@@ -1144,3 +1188,49 @@ td {
   opacity: 1;
   transform: translateX(25%) !important;
 }
+
+.imagem-rotacionada {
+  display: flex;
+  align-items: center;
+  transform: rotate(-7deg);
+}
+
+#saude-integral .imagem-rotacionada {
+  transform: rotate(7deg);
+}
+
+@media (max-width: 1024px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .projeto-container {
+    text-align: center;
+  }
+
+  .col-md-6 {
+    width: 100%;
+  }
+
+  .image-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .imagem-rotacionada {
+    transform: none !important;
+  }
+
+  .image-container img {
+    max-width: 90%;
+    transform: none;
+  }
+
+  .titulo-projeto {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+

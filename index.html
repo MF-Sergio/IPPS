@@ -34,7 +34,7 @@
     </div>
   </div> -->
   <header id="header">
-    <nav class="navbar navbar-expand-lg my-3">
+    <nav class="navbar navbar-expand-xl my-3">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html"><img src="./assets/img/logo.png" alt="Logo IPPS"
             class="logo-head"></a>
@@ -313,14 +313,14 @@
         <div class="container mt-5 projeto-container" id="vivendo-e-acolhendo">
           <div class="row align-items-center">
             <!-- Imagem à esquerda -->
-            <div class="col-md-6" style="display: flex; align-items: center; transform: rotate(-7deg);">
+            <div class="col-12 col-md-6 mb-4 imagem-rotacionada">
               <div class="image-container">
                 <img src="./assets/img/foto1.jpg" alt="Imagem Vivendo e Acolhendo" class="img-fluid rounded shadow">
               </div>
             </div>
 
             <!-- Cards à direita -->
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
               <div class="card border-0 shadow mb-4">
                 <div class="card-body text-center">
                   <h3 class="card-title">O que é?</h3>
@@ -364,7 +364,7 @@
         <div class="container mt-5 projeto-container" id="saude-integral">
           <div class="row align-items-center">
             <!-- Cards à esquerda -->
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
               <div class="card border-0 shadow mb-4">
                 <div class="card-body text-center">
                   <h3 class="card-title">O que é?</h3>
@@ -398,7 +398,7 @@
             </div>
 
             <!-- Imagem à direita -->
-            <div class="col-md-6" style="display: flex; align-items: center; transform: rotate(7deg);">
+            <div class="col-12 col-md-6 imagem-rotacionada">
               <div class="image-container">
                 <img src="./assets/img/foto2.jpg" alt="Imagem ilustrativa" class="img-fluid rounded shadow">
               </div>
@@ -510,12 +510,12 @@
             Aedes Aegypti.</p>
         </div>
 
+        <div class="content-buttons">
+          <button id="prev">&#8592</button>
+          <button id="next">&#8594</button>
+        </div>
       </div>
 
-      <div class="content-buttons">
-        <button id="prev">&#8592</button>
-        <button id="next">&#8594</button>
-      </div>
 
     </section>
     <div class="rasgo">
@@ -653,132 +653,84 @@
       <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint.png" alt="" class="img__rasgo"
         style="transform: scaleX(-1);">
     </div>
-    <section id="parceiros" class="container">
-      <<h1 class="fw-bolder text-center">Nossos Parceiros</h1>
-
-        <div class="container-parceiros">
-          <div class="parceiro mt-5">
-            <div class="container-logo">
+    <section id="parceiros" class="container mt-4">
+      <div class="row d-flex flex-wrap gap-4 justify-content-between">
+        <!-- Coluna da esquerda (Parceiros) -->
+        <div class="col-12 col-md-6">
+          <h2 class="display-6 fw-bold text-center mb-4">Nossos Parceiros</h2>
+          <div class="row" style="flex-direction: row;">
+            <!-- Parceiros (3 por linha em desktop, 2 em tablets, 1 em mobile) -->
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
               <a href="https://carioca.rio/orgao/secretaria-municipal-da-pessoa-com-deficiencia-smpd/">
-                <img class="logo-img" src="./assets/img/rio-prefeitura.png" alt="" />
+                <img class="img-fluid" width="200px" src="./assets/img/rio-prefeitura.png" alt="" />
               </a>
             </div>
-            <div>
-              <p class="texto">
-                Convênio com a Secretaria Municipal da Pessoa com Deficiência.
-              </p>
-            </div>
-          </div>
-
-          <div class="parceiro mt-5">
-            <div class="container-logo">
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
               <a href="https://www.rj.gov.br/ceasa/banco_de_alimentos">
-                <img class="logo-img" src="./assets/img/BancoDeAlimentos-removebg-preview.png" alt=""
-                  style="width:200px;" />
+                <img class="img-fluid" width="200px" src="./assets/img/BancoDeAlimentos-removebg-preview.png" alt="" />
               </a>
             </div>
-            <div>
-              <p class="texto">
-                Banco de Alimentos do CEASA/RJ – Doação de alimentos.
-              </p>
-            </div>
-          </div>
-
-          <div class="parceiro mt-5">
-            <div class="container-logo">
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
               <a href="https://www.tjrj.jus.br">
-                <img class="logo-img" src="./assets/img/TJERJ-removebg-preview.png" alt="" />
+                <img class="img-fluid" width="200px" src="./assets/img/TJERJ-removebg-preview.png" alt="" />
               </a>
             </div>
-            <div>
-              <p class="texto">
-                Tribunal de Justiça do Estado do Rio de Janeiro – Vara de
-                Execuções Penais (VEP) Vara de Medidas Alternativas (VEPEMA).
-              </p>
-            </div>
-          </div>
-
-          <div class="parceiro mt-5">
-            <div class="container-logo">
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
               <a href="https://www.agenciadobem.org.br">
-                <img class="logo-img" src="./assets/img/ADB-removebg-preview.png" alt="" />
+                <img class="img-fluid" width="200px" src="./assets/img/ADB-removebg-preview.png" alt="" />
               </a>
             </div>
-            <div>
-              <p class="texto">
-                Parceria para fortalecimento institucional em capacitações para
-                Gestores.
-              </p>
-            </div>
-          </div>
-
-          <div class="parceiro mt-5">
-            <div class="container-logo">
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
               <a href="https://www.sescrio.org.br">
-                <img class="logo-img" src="./assets/img/Sesc-removebg-preview.png" alt="" />
+                <img class="img-fluid" width="200px" src="./assets/img/Sesc-removebg-preview.png" alt="" />
               </a>
             </div>
-            <div>
-              <p class="texto">
-                Promove ações nas áreas de cultura, Educação, Esporte, Recreação,
-                Saúde e Turismo social e Assistência, ajudando a promover
-                bem-estar e qualidade de vida.
-              </p>
-            </div>
-          </div>
-
-          <div class="parceiro mt-5">
-            <div class="container-logo">
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
               <a href="https://www.sesc.com.br/atuacoes/assistencia/sesc-mesa-brasil/">
-                <img class="logo-img" src="./assets/img/MesaBrasilSesc-removebg-preview.png" alt="" />
+                <img class="img-fluid" width="200px" src="./assets/img/MesaBrasilSesc-removebg-preview.png" alt="" />
               </a>
             </div>
-            <div>
-              <p class="texto">
-                É uma rede nacional de banco de alimentos que tem por objetivo
-                contribuir para a promoção da cidadania e a melhoria da qualidade
-                de vida de pessoas em situação de vulnerabilidade social.
-              </p>
-            </div>
-          </div>
-
-          <div class="parceiro mt-5">
-            <div class="container-logo">
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
               <a href="https://www.febiexrj.org.br">
-                <img class="logo-img" src="./assets/img/FebiexLogo-removebg-preview.png" alt="" />
+                <img class="img-fluid" width="200px" src="./assets/img/FebiexLogo-removebg-preview.png" alt="" />
               </a>
             </div>
-            <div>
-              <p class="texto">
-                A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)
-                - rede composta de 72 OSCs Organizações da Sociedade Civil
-                especializadas no atendimento à pessoa em vulnerabilidade social.
-              </p>
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+              <a href="https://castelobranco.br">
+                <img class="img-fluid" width="200px" src="./assets/img/UCBLogo-removebg-preview.png" alt="" />
+              </a>
             </div>
-          </div>
-
-          <div class="parceiro mt-5">
-            <div class="d-flex gap-2">
-              <div class="container-logo">
-                <a href="https://castelobranco.br">
-                  <img class="logo-img" src="./assets/img/UCBLogo-removebg-preview.png" alt="" />
-                </a>
-              </div>
-              <div class="container-logo">
-                <a href="https://institutodepesquisaepromocaodasaude.blogspot.com/p/clinica-escola-castelo-branco.html">
-                  <img class="logo-img" src="./assets/img/CLinicaECB-removebg-preview.png" alt="" />
-                </a>
-              </div>
-            </div>
-            <div>
-              <p class="texto">
-                Atividades e atendimentos para nosso público alvo e sua rede de
-                apoio através dos cursos de Graduação da Universidade Castelo
-                Branco e seus estágios na Clínica Escola.
-              </p>
+            <div class="col-sm-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+              <a href="https://institutodepesquisaepromocaodasaude.blogspot.com/p/clinica-escola-castelo-branco.html">
+                <img class="img-fluid" width="200px" src="./assets/img/CLinicaECB-removebg-preview.png" alt="" />
+              </a>
             </div>
           </div>
         </div>
+
+        <!-- Coluna da direita (Certificados) -->
+        <div class="col-12 col-md-5">
+          <h2 class="display-6 fw-bold text-center mb-4">Certificados</h2>
+          <div class="row row-cols-1 g-4">
+            <!-- Certificado 1 -->
+            <div class="col">
+              <a href="./assets/img/Certificados/SESCRJ_declaração.png" target="_blank"
+                class="card h-100 shadow-sm text-decoration-none">
+                <img src="./assets/img/Certificados/SESCRJ_declaração.png" class="card-img-top certificate-img"
+                  alt="Declaração de Participação Sesc Voe">
+              </a>
+            </div>
+            <!-- Certificado 2 -->
+            <div class="col">
+              <a href="./assets/img/Certificados/Câmara_Municipal_do_RJ.png" target="_blank"
+                class="card h-100 shadow-sm text-decoration-none">
+                <img src="./assets/img/Certificados/Câmara_Municipal_do_RJ.png" class="card-img-top certificate-img"
+                  alt="CERTIDÃO - Moção da Câmara Municipal do Rio de Janeiro ao IPPS">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <div class="rasgo">
       <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint.png" alt="" class="img__rasgo"
@@ -919,45 +871,48 @@
           </div>
         </div>
       </section>
-    </section>
-    <div class="rasgo">
-      <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint.png" alt="" class="img__rasgo"
-        style="transform: scaleX(-1);">
-      <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint.png" alt="" class="img__rasgo"
-        style="transform: scaleX(-1);">
-    </div>
-    <section id="certificados" class="container mt-5">
-      <h2 class="display-6 fw-bold text-center mb-4">Certificados</h2>
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-          <div class="card h-100 shadow-sm d-flex flex-column">
-            <div class="card-body flex-grow-1 d-flex flex-column">
-              <h5 class="card-title">Declaração de Participação Sesc Voe</h5>
-              <p class="card-text">Certificado de participação em atividades de desenvolvimento pessoal promovidas pelo
-                Sesc Voe.</p>
-              <a href="./assets/img/Certificados/SESCRJ_declaração.png" target="_blank" class="btn btn-primary mt-auto">
-                Ver Certificado
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100 shadow-sm d-flex flex-column">
-            <div class="card-body flex-grow-1 d-flex flex-column">
-              <h5 class="card-title">CERTIDÃO - Moção da Câmara Municipal do Rio de Janeiro ao IPPS</h5>
-              <p class="card-text">Reconhecimento da Câmara Municipal do Rio de Janeiro por ações de impacto social.</p>
-              <a href="./assets/img/Certificados/Câmara_Municipal_do_RJ.png" target="_blank"
-                class="btn btn-primary mt-auto">
-                Ver Certificado
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </section>
-    <div class="rasgo">
+      <div class="rasgo">
+        <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint.png" alt="" class="img__rasgo"
+          style="transform: scaleX(-1);">
+        <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint.png" alt="" class="img__rasgo"
+          style="transform: scaleX(-1);">
+      </div>
+      <section id="certificados" class="container mt-5">
+        <h2 class="display-6 fw-bold text-center mb-4">Certificados</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <div class="col">
+            <div class="card h-100 shadow-sm d-flex flex-column">
+              <div class="card-body flex-grow-1 d-flex flex-column">
+                <h5 class="card-title">Declaração de Participação Sesc Voe</h5>
+                <p class="card-text">Certificado de participação em atividades de desenvolvimento pessoal promovidas
+                  pelo
+                  Sesc Voe.</p>
+                <a href="./assets/img/Certificados/SESCRJ_declaração.png" target="_blank"
+                  class="btn btn-primary mt-auto">
+                  Ver Certificado
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card h-100 shadow-sm d-flex flex-column">
+              <div class="card-body flex-grow-1 d-flex flex-column">
+                <h5 class="card-title">CERTIDÃO - Moção da Câmara Municipal do Rio de Janeiro ao IPPS</h5>
+                <p class="card-text">Reconhecimento da Câmara Municipal do Rio de Janeiro por ações de impacto social.
+                </p>
+                <a href="./assets/img/Certificados/Câmara_Municipal_do_RJ.png" target="_blank"
+                  class="btn btn-primary mt-auto">
+                  Ver Certificado
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section> -->
+      <!-- <div class="rasgo">
       <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint.png" alt="" class="img__rasgo"
         style="transform: scaleX(-1);">
       <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint.png" alt="" class="img__rasgo"
@@ -1034,7 +989,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
   <div class="rasgo">
     <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint.png" alt="" class="img__rasgo"
