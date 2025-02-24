@@ -64,7 +64,7 @@ header {
 }
 
 .navbar {
-  padding: 0px 150px;
+  padding: 0px 15px;
 }
 
 #navbarNav {
@@ -279,6 +279,10 @@ header {
   .carrossel__botoes{
     margin-top: 40px;
   }
+
+  .carousel-item .row {
+    flex-direction: row;
+  }
 }
 
 .carrossel__botoes h3 {
@@ -384,6 +388,12 @@ a {
   height: 120px;
   object-fit: contain;
   border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .partner-logo {
+    width: 100px !important;
+  }
 }
 
 .btn-transp {
@@ -936,7 +946,7 @@ td {
 
 @media (max-width: 1024px){
   .tabela-numeros{
-    width: 50%;
+    width: 70%;
     margin: 0;
   }
 
@@ -960,6 +970,7 @@ td {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -1122,6 +1133,12 @@ td {
 .projeto-container.ativo {
   opacity: 1;
   transform: translateX(25%) !important;
+}
+
+@media (max-width: 1024px) {
+  .projeto-container.ativo {
+    transform: translateX(2%) !important;
+  }
 }
 
 .imagem-rotacionada {
