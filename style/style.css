@@ -1,6 +1,6 @@
 body {
   position: relative;
-  background-color: #f2d9b5;
+  background-color: #fff3d9;
   padding-top: 162px;
 }
 
@@ -12,14 +12,16 @@ section {
   font-weight: 400;
 }
 
-.rasgo {
+/* .rasgo {
   background-color: #fff3d9;
-}
+  background-color: #f2d9b5;
+  background-color: #f2d9b5;
+  background-color: #f2d9b5;
+} */
 
 .img__rasgo {
   display: flex;
   width: 100%;
-  height: 65px;
 }
 
 header {
@@ -338,7 +340,7 @@ header {
     max-width: 90%;
   }
 
-  .carrossel__botoes{
+  .carrossel__botoes {
     margin-top: 40px;
   }
 
@@ -917,7 +919,7 @@ a {
 }
 
 .certificate-img {
-  width: 100%;        
+  width: 100%;
   height: auto;
   max-height: 400px;
   object-fit: cover;
@@ -1009,13 +1011,13 @@ td {
   margin-right: 0.5rem;
 }
 
-@media (max-width: 1024px){
-  .tabela-numeros{
+@media (max-width: 1024px) {
+  .tabela-numeros {
     width: 70%;
     margin: 0;
   }
 
-  .container-numeros{
+  .container-numeros {
     flex-direction: column;
   }
 }
@@ -1061,7 +1063,8 @@ td {
   margin-top: 20px;
 }
 
-#prev, #next {
+#prev,
+#next {
   cursor: pointer;
   background-color: #8aa895;
   color: white;
@@ -1072,7 +1075,8 @@ td {
   transition: background-color 0.3s;
 }
 
-#prev:hover, #next:hover {
+#prev:hover,
+#next:hover {
   background-color: #0056b3;
 }
 
@@ -1250,4 +1254,3 @@ td {
     padding: 10px 0;
   }
 }
-
