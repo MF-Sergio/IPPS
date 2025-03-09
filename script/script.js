@@ -1,180 +1,179 @@
-const mostrarSMPD = function () {
+// Função para mostrar/ocultar a seção SMPD
+function setupSMPD() {
     const btnSMPD = document.querySelector(".mostrar-smpd");
     const secaoSMPD = document.querySelector(".secao-smpd");
 
-    btnSMPD.addEventListener("click", () => {
-        secaoSMPD.classList.toggle("mostrar");
-    });
+    if (btnSMPD && secaoSMPD) {
+        btnSMPD.addEventListener("click", () => {
+            secaoSMPD.classList.toggle("mostrar");
+        });
+    }
 }
 
-window.onscroll = function () {
+// Função para adicionar/remover classe no header ao rolar a página
+function setupHeaderScroll() {
     const header = document.getElementById("header");
-    if (window.scrollY > 100) {
-        header.classList.add("header-scrolled");
-    } else {
-        header.classList.remove("header-scrolled");
-    }
-};
 
-document.addEventListener("DOMContentLoaded", function () {
+    if (header) {
+        window.onscroll = function () {
+            if (window.scrollY > 100) {
+                header.classList.add("header-scrolled");
+            } else {
+                header.classList.remove("header-scrolled");
+            }
+        };
+    }
+}
+
+// Função para observar mudanças no menu de navegação e ajustar o estilo do header
+function setupNavbarObserver() {
     const header = document.querySelector('#header');
     const targetElement = document.querySelector('.collapse');
     const navlink = document.querySelectorAll('.nav-link');
     const dropdownitem = document.querySelectorAll('.dropdown-item');
 
-    // Função para verificar se a classe 'show' está presente e pintar o cabeçalho de preto
-    function checkClass() {
-        if (window.innerWidth <= 775 && targetElement.classList.contains('show')) {
-            header.style.backgroundColor = '#FFF3D9';
-            navlink.forEach(item => {
-                item.style.color = "#8AA895"
-            });
-            dropdownitem.forEach(item => {
-                item.style.color = "#8AA895"
-            });
-        } else {
-            header.style.backgroundColor = ''; // Volta ao estado original
-            navlink.forEach(item => {
-                item.style.color = ""
-            });
-            dropdownitem.forEach(item => {
-                item.style.color = ""
-            });
+    if (header && targetElement) {
+        function checkClass() {
+            if (window.innerWidth <= 775 && targetElement.classList.contains('show')) {
+                header.style.backgroundColor = '#FFF3D9';
+                navlink.forEach(item => item.style.color = "#8AA895");
+                dropdownitem.forEach(item => item.style.color = "#8AA895");
+            } else {
+                header.style.backgroundColor = '';
+                navlink.forEach(item => item.style.color = "");
+                dropdownitem.forEach(item => item.style.color = "");
+            }
         }
+
+        const observer = new MutationObserver(checkClass);
+        observer.observe(targetElement, { attributes: true, attributeFilter: ['class'] });
+        checkClass();
+        window.addEventListener('resize', checkClass);
     }
+}
 
-    // Configuração do MutationObserver
-    const observer = new MutationObserver(checkClass);
-
-    // Observa mudanças nos atributos do elemento alvo (incluindo a adição/remocão de classes)
-    observer.observe(targetElement, { attributes: true, attributeFilter: ['class'] });
-
-    // Checa inicialmente caso a classe já esteja aplicada
-    checkClass();
-
-    window.addEventListener('resize', checkClass);
-});
-
-// Botões da timeline Nossa História
-document.addEventListener("DOMContentLoaded", function () {
+// Função para configurar a timeline "Nossa História"
+function setupTimeline() {
     const timelineButtons = document.querySelectorAll(".timeline-btn");
     const timelineItems = document.querySelectorAll(".timeline-item");
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     let currentIndex = 0;
 
-    timelineButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            // Remove a classe 'active' de todos os botões
-            timelineButtons.forEach(btn => btn.classList.remove("active"));
-            // Adiciona 'active' ao botão clicado
-            button.classList.add("active");
-
-            // Exibe o conteúdo correspondente
-            const year = button.getAttribute("data-year");
+    if (timelineButtons.length > 0 && timelineItems.length > 0) {
+        function activateTimelineItem(year) {
             timelineItems.forEach(item => {
                 item.classList.remove("active");
                 if (item.id === `year-${year}`) {
                     item.classList.add("active");
                 }
             });
-        });
-    });
-
-    // Ativar o primeiro ano por padrão
-    timelineButtons[0].click();
-
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex === 0) ? timelineButtons.length - 1 : currentIndex - 1;
-        timelineButtons[currentIndex].click();
-    });
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex === timelineButtons.length - 1) ? 0 : currentIndex + 1;
-        timelineButtons[currentIndex].click();
-    });
-
-
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const botoes = document.querySelectorAll(".carrossel__botoes h3");
-    const itens = document.querySelectorAll(".carrossel__item");
-
-    let itemAtual = document.querySelector(".carrossel__item.ativo");
-
-    botoes.forEach(botao => {
-        botao.addEventListener("click", () => {
-            const proximoItem = document.getElementById(botao.dataset.target);
-
-            if (proximoItem === itemAtual) return; // Se já está ativo, não faz nada
-
-            // Remove a classe 'ativo' dos botões
-            botoes.forEach(b => b.classList.remove("ativo"));
-            botao.classList.add("ativo");
-
-            // Anima a saída do item atual
-            itemAtual.classList.add("saindo");
-
-            setTimeout(() => {
-                // Remove a classe 'ativo' e 'saindo' do item atual
-                itemAtual.classList.remove("ativo", "saindo");
-
-                // Ativa o próximo item
-                proximoItem.classList.add("ativo");
-                itemAtual = proximoItem;
-            }, 300);
-        });
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const titulosProjetos = document.querySelectorAll(".titulo-projeto");
-    const projetos = document.querySelectorAll(".projeto-container");
-    const containerProjetos = document.querySelector(".container-projetos");
-
-    // Função para ajustar a altura do container de projetos
-    function ajustarAlturaProjetos() {
-        const larguraTela = window.innerWidth; // Largura da tela do usuário
-        let alturaProjeto = "600px"; // Altura padrão para telas maiores que 1024px
-
-        if (larguraTela <= 1024) {
-            alturaProjeto = "1024px"; // Altura para telas menores ou iguais a 1024px
         }
 
-        titulosProjetos.forEach(titulo => {
-            titulo.addEventListener("mouseenter", () => {
-                const target = titulo.getAttribute("data-target");
+        timelineButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                timelineButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
 
-                // Oculta todos os projetos
-                projetos.forEach(projeto => {
-                    projeto.classList.remove("ativo");
-                });
+                const year = button.getAttribute("data-year");
+                activateTimelineItem(year);
 
-                // Exibe o projeto correspondente
-                const projetoAtivo = document.getElementById(target);
-                if (projetoAtivo) {
-                    projetoAtivo.classList.add("ativo");
-
-                    // Ajusta a altura do container-projetos para o conteúdo do projeto ativo
-                    containerProjetos.style.height = alturaProjeto;
-                } else {
-                    // Se nenhum projeto estiver ativo, reseta a altura do container
-                    containerProjetos.style.height = "0";
+                const group = button.getAttribute("data-group");
+                const timelineContent = document.querySelector('.timeline-content');
+                if (timelineContent) {
+                    timelineContent.classList.remove('grupo-1', 'grupo-2', 'grupo-3', 'grupo-4');
+                    timelineContent.classList.add(group);
                 }
             });
         });
 
-        // Garante que nenhum projeto esteja visível inicialmente
-        projetos.forEach(projeto => {
-            projeto.classList.remove("ativo");
+        if (prevButton && nextButton) {
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex === 0) ? timelineButtons.length - 1 : currentIndex - 1;
+                timelineButtons[currentIndex].click();
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex === timelineButtons.length - 1) ? 0 : currentIndex + 1;
+                timelineButtons[currentIndex].click();
+            });
+        }
+
+        // Ativar o primeiro ano por padrão
+        timelineButtons[0].click();
+    }
+}
+
+// Função para configurar o carrossel
+function setupCarousel() {
+    const botoes = document.querySelectorAll(".carrossel__botoes h3");
+    const itens = document.querySelectorAll(".carrossel__item");
+
+    if (botoes.length > 0 && itens.length > 0) {
+        let itemAtual = document.querySelector(".carrossel__item.ativo");
+
+        botoes.forEach(botao => {
+            botao.addEventListener("click", () => {
+                const proximoItem = document.getElementById(botao.dataset.target);
+
+                if (proximoItem === itemAtual) return;
+
+                botoes.forEach(b => b.classList.remove("ativo"));
+                botao.classList.add("ativo");
+
+                itemAtual.classList.add("saindo");
+
+                setTimeout(() => {
+                    itemAtual.classList.remove("ativo", "saindo");
+                    proximoItem.classList.add("ativo");
+                    itemAtual = proximoItem;
+                }, 300);
+            });
         });
     }
+}
 
-    // Chama a função para ajustar a altura dos projetos
-    ajustarAlturaProjetos();
+// Função para configurar a interação dos projetos
+function setupProjetos() {
+    const titulosProjetos = document.querySelectorAll(".titulo-projeto");
+    const projetos = document.querySelectorAll(".projeto-container");
+    const containerProjetos = document.querySelector(".container-projetos");
 
-    // Adiciona um listener para ajustar a altura dos projetos quando a janela for redimensionada
-    window.addEventListener("resize", ajustarAlturaProjetos);
+    if (titulosProjetos.length > 0 && projetos.length > 0 && containerProjetos) {
+        function ajustarAlturaProjetos() {
+            const larguraTela = window.innerWidth;
+            let alturaProjeto = larguraTela <= 1024 ? "1024px" : "600px";
+
+            titulosProjetos.forEach(titulo => {
+                titulo.addEventListener("mouseenter", () => {
+                    const target = titulo.getAttribute("data-target");
+
+                    projetos.forEach(projeto => projeto.classList.remove("ativo"));
+                    const projetoAtivo = document.getElementById(target);
+
+                    if (projetoAtivo) {
+                        projetoAtivo.classList.add("ativo");
+                        containerProjetos.style.height = alturaProjeto;
+                    } else {
+                        containerProjetos.style.height = "0";
+                    }
+                });
+            });
+
+            projetos.forEach(projeto => projeto.classList.remove("ativo"));
+        }
+
+        ajustarAlturaProjetos();
+        window.addEventListener("resize", ajustarAlturaProjetos);
+    }
+}
+
+// Inicialização de todas as funcionalidades
+document.addEventListener("DOMContentLoaded", function () {
+    setupSMPD();
+    setupHeaderScroll();
+    setupNavbarObserver();
+    setupTimeline();
+    setupCarousel();
+    setupProjetos();
 });
-
-mostrarSMPD();

@@ -1048,6 +1048,7 @@ td {
 }
 
 .timeline {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1095,6 +1096,7 @@ td {
 }
 
 .timeline-btn {
+  position: relative;
   flex: 0 0 auto;
   font-size: 1.5em;
   background: #8aa895;
@@ -1105,11 +1107,25 @@ td {
   height: 70px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.3s;
 }
 
 .timeline-btn:hover {
   transform: scale(1.1);
+}
+
+.timeline-btn.active::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 30%;
+  width: 50px;
+  height: 60px;
+  background-image: url(../assets/png/pins-154959_1920-pink.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  z-index: 1;
 }
 
 .timeline-content {
@@ -1124,6 +1140,30 @@ td {
   border-radius: 10px;
   background: #f9f9f9;
   text-align: center;
+}
+
+.timeline-content {
+  padding: 20px;
+  border-radius: 10px;
+  transition: background-image 0.5s ease;
+}
+
+.timeline-content.grupo-1 {
+  background-image: url("../assets/background/background-mais_antigo.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.timeline-content.grupo-2 {
+  background-image: url("../assets/background/background-papel_amassado.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.timeline-content.grupo-3 {
+  background-image: url("../assets/background/background-paper_branco.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .timeline-content h3 {
