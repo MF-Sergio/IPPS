@@ -457,6 +457,14 @@ a {
 @media (max-width: 1024px) {
   .partner-logo {
     width: 100px !important;
+    height: 100px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .partner-logo {
+    width: 80px !important;
+    height: 80px !important;
   }
 }
 
@@ -949,6 +957,12 @@ a {
   background-size: auto; */
 }
 
+@media (max-width: 720px) {
+  .container-numeros {
+    margin: 3rem 20px;
+  }
+}
+
 thead th {
   background-color: #8aa895 !important;
   text-align: center;
@@ -1013,7 +1027,7 @@ td {
 
 @media (max-width: 1024px) {
   .tabela-numeros {
-    width: 70%;
+    width: 100%;
     margin: 0;
   }
 
