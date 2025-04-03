@@ -952,9 +952,6 @@ a {
 
 .container-numeros {
   margin: 3rem 100px;
-  /* background-image: url(../assets/png/quadro-verde.png);
-  background-position: center;
-  background-size: auto; */
 }
 
 @media (max-width: 720px) {
@@ -979,7 +976,16 @@ td {
 }
 
 .grafico-numeros {
+  background-image: url("../assets/background/quadro-negro.jpg");
+  background-size: cover;
+  background-position: center;
   width: 70%;
+  padding: 1rem;
+  border: 10px solid #834a26;
+}
+
+.grafico-numeros h2 {
+  color: #ffffff;
 }
 
 .grafico-numeros__Elementos {
@@ -1001,12 +1007,16 @@ td {
 }
 
 #labelDataset0 {
-  color: rgba(75, 192, 192, 1);
+  color: #00ffff;
   font-weight: 700;
 }
 #labelDataset1 {
-  color: rgba(153, 102, 255, 1);
+  color: #ff69b4;
   font-weight: 700;
+}
+
+#filtroAno label {
+  color: #ffffff;
 }
 
 .grafico-numeros__Elementos__filtroAno {
@@ -1081,12 +1091,12 @@ td {
 #prev,
 #next {
   cursor: pointer;
-  background-color: #8aa895;
-  color: white;
+  background-color: #4c6153;
+  color: #ffffff;
   border: none;
-  padding: 10px 20px;
+  padding: 0px 16px;
   border-radius: 5px;
-  font-size: 30px;
+  font-size: 50px;
   transition: background-color 0.3s;
 }
 

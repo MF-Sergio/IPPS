@@ -71,14 +71,14 @@ const myChart = new Chart(ctx, {
       {
         label: "Saúde Integral",
         data: saudeIntegralCumulative,
-        borderColor: "rgba(75, 192, 192, 1)",
+        borderColor: "#00FFFF",
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         borderWidth: 2,
       },
       {
         label: "Vivendo e Acolhendo",
         data: vivendoEAcolhendoCumulative,
-        borderColor: "rgba(153, 102, 255, 1)",
+        borderColor: "#FF69B4",
         backgroundColor: "rgba(153, 102, 255, 0.2)",
         borderWidth: 2,
       },
@@ -94,23 +94,39 @@ const myChart = new Chart(ctx, {
         beginAtZero: true,
         ticks: {
           display: true,
+          color: '#ffffff'
         },
+        grid: {
+          color: '#ffffff'
+        }
       },
       x: {
         ticks: {
           display: true,
+          color: '#ffffff'
         },
-      },
+        grid: {
+          color: '#ffffff'
+        }
+      }
     },
     plugins: {
       tooltip: {
-        enabled: true,
+        enabled: true
       },
       legend: {
         display: true,
+        labels: {
+          color: '#ffffff',
+          font: {
+            size: 16, // Altere o número conforme desejar
+            weight: 'bold',
+            family: 'Arial'
+          }
+        }
       },
-    },
-  },
+    }
+  }
 });
 
 // Funcao para criar checkboxes
