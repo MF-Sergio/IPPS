@@ -461,13 +461,6 @@ a {
   }
 }
 
-@media (max-width: 768px) {
-  .partner-logo {
-    width: 80px !important;
-    height: 80px !important;
-  }
-}
-
 .btn-transp {
   margin: 0 5px;
 }
@@ -1390,5 +1383,22 @@ td {
 
   .imagem-rotacionada {
     display: none;
+  }
+
+  .timeline {
+    gap: 7px;
+  }
+
+  .grafico-numeros {
+    display: none !important;
+  }
+
+  .partner-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .certificate-img {
+    width: 50%;
   }
 }
