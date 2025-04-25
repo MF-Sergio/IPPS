@@ -36,7 +36,6 @@ function setupNavbarObserver() {
         function checkClass() {
             if (window.innerWidth <= 775 && targetElement.classList.contains('show')) {
                 header.style.backgroundColor = '#FFF3D9';
-                navlink.forEach(item => item.style.color = "#8AA895");
                 dropdownitem.forEach(item => item.style.color = "#8AA895");
             } else {
                 header.style.backgroundColor = '';
@@ -167,6 +166,8 @@ function setupProjetos() {
         window.addEventListener("resize", ajustarAlturaProjetos);
     }
 }
+
+
 
 // Inicialização de todas as funcionalidades
 document.addEventListener("DOMContentLoaded", function () {
