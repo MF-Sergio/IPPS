@@ -8,6 +8,10 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="./style/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preload" href="../assets/background/background-mais_antigo.jpg" as="image">
+  <link rel="preload" href="../assets/background/background-papel_amassado.jpg" as="image">
+  <link rel="preload" href="../assets/background/background-paper_branco.jpg" as="image">
   <title>IPPS Social</title>
 </head>
 
@@ -33,7 +37,7 @@
     </div>
   </div> -->
   <header id="header">
-    <nav class="navbar navbar-expand-lg my-3">
+    <nav class="navbar navbar-expand-xl my-3">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html"><img src="./assets/img/logo.png" alt="Logo IPPS"
             class="logo-head"></a>
@@ -41,37 +45,31 @@
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end me-5" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#quemsomos">Quem é o IPPS</a>
-            </li>
-            <div class="dropdown">
-              <button class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Projetos
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./pages/vivendoeacolhendo.html">Vivendo e Acolhendo</a></li>
-                <li><a class="dropdown-item" href="./pages/saudeintegral.html">Saúde Integral</a></li>
-              </ul>
-            </div>
-            <li class="nav-item">
-              <a class="nav-link" href="./pages/numeros.html">Nossos Números</a>
+              <a class="nav-link" href="#quem-somos">Quem é o IPPS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/historia.html">Nossa História</a>
+              <a class="nav-link" href="#projetos">Projetos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/transparencia.html">Transparência</a>
+              <a class="nav-link" href="#nossa-historia">Nossa História</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/estagio.html">Trabalhe Conosco</a>
+              <a class="nav-link" href="#nossos-numeros">Nossos Números</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/parceiros.html">Parceiros</a>
+              <a class="nav-link" href="#parceiros">Parceiros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#trabalhe-conosco">Trabalhe Conosco</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./pages/contato.html">Contatos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/transparencia.html">Transparência</a>
             </li>
             <li class="nav-item">
               <a href="./pages/doeagora.html"><button type="button" class="btn btn-header">DOE AGORA</button></a>
@@ -82,6 +80,7 @@
     </nav>
   </header>
   <main>
+
     <section class="carrosel">
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
 
@@ -95,7 +94,6 @@
           <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="3"
             aria-label="Slide 4"></button>
         </div>
-
         <div class="carousel-inner">
           <div class="carousel-item foto-carousel active" style="background-image: url(./assets/img/foto1.jpg);">
           </div>
@@ -106,7 +104,6 @@
           <div class="carousel-item foto-carousel" style="background-image: url(./assets/img/foto4.jpg);">
           </div>
         </div>
-
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
           data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -119,7 +116,7 @@
         </button>
 
         <div class="d-flex slogan">
-          <h1 id="quemsomos">IPPS SOCIAL <br> Instituto de Pesquisa <br> e Promoção da Saúde</h1>
+          <h1>IPPS SOCIAL <br> Instituto de Pesquisa <br> e Promoção da Saúde</h1>
         </div>
       </div>
     </section>
@@ -163,280 +160,967 @@
         <a href="#" target="">
           <img src="./assets/img/logopatro1.jpg" alt="Logo patrocinador 1" width="100px">
         </a>
-        <a href="#" target="">
-          <img src="./assets/img/logopatro1.jpg" alt="Logo patrocinador 1" width="100px">
-        </a>
       </div>
     </section>
     -->
-    <section class="container mt-5 quemsomos">
-      <h1 class="display-5 fw-bolder titulo-quemsomos">Quem é o IPPS</h1>
-      <div>
-        <p class="lead my-5">
-          O Instituto de Pesquisa e Promoção da Saúde – IPPS, fundado em 05 de fevereiro de 2002, é uma pessoa jurídica
-          de direito privado, constituída sob forma de associação civil sem fins lucrativos. É uma entidade de caráter
-          social e técnico-científico, que atua na área social, do esporte, do lazer, da cultura e no desenvolvimento de
-          programas de promoção da cidadania, sem vínculos governamentais, isento de quaisquer preconceitos ou
-          discriminações, não admitindo controvérsia de raça, religião, cor, gênero, orientação sexual,
-          político-partidária ou às pessoas com deficiência em suas dependências nem tampouco no desenvolvimento em suas
-          atividades. O IPPS é voltado para o bem-estar do ser humano e a melhoria das condições de vida das populações
-          carentes.<br><br>
-          Tem por objetivo o bem-estar das pessoas com deficiências, seus familiares em situação de vulnerabilidade
-          social, em sua maioria, da Zona Oeste, promovendo a melhora na qualidade de vida e buscando diminuir as
-          barreiras atitudinais, arquitetônicas e de convivência na sociedade, por meio de ações na política
-          socioassistencial, promovendo a autonomia da pessoa com deficiência.
-        </p>
-      </div>
 
-      <h3>- Missão</h3>
-      <p class="lead my-4">
-        Desenvolver e disponibilizar projetos e atividades que reconheçam a particularidade de cada indivíduo e construa
-        através de metodologias integrativas e sustentáveis, a fim de proporcionar efeitos de curto, médio e longo prazo
-        potencializando a autonomia, dilatação da interação social, a prática do autocuidado, garantia dos direitos
-        civis e dignificar o papel na sociedade para pessoas com deficiências e sua rede de apoio.
-      </p>
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint_6E8F76.png" alt="" class="img__rasgo"
+      style="transform: scaleX(-1);">
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint.png" alt="" class="img__rasgo"
+      style="transform: scaleX(-1);">
+    <article style="background-color: #f2d9b5;">
+      <section id="quem-somos" class="container pt-5 quemsomos">
+        <h1 class="display-5 fw-bolder titulo-quemsomos text-center">Quem é o IPPS</h1>
+        <div class="d-flex align-content-center">
+          <p class="lead my-5 quem-e-o-ipps">
+            O Instituto de Pesquisa e Promoção da Saúde – IPPS, fundado em 05 de fevereiro de 2002, é uma pessoa
+            jurídica
+            de direito privado, constituída sob forma de associação civil sem fins lucrativos. É uma entidade de caráter
+            social e técnico-científico, que atua na área social, do esporte, do lazer, da cultura e no desenvolvimento
+            de
+            programas de promoção da cidadania, sem vínculos governamentais, isento de quaisquer preconceitos ou
+            discriminações, não admitindo controvérsia de raça, religião, cor, gênero, orientação sexual,
+            político-partidária ou às pessoas com deficiência em suas dependências nem tampouco no desenvolvimento em
+            suas
+            atividades. O IPPS é voltado para o bem-estar do ser humano e a melhoria das condições de vida das
+            populações
+            carentes.<br>
+            Tem por objetivo o bem-estar das pessoas com deficiências, seus familiares em situação de vulnerabilidade
+            social, em sua maioria, da Zona Oeste, promovendo a melhora na qualidade de vida e buscando diminuir as
+            barreiras atitudinais, arquitetônicas e de convivência na sociedade, por meio de ações na política
+            socioassistencial, promovendo a autonomia da pessoa com deficiência.
+          </p>
+          <span class="quemsomos-foto">
+            <img src="./assets/img/foto1.jpg" alt="">
+          </span>
+        </div>
 
-      <h3>- Visão</h3>
-      <p class="lead my-4">Ser a instituição de referência em Realengo e adjacências para atividades e projetos para
-        pessoas com deficiência e sua rede de apoio, através de metodologias integrativas, inclusivas e sustentáveis.
-      </p>
+        <div class="carrossel__botoes">
+          <h3 data-target="missao" class="ativo">Missão</h3>
+          <h3 data-target="visao">Visão</h3>
+          <h3 data-target="proposito">Propósito</h3>
+          <h3 data-target="valores">Valores</h3>
+        </div>
 
-      <h3>- Propósito</h3>
-      <p class="lead my-4">
-        Promover atividades e projetos para reduzir a vulnerabilidade e ampliar a autonomia, autocuidado, interação
-        social e o exercício da cidadania.
-      </p>
+        <div class="container__identidade">
 
-      <h3>- Valores</h3>
-      <ul class="lead my-3">
-        <li>Sustentabilidade</li>
-        <li>Respeito</li>
-        <li>Integralidade</li>
-        <li>Humano</li>
-        <li>Comunicação</li>
-      </ul>
-      </p>
+          <div class="carrossel__conteudo">
+            <div id="missao" class="carrossel__item ativo">
+              <img src="assets/img/missao.jpeg" alt="Missão" class="carrossel__imagem">
+              <div class="carrossel__texto">
+                <p class="lead">
+                  Desenvolver e disponibilizar projetos e atividades que reconheçam a particularidade de cada indivíduo
+                  e
+                  construa através de metodologias integrativas e sustentáveis, a fim de proporcionar efeitos de curto,
+                  médio e longo prazo.
+                </p>
+              </div>
+            </div>
 
-      <p class="lead my-4">
-        <strong>Pilares:</strong> Serviço social, educação, esporte, rede de apoio, autonomia, escuta ativa <br>
-        <strong>Área de Abrangência:</strong> Realengo e adjacências <br>
-        <strong>Público Alvo:</strong> Pessoas com deficiência e sua rede de apoio. <br>
-      </p>
-    </section>
+            <div id="visao" class="carrossel__item">
+              <img src="assets/img/visao.jpeg" alt="Visão" class="carrossel__imagem">
+              <div class="carrossel__texto">
+                <p class="lead">
+                  Ser a instituição de referência em Realengo e adjacências para atividades e projetos para
+                  pessoas com deficiência e sua rede de apoio, através de metodologias integrativas, inclusivas e
+                  sustentáveis.
+                </p>
+              </div>
+            </div>
 
-    <section class="container mt-5" id="certificados">
-      <h2 class="display-6 fw-bold text-center mb-4">Certificados</h2>
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-          <div class="card h-100 shadow-sm d-flex flex-column">
-            <div class="card-body flex-grow-1 d-flex flex-column">
-              <h5 class="card-title">Declaração de Participação Sesc Voe</h5>
-              <p class="card-text">Certificado de participação em atividades de desenvolvimento pessoal promovidas pelo
-                Sesc Voe.</p>
-              <a href="./assets/img/Certificados/SESCRJ_declaração.png" target="_blank" class="btn btn-primary mt-auto">
-                Ver Certificado
-              </a>
+            <div id="proposito" class="carrossel__item">
+              <img src="assets/img/proposito.jpeg" alt="Propósito" class="carrossel__imagem">
+              <div class="carrossel__texto">
+                <p class="lead">
+                  Promover atividades e projetos para reduzir a vulnerabilidade e ampliar a autonomia, autocuidado,
+                  interação
+                  social e o exercício da cidadania.
+                </p>
+              </div>
+            </div>
+
+            <div id="valores" class="carrossel__item">
+              <img src="assets/img/valores.jpeg" alt="Valores" class="carrossel__imagem">
+              <div class="carrossel__texto">
+                <ul class="lead">
+                  <li>Sustentabilidade</li>
+                  <li>Respeito</li>
+                  <li>Integralidade</li>
+                  <li>Humano</li>
+                  <li>Comunicação</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card h-100 shadow-sm d-flex flex-column">
-            <div class="card-body flex-grow-1 d-flex flex-column">
-              <h5 class="card-title">CERTIDÃO - Moção da Câmara Municipal do Rio de Janeiro ao IPPS</h5>
-              <p class="card-text">Reconhecimento da Câmara Municipal do Rio de Janeiro por ações de impacto social.</p>
-              <a href="./assets/img/Certificados/Câmara_Municipal_do_RJ.png" target="_blank"
-                class="btn btn-primary mt-auto">
-                Ver Certificado
-              </a>
+      </section>
+
+      <section id="info-add" class="container pt-5 text-center">
+        <div class="row justify-content-center">
+          <!-- Card do topo -->
+          <div class="col-md-6 d-flex justify-content-center">
+            <div class="card border-0 shadow mb-4 w-100 position-relative border-start border-success border-4"
+              style="background-color: #a1c2ae;">
+              <i class="bi bi-geo-alt text-success position-absolute top-0 start-0 m-3 fs-3"></i>
+              <div class="card-body">
+                <h3 class="card-title">
+                  Pilares
+                </h3>
+                <p class="card-text lead">
+                  Serviço social, educação, esporte, rede de apoio, autonomia, escuta ativa
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-      </div>
-    </section>
+        <div class="row justify-content-around">
+          <!-- Card da esquerda -->
+          <div class="col-md-5 d-flex justify-content-end">
+            <div class="card border-0 shadow mb-4 w-100 position-relative border-start border-success border-4"
+              style="background-color: #a1c2ae;">
+              <i class="bi bi-columns-gap text-success position-absolute top-0 start-0 m-3 fs-3"></i>
+              <div class="card-body">
+                <h3 class="card-title">
+                  Área de Abrangência
+                </h3>
+                <p class="card-text lead">
+                  Realengo e adjacências
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card da direita -->
+          <div class="col-md-5 d-flex justify-content-start">
+            <div class="card border-0 shadow mb-4 w-100 position-relative border-start border-success border-4"
+              style="background-color: #a1c2ae;">
+              <i class="bi bi-people text-success position-absolute top-0 start-0 m-3 fs-3"></i>
+              <div class="card-body">
+                <h3 class="card-title">
+                  Público Alvo
+                </h3>
+                <p class="card-text lead">
+                  Pessoas com deficiência e sua rede de apoio.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint.png" alt="" class="img__rasgo"
+      style="transform: scaleX(1);">
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint_6E8F76.png" alt="" class="img__rasgo"
+      style="transform: scaleX(1);">
+    <article style="background-color: #6E8F76;">
+
+      <section id="projetos">
+        <h1 class="fw-bolder text-center">Projetos</h1>
+
+        <!-- Títulos dos Projetos -->
+        <div class="projetos-titulos">
+          <h2 class="titulo-projeto" data-target="vivendo-e-acolhendo">Vivendo e Acolhendo</h2>
+          <h2 class="titulo-projeto" data-target="saude-integral">Saúde Integral</h2>
+        </div>
+
+        <div class="container-projetos">
+          <!-- Projeto Vivendo e Acolhendo -->
+          <div class="container mt-5 projeto-container" id="vivendo-e-acolhendo">
+            <div class="row align-items-center">
+              <!-- Imagem à esquerda -->
+              <div class="col-12 col-md-6 mb-4 imagem-rotacionada">
+                <div class="image-container">
+                  <img src="./assets/img/foto1.jpg" alt="Imagem Vivendo e Acolhendo" class="img-fluid rounded shadow">
+                </div>
+              </div>
+
+              <!-- Cards à direita -->
+              <div class="col-12 col-md-6">
+                <div class="card border-0 shadow mb-4 position-relative">
+                  <i class="bi bi-info-circle text-success position-absolute top-0 end-0 m-3 fs-3"></i>
+                  <div class="card-body text-center">
+                    <h3 class="card-title">O que é?</h3>
+                    <p class="card-text">
+                      É um equipamento da política de assistência social que oferta um serviço de Proteção Social
+                      Especial
+                      para Pessoas com Deficiência e suas Famílias, destinado ao atendimento de pessoas com deficiência
+                      e
+                      seus
+                      familiares.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card border-0 shadow mb-4 position-relative">
+                  <i class="bi bi-flag text-success position-absolute top-0 end-0 m-3 fs-3"></i>
+                  <div class="card-body text-center">
+                    <h3 class="card-title">Objetivos</h3>
+                    <p class="card-text">
+                      Estão voltados à promoção da qualidade de vida, o incentivo à autonomia e inclusão social, além de
+                      oferecer suporte às famílias e cuidadores, trabalhando com o foco no fortalecimento das
+                      capacidades
+                      individuais e na redução de barreiras sociais e ambientais.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card border-0 shadow position-relative">
+                  <i class="bi bi-lightbulb text-success position-absolute top-0 end-0 m-3 fs-3"></i>
+                  <div class="card-body text-center">
+                    <h3 class="card-title">Metodologia</h3>
+                    <p class="card-text">
+                      Está centrada no atendimento integral e com atividades coletivas, promovendo autonomia,
+                      socialização
+                      e
+                      suporte às famílias. Essa metodologia é estruturada em práticas humanizadas, interdisciplinares e
+                      participativas, considerando as necessidades físicas, emocionais, sociais e culturais dos usuários
+                      e
+                      seus cuidadores.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto Saúde Integral -->
+          <div class="container mt-5 projeto-container" id="saude-integral">
+            <div class="row align-items-center">
+              <!-- Cards à esquerda -->
+              <div class="col-12 col-md-6">
+                <div class="card border-0 shadow mb-4 position-relative">
+                  <i class="bi bi-info-circle text-success position-absolute top-0 end-0 m-3 fs-3"></i>
+                  <div class="card-body text-center">
+                    <h3 class="card-title">O que é?</h3>
+                    <p class="card-text">
+                      É um espaço que combina ensino, pesquisa e prestação de serviços à comunidade, promovendo
+                      benefícios
+                      tanto para os estudantes em formação quanto para a população atendida.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card border-0 shadow mb-4 position-relative">
+                  <i class="bi bi-flag text-success position-absolute top-0 end-0 m-3 fs-3"></i>
+                  <div class="card-body text-center">
+                    <h3 class="card-title">Objetivos</h3>
+                    <p class="card-text">
+                      Promover atividades e projetos para reduzir a vulnerabilidade e ampliar a autonomia, interação
+                      social,
+                      incentivando o autocuidado e a melhora da qualidade de vida da população.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card border-0 shadow mb-4 position-relative">
+                  <i class="bi bi-lightbulb text-success position-absolute top-0 end-0 m-3 fs-3"></i>
+                  <div class="card-body text-center">
+                    <h3 class="card-title">Metodologia</h3>
+                    <p class="card-text">
+                      Ofertar ações voltadas para a promoção da saúde e qualidade de vida da população, através de uma
+                      parceria estabelecida com a Clínica Escola Castelo Branco da Universidade Castelo Branco.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Imagem à direita -->
+              <div class="col-12 col-md-6 imagem-rotacionada">
+                <div class="image-container">
+                  <img src="./assets/img/foto2.jpg" alt="Imagem ilustrativa" class="img-fluid rounded shadow">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <br>
+    </article>
+
+
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint_6E8F76.png" alt="" class="img__rasgo"
+      style="transform: scaleX(1);">
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint_c8d5ca.png" alt="" class="img__rasgo"
+      style="transform: scaleX(-1);">
+    <article style="background-color: #c8d5ca;">
+      <section id="nossa-historia" class="timeline-container">
+        <h1 class="fw-bolder text-center mb-4">Nossa História</h1>
+        <!-- Linha do tempo -->
+        <div class="timeline">
+          <button class="timeline-btn" data-year="2002" data-group="grupo-1">2002</button>
+          <button class="timeline-btn" data-year="2003" data-group="grupo-1">2003</button>
+          <button class="timeline-btn" data-year="2004" data-group="grupo-1">2004</button>
+          <button class="timeline-btn" data-year="2005" data-group="grupo-1">2005</button>
+          <button class="timeline-btn" data-year="2017" data-group="grupo-2">2017</button>
+          <button class="timeline-btn" data-year="2019" data-group="grupo-2">2019</button>
+          <button class="timeline-btn" data-year="2020" data-group="grupo-2">2020</button>
+          <button class="timeline-btn" data-year="2021" data-group="grupo-2">2021</button>
+          <button class="timeline-btn" data-year="2022" data-group="grupo-3">2022</button>
+          <button class="timeline-btn" data-year="2023" data-group="grupo-3">2023</button>
+          <button class="timeline-btn" data-year="2024" data-group="grupo-3">2024</button>
+        </div>
+
+        <!-- Conteúdo dinâmico -->
+        <div class="timeline-content">
+          <div class="timeline-item" id="year-2002">
+            <h3>2002</h3>
+            <p>Fundado em 05 de fevereiro de 2002 por Ana Paula Costa
+              Gissoni, Marina Célia Pereira, Maria Alfonso Toledo,
+              Carlos Alberto da Silva Pacheco, Carlos Alberto da Cruz
+              Wenceslau, e Luiz Fernando Couto de Oliveira.</p>
+          </div>
+          <div class="timeline-item" id="year-2003">
+            <h3>2003</h3>
+            <p>Inicio do Convénio entre a prefeitura e o IPPS através
+              da Secretaria Municipal da Assistência Social - SMAS Com
+              a meta de 10 Atendimentos.</p>
+          </div>
+          <div class="timeline-item" id="year-2004">
+            <h3>2004</h3>
+            <p>No dia 25/06 de 2004 o IPPS Recebe o certificado de
+              inscrição do conselho Municipal da Assistência Social do
+              RJ O IPPS passa a ter a meta de 100 atendimentos.</p>
+          </div>
+          <div class="timeline-item" id="year-2005">
+            <h3>2005</h3>
+            <p>Recebemos o Certificado de inscrição no Conselho
+              Municipal dos Direitos da Criança e Adolescente.</p>
+          </div>
+          <div class="timeline-item" id="year-2017">
+            <h3>2017</h3>
+            <p>IPPS inicia a parceria com a FEBIEX - Federação Estadual
+              das Instituições de Reabilitação do Estado do Rio de
+              Janeiro.</p>
+          </div>
+          <div class="timeline-item" id="year-2019">
+            <h3>2019</h3>
+            <p>O IPPS inicia parceira com Sesc Mesa Brasil combate o
+              desperdício a partir de doações de parceiros e contribui
+              para a garantia da segurança alimentar e nutricional de
+              crianças, jovens, adultos e idosos em situação de
+              vulnerabilidade.</p>
+          </div>
+          <div class="timeline-item" id="year-2020">
+            <h3>2020</h3>
+            <p>Foi celebrado através do IPPS e SMAS - Secretaria
+              Municipal da Assistência Social Termo de Cessão de uso
+              do veiculo Renault Van Minibus Standard 16 lugares.</p>
+          </div>
+          <div class="timeline-item" id="year-2021">
+            <h3>2021</h3>
+            <p>IPPS inicia parceria com o CEASA - Programa Branco de
+              Alimentos, O Banco de Alimentos da CEASA-RJ é um
+              programa que arrecada, processa e distribui alimentos
+              que não foram comercializados, mas que ainda estão em
+              condições de serem consumidos. O IPPS recebe os
+              alimentos e faz as doações para nossos atendidos e suas
+              família.</p>
+          </div>
+          <div class="timeline-item" id="year-2022">
+            <h3>2022</h3>
+            <p>Após uma pandemia de COVID-19 O IPPS renovou o Convénio
+              entre Prefeitura do RJ com que agora passa a ser através
+              da Secretaria Municipal da Pessoa com Deficiência - SMPD
+              e aumentado sua meta para 200 atendimentos.</p>
+          </div>
+          <div class="timeline-item" id="year-2023">
+            <h3>2023</h3>
+            <p>O IPPS participou do programa Sesc Voe sendo premiado
+              com o selo coruja. O programa oferece formação e
+              aceleração para organizações sociais do Rio de Janeiro.
+              O objetivo e melhorar a gestão das ONGs estimular
+              captação de recursos e aumentar o impacto social delas.</p>
+          </div>
+          <div class="timeline-item" id="year-2024">
+            <h3>2024</h3>
+            <p>O IPPS realizou várias atividades dentre elas a palestra
+              para famílias sobre a Dengue com participação do CAP 51
+              - Conscientização as famílias de que a melhor forma de
+              prevenir a dengue e evitar a proliferação do mosquito
+              Aedes Aegypti.</p>
+          </div>
+
+          <div class="content-buttons">
+            <button id="prev">&#8592</button>
+            <button id="next">&#8594</button>
+          </div>
+        </div>
+      </section>
+      <br>
+    </article>
+
+
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint_c8d5ca.png" alt="" class="img__rasgo"
+      style="transform: scaleX(1);">
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint.png" alt="" class="img__rasgo"
+      style="transform: scaleX(1);">
+
+    <article style="background-color: #f2d9b5;">
+
+      <section id="nossos-numeros" class="container">
+        <h1 class="fw-bolder text-center">Nossos Números</h1>
+        <div class="d-flex align-items-center container-numeros">
+          <div class="table-responsive tabela-numeros">
+            <h2 class="text-center mb-4">Atendimentos por Ano e Projeto</h2>
+            <table class="table-custom table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Ano</th>
+                  <th>Saúde Integral</th>
+                  <th>Vivendo e Acolhendo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2011</td>
+                  <td>1780</td>
+                  <td>3439</td>
+                </tr>
+                <tr>
+                  <td>2012</td>
+                  <td>3304</td>
+                  <td>6227</td>
+                </tr>
+                <tr>
+                  <td>2013</td>
+                  <td>3534</td>
+                  <td>4114</td>
+                </tr>
+                <tr>
+                  <td>2014</td>
+                  <td>4773</td>
+                  <td>3308</td>
+                </tr>
+                <tr>
+                  <td>2015</td>
+                  <td>6978</td>
+                  <td>4637</td>
+                </tr>
+                <tr>
+                  <td>2016</td>
+                  <td>5141</td>
+                  <td>4555</td>
+                </tr>
+                <tr>
+                  <td>2017</td>
+                  <td>4755</td>
+                  <td>5488</td>
+                </tr>
+                <tr>
+                  <td>2018</td>
+                  <td>4257</td>
+                  <td>4604</td>
+                </tr>
+                <tr>
+                  <td>2019</td>
+                  <td>3912</td>
+                  <td>4477</td>
+                </tr>
+                <tr>
+                  <td>2020</td>
+                  <td>1839</td>
+                  <td>2614</td>
+                </tr>
+                <tr>
+                  <td>2021</td>
+                  <td>2698</td>
+                  <td>1429</td>
+                </tr>
+                <tr>
+                  <td>2022</td>
+                  <td>1781</td>
+                  <td>1167</td>
+                </tr>
+                <tr>
+                  <td>2023</td>
+                  <td>1605</td>
+                  <td>2400</td>
+                </tr>
+                <tr>
+                  <td>2024 (até 18/09)</td>
+                  <td>1087</td>
+                  <td>1300</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grafico-numeros" style="display: flex; flex-direction: column">
+            <h2 class="text-center mb-4">Crescimento no decorrer dos anos</h2>
+            <div class="grafico-numeros__Elementos">
+              <div class="grafico-numeros__Elementos__legenda" id="legend"></div>
+              <div id="filtroAno" class="grafico-numeros__Elementos__filtroAno">
+                <label for="startDate">Ano inicial: </label>
+
+                <select id="startDate" onchange="filterData()"></select>
+
+                <!-- <input
+                    onchange="filterData()"
+                    min="2011"
+                    max="2099"
+                    step="1"
+                    type="number"
+                    id="startDate"
+                    value="2011"
+                  /> -->
+                <label for="endDate">Ano final: </label>
+                <select id="endDate" onchange="filterData()"></select>
+                <!-- <input
+                    onchange="filterData()"
+                    min="2011"
+                    max="2024"
+                    step="1"
+                    type="number"
+                    id="endDate"
+                    value="2024"
+                  /> -->
+              </div>
+            </div>
+            <p></p>
+            <canvas id="myChart" width="320" height="120"></canvas>
+          </div>
+        </div>
+      </section>
+    </article>
+
+
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint.png" alt="" class="img__rasgo"
+      style="transform: scaleX(-1);">
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint_9cb7a1.png" alt="" class="img__rasgo"
+      style="transform: scaleX(1);">
+
+
+    <article style="background-color:#9cb7a1 ;">
+      <section id="parceiros" class="container pt-4">
+        <div class="row d-flex flex-wrap gap-4 justify-content-between">
+          <!-- Coluna da esquerda (Parceiros) -->
+          <div class="col-12 col-md-6">
+            <h2 class="display-6 fw-bold text-center mb-4">Nossos Parceiros</h2>
+            <div class="row" style="flex-direction: row;">
+              <!-- Parceiros (3 por linha em desktop, 2 em tablets, 1 em mobile) -->
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://carioca.rio/orgao/secretaria-municipal-da-pessoa-com-deficiencia-smpd/">
+                  <img class="img-fluid partner-logo" src="./assets/img/rio-prefeitura.png" alt="" />
+                </a>
+              </div>
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://www.rj.gov.br/ceasa/banco_de_alimentos">
+                  <img class="img-fluid partner-logo" src="./assets/img/BancoDeAlimentos-removebg-preview.png" alt="" />
+                </a>
+              </div>
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://www.tjrj.jus.br">
+                  <img class="img-fluid partner-logo" src="./assets/img/TJERJ-removebg-preview.png" alt="" />
+                </a>
+              </div>
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://www.agenciadobem.org.br">
+                  <img class="img-fluid partner-logo" src="./assets/img/ADB-removebg-preview.png" alt="" />
+                </a>
+              </div>
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://www.sescrio.org.br">
+                  <img class="img-fluid partner-logo" src="./assets/img/Sesc-removebg-preview.png" alt="" />
+                </a>
+              </div>
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://www.sesc.com.br/atuacoes/assistencia/sesc-mesa-brasil/">
+                  <img class="img-fluid partner-logo" src="./assets/img/MesaBrasilSesc-removebg-preview.png" alt="" />
+                </a>
+              </div>
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://www.febiexrj.org.br">
+                  <img class="img-fluid partner-logo" src="./assets/img/FebiexLogo-removebg-preview.png" alt="" />
+                </a>
+              </div>
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://castelobranco.br">
+                  <img class="img-fluid partner-logo" src="./assets/img/UCBLogo-removebg-preview.png" alt="" />
+                </a>
+              </div>
+              <div class="col-6 col-md-4 mb-4 d-flex align-content-center justify-content-center">
+                <a href="https://institutodepesquisaepromocaodasaude.blogspot.com/p/clinica-escola-castelo-branco.html">
+                  <img class="img-fluid partner-logo" src="./assets/img/CLinicaECB-removebg-preview.png" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna da direita (Certificados) -->
+          <div class="col-12 col-md-5">
+            <h2 class="display-6 fw-bold text-center mb-4">Certificados</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              <!-- Certificado 1 -->
+              <div class="col">
+                <a href="./assets/img/Certificados/SESCRJ_declaração.png" target="_blank"
+                  class="card shadow-sm text-decoration-none">
+                  <img src="./assets/logo_certificado.jpg" class="card-img-top certificate-img"
+                    alt="Declaração de Participação Sesc Voe">
+                </a>
+              </div>
+              <!-- Certificado 2 -->
+              <div class="col">
+                <a href="./assets/img/Certificados/Câmara_Municipal_do_RJ.png" target="_blank"
+                  class="card shadow-sm text-decoration-none">
+                  <img src="./assets/img/Certificados/Câmara_Municipal_do_RJ.png" class="card-img-top certificate-img"
+                    alt="CERTIDÃO - Moção da Câmara Municipal do Rio de Janeiro ao IPPS">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <br>
+    </article>
+
+
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint_9cb7a1.png" alt="" class="img__rasgo"
+      style="transform: scaleX(1);">
+    <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint_c8d5ca.png" alt="" class="img__rasgo"
+      style="transform: scaleX(-1);">
+
+    <article style="background-color: #c8d5ca;">
+
+      <section id="trabalhe-conosco" class="container pt-5">
+        <section class="Estagio">
+          <div class="Estagio__MensagemChamativa">
+            <div class="Estagio__MensagemChamativa__Imagem">
+              <img src="/assets/img/foto4.jpg" alt="Imagem IPPS Grupo Festa" />
+            </div>
+            <div class="Estagio__MensagemChamativa__Texto">
+              <h1 class="display-5 fw-bolder titulo-quemsomos">
+                Venha trabalhar com o IPPS !
+              </h1>
+              <p>
+                Possuímos uma equipe multiprofissional com comprometimento na
+                atuação individual e coletiva aos usuários, que prestará
+                serviços socioassistenciais no âmbito da Proteção Social de
+                Média Complexidade, visando facilitar o desenvolvimento dos
+                usuários com deficiência e, de seus
+                responsáveis/cuidadores/familiares, realizado pelo trabalho
+                conduzido em diversas especialidades pela equipe
+                multidisciplinar do IPPS.
+              </p>
+            </div>
+          </div>
+          <div class="Estagio__Carreira">
+            <div class="Estagio__Carreira__Imagem">
+              <img src="/assets/img/foto2.jpg" alt="Imagem IPPS Grupo Festa" />
+            </div>
+            <div class="Estagio__Carreira__Texto">
+              <h1 class="display-5 fw-bolder titulo-quemsomos">
+                Carreira no IPPS
+              </h1>
+              <p>
+                Além de fazer parte de uma instituição com mais de 20 anos de
+                experiência através de projetos e atividades para pessoas com
+                deficência, temos parcerias com instituições governamentais,
+                faculdades e empresas que acreditam e apoiam nossa visão.
+              </p>
+              <p>
+                Envie um e-mail para
+                <a href="mailto:ippromocaodasaude@gmail.com"><strong>ippromocaodasaude@gmail.com</strong></a>
+                com assunto referente à disponibilidade de vagas e faça parte
+                desta instituição !
+              </p>
+            </div>
+          </div>
+
+          <div class="Estagio__Vagas">
+            <div class="Estagio__Vagas__Imagem">
+              <img src="/assets/img/foto3.jpg" alt="Imagem IPPS Grupo Festa" />
+            </div>
+            <div class="Estagio__Vagas__Texto">
+              <h1 class="display-5 fw-bolder titulo-quemsomos">Vagas IPPS</h1>
+              <p>Veja aqui as vagas disponíveis</p>
+              <a href="https://workspace.google.com/intl/pt-BR/products/drive/"><button
+                  class="btn btn-header">Vagas</button></a>
+            </div>
+          </div>
+          <div class="Estagio__inscricao">
+            <h1 class="display-5 fw-bolder titulo-quemsomos">
+              Para concorrer às nossas vagas, preencha o formulário abaixo.
+            </h1>
+            <a
+              href="https://workspace.google.com/intl/pt-BR/lp/forms/?utm_source=google&utm_medium=cpc&utm_campaign=latam-BR-all-pt-dr-bkws-all-all-trial-e-dr-1707806-LUAC0011908&utm_content=text-ad-none-any-DEV_c-CRE_477535133211-ADGP_Hybrid%20%7C%20BKWS%20-%20EXA%20%7C%20Txt-Forms-KWID_43700057676889044-kwd-10647024857&utm_term=KW_google%20forms-ST_google%20forms&gad_source=1&gclid=CjwKCAiA6aW6BhBqEiwA6KzDc3zq1PQlSG6WLiyxSRxcg3RifTG5onO6vnMHNxowr2r6ZirOD6IyrhoCWtkQAvD_BwE&gclsrc=aw.ds">
+              <button class="btn btn-header">Inscreva-se</button>
+            </a>
+            <p>
+              Separe pelo menos 20 minutos e responda todos os campos de forma
+              sincera para que possamos encontrar a vaga mais compatível com seu
+              perfil.
+            </p>
+            <p>
+              Ou se preferir, envie um e-mail para
+              <a href="mailto:ippromocaodasaude@gmail.com"><strong>ippromocaodasaude@gmail.com</strong></a>
+              com assunto referente à vaga em questão e faça parte desta
+              instituição !
+            </p>
+          </div>
+          <div class="Estagio__Documentacao">
+            <h1 class="display-5 fw-bolder titulo-quemsomos">Documentação</h1>
+            <div class="Estagio__Documentacao__Botoes">
+              <a
+                href="/assets/doc/info-comple/ATA -  Ata da Assembleia - Registrada no RCPJ - 21-09-2022 a 20-09-2027 - Eleição do Grupo Gestor atual - COLORIDA.pdf"><button
+                  class="btn btn-header">Manual do Estagiário</button></a>
+              <a
+                href="/assets/doc/info-comple/ATA -  Ata da Assembleia - Registrada no RCPJ - 21-09-2022 a 20-09-2027 - Eleição do Grupo Gestor atual - COLORIDA.pdf"><button
+                  class="btn btn-header">Declaração</button></a>
+              <a
+                href="/assets/doc/info-comple/ATA -  Ata da Assembleia - Registrada no RCPJ - 21-09-2022 a 20-09-2027 - Eleição do Grupo Gestor atual - COLORIDA.pdf"><button
+                  class="btn btn-header">
+                  Carta de apresentação
+                </button></a>
+            </div>
+          </div>
+          <div class="Estagio__Beneficios">
+            <h1 class="display-5 fw-bolder titulo-quemsomos">Benefícios</h1>
+            <div class="Estagio__Beneficios__MenuCards">
+              <div class="Estagio__Beneficios__MenuCards__card">
+                <img src="/assets/img/meal_icon.png" alt="Imagem prato" />
+                <p><strong>Vale-Refeição</strong></p>
+              </div>
+              <div class="Estagio__Beneficios__MenuCards__card">
+                <img src="/assets/img/meal_icon.png" alt="Imagem prato" />
+                <p><strong>Vale-Alimentação</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="Estagio__Depoimentos">
+            <h1 class="display-5 fw-bolder titulo-quemsomos">Depoimentos</h1>
+            <div class="Estagio__Depoimentos__MenuCards">
+              <div class="Estagio__Depoimentos__MenuCards__cards">
+                <p><strong>Lucas</strong></p>
+                <p><strong>Desenvolvedor</strong></p>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Natus impedit cumque enim neque excepturi. Accusantium, natus
+                  nisi eveniet quibusdam, dolores voluptatem perferendis
+                  praesentium ad pariatur illum laudantium. Odio, reprehenderit?
+                  Dolorem?
+                </p>
+              </div>
+              <div class="Estagio__Depoimentos__MenuCards__cards">
+                <p><strong>Lucas</strong></p>
+                <p><strong>Desenvolvedor</strong></p>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Natus impedit cumque enim neque excepturi. Accusantium, natus
+                  nisi eveniet quibusdam, dolores voluptatem perferendis
+                  praesentium ad pariatur illum laudantium. Odio, reprehenderit?
+                  Dolorem?
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </article>
+
   </main>
-  <div class="container">
-    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5 border-top text-center">
-      <div class="col mb-3">
-        <a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none div-logo-footer">
-          <img src="./assets/img/logo.png" alt="Logo IPPS" class="logo-footer">
-        </a>
-      </div>
 
-      <div class="col mb-3 d-flex flex-column justify-content-center text-center">
-        <h5>Contato</h5>
-        <p class="text-start">
-          ⦁ CNPJ: 05.039.198/0001-30 <br>
-          ⦁ Endereço: Avenida de Santa Cruz 1631 <br>
-          ⦁ Cidade: Rio de Janeiro <br>
-          ⦁ Bairro: Realengo <br>
-          ⦁ CEP: 21.710-255 <br>
-          ⦁ Horário de Funcionamento: Segunda a Sexta das 8h às 17:48h <br>
-          ⦁ +55 (21) 98585-6380 <br>
-          ⦁ ippromocaodasaude@gmail.com <br>
+  <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_2_paint_c8d5ca.png" alt="" class="img__rasgo"
+    style="transform: scaleX(-1);">
+  <img src="/assets/img/2025_01_29_Rasgo-fundo-removido_paint.png" alt="" class="img__rasgo"
+    style="transform: scaleX(1);">
 
-        </p>
-      </div>
-
-      <div class="col mb-3 d-flex align-items-center justify-content-center">
-        <div>
-          <a href="./pages/doeagora.html"><button type="button" class="btn btn-header btn-footer">DOE AGORA</button></a>
+  <article style="background-color: #f2d9b5;">
+    <div class="footer-container container">
+      <footer
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 py-5 text-center  align-items-center align-items-md-center align-items-lg-center">
+        <div class="col mb-3">
+          <a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none div-logo-footer">
+            <img src="./assets/img/logo.png" alt="Logo IPPS" class="logo-footer">
+          </a>
         </div>
-      </div>
 
-      <div class="col mb-3 d-flex flex-column justify-content-center">
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#quemsomos" class="nav-link p-0 text-body-secondary">Quem é o IPPS</a>
-          </li>
-          <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-body-secondary">Projeto</a></li>
-          <li class="nav-item mb-2"><a href="./pages/numeros.html" class="nav-link p-0 text-body-secondary">Nossos
-              Números</a>
-          </li>
-          <li class="nav-item mb-2"><a href="./pages/historia.html" class="nav-link p-0 text-body-secondary">Nossa
-              História</a>
-          </li>
-          <li class="nav-item mb-2"><a href="./pages/transparencia.html"
-              class="nav-link p-0 text-body-secondary">Transparência</a></li>
-        </ul>
-      </div>
+        <div class="col mb-3 d-flex flex-column justify-content-center text-center">
+          <h5>Contato</h5>
+          <p class="text-start">
+            ⦁ CNPJ: 05.039.198/0001-30 <br>
+            ⦁ Endereço: Avenida de Santa Cruz 1631 <br>
+            ⦁ Cidade: Rio de Janeiro <br>
+            ⦁ Bairro: Realengo <br>
+            ⦁ CEP: 21.710-255 <br>
+            ⦁ Horário de Funcionamento: Segunda a Sexta das 8h às 17:48h <br>
+            ⦁ +55 (21) 98585-6380 <br>
+            ⦁ ippromocaodasaude@gmail.com <br>
 
-      <div class="col-12 mt-4" style="width: 100%; height: 250px;">
-        <h5>Parceiras Institucionais</h5>
-        <div class="carousel slide mt-4" id="partnersCarousel" data-bs-ride="carousel" data-bs-interval="3000">
-
-          <div class="carousel-inner" style="height: 150px;">
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-              <div class="row justify-content-center">
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                  <a href="https://prefeitura.rio" target="_blank">
-                    <img src="../assets/img/logos/LogoSMPD.png"
-                      alt="Convênio com a Secretaria Municipal da Pessoa com Deficiência."
-                      title="Convênio com a Secretaria Municipal da Pessoa com Deficiência." width="100px"
-                      class="img-fluid partner-logo">
-                  </a>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                  <a href="#" target="_blank">
-                    <img src="../assets/img/logos/BancoDeAlimentos.png"
-                      alt="Banco de Alimentos do CEASA/RJ – Doação de alimentos"
-                      title="Banco de Alimentos do CEASA/RJ – Doação de alimentos" width="100px"
-                      class="img-fluid partner-logo">
-                  </a>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                  <a href="https://www.tjrj.jus.br/web/guest" target="_blank">
-                    <img src="../assets/img/logos/PJERJ.jpg" alt="Tribunal de Justiça do Estado do Rio de Janeiro."
-                      title="Tribunal de Justiça do Estado do Rio de Janeiro." width="100px"
-                      class="img-fluid partner-logo">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-              <div class="row justify-content-center">
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                  <a href="https://www.agenciadobem.org.br" target="_blank">
-                    <img src="../assets/img/logos/ADB.png" alt="Parceria para fortalecimento institucional."
-                      title="Parceria para fortalecimento institucional." width="100px" class="img-fluid partner-logo">
-                  </a>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                  <a href="https://www.sesc.com.br" target="_blank">
-                    <img src="../assets/img/logos/Sesc.png" alt="Promove ações nas áreas de cultura, Educação, Esporte."
-                      title="Promove ações nas áreas de cultura, Educação, Esporte." width="100px"
-                      class="img-fluid partner-logo">
-                  </a>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
-                  <a href="https://www.sesc.com.br/atuacoes/assistencia/sesc-mesa-brasil/" target="_blank">
-                    <img src="../assets/img/logos/MesaBrasilSesc.png" alt="Rede nacional de banco de alimentos."
-                      title="Rede nacional de banco de alimentos." width="100px" class="img-fluid partner-logo">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- Slide 3 -->
-            <div class="carousel-item">
-              <div class="row justify-content-center">
-                <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
-                  <a href="https://www.febiexrj.org.br" target="_blank">
-                    <img src="../assets/img/logos/FebiexLogo.jpg"
-                      alt="A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)."
-                      title="A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)." width="100px"
-                      class="img-fluid partner-logo">
-                  </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
-                  <a href="https://ucb.catolica.edu.br" target="_blank">
-                    <img src="../assets/img/logos/UCBLogo.jpg"
-                      alt="Atividades e atendimentos através dos cursos da Universidade Castelo Branco."
-                      title="Atividades e atendimentos através dos cursos da Universidade Castelo Branco." width="100px"
-                      class="img-fluid partner-logo">
-                  </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex justify-content-center">
-                  <a href="#" target="_blank">
-                    <img src="../assets/img/logos/CLinicaECB.png"
-                      alt="Atividades e atendimentos através da Clínica Escola."
-                      title="Atividades e atendimentos através da Clínica Escola." width="100px"
-                      class="img-fluid partner-logo">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-indicators mb-0">
-            <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#partnersCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#partnersCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
-          </button>
+          </p>
         </div>
-      </div>
 
-    </footer>
-  </div>
+        <div class="col mb-3 d-flex align-items-center justify-content-center">
+          <div>
+            <a href="./pages/doeagora.html"><button type="button" class="btn btn-header btn-footer">DOE
+                AGORA</button></a>
+          </div>
+        </div>
 
-  <div class="social-icons-container">
-    <!-- Botão do Presente com animação
+        <div class="col mb-3 d-flex flex-column justify-content-center">
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#quemsomos" class="nav-link p-0 text-body-secondary">Quem é o IPPS</a>
+            </li>
+            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-body-secondary">Projeto</a></li>
+            <li class="nav-item mb-2"><a href="./pages/numeros.html" class="nav-link p-0 text-body-secondary">Nossos
+                Números</a>
+            </li>
+            <li class="nav-item mb-2"><a href="./pages/historia.html" class="nav-link p-0 text-body-secondary">Nossa
+                História</a>
+            </li>
+            <li class="nav-item mb-2"><a href="./pages/transparencia.html"
+                class="nav-link p-0 text-body-secondary">Transparência</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 mt-4" style="width: 100%; height: 250px;">
+          <h5>Parceiras Institucionais</h5>
+          <div class="carousel slide mt-4" id="partnersCarousel" data-bs-ride="carousel" data-bs-interval="3000">
+
+            <div class="carousel-inner" style="height: 150px; align-items: center; display: flex;">
+              <!-- Slide 1 -->
+              <div class="carousel-item active">
+                <div class="row justify-content-center">
+                  <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                    <a href="https://prefeitura.rio" target="_blank">
+                      <img src="../assets/img/logos/LogoSMPD.png"
+                        alt="Convênio com a Secretaria Municipal da Pessoa com Deficiência."
+                        title="Convênio com a Secretaria Municipal da Pessoa com Deficiência." width="100px"
+                        class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                    <a href="#" target="_blank">
+                      <img src="../assets/img/logos/BancoDeAlimentos.png"
+                        alt="Banco de Alimentos do CEASA/RJ – Doação de alimentos"
+                        title="Banco de Alimentos do CEASA/RJ – Doação de alimentos" width="100px"
+                        class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                    <a href="https://www.tjrj.jus.br/web/guest" target="_blank">
+                      <img src="../assets/img/logos/PJERJ.jpg" alt="Tribunal de Justiça do Estado do Rio de Janeiro."
+                        title="Tribunal de Justiça do Estado do Rio de Janeiro." width="100px"
+                        class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="carousel-item">
+                <div class="row justify-content-center">
+                  <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                    <a href="https://www.agenciadobem.org.br" target="_blank">
+                      <img src="../assets/img/logos/ADB.png" alt="Parceria para fortalecimento institucional."
+                        title="Parceria para fortalecimento institucional." width="100px"
+                        class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                    <a href="https://www.sesc.com.br" target="_blank">
+                      <img src="../assets/img/logos/Sesc.png"
+                        alt="Promove ações nas áreas de cultura, Educação, Esporte."
+                        title="Promove ações nas áreas de cultura, Educação, Esporte." width="100px"
+                        class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-3 d-flex justify-content-center">
+                    <a href="https://www.sesc.com.br/atuacoes/assistencia/sesc-mesa-brasil/" target="_blank">
+                      <img src="../assets/img/logos/MesaBrasilSesc.png" alt="Rede nacional de banco de alimentos."
+                        title="Rede nacional de banco de alimentos." width="100px" class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="carousel-item">
+                <div class="row justify-content-center">
+                  <div class="col-lg-2 col-md-4 col-4 d-flex justify-content-center">
+                    <a href="https://www.febiexrj.org.br" target="_blank">
+                      <img src="../assets/img/logos/FebiexLogo.jpg"
+                        alt="A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)."
+                        title="A FEBIEX faz o assessoramento da Rede Histórica Conveniadas (RHC)." width="100px"
+                        class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                  <div class="col-lg-2 col-md-4 col-4 d-flex justify-content-center">
+                    <a href="https://ucb.catolica.edu.br" target="_blank">
+                      <img src="../assets/img/logos/UCBLogo.jpg"
+                        alt="Atividades e atendimentos através dos cursos da Universidade Castelo Branco."
+                        title="Atividades e atendimentos através dos cursos da Universidade Castelo Branco."
+                        width="100px" class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                  <div class="col-lg-2 col-md-4 col-4 d-flex justify-content-center">
+                    <a href="#" target="_blank">
+                      <img src="../assets/img/logos/CLinicaECB.png"
+                        alt="Atividades e atendimentos através da Clínica Escola."
+                        title="Atividades e atendimentos através da Clínica Escola." width="100px"
+                        class="img-fluid partner-logo">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-indicators mb-0">
+              <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#partnersCarousel" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#partnersCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#partnersCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Próximo</span>
+            </button>
+          </div>
+        </div>
+
+      </footer>
+    </div>
+
+    <div class="social-icons-container">
+      <!-- Botão do Presente com animação
     <div id="presentButton" class="animate__animated animate__bounceIn animate__slower animate__delay-2s">
       <span id="openModalButton" aria-label="Abrir Modal" class="present-button">
         <img src="assets/img/presente_icon.png" alt="Evento de natal" title="Evento de natal">
       </span>
     </div> -->
 
-    <!-- Ícone do WhatsApp com animação -->
-    <div class="whatsapp-icon animate__animated animate__headShake animate__slower animate__delay-3s animate__infinite">
-      <a href="https://wa.me/5521985856380?text=Olá." target="_blank">
-        <img src="./assets/img/whats.png" alt="Fale Conosco pelo Whatsapp" title="Fale Conosco pelo Whatsapp" />
-      </a>
+      <!-- Ícone do WhatsApp com animação -->
+      <div
+        class="whatsapp-icon animate__animated animate__headShake animate__slower animate__delay-3s animate__infinite">
+        <a href="https://wa.me/5521985856380?text=Olá." target="_blank">
+          <img src="./assets/img/whats.png" alt="Fale Conosco pelo Whatsapp" title="Fale Conosco pelo Whatsapp" />
+        </a>
+      </div>
+
+      <!-- Ícone do Instagram com animação -->
+      <div
+        class="whatsapp-icon animate__animated animate__headShake animate__slower animate__delay-3s animate__infinite">
+        <a href="https://www.instagram.com/ippsrealengo/" target="_blank">
+          <img src="../assets/img/instagram.png" alt="Siga-nos no Instagram" title="Siga-nos no Instagram" />
+        </a>
+      </div>
     </div>
 
-    <!-- Ícone do Instagram com animação -->
-    <div class="whatsapp-icon animate__animated animate__headShake animate__slower animate__delay-3s animate__infinite">
-      <a href="https://www.instagram.com/ippsrealengo/" target="_blank">
-        <img src="../assets/img/instagram.png" alt="Siga-nos no Instagram" title="Siga-nos no Instagram" />
-      </a>
-    </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <script src="./script/script.js"></script>
-  <script src="../script/parceiros-footer.js"></script>
-  <!-- <script src="./script/modal-natal.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="./script/script.js"></script>
+    <script src="./script/parceiros-footer.js"></script>
+    <script src="./script/grafico-numeros.js"></script>
+    <!-- <script src="./script/modal-natal.js"></script> -->
+  </article>
 </body>
 
 </html>

@@ -1,9 +1,27 @@
 body {
+  position: relative;
   background-color: #fff3d9;
+  padding-top: 162px;
+}
+
+section {
+  scroll-margin-top: 100px;
 }
 
 .lead {
   font-weight: 400;
+}
+
+/* .rasgo {
+  background-color: #fff3d9;
+  background-color: #f2d9b5;
+  background-color: #f2d9b5;
+  background-color: #f2d9b5;
+} */
+
+.img__rasgo {
+  display: flex;
+  width: 100%;
 }
 
 header {
@@ -29,7 +47,8 @@ header {
   margin-left: 10px;
   color: white;
   font-weight: bold;
-  transition: font-size 0.3s ease; /* Transição suave */
+  transition: font-size 0.3s ease;
+  font-size: 1.2rem;
 }
 
 .btn-footer {
@@ -44,17 +63,18 @@ header {
 }
 
 .nav-link:hover {
-  color: #8aa895;
+  color: #a40201;
 }
 
 .navbar {
-  padding: 0px 150px;
+  padding: 0px 15px;
 }
 
 #navbarNav {
   position: relative;
   margin-right: 3rem;
   margin-bottom: 8px;
+  font-size: 1.1rem;
 }
 
 .navbar-brand {
@@ -81,6 +101,7 @@ header {
 .dropdown-menu {
   background-color: #fff3d9;
   border: none;
+  font-size: 1.1rem;
 }
 
 /*Edições no scroll do cabeçalho*/
@@ -180,6 +201,222 @@ header {
   transition: transform 0.6s ease-in-out, opacity 0.6s ease;
 }
 
+/* Parte do quem é o IPPS */
+#quem-somos p {
+  position: relative;
+}
+
+#quem-somos .quem-e-o-ipps::before {
+  content: "";
+  position: absolute;
+  top: -7%;
+  left: 1%;
+  width: 50px;
+  height: 60px;
+  background-image: url(../assets/png/pins-154959_1920-red.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+#quem-somos .quem-e-o-ipps::after {
+  content: "";
+  position: absolute;
+  top: 87%;
+  left: 95%;
+  width: 50px;
+  height: 60px;
+  background-image: url(../assets/png/pins-154959_1920-red.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.quemsomos {
+  max-width: 1400px;
+}
+
+.quemsomos .d-flex p {
+  background-color: #8aa895;
+  width: 50%;
+  margin-right: 60px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  font-size: 2rem;
+}
+
+.quemsomos span {
+  background-color: #8aa895;
+  width: 50%;
+  padding: 20px;
+  margin: auto 0;
+  border-radius: 15px;
+  transform: rotate(5deg);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.quemsomos span img {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .quemsomos .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quemsomos .d-flex p,
+  .quemsomos span {
+    margin: 0;
+    width: 90%;
+    transform: none;
+  }
+}
+
+/* ESTILO DO INDEX */
+.titulo-quemsomos {
+  text-align: center;
+}
+
+.main-text {
+  color: #000;
+  width: 90%;
+  padding: 10px;
+  background-color: #a1c2ae;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.container__identidade {
+  position: relative;
+  max-width: 80%;
+  height: 500px;
+  margin: auto auto 50px auto;
+  padding: 2rem;
+  background-color: #a1c2ae;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container__identidade::before {
+  content: "";
+  position: absolute;
+  top: -5%;
+  left: 93%;
+  width: 64px;
+  height: 50px;
+  background-image: url(../assets/png/pins-154959_1920-blue-inverted.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.container__identidade::after {
+  content: "";
+  position: absolute;
+  top: 87%;
+  left: 1%;
+  width: 50px;
+  height: 65px;
+  background-image: url(../assets/png/pins-154959_1920-blue.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.carrossel__botoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .container__identidade {
+    max-width: 90%;
+  }
+
+  .carrossel__botoes {
+    margin-top: 40px;
+  }
+
+  .carousel-item .row {
+    flex-direction: row;
+  }
+}
+
+.carrossel__botoes h3 {
+  cursor: pointer;
+  padding: 10px 20px;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.carrossel__botoes h3:hover,
+.carrossel__botoes h3.ativo {
+  background-color: #5e7867;
+}
+
+.carrossel__conteudo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+}
+
+.carrossel__item {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.5s ease-in-out, opacity 0.5s;
+}
+
+.carrossel__item.ativo {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.carrossel__item.saindo {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.carrossel__imagem {
+  width: 45%;
+  height: 425px;
+  border-radius: 230px;
+  object-fit: cover;
+}
+
+.carrossel__texto {
+  width: 55%;
+  text-align: center;
+}
+
+.carrossel__texto .lead {
+  font-size: 1.5rem;
+}
+
+.carrossel__texto li {
+  margin-bottom: 10px;
+  width: 50%;
+  margin-left: 25%;
+}
+/* fim da parte de quem é o IPPS */
+
 /* Container para os ícones de evento e WhatsApp */
 .social-icons-container {
   position: fixed;
@@ -194,7 +431,7 @@ header {
 
 /* Ícone do WhatsApp */
 .whatsapp-icon img {
-  width: 75px;
+  width: 50px;
   cursor: pointer;
 }
 
@@ -215,6 +452,13 @@ a {
   height: 120px;
   object-fit: contain;
   border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .partner-logo {
+    width: 100px !important;
+    height: 100px !important;
+  }
 }
 
 .btn-transp {
@@ -646,18 +890,67 @@ a {
 }
 
 /* PÁGINA PARCEIROS */
-.parceiro .logo-img {
-  width: 100%;
-  max-width: 150px;
-  height: auto;
+.container-parceiros {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
-.parceiro a {
-  display: block;
+.parceiro {
+  margin-right: 10px;
 }
+
+.container-logo {
+  height: 150px;
+}
+
+.parceiro .texto {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.parceiro:hover .texto {
+  opacity: 1;
+}
+
+.parceiro .logo-img {
+  width: 150px;
+}
+
+.certificate-img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  #parceiros .row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 /* *** */
 
 /* PÁGINA NUMEROS */
+#nossos-numeros {
+  display: inline;
+}
+
+.container-numeros {
+  margin: 3rem 100px;
+}
+
+@media (max-width: 720px) {
+  .container-numeros {
+    margin: 3rem 20px;
+  }
+}
+
 thead th {
   background-color: #8aa895 !important;
   text-align: center;
@@ -666,6 +959,24 @@ thead th {
 
 td {
   text-align: center;
+}
+
+.tabela-numeros {
+  width: 30%;
+  margin-right: 20px;
+}
+
+.grafico-numeros {
+  background-image: url("../assets/background/quadro-negro.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 70%;
+  padding: 1rem;
+  border: 10px solid #834a26;
+}
+
+.grafico-numeros h2 {
+  color: #ffffff;
 }
 
 .grafico-numeros__Elementos {
@@ -687,12 +998,16 @@ td {
 }
 
 #labelDataset0 {
-  color: rgba(75, 192, 192, 1);
+  color: #00ffff;
   font-weight: 700;
 }
 #labelDataset1 {
-  color: rgba(153, 102, 255, 1);
+  color: #ff69b4;
   font-weight: 700;
+}
+
+#filtroAno label {
+  color: #ffffff;
 }
 
 .grafico-numeros__Elementos__filtroAno {
@@ -711,6 +1026,17 @@ td {
   margin-right: 0.5rem;
 }
 
+@media (max-width: 1024px) {
+  .tabela-numeros {
+    width: 100%;
+    margin: 0;
+  }
+
+  .container-numeros {
+    flex-direction: column;
+  }
+}
+
 /*/* *** */
 
 /* PÁGINA NOSSA HISTÓRIA */
@@ -719,13 +1045,15 @@ td {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 100px;
+  margin: 0 100px;
 }
 
 .timeline {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -744,37 +1072,33 @@ td {
 }
 
 .content-buttons {
-  position: absolute;
-  top: 83%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
   margin-top: 20px;
 }
 
-.content-buttons button {
+#prev,
+#next {
   cursor: pointer;
-  background-color: #8aa895;
-  color: white;
+  background-color: #4c6153;
+  color: #ffffff;
   border: none;
-  padding: 0 15px;
+  padding: 0px 16px;
   border-radius: 5px;
-  font-size: 30px;
+  font-size: 50px;
   transition: background-color 0.3s;
 }
 
-.content-buttons button:hover {
+#prev:hover,
+#next:hover {
   background-color: #0056b3;
 }
 
-#prev {
-  position: absolute;
-  right: 520px;
-}
-
-#next {
-  position: absolute;
-  left: 520px;
-}
-
 .timeline-btn {
+  position: relative;
+  flex: 0 0 auto;
   font-size: 1.5em;
   background: #8aa895;
   color: black;
@@ -784,11 +1108,25 @@ td {
   height: 70px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.3s;
 }
 
 .timeline-btn:hover {
   transform: scale(1.1);
+}
+
+.timeline-btn.active::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 30%;
+  width: 50px;
+  height: 60px;
+  background-image: url(../assets/png/pins-154959_1920-pink.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  z-index: 1;
 }
 
 .timeline-content {
@@ -797,13 +1135,36 @@ td {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 350px;
   max-width: 1200px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background: #f9f9f9;
   text-align: center;
+}
+
+.timeline-content {
+  padding: 20px;
+  border-radius: 10px;
+  transition: background-image 0.5s ease;
+}
+
+.timeline-content.grupo-1 {
+  background-image: url("../assets/background/background-mais_antigo.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.timeline-content.grupo-2 {
+  background-image: url("../assets/background/background-papel_amassado.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.timeline-content.grupo-3 {
+  background-image: url("../assets/background/background-paper_branco.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .timeline-content h3 {
@@ -852,4 +1213,190 @@ td {
 
 .definicao h3 {
   margin: 1em;
+}
+
+/* Estilo para os títulos dos projetos */
+.projetos-titulos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.titulo-projeto {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #8aa895;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.titulo-projeto:hover {
+  background-color: #5e7867;
+}
+
+.container-projetos {
+  position: relative;
+  overflow: hidden;
+}
+
+#saude-integral {
+  transform: translateX(180%);
+}
+
+/* Ocultar os projetos inicialmente */
+.projeto-container {
+  position: absolute;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Estilo para o projeto ativo */
+.projeto-container.ativo {
+  opacity: 1;
+  transform: translateX(25%) !important;
+}
+
+@media (max-width: 1024px) {
+  .projeto-container.ativo {
+    transform: translateX(2%) !important;
+  }
+}
+
+.imagem-rotacionada {
+  display: flex;
+  align-items: center;
+  transform: rotate(-7deg);
+}
+
+#saude-integral .imagem-rotacionada {
+  transform: rotate(7deg);
+}
+
+@media (max-width: 1024px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .projeto-container {
+    text-align: center;
+  }
+
+  .col-md-6 {
+    width: 100%;
+  }
+
+  .image-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .imagem-rotacionada {
+    transform: none !important;
+  }
+
+  .image-container img {
+    max-width: 90%;
+    transform: none;
+  }
+
+  .titulo-projeto {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 425px) {
+  #navbarNav {
+    position: absolute;
+    left: 55%;
+    top: 70%;
+    margin-right: 0;
+    background-color: #fff3d9;
+    border: none;
+    font-size: 1.1rem;
+    min-width: auto;
+    width: auto;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  #quem-somos .quem-e-o-ipps::before {
+    top: -3%;
+  }
+
+  #quem-somos .quem-e-o-ipps::after {
+    top: 93%;
+    left: 90%;
+  }
+
+  .quemsomos-foto {
+    display: none;
+  }
+
+  .carrossel__botoes {
+    gap: 2px;
+  }
+  .carrossel__botoes h3 {
+    padding: 5px 10px;
+    font-size: 1.5rem;
+  }
+
+  .container__identidade {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .container__identidade::before {
+    top: -2%;
+    left: 80%;
+  }
+  .container__identidade::after {
+    top: 83%;
+    left: 3%;
+  }
+
+  .carrossel__imagem {
+    display: none;
+  }
+
+  .carrossel__texto {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .lead {
+    padding: 0;
+  }
+
+  .imagem-rotacionada {
+    display: none;
+  }
+
+  .timeline {
+    gap: 7px;
+  }
+
+  .grafico-numeros {
+    display: none !important;
+  }
+
+  .partner-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .certificate-img {
+    width: 50%;
+  }
 }
