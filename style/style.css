@@ -1318,3 +1318,20 @@ td {
     padding: 10px 0;
   }
 }
+
+@media (max-width: 425px) {
+  #navbarNav {
+    position: absolute;
+    left: 55%;
+    top: 70%;
+    margin-right: 0;
+    background-color: #fff3d9; /* Cor de fundo */
+    border: none;
+    font-size: 1.1rem;
+    min-width: auto; /* Remove largura mínima padrão */
+    width: auto; /* Ajusta ao conteúdo */
+    padding: 0.5rem 1rem; /* Espaçamento interno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-radius: 8px; /* Bordas arredondadas para um visual mais elegante */
+  }
+}
