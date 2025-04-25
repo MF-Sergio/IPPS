@@ -1325,13 +1325,70 @@ td {
     left: 55%;
     top: 70%;
     margin-right: 0;
-    background-color: #fff3d9; /* Cor de fundo */
+    background-color: #fff3d9;
     border: none;
     font-size: 1.1rem;
-    min-width: auto; /* Remove largura mínima padrão */
-    width: auto; /* Ajusta ao conteúdo */
-    padding: 0.5rem 1rem; /* Espaçamento interno */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
-    border-radius: 8px; /* Bordas arredondadas para um visual mais elegante */
+    min-width: auto;
+    width: auto;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  #quem-somos .quem-e-o-ipps::before {
+    top: -3%;
+  }
+
+  #quem-somos .quem-e-o-ipps::after {
+    top: 93%;
+    left: 90%;
+  }
+
+  .quemsomos-foto {
+    display: none;
+  }
+
+  .carrossel__botoes {
+    gap: 2px;
+  }
+  .carrossel__botoes h3 {
+    padding: 5px 10px;
+    font-size: 1.5rem;
+  }
+
+  .container__identidade {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .container__identidade::before {
+    top: -2%;
+    left: 80%;
+  }
+  .container__identidade::after {
+    top: 83%;
+    left: 3%;
+  }
+
+  .carrossel__imagem {
+    display: none;
+  }
+
+  .carrossel__texto {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .lead {
+    padding: 0;
+  }
+
+  .imagem-rotacionada {
+    display: none;
   }
 }
