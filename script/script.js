@@ -142,7 +142,7 @@ function setupProjetos() {
     if (titulosProjetos.length > 0 && projetos.length > 0 && containerProjetos) {
         function ajustarAlturaProjetos() {
             const larguraTela = window.innerWidth;
-            let alturaProjeto = larguraTela <= 1024 ? "1024px" : "600px";
+            let alturaProjeto = larguraTela <= 425 ? "820px" : larguraTela <= 1024 ? "1024px" : "600px";
 
             titulosProjetos.forEach(titulo => {
                 titulo.addEventListener("mouseenter", () => {
