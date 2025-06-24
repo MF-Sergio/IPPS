@@ -1261,6 +1261,62 @@ td {
   transform: translateX(25%) !important;
 }
 
+/* Estilo Parte CrowdFunding */
+.cardsBox {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-evenly;
+}
+
+.cardsBox a {
+  text-decoration: inherit;
+  color: #000000;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 30px;
+}
+
+.cardsBox a:hover {
+  cursor: pointer;
+  transition: transform 1.2s;
+  transform: scale(1.05);
+}
+
+.cardsBox .cards img {
+  width: 100%;
+}
+
+.cardsBox .cards progress {
+  width: 100%;
+  height: 24px;
+  -webkit-appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50px;
+}
+
+progress::-moz-progress-bar {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50px;
+  padding: 5px;
+}
+
+progress::-webkit-progress-value {
+  border-radius: 50px;
+  background: green;
+  border: #000 solid 3px;
+}
+
 @media (max-width: 1024px) {
   .projeto-container.ativo {
     transform: translateX(2%) !important;
