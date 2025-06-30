@@ -171,7 +171,6 @@ function setupProjetos() {
 
 // Inicialização de todas as funcionalidades
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("teste")
     setupSMPD();
     setupHeaderScroll();
     setupNavbarObserver();
