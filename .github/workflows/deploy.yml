@@ -18,6 +18,13 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}
 
+    - name: Setup SSH key
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        eval "$(ssh-agent -s)"
+        ssh-add ~/.ssh/id_ed25519
+
     - name: Deploy to Hostinger via SSH
       run: |
         ssh -o StrictHostKeyChecking=no -p 22 ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }} << 'EOF'
