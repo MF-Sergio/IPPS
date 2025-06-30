@@ -17,7 +17,7 @@ jobs:
       - name: 📤 Enviar arquivos via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp://185.173.111.152
+          server: 185.173.111.152
           username: u408447917
           password: Ipps@dm2002
           server-dir: /public_html/
