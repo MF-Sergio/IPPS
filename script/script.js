@@ -35,7 +35,6 @@ function setupNavbarObserver() {
     if (header && targetElement) {
         function checkClass() {
             if (window.innerWidth <= 775 && targetElement.classList.contains('show')) {
-                console.log("Menu aberto");
                 header.style.backgroundColor = '#FFF3D9';
                 dropdownitem.forEach(item => item.style.color = "#8AA895");
             } else {

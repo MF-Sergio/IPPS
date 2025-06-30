@@ -22,3 +22,4 @@ jobs:
           password: Ipps@dm2002
           server-dir: /public_html/
           local-dir: ./
+          dangerous-clean-slate: true
