@@ -1,27 +1,24 @@
-name: Deploy to Hostinger
+name: 🚀 Deploy site estático via FTP
 
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
-  deploy:
+  ftp-deploy:
+    name: 📂 Deploy direto para Hostinger
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
-      uses: actions/checkout@v4
+      - name: 🚚 Obter código mais recente
+        uses: actions/checkout@v4
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.9.1
-      with:
-        ssh-private-key: ${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}
-
-    - name: Deploy to Hostinger via SSH
-      run: |
-        ssh -o StrictHostKeyChecking=no -p 22 ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }} << 'EOF'
-          cd public_html
-          git pull origin main
-          hpanel-cache-purge --all || echo "Falha ao limpar cache"
-        EOF
+      - name: 📤 Enviar arquivos via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 185.173.111.152
+          username: u408447917
+          password: Ipps@dm2002
+          server-dir: /public_html/
+          local-dir: ./
