@@ -17,9 +17,9 @@ jobs:
       - name: 📤 Enviar arquivos via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: 185.173.111.152
-          username: u408447917
-          password: Ipps@dm2002
-          server-dir: /public_html/
-          local-dir: ./
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ${{ secrets.FTP_LOCAL_DIR }}
           dangerous-clean-slate: true
