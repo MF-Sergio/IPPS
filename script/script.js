@@ -1,4 +1,8 @@
-// Função para mostrar/ocultar a seção SMPD
+// =====================
+// Header e Navegação
+// =====================
+
+// Mostra/oculta a seção SMPD
 function setupSMPD() {
     const btnSMPD = document.querySelector(".mostrar-smpd");
     const secaoSMPD = document.querySelector(".secao-smpd");
@@ -10,7 +14,7 @@ function setupSMPD() {
     }
 }
 
-// Função para adicionar/remover classe no header ao rolar a página
+// Adiciona/remover classe no header ao rolar a página
 function setupHeaderScroll() {
     const header = document.getElementById("header");
 
@@ -25,7 +29,7 @@ function setupHeaderScroll() {
     }
 }
 
-// Função para observar mudanças no menu de navegação e ajustar o estilo do header
+// Observa mudanças no menu de navegação e ajusta o estilo do header
 function setupNavbarObserver() {
     const header = document.querySelector('#header');
     const targetElement = document.querySelector('.collapse');
@@ -51,7 +55,10 @@ function setupNavbarObserver() {
     }
 }
 
-// Função para configurar a timeline "Nossa História"
+// =====================
+// Timeline "Nossa História"
+// =====================
+
 function setupTimeline() {
     const timelineButtons = document.querySelectorAll(".timeline-btn");
     const timelineItems = document.querySelectorAll(".timeline-item");
@@ -69,7 +76,7 @@ function setupTimeline() {
             });
         }
 
-        timelineButtons.forEach(button => {
+        timelineButtons.forEach((button, idx) => {
             button.addEventListener("click", () => {
                 timelineButtons.forEach(btn => btn.classList.remove("active"));
                 button.classList.add("active");
@@ -83,6 +90,7 @@ function setupTimeline() {
                     timelineContent.classList.remove('grupo-1', 'grupo-2', 'grupo-3', 'grupo-4');
                     timelineContent.classList.add(group);
                 }
+                currentIndex = idx;
             });
         });
 
@@ -103,7 +111,10 @@ function setupTimeline() {
     }
 }
 
-// Função para configurar o carrossel
+// =====================
+// Carrossel
+// =====================
+
 function setupCarousel() {
     const botoes = document.querySelectorAll(".carrossel__botoes h3");
     const itens = document.querySelectorAll(".carrossel__item");
@@ -132,7 +143,10 @@ function setupCarousel() {
     }
 }
 
-// Função para configurar a interação dos projetos
+// =====================
+// Projetos
+// =====================
+
 function setupProjetos() {
     const titulosProjetos = document.querySelectorAll(".titulo-projeto");
     const projetos = document.querySelectorAll(".projeto-container");
@@ -167,9 +181,10 @@ function setupProjetos() {
     }
 }
 
+// =====================
+// Inicialização
+// =====================
 
-
-// Inicialização de todas as funcionalidades
 document.addEventListener("DOMContentLoaded", function () {
     setupSMPD();
     setupHeaderScroll();
