@@ -182,6 +182,42 @@ function setupProjetos() {
 }
 
 // =====================
+// Acessibilidade: Fonte e Contraste
+// =====================
+(function () {
+    const btnAumentar = document.getElementById('btnAumentarFonte');
+    const btnDiminuir = document.getElementById('btnDiminuirFonte');
+    const btnContraste = document.getElementById('btnContraste');
+    const body = document.body;
+    let fonteAtual = 100; // porcentagem
+
+    function atualizarFonte() {
+        body.style.fontSize = fonteAtual + '%';
+    }
+
+    if (btnAumentar && btnDiminuir) {
+        btnAumentar.addEventListener('click', () => {
+            if (fonteAtual < 150) {
+                fonteAtual += 10;
+                atualizarFonte();
+            }
+        });
+        btnDiminuir.addEventListener('click', () => {
+            if (fonteAtual > 80) {
+                fonteAtual -= 10;
+                atualizarFonte();
+            }
+        });
+    }
+
+    if (btnContraste) {
+        btnContraste.addEventListener('click', () => {
+            body.classList.toggle('contraste-alto');
+        });
+    }
+})();
+
+// =====================
 // Inicialização
 // =====================
 
