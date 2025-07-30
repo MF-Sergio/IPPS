@@ -118,6 +118,50 @@ header {
   color: #fff3d9;
 }
 
+/* Alto contraste global */
+body.contraste-alto,
+body.contraste-alto * {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Links amarelos para melhor acessibilidade */
+body.contraste-alto a,
+body.contraste-alto .nav-link,
+body.contraste-alto .dropdown-item {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+/* Botões */
+body.contraste-alto button,
+body.contraste-alto .btn,
+body.contraste-alto .btn-header,
+body.contraste-alto .btn-footer {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Tabelas */
+body.contraste-alto th,
+body.contraste-alto td {
+  background: #222 !important;
+  color: #fff !important;
+}
+
+/* Cards e containers */
+body.contraste-alto .card,
+body.contraste-alto .container,
+body.contraste-alto .timeline-content,
+body.contraste-alto .grafico-numeros {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
 /* Remover imagens de fundo body.contraste-alto .grafico-numeros,
 body.contraste-alto .timeline-content.grupo-1,
 body.contraste-alto .timeline-content.grupo-2,
