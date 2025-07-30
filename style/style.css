@@ -47,9 +47,9 @@ header {
 }
 #navbarNav {
   position: relative;
-  margin-right: 3rem;
+  margin-right: 3em;
   margin-bottom: 8px;
-  font-size: 1.1rem;
+  font-size: 1.1em;
 }
 .navbar-brand {
   display: inline-block;
@@ -81,7 +81,7 @@ header {
 .dropdown-menu {
   background-color: #fff3d9;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1.1em;
 }
 .dropdown-item:hover {
   color: #8aa895;
@@ -107,7 +107,7 @@ header {
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   cursor: pointer;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   transition: background 0.3s, color 0.3s;
@@ -142,7 +142,7 @@ body.contraste-alto .btn-footer {
   color: white;
   font-weight: bold;
   transition: font-size 0.3s ease;
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 .btn-header:hover {
   background-color: #fff3d9;
@@ -223,7 +223,7 @@ body.contraste-alto .btn-footer {
 .slogan > h1 {
   color: #fff3d9;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 3em;
 }
 
 /* =========================
@@ -233,7 +233,7 @@ body.contraste-alto .btn-footer {
   text-align: center;
   background-color: white;
 }
-.img-premio {
+.img-pemio {
   max-width: 90%;
 }
 .partner-logo {
@@ -299,7 +299,7 @@ body.contraste-alto .btn-footer {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .card-title {
-  font-size: 2rem;
+  font-size: 2em;
 }
 .quemsomos span {
   background-color: #8aa895;
@@ -344,7 +344,7 @@ body.contraste-alto .btn-footer {
   max-width: 80%;
   height: 500px;
   margin: auto auto 50px auto;
-  padding: 2rem;
+  padding: 2em;
   background-color: #a1c2ae;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -429,7 +429,7 @@ body.contraste-alto .btn-footer {
   text-align: center;
 }
 .carrossel__texto .lead {
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 .carrossel__texto li {
   margin-bottom: 10px;
@@ -501,7 +501,7 @@ body.contraste-alto .btn-footer {
   justify-content: space-between;
   text-align: justify;
   font-size: larger;
-  gap: 5rem;
+  gap: 5em;
 }
 .Estagio img {
   width: 100%;
@@ -513,7 +513,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 3rem;
+  gap: 3em;
   box-sizing: border-box;
 }
 .Estagio__MensagemChamativa__Imagem,
@@ -535,7 +535,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 3rem;
+  gap: 3em;
 }
 .Estagio__Vagas {
   flex-direction: row;
@@ -554,7 +554,7 @@ body.contraste-alto .btn-footer {
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
-  gap: 3rem;
+  gap: 3em;
 }
 .Estagio__Documentacao__Botoes button {
   font-size: x-large;
@@ -566,7 +566,7 @@ body.contraste-alto .btn-footer {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 3rem;
+  gap: 3em;
 }
 .Estagio__Beneficios__MenuCards__card {
   display: flex;
@@ -575,10 +575,10 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-around;
   font-size: x-large;
-  gap: 1rem;
+  gap: 1em;
 }
 .Estagio__Beneficios__MenuCards__card img {
-  width: 4rem;
+  width: 4em;
   height: auto;
   mix-blend-mode: darken;
 }
@@ -587,7 +587,7 @@ body.contraste-alto .btn-footer {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 3em;
 }
 .Estagio__Depoimentos__MenuCards__cards {
   display: flex;
@@ -610,7 +610,7 @@ body.contraste-alto .btn-footer {
   justify-content: space-between;
   text-align: justify;
   font-size: larger;
-  gap: 3rem;
+  gap: 3em;
 }
 .Contato img,
 .Contato iframe {
@@ -627,7 +627,7 @@ body.contraste-alto .btn-footer {
   display: flex;
   flex-direction: row;
   align-items: start;
-  gap: 2rem;
+  gap: 2em;
 }
 .Contato__Formulario__Sucesso {
   display: flex;
@@ -637,7 +637,7 @@ body.contraste-alto .btn-footer {
   font-size: xx-large;
   box-sizing: border-box;
   width: 50%;
-  margin-top: 10rem;
+  margin-top: 10em;
   flex-wrap: wrap;
 }
 .Contato__Formulario__Sucesso button {
@@ -659,7 +659,7 @@ body.contraste-alto .btn-footer {
 .Contato__Formulario__InfoAdicionais {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1em;
   box-sizing: border-box;
   text-align: center;
 }
@@ -673,7 +673,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-between;
   font-size: larger;
-  gap: 3rem;
+  gap: 3em;
 }
 .DoacoesFinanceiras button {
   font-size: x-large;
@@ -682,7 +682,7 @@ body.contraste-alto .btn-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 3em;
   mix-blend-mode: darken;
   text-align: center;
 }
@@ -691,7 +691,7 @@ body.contraste-alto .btn-footer {
   display: none;
   flex-direction: column;
   align-items: center;
-  margin: 2rem;
+  margin: 2em;
 }
 .DoacoesFinanceiras_Banco {
   display: flex;
@@ -699,7 +699,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 3rem;
+  gap: 3em;
 }
 .DoacoesFinanceiras_Banco_Card {
   display: flex;
@@ -707,7 +707,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-around;
   width: 70%;
-  gap: 2rem;
+  gap: 2em;
 }
 .DoacoesFinanceiras_Banco_Card_ImagemBanco {
   display: flex;
@@ -735,7 +735,7 @@ body.contraste-alto .btn-footer {
   display: inline;
 }
 .container-numeros {
-  margin: 3rem 100px;
+  margin: 3em 100px;
 }
 .tabela-numeros {
   width: 30%;
@@ -746,7 +746,7 @@ body.contraste-alto .btn-footer {
   background-size: cover;
   background-position: center;
   width: 70%;
-  padding: 1rem;
+  padding: 1em;
   border: 10px solid #834a26;
 }
 .grafico-numeros h2 {
@@ -764,8 +764,8 @@ body.contraste-alto .btn-footer {
   align-items: center;
 }
 #legend > label {
-  padding: 0.5rem;
-  margin-right: 1rem;
+  padding: 0.5em;
+  margin-right: 1em;
 }
 #labelDataset0 {
   color: #00ffff;
@@ -787,7 +787,7 @@ body.contraste-alto .btn-footer {
 }
 .grafico-numeros__Elementos__filtroAno > label,
 .grafico-numeros__Elementos__filtroAno > select {
-  margin-right: 0.5rem;
+  margin-right: 0.5em;
 }
 thead th {
   background-color: #8aa895 !important;
@@ -1061,7 +1061,7 @@ td {
     transform: none;
   }
   .titulo-projeto {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-align: center;
     padding: 10px 0;
   }
@@ -1125,7 +1125,7 @@ td {
     flex-direction: column;
   }
   .Contato__Formulario__Sucesso {
-    margin-top: 0rem;
+    margin-top: 0em;
     width: 100%;
   }
   .Estagio__MensagemChamativa {
@@ -1150,10 +1150,10 @@ td {
     margin-right: 0;
     background-color: #fff3d9;
     border: none;
-    font-size: 1.1rem;
+    font-size: 1.1em;
     min-width: auto;
     width: auto;
-    padding: 0.5rem 1rem;
+    padding: 0.5em 1em;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
@@ -1172,7 +1172,7 @@ td {
   }
   .carrossel__botoes h3 {
     padding: 5px 10px;
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
   .container__identidade {
     height: 400px;
@@ -1181,7 +1181,7 @@ td {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 1rem;
+    padding: 1em;
   }
   .container__identidade::before {
     top: -2%;
@@ -1196,7 +1196,7 @@ td {
   }
   .carrossel__texto {
     width: 100%;
-    font-size: 1rem;
+    font-size: 1em;
   }
   .imagem-rotacionada {
     display: none;
