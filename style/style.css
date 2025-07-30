@@ -16,6 +16,7 @@ section {
 }
 
 .lead {
+  font-size: 1.25em;
   font-weight: 400;
   padding: 0;
 }
@@ -47,9 +48,9 @@ header {
 }
 #navbarNav {
   position: relative;
-  margin-right: 3em;
+  margin-right: 3rem;
   margin-bottom: 8px;
-  font-size: 1.1em;
+  font-size: 1.1rem;
 }
 .navbar-brand {
   display: inline-block;
@@ -81,7 +82,7 @@ header {
 .dropdown-menu {
   background-color: #fff3d9;
   border: none;
-  font-size: 1.1em;
+  font-size: 1.1rem;
 }
 .dropdown-item:hover {
   color: #8aa895;
@@ -102,12 +103,12 @@ header {
 }
 .acessibilidade-buttons button {
   background: #8aa895;
-  color: #fff;
+  color: #000;
   border: none;
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   transition: background 0.3s, color 0.3s;
@@ -117,7 +118,59 @@ header {
   color: #fff3d9;
 }
 
-/* Alto contraste */
+/* Alto contraste global */
+body.contraste-alto,
+body.contraste-alto * {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Links amarelos para melhor acessibilidade */
+body.contraste-alto a,
+body.contraste-alto .nav-link,
+body.contraste-alto .dropdown-item {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+/* Botões */
+body.contraste-alto button,
+body.contraste-alto .btn,
+body.contraste-alto .btn-header,
+body.contraste-alto .btn-footer {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Tabelas */
+body.contraste-alto th,
+body.contraste-alto td {
+  background: #222 !important;
+  color: #fff !important;
+}
+
+/* Cards e containers */
+body.contraste-alto .card,
+body.contraste-alto .container,
+body.contraste-alto .timeline-content,
+body.contraste-alto .grafico-numeros {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Remover imagens de fundo */
+body.contraste-alto .grafico-numeros,
+body.contraste-alto .timeline-content.grupo-1,
+body.contraste-alto .timeline-content.grupo-2,
+body.contraste-alto .timeline-content.grupo-3 {
+  background-image: none !important;
+}
+
+/* Alto contraste
 body.contraste-alto {
   background: #111 !important;
   color: #fff !important;
@@ -142,7 +195,7 @@ body.contraste-alto .btn-footer {
   color: white;
   font-weight: bold;
   transition: font-size 0.3s ease;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 .btn-header:hover {
   background-color: #fff3d9;
@@ -155,7 +208,7 @@ body.contraste-alto .btn-footer {
 }
 .btn-transp {
   margin: 0 5px;
-}
+} */
 
 /* =========================
   CAROUSEL
@@ -233,7 +286,7 @@ body.contraste-alto .btn-footer {
   text-align: center;
   background-color: white;
 }
-.img-pemio {
+.img-premio {
   max-width: 90%;
 }
 .partner-logo {
@@ -344,7 +397,7 @@ body.contraste-alto .btn-footer {
   max-width: 80%;
   height: 500px;
   margin: auto auto 50px auto;
-  padding: 2em;
+  padding: 2rem;
   background-color: #a1c2ae;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -501,7 +554,7 @@ body.contraste-alto .btn-footer {
   justify-content: space-between;
   text-align: justify;
   font-size: larger;
-  gap: 5em;
+  gap: 5rem;
 }
 .Estagio img {
   width: 100%;
@@ -513,7 +566,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 3em;
+  gap: 3rem;
   box-sizing: border-box;
 }
 .Estagio__MensagemChamativa__Imagem,
@@ -535,7 +588,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 3em;
+  gap: 3rem;
 }
 .Estagio__Vagas {
   flex-direction: row;
@@ -554,7 +607,7 @@ body.contraste-alto .btn-footer {
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
-  gap: 3em;
+  gap: 3rem;
 }
 .Estagio__Documentacao__Botoes button {
   font-size: x-large;
@@ -566,7 +619,7 @@ body.contraste-alto .btn-footer {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 3em;
+  gap: 3rem;
 }
 .Estagio__Beneficios__MenuCards__card {
   display: flex;
@@ -575,10 +628,10 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-around;
   font-size: x-large;
-  gap: 1em;
+  gap: 1rem;
 }
 .Estagio__Beneficios__MenuCards__card img {
-  width: 4em;
+  width: 4rem;
   height: auto;
   mix-blend-mode: darken;
 }
@@ -587,7 +640,7 @@ body.contraste-alto .btn-footer {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 3em;
+  gap: 3rem;
 }
 .Estagio__Depoimentos__MenuCards__cards {
   display: flex;
@@ -610,7 +663,7 @@ body.contraste-alto .btn-footer {
   justify-content: space-between;
   text-align: justify;
   font-size: larger;
-  gap: 3em;
+  gap: 3rem;
 }
 .Contato img,
 .Contato iframe {
@@ -627,7 +680,7 @@ body.contraste-alto .btn-footer {
   display: flex;
   flex-direction: row;
   align-items: start;
-  gap: 2em;
+  gap: 2rem;
 }
 .Contato__Formulario__Sucesso {
   display: flex;
@@ -637,7 +690,7 @@ body.contraste-alto .btn-footer {
   font-size: xx-large;
   box-sizing: border-box;
   width: 50%;
-  margin-top: 10em;
+  margin-top: 10rem;
   flex-wrap: wrap;
 }
 .Contato__Formulario__Sucesso button {
@@ -659,7 +712,7 @@ body.contraste-alto .btn-footer {
 .Contato__Formulario__InfoAdicionais {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1rem;
   box-sizing: border-box;
   text-align: center;
 }
@@ -673,7 +726,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-between;
   font-size: larger;
-  gap: 3em;
+  gap: 3rem;
 }
 .DoacoesFinanceiras button {
   font-size: x-large;
@@ -682,7 +735,7 @@ body.contraste-alto .btn-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3em;
+  gap: 3rem;
   mix-blend-mode: darken;
   text-align: center;
 }
@@ -691,7 +744,7 @@ body.contraste-alto .btn-footer {
   display: none;
   flex-direction: column;
   align-items: center;
-  margin: 2em;
+  margin: 2rem;
 }
 .DoacoesFinanceiras_Banco {
   display: flex;
@@ -699,7 +752,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 3em;
+  gap: 3rem;
 }
 .DoacoesFinanceiras_Banco_Card {
   display: flex;
@@ -707,7 +760,7 @@ body.contraste-alto .btn-footer {
   align-items: center;
   justify-content: space-around;
   width: 70%;
-  gap: 2em;
+  gap: 2rem;
 }
 .DoacoesFinanceiras_Banco_Card_ImagemBanco {
   display: flex;
@@ -735,7 +788,7 @@ body.contraste-alto .btn-footer {
   display: inline;
 }
 .container-numeros {
-  margin: 3em 100px;
+  margin: 3rem 100px;
 }
 .tabela-numeros {
   width: 30%;
@@ -746,7 +799,7 @@ body.contraste-alto .btn-footer {
   background-size: cover;
   background-position: center;
   width: 70%;
-  padding: 1em;
+  padding: 1rem;
   border: 10px solid #834a26;
 }
 .grafico-numeros h2 {
@@ -764,8 +817,8 @@ body.contraste-alto .btn-footer {
   align-items: center;
 }
 #legend > label {
-  padding: 0.5em;
-  margin-right: 1em;
+  padding: 0.5rem;
+  margin-right: 1rem;
 }
 #labelDataset0 {
   color: #00ffff;
@@ -787,7 +840,7 @@ body.contraste-alto .btn-footer {
 }
 .grafico-numeros__Elementos__filtroAno > label,
 .grafico-numeros__Elementos__filtroAno > select {
-  margin-right: 0.5em;
+  margin-right: 0.5rem;
 }
 thead th {
   background-color: #8aa895 !important;
@@ -853,7 +906,7 @@ td {
 .timeline-btn {
   position: relative;
   flex: 0 0 auto;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   background: #8aa895;
   color: black;
   border: none;
@@ -1061,7 +1114,7 @@ td {
     transform: none;
   }
   .titulo-projeto {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     text-align: center;
     padding: 10px 0;
   }
@@ -1125,7 +1178,7 @@ td {
     flex-direction: column;
   }
   .Contato__Formulario__Sucesso {
-    margin-top: 0em;
+    margin-top: 0rem;
     width: 100%;
   }
   .Estagio__MensagemChamativa {
@@ -1150,10 +1203,10 @@ td {
     margin-right: 0;
     background-color: #fff3d9;
     border: none;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     min-width: auto;
     width: auto;
-    padding: 0.5em 1em;
+    padding: 0.5rem 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
@@ -1172,7 +1225,7 @@ td {
   }
   .carrossel__botoes h3 {
     padding: 5px 10px;
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
   .container__identidade {
     height: 400px;
@@ -1181,7 +1234,7 @@ td {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 1em;
+    padding: 1rem;
   }
   .container__identidade::before {
     top: -2%;
@@ -1196,7 +1249,7 @@ td {
   }
   .carrossel__texto {
     width: 100%;
-    font-size: 1em;
+    font-size: 1rem;
   }
   .imagem-rotacionada {
     display: none;
