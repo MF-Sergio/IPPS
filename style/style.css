@@ -21,6 +21,14 @@ section {
   padding: 0;
 }
 
+a:focus-visible,
+button:focus-visible,
+h3:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid black !important;
+}
+
 /* =========================
   HEADER & NAVBAR
 ========================= */
@@ -365,6 +373,7 @@ body.contraste-alto .btn-footer {
 .quemsomos span img {
   width: 100%;
 }
+
 #quem-somos p {
   position: relative;
 }
@@ -1031,7 +1040,7 @@ td {
   cursor: pointer;
   padding: 10px 20px;
   background-color: #8aa895;
-  color: white;
+  color: black;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
@@ -1040,20 +1049,46 @@ td {
 }
 .container-projetos {
   position: relative;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   overflow: hidden;
 }
 #saude-integral {
-  transform: translateX(180%);
+  transform: translateX(100%);
+}
+#saude-integral.ativo {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+}
+#vivendo-e-acolhendo {
+  transform: translateX(-100%);
+}
+#vivendo-e-acolhendo.ativo {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
 }
 .projeto-container {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   opacity: 0;
-  transform: translateX(-100%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s, transform 0.5s;
 }
 .projeto-container.ativo {
   opacity: 1;
-  transform: translateX(25%) !important;
+  transform: translateX(0);
+  z-index: 1;
 }
 .imagem-rotacionada {
   display: flex;
