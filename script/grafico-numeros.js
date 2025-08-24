@@ -133,6 +133,7 @@ const myChart = new Chart(ctx, {
 
 function checkbox() {
   const legend = document.getElementById("legend");
+
   myChart.data.datasets.forEach((dataset, index) => {
     //adiciona checkboxes inputs do tipo "checkbox"
     let checkbox = document.createElement("input");
@@ -155,6 +156,16 @@ function checkbox() {
     label.appendChild(labelText);
     legend.appendChild(checkbox);
     legend.appendChild(label);
+  });
+
+  const legend_checkbox = document.querySelectorAll("#legend input");
+  legend_checkbox.forEach((checkbox) => {
+    checkbox.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        checkbox.checked = !checkbox.checked;
+        checkboxEffect(myChart, event);
+      }
+    });
   });
 }
 
