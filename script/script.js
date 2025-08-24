@@ -141,8 +141,15 @@ function setupCarousel() {
             });
         });
     }
+    botoes.forEach(botao => {
+        botao.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                botao.click();
+            }
+        });
+    });
 }
-
 // =====================
 // Projetos
 // =====================
@@ -155,7 +162,7 @@ function setupProjetos() {
     if (titulosProjetos.length > 0 && projetos.length > 0 && containerProjetos) {
         function ajustarAlturaProjetos() {
             const larguraTela = window.innerWidth;
-            let alturaProjeto = larguraTela <= 425 ? "820px" : larguraTela <= 1024 ? "1024px" : "600px";
+            let alturaProjeto = larguraTela <= 425 ? "820px" : larguraTela <= 1024 ? "1024px" : "750px";
 
             titulosProjetos.forEach(titulo => {
                 titulo.addEventListener("mouseenter", () => {
@@ -189,7 +196,7 @@ function setupProjetos() {
     const btnDiminuir = document.getElementById('btnDiminuirFonte');
     const btnContraste = document.getElementById('btnContraste');
     const body = document.body;
-    let fonteAtual = 100; // porcentagem
+    let fonteAtual = 100;
 
     function atualizarFonte() {
         body.style.fontSize = fonteAtual + '%';
