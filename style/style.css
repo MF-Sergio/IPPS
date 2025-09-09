@@ -128,7 +128,13 @@ header {
 
 /* Alto contraste global */
 body.contraste-alto,
-body.contraste-alto * {
+body.contraste-alto header,
+body.contraste-alto p,
+body.contraste-alto span,
+body.contraste-alto .container__identidade,
+body.contraste-alto article,
+body.contraste-alto h2,
+body.contraste-alto h3 {
   background: #111 !important;
   color: #fff !important;
   border-color: #fff !important;
