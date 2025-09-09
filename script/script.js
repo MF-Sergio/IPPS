@@ -160,31 +160,30 @@ function setupProjetos() {
     const containerProjetos = document.querySelector(".container-projetos");
 
     if (titulosProjetos.length > 0 && projetos.length > 0 && containerProjetos) {
-        function ajustarAlturaProjetos() {
-            const larguraTela = window.innerWidth;
-            let alturaProjeto = larguraTela <= 425 ? "820px" : larguraTela <= 1024 ? "1024px" : "750px";
+        titulosProjetos.forEach(titulo => {
+            titulo.addEventListener("mouseenter", () => {
+                const target = titulo.getAttribute("data-target");
 
-            titulosProjetos.forEach(titulo => {
-                titulo.addEventListener("mouseenter", () => {
-                    const target = titulo.getAttribute("data-target");
+                projetos.forEach(projeto => projeto.classList.remove("ativo"));
+                const projetoAtivo = document.getElementById(target);
 
-                    projetos.forEach(projeto => projeto.classList.remove("ativo"));
-                    const projetoAtivo = document.getElementById(target);
-
-                    if (projetoAtivo) {
-                        projetoAtivo.classList.add("ativo");
-                        containerProjetos.style.height = alturaProjeto;
-                    } else {
-                        containerProjetos.style.height = "0";
-                    }
-                });
+                if (projetoAtivo) {
+                    projetoAtivo.classList.add("ativo");
+                    // Altura dinâmica baseada no conteúdo do projeto ativo
+                    containerProjetos.style.height = (projetoAtivo.scrollHeight + 50) + "px";
+                } else {
+                    containerProjetos.style.height = "auto";
+                }
             });
+        });
 
-            projetos.forEach(projeto => projeto.classList.remove("ativo"));
-        }
-
-        ajustarAlturaProjetos();
-        window.addEventListener("resize", ajustarAlturaProjetos);
+        // Ajusta altura ao redimensionar a tela
+        window.addEventListener("resize", () => {
+            const projetoAtivo = containerProjetos.querySelector(".projeto-container.ativo");
+            if (projetoAtivo) {
+                containerProjetos.style.height = projetoAtivo.scrollHeight + "px";
+            }
+        });
     }
 }
 
