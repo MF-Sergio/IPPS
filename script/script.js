@@ -194,6 +194,7 @@ function setupProjetos() {
     const btnAumentar = document.getElementById('btnAumentarFonte');
     const btnDiminuir = document.getElementById('btnDiminuirFonte');
     const btnContraste = document.getElementById('btnContraste');
+    const divRasgo = document.querySelectorAll('.img_rasgo');
     const body = document.body;
     let fonteAtual = 100;
 
@@ -219,6 +220,7 @@ function setupProjetos() {
     if (btnContraste) {
         btnContraste.addEventListener('click', () => {
             body.classList.toggle('contraste-alto');
+            divRasgo.forEach(img => img.classList.toggle('invert'));
         });
     }
 })();
