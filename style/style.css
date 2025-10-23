@@ -278,6 +278,7 @@ header {
   display: flex;
   width: 100%;
 }
+
 .slogan {
   position: absolute;
   margin: 0 10% 0;
