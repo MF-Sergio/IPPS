@@ -1,6 +1,7 @@
 # IPPS — Instituto (Projeto)
 
 Versão ao vivo: https://ipps.com.br/
+Versão em protótipo, com elementos de acessibilidade: https://ipps-mu.vercel.app/
 
 Sobre
 -----
