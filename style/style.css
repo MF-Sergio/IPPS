@@ -798,6 +798,10 @@ a {
   display: none;
 }
 
+.secao-smas {
+  display: none;
+}
+
 .mostrar {
   display: block;
 }

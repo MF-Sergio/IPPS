@@ -2,10 +2,26 @@
 function setupSMPD() {
     const btnSMPD = document.querySelector(".mostrar-smpd");
     const secaoSMPD = document.querySelector(".secao-smpd");
+    const secaoSMAS = document.querySelector(".secao-smas");
 
     if (btnSMPD && secaoSMPD) {
         btnSMPD.addEventListener("click", () => {
-            secaoSMPD.classList.toggle("mostrar");
+            const isShowing = secaoSMPD.classList.toggle("mostrar");
+            if (isShowing && secaoSMAS) secaoSMAS.classList.remove("mostrar");
+        });
+    }
+}
+
+// Função para mostrar/ocultar a seção SMAS
+function setupSMAS() {
+    const btnSMAS = document.querySelector(".mostrar-smas");
+    const secaoSMAS = document.querySelector(".secao-smas");
+    const secaoSMPD = document.querySelector(".secao-smpd");
+
+    if (btnSMAS && secaoSMAS) {
+        btnSMAS.addEventListener("click", () => {
+            const isShowing = secaoSMAS.classList.toggle("mostrar");
+            if (isShowing && secaoSMPD) secaoSMPD.classList.remove("mostrar");
         });
     }
 }
@@ -172,6 +188,7 @@ function setupProjetos() {
 // Inicialização de todas as funcionalidades
 document.addEventListener("DOMContentLoaded", function () {
     setupSMPD();
+    setupSMAS();
     setupHeaderScroll();
     setupNavbarObserver();
     setupTimeline();
