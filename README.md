@@ -56,7 +56,7 @@ Transformar o IPPS em um tipo de **incubadora de ONGs**, expandindo sua rede de 
 - ✅ **Foco Visível** - Indicadores claros de navegação
 
 ### 📱 Design Responsivo
-- 📱 **Mobile First** - Otimizado para dispositivos móveis
+- 📱 **Mobile** - Adaptabilidade a sistemas mobile
 - 💻 **Desktop** - Interface completa para telas grandes
 - 📊 **Tablet** - Adaptação perfeita para tablets
 - ⚡ **Performance** - Carregamento rápido em todas as conexões
@@ -184,43 +184,6 @@ Versão em protótipo com **elementos de acessibilidade avançados** e recursos 
 - Navegador web moderno
 - Node.js (opcional, para gerenciar dependências)
 - Editor de código (VS Code recomendado)
-
-### Instalação
-
-1. **Clone o repositório**
-```bash
-git clone https://github.com/MF-Sergio/IPPS.git
-```
-
-2. **Navegue até a pasta**
-```bash
-cd IPPS
-```
-
-3. **Instale as dependências (opcional)**
-```bash
-npm install
-```
-
-4. **Abra o projeto**
-- **Opção 1**: Abra `index.html` diretamente no navegador
-- **Opção 2**: Use um servidor local
-
-```bash
-# Com Python 3
-python -m http.server 8000
-
-# Com Node.js (npx)
-npx http-server -p 8000
-
-# Com VS Code Live Server
-# Clique direito em index.html > "Open with Live Server"
-```
-
-5. **Acesse no navegador**
-```
-http://localhost:8000
-```
 
 ## 📊 Funcionalidades em Destaque
 
@@ -456,9 +419,15 @@ Este projeto foi desenvolvido para o **IPPS - Instituto de Promoção e Proteç�
 - 📱 **Telefone**: (XX) XXXX-XXXX
 - 📍 **Endereço**: [Localização da Sede]
 
-### Desenvolvedor do Projeto
+### Desenvolvedores do Projeto
 
-**Sergio Mendes** - Desenvolvedor Front-End
+**Sergio Mendes**
+**Lucas Hideaki**
+**Julio Vieira**
+
+### Designers do projeto ###
+
+**
 
 - GitHub: [@MF-Sergio](https://github.com/MF-Sergio)
 - Projeto: [IPPS Repository](https://github.com/MF-Sergio/IPPS)
