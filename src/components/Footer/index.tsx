@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#212529] text-white pb-6 pt-16 mt-20 border-t flex items-center justify-center" style={{ fontFamily: 'Inter' }}>
       <div className="container mx-auto px-4">
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-32 md:grid-cols-4">
           <div className="flex flex-col">
             <img src="./src/assets/img/logo.png" alt="IPPS Logo" width='89px' />
             <p className="mt-4 text-sm font-normal">
