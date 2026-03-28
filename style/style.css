@@ -1,3 +1,7 @@
+/* ==============================
+   BASE GLOBAL
+   ============================== */
+
 body {
   position: relative;
   background-color: #fff3d9;
@@ -8,21 +12,22 @@ section {
   scroll-margin-top: 100px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .lead {
   font-weight: 400;
 }
-
-/* .rasgo {
-  background-color: #fff3d9;
-  background-color: #f2d9b5;
-  background-color: #f2d9b5;
-  background-color: #f2d9b5;
-} */
 
 .img__rasgo {
   display: flex;
   width: 100%;
 }
+
+/* ==============================
+   CABECALHO E NAVEGACAO
+   ============================== */
 
 header {
   position: fixed;
@@ -35,39 +40,8 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.btn-header:hover {
-  background-color: #fff3d9;
-  border: 2px solid #a40201;
-  color: black;
-}
-
-.btn-header {
-  background-color: #a40201;
-  border: 2px solid #a40201;
-  margin-left: 10px;
-  color: white;
-  font-weight: bold;
-  transition: font-size 0.3s ease;
-  font-size: 1.2rem;
-}
-
-.btn-footer {
-  width: 250px;
-  height: 50px;
-}
-
-.nav-link,
-.dropdown-item {
-  color: black;
-  font-weight: bolder;
-}
-
-.nav-link:hover {
-  color: #a40201;
-}
-
 .navbar {
-  padding: 0px 15px;
+  padding: 0 15px;
 }
 
 #navbarNav {
@@ -80,14 +54,33 @@ header {
 .navbar-brand {
   display: inline-block;
   width: 6%;
-  transition: all 0.2s ease; /* Transição suave */
+  transition: all 0.2s ease;
 }
 
 .logo-head {
   display: block;
   height: 120px;
   width: auto;
-  transition: all 0.3s ease; /* Transição suave */
+  transition: all 0.3s ease;
+}
+
+.header-scrolled {
+  height: 100px;
+}
+
+.header-scrolled .logo-head {
+  height: 80px;
+  padding-bottom: 15px;
+}
+
+.nav-link,
+.dropdown-item {
+  color: black;
+  font-weight: bolder;
+}
+
+.nav-link:hover {
+  color: #a40201;
 }
 
 .dropdown:hover > .dropdown-menu {
@@ -104,24 +97,39 @@ header {
   font-size: 1.1rem;
 }
 
-/*Edições no scroll do cabeçalho*/
-.header-scrolled {
-  height: 100px;
-}
-
-.header-scrolled .logo-head {
-  height: 80px;
-  padding-bottom: 15px;
-}
-/* *** */
-
 .dropdown-item:hover {
   color: #8aa895;
   background-color: transparent;
 }
 
+.btn-header {
+  background-color: #a40201;
+  border: 2px solid #a40201;
+  margin-left: 10px;
+  color: white;
+  font-weight: bold;
+  transition: font-size 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.btn-header:hover {
+  background-color: #fff3d9;
+  border: 2px solid #a40201;
+  color: black;
+}
+
+/* ==============================
+   INDEX - CAROUSEL
+   ============================== */
+
 .carousel-inner {
   height: 650px;
+}
+
+.carousel-inner .carousel-item {
+  transition:
+    transform 0.6s ease-in-out,
+    opacity 0.6s ease;
 }
 
 .foto-carousel {
@@ -135,8 +143,8 @@ header {
 .slogan {
   position: absolute;
   margin: 0 10% 0;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   max-width: 100%;
   height: 80vh;
   justify-content: center;
@@ -149,24 +157,13 @@ header {
   font-size: 3rem;
 }
 
-.patrocinadores {
-  text-align: center;
-  background-color: white;
-}
-
-.img-premio {
-  max-width: 90%;
-}
-
-.logo-footer {
-  width: 200px;
-}
-
 .carousel-indicators button {
   background-color: #999;
   border: 1px solid #333;
   margin: 0 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .carousel-indicators button.active {
@@ -197,11 +194,10 @@ header {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.carousel-inner .carousel-item {
-  transition: transform 0.6s ease-in-out, opacity 0.6s ease;
-}
+/* ==============================
+   INDEX - QUEM SOMOS
+   ============================== */
 
-/* Parte do quem é o IPPS */
 #quem-somos p {
   position: relative;
 }
@@ -230,6 +226,10 @@ header {
   background-size: cover;
   background-position: center;
   z-index: 1;
+}
+
+.titulo-quemsomos {
+  text-align: center;
 }
 
 .quemsomos {
@@ -263,25 +263,6 @@ header {
   width: 100%;
 }
 
-@media (max-width: 1024px) {
-  .quemsomos .d-flex {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .quemsomos .d-flex p,
-  .quemsomos span {
-    margin: 0;
-    width: 90%;
-    transform: none;
-  }
-}
-
-/* ESTILO DO INDEX */
-.titulo-quemsomos {
-  text-align: center;
-}
-
 .main-text {
   color: #000;
   width: 90%;
@@ -290,6 +271,10 @@ header {
   border-radius: 10px;
   margin: 0 auto;
 }
+
+/* ==============================
+   INDEX - IDENTIDADE (CARROSSEL INTERNO)
+   ============================== */
 
 .container__identidade {
   position: relative;
@@ -335,20 +320,6 @@ header {
   margin-top: 20px;
 }
 
-@media (max-width: 1024px) {
-  .container__identidade {
-    max-width: 90%;
-  }
-
-  .carrossel__botoes {
-    margin-top: 40px;
-  }
-
-  .carousel-item .row {
-    flex-direction: row;
-  }
-}
-
 .carrossel__botoes h3 {
   cursor: pointer;
   padding: 10px 20px;
@@ -381,7 +352,9 @@ header {
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: transform 0.5s ease-in-out, opacity 0.5s;
+  transition:
+    transform 0.5s ease-in-out,
+    opacity 0.5s;
 }
 
 .carrossel__item.ativo {
@@ -415,9 +388,33 @@ header {
   width: 50%;
   margin-left: 25%;
 }
-/* fim da parte de quem é o IPPS */
 
-/* Container para os ícones de evento e WhatsApp */
+/* ==============================
+   INDEX - PATROCINADORES / CERTIFICADOS
+   ============================== */
+
+.patrocinadores {
+  text-align: center;
+  background-color: white;
+}
+
+.img-premio {
+  max-width: 90%;
+}
+
+/* ==============================
+   COMPONENTES COMPARTILHADOS
+   ============================== */
+
+.btn-footer {
+  width: 250px;
+  height: 50px;
+}
+
+.logo-footer {
+  width: 200px;
+}
+
 .social-icons-container {
   position: fixed;
   bottom: 30px;
@@ -429,7 +426,6 @@ header {
   z-index: 999;
 }
 
-/* Ícone do WhatsApp */
 .whatsapp-icon img {
   width: 50px;
   cursor: pointer;
@@ -443,10 +439,6 @@ header {
   cursor: pointer;
 }
 
-a {
-  text-decoration: none;
-}
-
 .partner-logo {
   width: 120px;
   height: 120px;
@@ -454,12 +446,40 @@ a {
   border-radius: 8px;
 }
 
-@media (max-width: 1024px) {
-  .partner-logo {
-    width: 100px !important;
-    height: 100px !important;
-  }
+.modal-content {
+  background-color: #222;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
 }
+
+.modal-body img {
+  height: 700px;
+}
+
+.modal-header .btn-close {
+  background-color: #fff;
+  opacity: 1;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-danger {
+  background-color: #f01a61;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #d01754;
+}
+
+/* ==============================
+   PAGINA TRANSPARENCIA
+   ============================== */
 
 .btn-transp {
   margin: 0 5px;
@@ -471,14 +491,32 @@ a {
 
 .topico-smpd {
   margin: 5px 25px;
-  h4 {
-    font-weight: 500;
-  }
-  p {
-    color: red;
-    font-weight: bolder;
-  }
 }
+
+.topico-smpd h4 {
+  font-weight: 500;
+}
+
+.topico-smpd p {
+  color: red;
+  font-weight: bolder;
+}
+
+.secao-smpd {
+  display: none;
+}
+
+.secao-smas {
+  display: none;
+}
+
+.mostrar {
+  display: block;
+}
+
+/* ==============================
+    ESTAGIO
+   ============================== */
 
 .Estagio {
   margin: 0;
@@ -509,6 +547,7 @@ a {
 .Estagio__MensagemChamativa__Imagem {
   width: 50%;
 }
+
 .Estagio__MensagemChamativa__Texto {
   width: 50%;
 }
@@ -643,6 +682,10 @@ a {
   justify-content: space-around;
 }
 
+/* ==============================
+   PAGINA CONTATO
+   ============================== */
+
 .Contato {
   margin: 0;
   padding: 0;
@@ -719,6 +762,10 @@ a {
   text-align: center;
 }
 
+/* ==============================
+   PAGINA DOE AGORA (DOACOES)
+   ============================== */
+
 .DoacoesFinanceiras {
   display: flex;
   flex-direction: column;
@@ -779,6 +826,7 @@ a {
   width: 50%;
   height: auto;
 }
+
 .DoacoesFinanceiras_Banco_Card_InformacoesBanco {
   display: flex;
   flex-direction: column;
@@ -793,107 +841,10 @@ a {
   align-items: center;
 }
 
-/* PÁGINA TRANSPARÊNCIA */
-.secao-smpd {
-  display: none;
-}
+/* ==============================
+   PARCEIROS
+   ============================== */
 
-.secao-smas {
-  display: none;
-}
-
-.mostrar {
-  display: block;
-}
-/*  */
-
-@media screen and (max-width: 775px) {
-  header {
-    position: absolute;
-    background-color: inherit;
-  }
-
-  .header-scrolled {
-    height: inherit;
-  }
-
-  .header-scrolled .logo-head {
-    height: inherit;
-    width: inherit;
-  }
-
-  .navbar {
-    padding: 0 10px;
-  }
-  .nav-item {
-    text-align: center;
-  }
-
-  .dropdown {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .div-buttons-tranp {
-    flex-direction: column;
-  }
-
-  .btn-transp {
-    margin: 5px 0px;
-  }
-
-  .row {
-    margin-right: 0 !important;
-  }
-
-  .div-smpd {
-    justify-content: flex-start !important;
-  }
-
-  footer > div {
-    align-items: center;
-    text-align: center;
-  }
-
-  .div-logo-footer {
-    justify-content: center;
-  }
-
-  .Contato__Formulario {
-    flex-direction: column;
-  }
-
-  .Contato__Formulario__Sucesso {
-    margin-top: 0rem;
-    width: 100%;
-  }
-
-  .Estagio__MensagemChamativa {
-    flex-direction: column;
-  }
-
-  .Estagio__MensagemChamativa__Imagem {
-    width: 90%;
-  }
-  .Estagio__MensagemChamativa__Texto {
-    width: 90%;
-  }
-
-  .Estagio__Carreira {
-    flex-direction: column;
-  }
-
-  .Estagio__Carreira__Texto {
-    width: 90%;
-  }
-
-  .Estagio__Carreira__Imagem {
-    width: 90%;
-  }
-}
-
-/* PÁGINA PARCEIROS */
 .container-parceiros {
   display: grid;
   text-align: center;
@@ -931,28 +882,16 @@ a {
   margin: 0 auto;
 }
 
-@media (max-width: 1024px) {
-  #parceiros .row {
-    flex-direction: column;
-    align-items: center;
-  }
-}
+/* ==============================
+   NUMEROS
+   ============================== */
 
-/* *** */
-
-/* PÁGINA NUMEROS */
 #nossos-numeros {
   display: inline;
 }
 
 .container-numeros {
   margin: 3rem 100px;
-}
-
-@media (max-width: 720px) {
-  .container-numeros {
-    margin: 3rem 20px;
-  }
 }
 
 thead th {
@@ -1005,6 +944,7 @@ td {
   color: #00ffff;
   font-weight: 700;
 }
+
 #labelDataset1 {
   color: #ff69b4;
   font-weight: 700;
@@ -1030,20 +970,10 @@ td {
   margin-right: 0.5rem;
 }
 
-@media (max-width: 1024px) {
-  .tabela-numeros {
-    width: 100%;
-    margin: 0;
-  }
+/* ==============================
+   HISTORIA
+   ============================== */
 
-  .container-numeros {
-    flex-direction: column;
-  }
-}
-
-/*/* *** */
-
-/* PÁGINA NOSSA HISTÓRIA */
 .timeline-container {
   position: relative;
   display: flex;
@@ -1066,7 +996,9 @@ td {
   display: none;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .timeline-item.active {
@@ -1089,7 +1021,7 @@ td {
   background-color: #4c6153;
   color: #ffffff;
   border: none;
-  padding: 0px 16px;
+  padding: 0 16px;
   border-radius: 5px;
   font-size: 50px;
   transition: background-color 0.3s;
@@ -1126,10 +1058,9 @@ td {
   width: 50px;
   height: 60px;
   background-image: url(../assets/png/pins-154959_1920-pink.png);
-  background-size: cover;
+  background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 80%;
   z-index: 1;
 }
 
@@ -1145,11 +1076,6 @@ td {
   border-radius: 10px;
   background: #f9f9f9;
   text-align: center;
-}
-
-.timeline-content {
-  padding: 20px;
-  border-radius: 10px;
   transition: background-image 0.5s ease;
 }
 
@@ -1175,42 +1101,10 @@ td {
   font-size: 2em;
 }
 
-/*/* *** */
+/* ==============================
+   PROJETOS
+   ============================== */
 
-.modal-content {
-  background-color: #222;
-  color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.modal-body img {
-  height: 700px;
-}
-
-.modal-header .btn-close {
-  background-color: #fff;
-  opacity: 1;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-danger {
-  background-color: #f01a61;
-  border: none;
-}
-
-.btn-danger:hover {
-  background-color: #d01754;
-}
-
-/* *** */
-
-/* PÁGINA PROJETO */
 .definicao {
   margin: 1em;
 }
@@ -1219,7 +1113,6 @@ td {
   margin: 1em;
 }
 
-/* Estilo para os títulos dos projetos */
 .projetos-titulos {
   display: flex;
   justify-content: center;
@@ -1249,24 +1142,18 @@ td {
   transform: translateX(180%);
 }
 
-/* Ocultar os projetos inicialmente */
 .projeto-container {
   position: absolute;
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
-/* Estilo para o projeto ativo */
 .projeto-container.ativo {
   opacity: 1;
   transform: translateX(25%) !important;
-}
-
-@media (max-width: 1024px) {
-  .projeto-container.ativo {
-    transform: translateX(2%) !important;
-  }
 }
 
 .imagem-rotacionada {
@@ -1279,7 +1166,117 @@ td {
   transform: rotate(7deg);
 }
 
+/* ==============================
+   NEWSLETTER
+   ============================== */
+
+@font-face {
+  font-display: block;
+  font-family: Roboto;
+  src:
+    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: Roboto;
+  font-weight: 600;
+  src:
+    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: Roboto;
+  font-weight: 700;
+  src:
+    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff)
+      format("woff");
+}
+
+#sib-container input:-ms-input-placeholder {
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container input::placeholder {
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container textarea::placeholder {
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container a {
+  text-decoration: underline;
+  color: #2bb2fc;
+}
+
+/* ==============================
+   RESPONSIVO - TABLET (ATE 1024px)
+   ============================== */
+
 @media (max-width: 1024px) {
+  .quemsomos .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quemsomos .d-flex p,
+  .quemsomos span {
+    margin: 0;
+    width: 90%;
+    transform: none;
+  }
+
+  .container__identidade {
+    max-width: 90%;
+  }
+
+  .carrossel__botoes {
+    margin-top: 40px;
+  }
+
+  .carousel-item .row {
+    flex-direction: row;
+  }
+
+  .partner-logo {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  #parceiros .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tabela-numeros {
+    width: 100%;
+    margin: 0;
+  }
+
+  .container-numeros {
+    flex-direction: column;
+  }
+
+  .projeto-container.ativo {
+    transform: translateX(2%) !important;
+  }
+
   .row {
     flex-direction: column;
   }
@@ -1314,6 +1311,103 @@ td {
   }
 }
 
+/* ==============================
+   RESPONSIVO - TELAS MEDIAS (ATE 775px)
+   ============================== */
+
+@media screen and (max-width: 775px) {
+  header {
+    position: absolute;
+    background-color: inherit;
+  }
+
+  .header-scrolled {
+    height: inherit;
+  }
+
+  .header-scrolled .logo-head {
+    height: inherit;
+    width: inherit;
+  }
+
+  .navbar {
+    padding: 0 10px;
+  }
+
+  .nav-item {
+    text-align: center;
+  }
+
+  .dropdown {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .div-buttons-tranp {
+    flex-direction: column;
+  }
+
+  .btn-transp {
+    margin: 5px 0;
+  }
+
+  .row {
+    margin-right: 0 !important;
+  }
+
+  .div-smpd {
+    justify-content: flex-start !important;
+  }
+
+  footer > div {
+    align-items: center;
+    text-align: center;
+  }
+
+  .div-logo-footer {
+    justify-content: center;
+  }
+
+  .Contato__Formulario {
+    flex-direction: column;
+  }
+
+  .Contato__Formulario__Sucesso {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .Estagio__MensagemChamativa {
+    flex-direction: column;
+  }
+
+  .Estagio__MensagemChamativa__Imagem,
+  .Estagio__MensagemChamativa__Texto,
+  .Estagio__Carreira__Texto,
+  .Estagio__Carreira__Imagem {
+    width: 90%;
+  }
+
+  .Estagio__Carreira {
+    flex-direction: column;
+  }
+}
+
+/* ==============================
+   RESPONSIVO - CELULAR (ATE 720px)
+   ============================== */
+
+@media (max-width: 720px) {
+  .container-numeros {
+    margin: 3rem 20px;
+  }
+}
+
+/* ==============================
+   RESPONSIVO - CELULAR PEQUENO (ATE 425px)
+   ============================== */
+
 @media (max-width: 425px) {
   #navbarNav {
     position: absolute;
@@ -1346,6 +1440,7 @@ td {
   .carrossel__botoes {
     gap: 2px;
   }
+
   .carrossel__botoes h3 {
     padding: 5px 10px;
     font-size: 1.5rem;
@@ -1365,6 +1460,7 @@ td {
     top: -2%;
     left: 80%;
   }
+
   .container__identidade::after {
     top: 83%;
     left: 3%;
