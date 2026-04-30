@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --sans: "Source Sans 3", sans-serif;
+  --heading: "Source Sans 3", sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 }
 
