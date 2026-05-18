@@ -6,5 +6,5 @@ export default function Home() {
       {/* Conteúdo da Home separe por sessoes, crie componentes de sessions para cada uma das sessões */}
       <Hero />
     </div>
-  )
+  );
 }
