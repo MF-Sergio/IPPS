@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --titulo: #a9171a;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 }
 
@@ -16,7 +18,7 @@ body,
 body {
   font-family: var(--sans);
   line-height: 1.6;
-  background-color: #FEF8F8;
+  background-color: #fef8f8;
   color: #333;
   margin: 0;
   padding: 0;
@@ -32,3 +34,6 @@ h6 {
   font-weight: 600;
 }
 
+.titulo {
+  color: var(--titulo);
+}
