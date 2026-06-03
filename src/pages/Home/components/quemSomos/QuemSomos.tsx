@@ -1,3 +1,11 @@
+import Caixa from "../Caixa/Caixa.jsx";
+import {
+  PersonWheelchair,
+  Box2HeartFill,
+  PeopleFill,
+  ShieldCheck,
+} from "react-bootstrap-icons";
+
 export default function QuemSomos() {
   return (
     <div className="bg-white py-16">
@@ -13,6 +21,28 @@ export default function QuemSomos() {
           bem-estar, com foco em pessoas com deficiência e suas famílias,
           atuando nas áreas social, esportiva, cultural e de lazer.
         </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <Caixa
+          icone={<PersonWheelchair />}
+          title="DESCRIÇÃO"
+          descricao="Eliminamos barreiras arquitetônicas e atitudidinais para promover a inclusão plena."
+        ></Caixa>
+        <Caixa
+          icone={<Box2HeartFill />}
+          title="CIDADANIA"
+          descricao="Desenvolvemos programas que promovem autonomia e direitos das pessoas com deficiência."
+        ></Caixa>
+        <Caixa
+          icone={<PeopleFill />}
+          title="COMUNIDADE"
+          descricao="Atuamos junto a famílias em vulnerabilidade social, fortalecendo laços comunitários."
+        ></Caixa>
+        <Caixa
+          icone={<ShieldCheck />}
+          title="TRANSPARÊNCIA"
+          descricao="Eliminamos barreiras arquitetônicas e atitudidinais para promover a inclusão plena."
+        ></Caixa>
       </div>
     </div>
   );
