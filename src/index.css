@@ -2,7 +2,10 @@
 
 :root {
   --titulo: #a9171a;
-  --icones: #7B1E3D
+  --icones: #7b1e3d;
+  --fundo: #fef8f8;
+  --borda: #7b7b7c;
+  --branco: #f8f9fa;
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -22,6 +25,7 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 h1,
