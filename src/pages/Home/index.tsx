@@ -1,6 +1,7 @@
 import Hero from "./components/Hero.tsx";
 import QuemSomos from "./components/QuemSomos/QuemSomos.jsx";
 import NossoImpacto from "./components/NossoImpacto/NossoImpacto.jsx";
+import NossosProjetos from "./components/NossosProjetos/NossosProjetos.jsx";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <QuemSomos />
       <NossoImpacto />
+      <NossosProjetos />
     </div>
   );
 }

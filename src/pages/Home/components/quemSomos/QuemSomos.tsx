@@ -5,23 +5,19 @@ import {
   PeopleFill,
   ShieldCheck,
 } from "react-bootstrap-icons";
+import BlocoLayout from "../../../../layout/BlocoLayout.jsx";
 
 export default function QuemSomos() {
   return (
-    <div className="bg-[var(--fundo)] py-16 ">
-      <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold mb-8 text-center titulo">
-          Quem Somos
-        </h2>
-        <h3 className="text-xl text-black-700 font-bold mb-8 text-center ">
-          Mais de 20 anos dedicados à inclusão social
-        </h3>
-        <p className="text-lg text-gray-700 mb-6">
-          O IPPS é uma associação sem fins lucrativos que promove cidadania e
-          bem-estar, com foco em pessoas com deficiência e suas famílias,
-          atuando nas áreas social, esportiva, cultural e de lazer.
-        </p>
-      </div>
+    <BlocoLayout titulo="Quem Somos">
+      <h3 className="text-xl text-black-700 font-bold mb-8 text-center ">
+        Mais de 20 anos dedicados à inclusão social
+      </h3>
+      <p className="text-lg text-gray-700 mb-6">
+        O IPPS é uma associação sem fins lucrativos que promove cidadania e
+        bem-estar, com foco em pessoas com deficiência e suas famílias, atuando
+        nas áreas social, esportiva, cultural e de lazer.
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Caixa
           icone={<PersonWheelchair />}
@@ -44,6 +40,6 @@ export default function QuemSomos() {
           descricao="Eliminamos barreiras arquitetônicas e atitudidinais para promover a inclusão plena."
         ></Caixa>
       </div>
-    </div>
+    </BlocoLayout>
   );
 }
