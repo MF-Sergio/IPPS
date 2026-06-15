@@ -1,4 +1,5 @@
 import ImagemPublic from "../ImagemPublic/ImagemPublic";
+import { ArrowRight } from "react-bootstrap-icons";
 
 export function CaixaComImagem(props) {
   return (
@@ -11,7 +12,12 @@ export function CaixaComImagem(props) {
         {props.titulo}
       </h2>
       <p className="p-6 text-justify">{props.descricao}</p>
-      <button>Saiba mais</button>
+      <div className="flex items-center justify-end w-full px-6 py-3">
+        <button className="w-full text-right p-3 text-[var(--titulo)] text-xl font-bold">
+          Saiba mais
+        </button>
+        <ArrowRight className="text-[var(--titulo)] text-3xl font-bold" />
+      </div>
     </div>
   );
 }
