@@ -4,7 +4,7 @@ import BlocoLayout from "../../../../layout/BlocoLayout.jsx";
 export function NossoImpacto() {
   return (
     <BlocoLayout titulo={"Nosso Impacto"}>
-      <div className="bg-[var(--vermelho)] flex flex-col items-center justify-center content-center p-3 rounded-lg ">
+      <div className="bg-[var(--vermelho)] flex flex-col items-center justify-center content-center p-3 rounded-lg shadow-md">
         <h1 className="text-4xl text-[var(--branco)]  mt-8">
           Números que contam história
         </h1>

@@ -1,7 +1,7 @@
 import ImagemPublic from "../ImagemPublic/ImagemPublic";
 import { ArrowRight } from "react-bootstrap-icons";
 
-export function CaixaComImagem(props) {
+export function CardComImagem(props) {
   return (
     <div className="flex flex-col bg-white-100 rounded-lg border-1 border-[var(--borda)]-300 items-center justify-center w-96 content-center">
       <div className="flex items-center justify-center">
@@ -22,4 +22,4 @@ export function CaixaComImagem(props) {
   );
 }
 
-export default CaixaComImagem;
+export default CardComImagem;
