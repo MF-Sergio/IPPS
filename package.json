@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@material-design-icons/font": "^0.14.15",
     "@tailwindcss/vite": "^4.2.2",
     "react": "^19.2.4",
     "react-bootstrap-icons": "^1.11.6",

@@ -1,5 +1,5 @@
 import Hero from "./components/Hero.tsx";
-import QuemSomos from "./components/QuemSomos/QuemSomos.jsx";
+import QuemSomos from "./components/quemSomos/QuemSomos.tsx";
 import NossoImpacto from "./components/NossoImpacto/NossoImpacto.jsx";
 import NossosProjetos from "./components/NossosProjetos/NossosProjetos.jsx";
 
