@@ -1,4 +1,4 @@
-import Carrossel from "../carrossel/carrossel.tsx";
+import Carrossel from "../carrossel/carrossel";
 
 export default function Hero() {
   return (
