@@ -3,6 +3,7 @@ import QuemSomos from "./components/quemSomos/QuemSomos.tsx";
 import NossoImpacto from "./components/NossoImpacto/NossoImpacto.jsx";
 import NossosProjetos from "./components/NossosProjetos/NossosProjetos.jsx";
 import Abrangencia from "./components/Abrangencia/Abrangencia.jsx";
+import Parceira from "./components/Parceira/Parceira.jsx";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <NossoImpacto />
       <NossosProjetos />
       <Abrangencia />
+      <Parceira />
     </div>
   );
 }
