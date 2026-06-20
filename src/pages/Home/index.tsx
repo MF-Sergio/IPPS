@@ -4,6 +4,7 @@ import NossoImpacto from "./components/NossoImpacto/NossoImpacto.jsx";
 import NossosProjetos from "./components/NossosProjetos/NossosProjetos.jsx";
 import Abrangencia from "./components/Abrangencia/Abrangencia.jsx";
 import Parceira from "./components/Parceira/Parceira.jsx";
+import Doacao from "./components/Doacao/Doacao.tsx";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <NossosProjetos />
       <Abrangencia />
       <Parceira />
+      <Doacao />
     </div>
   );
 }
