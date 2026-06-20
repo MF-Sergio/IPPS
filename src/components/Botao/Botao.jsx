@@ -1,23 +1,32 @@
-import styles from "../../styles/botao.module.css";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export function Botao(props) {
+export function Botao({ texto, pagina, icone, mensagemAlert, className = "" }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (props.pagina === undefined) {
-      alert(props.mensagemAlert);
+    if (!pagina) {
+      alert(mensagemAlert);
     } else {
-      navigate(props.pagina);
+      navigate(pagina);
     }
   };
 
   return (
     <button
-      className={{ ...styles.button, ...props.style }}
+      className={`
+        flex items-center justify-center gap-3
+        py-2 px-5
+        bg-[#216587] text-white
+        rounded-lg
+        transition-colors duration-200
+        cursor-pointer
+        ${className}
+      `}
       onClick={handleClick}
     >
-      {props.texto}
+      {icone && <FontAwesomeIcon icon={icone} />}
+      {texto}
     </button>
   );
 }

@@ -1,6 +1,8 @@
 import BlocoLayout from "../../../../layout/BlocoLayout.jsx";
 import ImagemPublic from "../../../../components/ImagemPublic/ImagemPublic.jsx";
-import { Botao } from "../../../../components/Botao/botao.jsx";
+import { Botao } from "../../../../components/Botao/Botao.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHandshake } from "@fortawesome/free-solid-svg-icons";
 
 export function Parceira() {
   return (
@@ -10,7 +12,9 @@ export function Parceira() {
           /<ImagemPublic nomeImagem="seja_parceira.png"></ImagemPublic>
         </div>
         <div className="w-1/2 flex flex-col items-center justify-center">
-          <div className="p-6 bg-red-100 rounded-lg mb-4 flex items-center justify-center w-16 h-16"></div>
+          <div className="p-6 bg-red-100 rounded-lg mb-4 flex items-center justify-center w-16 h-16">
+            <FontAwesomeIcon icon={faHandshake} />
+          </div>
           <h1 className="text-2xl font-bold mb-8 text-center ">
             Seja uma ONG Parceira
           </h1>
@@ -19,9 +23,10 @@ export function Parceira() {
             organização e faça parte dessa rede de impacto social.
           </p>
           <Botao
-            className="flex items-center justify-center gap-3 py-2 px-5 bg-[#216587] text-white rounded-lg transition-colors duration-200 cursor-pointer"
-            texto="Quero ser parceira"
-          ></Botao>
+            texto="Quero Ser Parceira"
+            className="hover:bg-[#1b5570]"
+            icone={faHandshake}
+          />
         </div>
       </div>
     </BlocoLayout>
