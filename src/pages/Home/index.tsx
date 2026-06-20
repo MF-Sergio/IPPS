@@ -5,6 +5,7 @@ import NossosProjetos from "./components/NossosProjetos/NossosProjetos.jsx";
 import Abrangencia from "./components/Abrangencia/Abrangencia.jsx";
 import Parceira from "./components/Parceira/Parceira.jsx";
 import Doacao from "./components/Doacao/Doacao.tsx";
+import { OutrosParceiros } from "./components/OutrosParceiros/OutrosParceiros.tsx";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Abrangencia />
       <Parceira />
       <Doacao />
+      <OutrosParceiros />
     </div>
   );
 }
