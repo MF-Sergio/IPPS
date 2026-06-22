@@ -4,6 +4,13 @@
 :root {
   --sans: "Source Sans 3", sans-serif;
   --heading: "Source Sans 3", sans-serif;
+  --titulo: #a9171a;
+  --icones: #7b1e3d;
+  --fundo: #fef8f8;
+  --borda: #7b7b7c;
+  --vermelho: #a40201;
+  --branco: #f8f9fa;
+  --verde: #216587;
   --mono: ui-monospace, Consolas, monospace;
 }
 
@@ -33,6 +40,7 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 h1,
@@ -43,4 +51,8 @@ h5,
 h6 {
   font-family: var(--heading);
   font-weight: 600;
+}
+
+.titulo {
+  color: var(--titulo);
 }
