@@ -9,7 +9,7 @@ export function Parceira() {
     <BlocoLayout>
       <div className="flex justify-between items-center gap-8 mt-6 w-full">
         <div className="w-1/2">
-          /<ImagemPublic nomeImagem="seja_parceira.png"></ImagemPublic>
+          <ImagemPublic nomeImagem="seja_parceira.png"></ImagemPublic>
         </div>
         <div className="w-1/2 flex flex-col items-center justify-center">
           <div className="p-6 bg-red-100 rounded-lg mb-4 flex items-center justify-center w-16 h-16">
