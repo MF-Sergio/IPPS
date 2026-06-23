@@ -1,43 +1,33 @@
 import { useState } from 'react';
-import logo from '../../assets/img/novaLogo.png';
-import { FiHeart, FiX, FiMenu } from "react-icons/fi";
+import { Botao } from '../Botao/Botao.jsx';
+import Logo from '../Logo/Logo';
+import HeaderMobileToggle from './HeaderMobileToggle';
+import HeaderNav from './HeaderNav';
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+
+const navLinks = ['Quem somos', 'O que fazemos', 'Impacto', 'Seja Parceiro', 'Transparência'];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const navLinks = ['Quem somos', 'Impacto', 'Projetos', 'Abrangência', 'Seja Parceiro', 'Transparência', 'Eventos'];
 
   return (
-    <header className="container mx-auto w-full text-black flex items-center justify-between my-6 font-semibold">
-      <div className="flex items-center">
-        <img src={logo} alt="Logo" className="h-16" />
-      </div>
+    <header className="container mt-10 mx-auto w-full text-black flex items-center justify-between my-6 font-semibold relative z-50">
+      <Logo/>
 
-      <button className='flex items-center justify-center gap-2 px-[14.5px] py-[10px] bg-[#216587] text-white rounded-lg w-[136px] h-[44px] md:w-auto leading-[100%]'>
-        <FiHeart size={24} /> Doar agora
-      </button>
-
-      <button
+      <HeaderMobileToggle
+        isOpen={isOpen}
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden flex items-center justify-center"
-      >
-        {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-      </button>
+      />
 
       <div
-        className={`absolute md:static top-16 left-0 right-0 md:flex gap-9 bg-white md:bg-transparent 
-        ${isOpen ? 'flex flex-col' : 'hidden md:flex'}`}
-      >
-        <nav className="flex md:flex-row flex-col gap-6 p-4 md:p-0">
-          {navLinks.map((link) => (
-            <button key={link} className="text-left md:text-center text-sm md:text-xl">
-              {link}
-            </button>
-          ))}
-        </nav>
-
-        <button className="flex items-center justify-center gap-3 py-2 px-5 bg-[#216587] text-white rounded-lg transition-colors duration-200 cursor-pointer">
-          <FiHeart /> Doar agora
-        </button>
+        className={`absolute md:static top-16 left-0 right-0 md:flex gap-[168px] bg-white md:bg-transparent z-50 md:z-auto ${isOpen ? 'flex flex-col' : 'hidden md:flex'}`}
+        >
+        <HeaderNav navLinks={navLinks} />
+        <Botao 
+          texto="Doar agora"
+          icone={faHeart}
+          className="w-[201px] h-[48px] hover:bg-[#1b5570]"
+        />
       </div>
     </header>
   );
