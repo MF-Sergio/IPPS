@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header className="container mt-10 mx-auto w-full text-black flex items-center justify-between my-6 font-semibold relative z-50">
-      <Logo/>
+      <Logo variant="nova" />
 
       <HeaderMobileToggle
         isOpen={isOpen}
