@@ -1,57 +1,37 @@
-import { FiAtSign, FiMapPin, FiPhone } from "react-icons/fi";
+import FooterLogo from './FooterLogo';
+import FooterContato from './FooterContato';
+import FooterHorario from './FooterHorario';
+import FooterLinks from './FooterLinks';
+import FooterSocial from './FooterSocial';
+import { footerContato, footerHorario, footerNav } from './footerDados';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#212529] text-white pb-6 pt-16 mt-20 border-t flex items-center justify-center" style={{ fontFamily: 'Inter' }}>
-      <div className="container mx-auto px-4">
-        <div className="grid gap-32 md:grid-cols-4">
-          <div className="flex flex-col">
-            <img src="./src/assets/img/logo.png" alt="IPPS Logo" width='89px' />
-            <p className="mt-4 text-sm font-normal">
-              Instituto de Pesquisa e Promoção da Saúde. Desde 2002 promovendo inclusão, cidadania e autonomia para pessoas com deficiência.
-            </p>
-          </div>
+    <footer className="mt-20 rounded-t-[32px] border-t border-white/10 bg-[#4a4a4a] text-white shadow-[0_-8px_30px_rgba(0,0,0,0.08)]">
+      <div className="mx-auto w-full max-w-7xl px-6 py-14 lg:px-10">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_1.3fr_1.25fr_0.9fr] lg:gap-10">
+          <FooterLogo />
 
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold mb-4">Navegação</h3>
-            <ul className="grid grid-cols-2 gap-2">
-              <li><a href="#" className="text-sm font-normal hover:underline">Quem somos</a></li>
-              <li><a href="#" className="text-sm font-normal hover:underline">Nosso impacto</a></li>
-              <li><a href="#" className="text-sm font-normal hover:underline">Nossos projetos</a></li>
-              <li><a href="#" className="text-sm font-normal hover:underline">Abragência</a></li>
-              <li><a href="#" className="text-sm font-normal hover:underline">Transparência</a></li>
-              <li><a href="#" className="text-sm font-normal hover:underline">Parceiros</a></li>
-              <li><a href="#" className="text-sm font-normal hover:underline">Eventos</a></li>
-              <li><a href="#" className="text-sm font-normal hover:underline">Trabalhe conosco</a></li>
-            </ul>
-          </div>
+          <FooterLinks title="O IPPS" links={footerNav} />
 
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold mb-4">Contato</h3>
-            <p className="text-sm font-normal mb-2 flex gap-2">
-              <FiMapPin size={24}/>
-              Endereço: Avenida de Santa Cruz 1631 / Rio de Janeiro / Bairro: Realengo / CEP: 21.710-255
-            </p>
-            <p className="text-sm font-normal mb-2 flex items-center gap-2">
-              <FiAtSign />
-              ippromocaodasaude@gmail.com
-            </p>
-            <p className="text-sm font-normal mb-2 flex items-center gap-2">
-              <FiPhone />
-              Telefone: (11) 1234-5678
-            </p>
-          </div>
+          <FooterContato
+            address={footerContato.address}
+            email={footerContato.email}
+            phone={footerContato.phone}
+            cnpj={footerContato.cnpj}
+          />
 
-          <div className="flex flex-col">
-            <h3 className="text-lg font-semibold mb-4">Horário de funcionamento</h3>
-            <p className="text-sm font-normal mb-2">Segunda a Sexta das 8h às 17:48h</p>
-          </div>
+          <FooterHorario hours={footerHorario} />
         </div>
 
-        <div className="flex items-center justify-center mt-28">
-          <p className="text-sm font-normal">&copy; 2026 IPPS - Instituto de Pesquisa e Promoção da Saúde. Todos os direitos reservados.</p>
+        <div className="mt-12 flex flex-col items-center gap-5 border-t border-white/10 pt-8 text-center">
+          <FooterSocial />
+
+          <p className="text-sm text-white/75">
+            © 2026 IPPS - Instituto de Pesquisa e Promoção da Saúde. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
