@@ -1,9 +1,9 @@
-import { FaHandHoldingHeart, FaHandHoldingUsd } from "react-icons/fa";
-import { FiPackage } from "react-icons/fi";
 import DonationModalLayout from "../DonationModalLayout/DonationModalLayout";
 import DonationOptionCard from "../DonationOptionCard/DonationOptionCard";
 
 export type DonationKind = "produtos" | "servicos" | "dinheiro";
+
+const iconPath = "/img/donation-icons";
 
 interface DonationStartModalProps {
   onBack: () => void;
@@ -16,21 +16,21 @@ const donationOptions = [
     title: "Doação de Produtos",
     description:
       "Contribua com itens que apoiam diretamente nossos projetos e beneficiários.",
-    icon: FiPackage,
+    iconSrc: `${iconPath}/product-icon.svg`,
   },
   {
     key: "servicos" as const,
     title: "Doação de Serviços",
     description:
       "Ofereça sua expertise e ajude a fortalecer nossas iniciativas sociais.",
-    icon: FaHandHoldingHeart,
+    iconSrc: `${iconPath}/service-icon.svg`,
   },
   {
     key: "dinheiro" as const,
     title: "Doação em Dinheiro",
     description:
       "Faça uma contribuição financeira e amplie o alcance das nossas ações.",
-    icon: FaHandHoldingUsd,
+    iconSrc: `${iconPath}/money-icon.svg`,
   },
 ];
 
@@ -48,7 +48,7 @@ export default function DonationStartModal({
         {donationOptions.map((option) => (
           <DonationOptionCard
             key={option.key}
-            icon={option.icon}
+            iconSrc={option.iconSrc}
             title={option.title}
             description={option.description}
             onClick={() => onSelect(option.key)}

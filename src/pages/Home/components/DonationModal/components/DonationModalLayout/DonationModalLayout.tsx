@@ -72,14 +72,14 @@ export default function DonationModalLayout({
         />
         <div className="absolute inset-0 bg-[#FAEEF1]/35" />
         <svg
-          className="absolute -top-px left-0 h-34.5 w-full sm:h-44"
+          className="absolute -top-px left-0 z-10 h-38 w-full sm:h-48"
           viewBox="0 0 1440 220"
           preserveAspectRatio="none"
           aria-hidden="true"
         >
           <path
             fill="#FAEEF1"
-            d="M0 0H1440V46C1320 104 1240 170 1145 143C1041 114 966 34 856 16C759 0 693 67 597 105C497 145 419 180 330 136C235 90 119 58 0 26Z"
+            d="M0 0H1440V18C1328 48 1240 92 1145 124C1098 140 1058 134 1016 110C927 58 829 9 746 3C691 -1 642 35 586 68C493 123 402 154 315 125C213 91 111 45 0 18Z"
           />
         </svg>
       </div>

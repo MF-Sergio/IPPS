@@ -1,1 +1,1 @@
-export type PaymentMethod = "pix" | "cartao" | "boleto";
+export type PaymentMethod = "pix" | "cartao" | "boleto" | "money";

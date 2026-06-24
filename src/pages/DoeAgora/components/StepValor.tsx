@@ -8,6 +8,10 @@ interface StepValorProps {
 }
 
 const valoresPreDefinidos = [25, 50, 100, 250, 500, 1000];
+const heroMarkerGradient =
+  "linear-gradient(180deg, #A40201 0%, #9E1C17 7%, #982A25 14%, #923330 21%, #8B3B39 29%, #844242 36%, #7D474A 43%, #764C52 50%, #6E515A 57%, #655562 64%, #5C5969 71%)";
+const heroImageFade =
+  "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 50%, #FEF8F8 100%)";
 
 export default function StepValor({ valor, onSelect, onNext }: StepValorProps) {
   const [customValor, setCustomValor] = useState("");
@@ -36,8 +40,7 @@ export default function StepValor({ valor, onSelect, onNext }: StepValorProps) {
     <div className="flex w-full flex-col">
 
       {/* ── HERO ── */}
-      {/* Mobile: 3-photo collage; Desktop: 100vw × 700px, card overlay aligned to container */}
-      <div className="relative w-full mb-0 sm:mb-16">
+      <div className="relative mb-0 w-full sm:mb-30">
 
         {/* Mobile collage (hidden on sm+) */}
         <div className="flex flex-col gap-0.5 sm:hidden">
@@ -67,31 +70,39 @@ export default function StepValor({ valor, onSelect, onNext }: StepValorProps) {
           </div>
         </div>
 
-        {/* Desktop hero — full viewport width, 700px tall (hidden on mobile) */}
-        <div className="hidden sm:block w-full h-175 bg-gray-300 overflow-hidden relative">
-          <img
-            src="/img/Atividade de psicomotricidade_ basquete de cama elástica. 1.jpg"
-            alt="Crianças jogando basquete"
-            className="w-full h-full object-cover object-top"
-          />
+        <div className="relative hidden sm:block">
+          <div className="relative h-155 w-full overflow-hidden bg-gray-300">
+            <img
+              src="/img/Atividade de psicomotricidade_ basquete de cama elástica. 1.jpg"
+              alt="Crianças jogando basquete"
+              className="h-full w-full object-fill object-center"
+            />
 
-          {/* Dark gradient at bottom so card is readable */}
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-white/60 to-transparent" />
+            <div
+              className="absolute inset-x-0 bottom-0 h-[48%]"
+              style={{ background: heroImageFade }}
+            />
+          </div>
 
-          {/* Card — pinned to bottom, aligned to the same container as the content below */}
-          <div className="absolute bottom-10 left-0 right-0">
-            <div className="max-w-5xl mx-auto">
-              <div className="inline-block bg-white rounded-2xl shadow-xl px-10 py-8 w-full">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-1 h-10 bg-[#a9171a] rounded-full shrink-0" />
-                  <h1 className="text-3xl font-extrabold text-[#A40201] tracking-tight leading-tight">
-                    QUERO DOAR
-                  </h1>
+          <div className="absolute inset-x-0 bottom-20 px-4">
+            <div className="mx-auto max-w-190">
+              <div className="w-full rounded-lg bg-white px-9 py-5 shadow-[0_4px_16px_rgba(0,0,0,0.18)]">
+                <div className="flex items-start gap-4">
+                  <div
+                    className="mt-0.5 h-12 w-0.75 shrink-0 rounded-full"
+                    style={{ background: heroMarkerGradient }}
+                  />
+                  <div>
+                    <h1 className="font-serif text-[30px] font-bold uppercase leading-none text-[#A40201]">
+                      QUERO DOAR
+                    </h1>
+                    <p className="mt-5 text-[14px] leading-6 text-[#3a3436]">
+                      Sua contribuição transforma vidas.
+                      <br />
+                      Selecione uma das opções abaixo ou defina um valor personalizado.
+                    </p>
+                  </div>
                 </div>
-                <p className="text-sm text-justify ml-5 text-[#1C1D1D] leading-relaxed">
-                  Sua contribuição transforma vidas.<br />
-                  Selecione uma das opções abaixo ou defina um valor personalizado.
-                </p>
               </div>
             </div>
           </div>
@@ -100,7 +111,10 @@ export default function StepValor({ valor, onSelect, onNext }: StepValorProps) {
         {/* Mobile hero card (shown below collage, hidden on sm+) */}
         <div className="sm:hidden bg-white px-5 pt-6 pb-4">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-1 h-9 bg-[#a9171a] rounded-full shrink-0" />
+            <div
+              className="w-1 h-9 rounded-full shrink-0"
+              style={{ background: heroMarkerGradient }}
+            />
             <h1 className="text-2xl font-extrabold text-[#a9171a] tracking-tight leading-tight">
               QUERO DOAR
             </h1>
@@ -113,9 +127,9 @@ export default function StepValor({ valor, onSelect, onNext }: StepValorProps) {
       </div>
 
       {/* ── VALUE SELECTION ── */}
-      <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-12 lg:py-12 bg-white/10 sm:bg-white pt-6 pb-10 rounded-3xl border-2 border-inset border-white/20 backdrop-blur-md">
+      <div className="mx-auto w-full max-w-190 rounded-xl border border-[#E8E3E5] bg-white px-4 pt-6 pb-10 shadow-[0_8px_28px_rgba(0,0,0,0.035)] sm:px-12 sm:py-12">
         <div className="w-full mx-auto flex items-center justify-center">
-          <div className="max-w-3xl w-full p-6">
+          <div className="max-w-140 w-full p-6 sm:p-0">
 
           {/* Section title */}
           <div className="mb-14">
