@@ -19,7 +19,7 @@ export function CardComIcone({
         {icone}
       </div>
 
-      <h2 className="text-xl font-bold mb-4 text-[var(--titulo)]">{title}</h2>
+      <h2 className="text-xl font-bold mb-4 text-black">{title}</h2>
 
       <p>{descricao}</p>
     </div>

@@ -1,5 +1,5 @@
 import Hero from "./components/Hero/Hero";
-import Beneficios from "./components/Beneficios/Beneficios";
+import Formulario from "../../components/Formulario/Formulario";
 import { CardComIcone } from "../../components/CardComIcone/CardComIcone";
 import { Trophy } from "react-bootstrap-icons";
 import { GraphUpArrow } from "react-bootstrap-icons";
@@ -63,6 +63,9 @@ export default function SejaParceiro() {
           iconColor="text-[var(--fundo)]"
         ></CardComIcone>
       </div>
+      <section className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden bg-gradient-to-t from-[#F2D9B5] to-[#3E6377]">
+        <Formulario></Formulario>
+      </section>
     </div>
   );
 }
