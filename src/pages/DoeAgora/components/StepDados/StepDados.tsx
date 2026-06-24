@@ -1,6 +1,6 @@
 import { FiLock } from "react-icons/fi";
-import type { DoacaoData } from "../index";
-import StepIndicator from "./StepIndicator";
+import type { DoacaoData } from "../../index";
+import StepIndicator from "../StepIndicator/StepIndicator";
 
 interface StepDadosProps {
   dados: DoacaoData;

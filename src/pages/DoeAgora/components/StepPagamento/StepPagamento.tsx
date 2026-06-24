@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiCreditCard, FiFileText, FiLock } from "react-icons/fi";
-import type { DoacaoData } from "../index";
-import StepIndicator from "./StepIndicator";
+import type { DoacaoData } from "../../index";
+import StepIndicator from "../StepIndicator/StepIndicator";
 
 interface StepPagamentoProps {
   dados: DoacaoData;

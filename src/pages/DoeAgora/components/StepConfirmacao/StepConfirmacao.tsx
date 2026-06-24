@@ -5,7 +5,7 @@ import {
   FiMail,
   FiShare2,
 } from "react-icons/fi";
-import type { DoacaoData } from "../index";
+import type { DoacaoData } from "../../index";
 
 interface StepConfirmacaoProps {
   dados: DoacaoData;

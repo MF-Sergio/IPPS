@@ -6,8 +6,8 @@ import {
   FiHeart,
   FiShield,
 } from "react-icons/fi";
-import qrCode from "../../../assets/img/qrcode_ipps.jpg";
-import type { DoacaoData } from "../index";
+import qrCode from "../../../../assets/img/qrcode_ipps.jpg";
+import type { DoacaoData } from "../../index";
 
 interface StepPixProps {
   dados: DoacaoData;

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import StepValor from "./components/StepValor";
-import StepDados from "./components/StepDados";
-import StepPagamento from "./components/StepPagamento";
-import StepConfirmacao from "./components/StepConfirmacao";
-import StepPix from "./components/StepPix";
+import StepValor from "./components/StepValor/StepValor";
+import StepDados from "./components/StepDados/StepDados";
+import StepPagamento from "./components/StepPagamento/StepPagamento";
+import StepConfirmacao from "./components/StepConfirmacao/StepConfirmacao";
+import StepPix from "./components/StepPix/StepPix";
 
 export interface DoacaoData {
   valor: number;
