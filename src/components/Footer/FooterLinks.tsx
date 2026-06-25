@@ -9,16 +9,16 @@ type FooterLinksProps = {
 export default function FooterLinks({ title, links }: FooterLinksProps) {
   return (
     <section>
-      <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/95">
+      <h3 className="font-semibold tracking-[0.18em]">
         {title}
       </h3>
 
-      <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-x-10">
+      <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-x-10">
         {links.map((link) => (
           <li key={link.label}>
             <a
               href={link.href}
-              className="text-sm text-white/80 transition hover:text-white hover:underline underline-offset-4"
+              className="transition hover:text-white hover:underline underline-offset-4"
             >
               {link.label}
             </a>
