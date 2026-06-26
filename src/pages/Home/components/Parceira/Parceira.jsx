@@ -1,6 +1,6 @@
 import BlocoLayout from "../../../../layout/BlocoLayout.jsx";
 import ImagemPublic from "../../../../components/ImagemPublic/ImagemPublic.jsx";
-import { Botao } from "../../../../components/Botao/Botao.jsx";
+import { Botao } from "../../../../components/Botao/Botao.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandshake } from "@fortawesome/free-solid-svg-icons";
 
@@ -24,6 +24,7 @@ export function Parceira() {
           </p>
           <Botao
             texto="Quero Ser Parceira"
+            pagina="/seja-parceiro"
             className="hover:bg-[#1b5570]"
             icone={faHandshake}
           />

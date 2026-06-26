@@ -1,5 +1,5 @@
 import BlocoLayout from "../../../../layout/BlocoLayout";
-import { Botao } from "../../../../components/Botao/Botao.jsx";
+import { Botao } from "../../../../components/Botao/Botao.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 export function Newsletter() {

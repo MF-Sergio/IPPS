@@ -1,7 +1,6 @@
 import BlocoLayout from "../../../../layout/BlocoLayout";
-import { Botao } from "../../../../components/Botao/Botao.jsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { Botao } from "../../../../components/Botao/Botao.tsx";
 
 export function Doacao() {
   return (
@@ -16,6 +15,7 @@ export function Doacao() {
         </p>
         <Botao
           texto="Doar Agora"
+          href="/pages/doeagora.html"
           className="hover:bg-[#1b5570]"
           icone={faHeart}
         />
