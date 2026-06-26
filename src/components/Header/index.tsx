@@ -4,6 +4,8 @@ import Logo from '../Logo/Logo';
 import HeaderMobileToggle from './HeaderMobileToggle';
 import HeaderNav from './HeaderNav';
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { Link } from 'react-router-dom';
+import { FiHeart } from 'react-icons/fi';
 
 const navLinks = ['Quem somos', 'O que fazemos', 'Impacto', 'Seja Parceiro', 'Transparência'];
 
@@ -20,14 +22,12 @@ export default function Header() {
       />
 
       <div
-        className={`absolute md:static top-16 left-0 right-0 md:flex gap-[168px] bg-white md:bg-transparent z-50 md:z-auto ${isOpen ? 'flex flex-col' : 'hidden md:flex'}`}
+        className={`absolute md:static top-16 left-0 right-0 md:flex gap-42 bg-white md:bg-transparent z-50 md:z-auto ${isOpen ? 'flex flex-col' : 'hidden md:flex'}`}
         >
         <HeaderNav navLinks={navLinks} />
-        <Botao 
-          texto="Doar agora"
-          icone={faHeart}
-          className="w-[201px] h-[48px] hover:bg-[#1b5570]"
-        />
+        <Link to="/?doar=1" className="flex items-center justify-center gap-3 py-2 px-5 bg-[#216587] hover:bg-[#1b5570] text-white rounded-lg transition-colors duration-200 cursor-pointer no-underline">
+          <FiHeart /> Doar agora
+        </Link>
       </div>
     </header>
   );
