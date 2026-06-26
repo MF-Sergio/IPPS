@@ -9,7 +9,7 @@ import BlocoLayout from "../../../../layout/BlocoLayout.jsx";
 
 export default function QuemSomos() {
   return (
-    <BlocoLayout titulo="Quem Somos">
+    <BlocoLayout id="transparencia" titulo="Quem Somos">
       <h3 className="text-xl text-black-700 font-bold mb-8 text-center ">
         Mais de 20 anos dedicados à inclusão social
       </h3>

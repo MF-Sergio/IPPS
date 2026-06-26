@@ -4,7 +4,7 @@ import { GeoAltFill } from "react-bootstrap-icons";
 
 export function Abrangencia() {
   return (
-    <BlocoLayout>
+    <BlocoLayout id="abrangencia">
       <div className="bg-[var(--verde)]/20 p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold  text-left titulo">Abrangência</h2>
         <div className="flex justify-between items-start gap-8 mt-6">

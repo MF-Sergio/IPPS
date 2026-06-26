@@ -4,7 +4,7 @@ import { Botao } from "../../../../components/Botao/Botao.tsx";
 
 export function Doacao() {
   return (
-    <BlocoLayout>
+    <BlocoLayout id="doacao">
       <div className="bg-[#EAAEC6]/60 text-black py-12 px-6 rounded-lg text-center shadow-lg flex flex-col items-center justify-center">
         <h2 className="text-3xl font-bold mb-4">
           Sua doação transforma vidas!
@@ -15,7 +15,7 @@ export function Doacao() {
         </p>
         <Botao
           texto="Doar Agora"
-          href="/pages/doeagora.html"
+          href="mailto:ippromocaodasaude@gmail.com?subject=Quero%20fazer%20uma%20doa%C3%A7%C3%A3o"
           className="hover:bg-[#1b5570]"
           icone={faHeart}
         />
