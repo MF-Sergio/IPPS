@@ -15,7 +15,7 @@ export function Doacao() {
           e autonomia para milhares de pessoas com deficiência e suas famílias.
         </p>
         <Botao
-          texto="Quero Ser Parceira"
+          texto="Doar Agora"
           className="hover:bg-[#1b5570]"
           icone={faHeart}
         />
