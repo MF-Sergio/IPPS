@@ -1,6 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
+  --sans: "Source Sans 3", sans-serif;
+  --heading: "Source Sans 3", sans-serif;
+  --sans-alt: "Inter", sans-serif;
   --titulo: #a9171a;
   --icones: #7b1e3d;
   --fundo: #fef8f8;
@@ -8,9 +13,19 @@
   --vermelho: #a40201;
   --branco: #f8f9fa;
   --verde: #216587;
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+safe-padding-mobile {
+  padding: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -28,6 +43,12 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+}
+
+footer,
+footer h3 {
+  font-family: var(--sans-alt);
+  color: var(--fundo);
 }
 
 h1,
