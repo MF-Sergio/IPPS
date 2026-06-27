@@ -36,5 +36,6 @@ export default function Header() {
           <FiHeart /> Doar agora
         </Link>
       </div>
+    </header>
   );
 }
