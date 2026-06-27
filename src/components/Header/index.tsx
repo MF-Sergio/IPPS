@@ -2,8 +2,8 @@ import { useState } from "react";
 import Logo from "../Logo/Logo";
 import HeaderMobileToggle from "./HeaderMobileToggle";
 import HeaderNav from "./HeaderNav";
-import { Link } from 'react-router-dom';
-import { FiHeart } from 'react-icons/fi';
+import { Link } from "react-router-dom";
+import { FiHeart } from "react-icons/fi";
 
 const navLinks = [
   { label: "Quem somos", href: "/quem-somos" },
@@ -25,7 +25,7 @@ export default function Header() {
       <HeaderMobileToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
       <div
-        className={`absolute md:static top-16 left-0 right-0 md:flex md:items-center gap-9 bg-white md:bg-transparent z-50 md:z-auto ${isOpen ? 'flex flex-col' : 'hidden md:flex'}`}
+        className={`absolute md:static top-16 left-0 right-0 md:flex md:items-center gap-9 bg-white md:bg-transparent z-50 md:z-auto ${isOpen ? "flex flex-col" : "hidden md:flex"}`}
       >
         <HeaderNav navLinks={navLinks} onNavigate={() => setIsOpen(false)} />
         <Link
