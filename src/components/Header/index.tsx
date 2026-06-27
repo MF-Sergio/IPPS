@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Botao } from "../Botao/Botao.tsx";
 import Logo from "../Logo/Logo";
 import HeaderMobileToggle from "./HeaderMobileToggle";
 import HeaderNav from "./HeaderNav";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { Link } from 'react-router-dom';
+import { FiHeart } from 'react-icons/fi';
 
 const navLinks = [
   { label: "Quem somos", href: "/quem-somos" },
@@ -25,16 +25,16 @@ export default function Header() {
       <HeaderMobileToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
       <div
-        className={`absolute md:static top-16 left-0 right-0 md:flex md:items-center gap-9 bg-white md:bg-transparent z-50 md:z-auto ${isOpen ? "flex flex-col" : "hidden md:flex"}`}
+        className={`absolute md:static top-16 left-0 right-0 md:flex md:items-center gap-9 bg-white md:bg-transparent z-50 md:z-auto ${isOpen ? 'flex flex-col' : 'hidden md:flex'}`}
       >
         <HeaderNav navLinks={navLinks} onNavigate={() => setIsOpen(false)} />
-        <Botao
-          texto="Doar Agora"
-          href="mailto:ippromocaodasaude@gmail.com?subject=Quero%20fazer%20uma%20doa%C3%A7%C3%A3o"
-          className="h-[48px] w-[201px] text-lg hover:bg-[#1b5570]"
-          icone={faHeart}
-        />
+        <Link
+          to="/?doar=1"
+          onClick={() => setIsOpen(false)}
+          className="h-[48px] w-[201px] flex items-center justify-center gap-3 bg-[#216587] hover:bg-[#1b5570] text-white rounded-lg transition-colors duration-200 cursor-pointer no-underline"
+        >
+          <FiHeart /> Doar agora
+        </Link>
       </div>
-    </header>
   );
 }

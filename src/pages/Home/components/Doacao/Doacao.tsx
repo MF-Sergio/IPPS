@@ -14,8 +14,8 @@ export function Doacao() {
           e autonomia para milhares de pessoas com deficiência e suas famílias.
         </p>
         <Botao
-          texto="Doar Agora"
-          href="mailto:ippromocaodasaude@gmail.com?subject=Quero%20fazer%20uma%20doa%C3%A7%C3%A3o"
+          texto="Doar agora"
+          pagina="/?doar=1"
           className="hover:bg-[#1b5570]"
           icone={faHeart}
         />
