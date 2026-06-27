@@ -6,6 +6,7 @@ export function CardComIcone({
   iconBgColor = "bg-red-100",
   iconColor = "text-red-600",
   fontColor = "text-black",
+  titleFontColor = "text-black",
 }) {
   return (
     <div
@@ -20,7 +21,7 @@ export function CardComIcone({
         {icone}
       </div>
 
-      <h2 className={`text-xl font-bold mb-4 ${fontColor}`}>{title}</h2>
+      <h2 className={`text-xl font-bold mb-4 ${titleFontColor}`}>{title}</h2>
 
       <p className={`${fontColor}`}>{descricao}</p>
     </div>
