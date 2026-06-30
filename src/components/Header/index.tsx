@@ -31,7 +31,7 @@ export default function Header() {
         <Link
           to="/?doar=1"
           onClick={() => setIsOpen(false)}
-          className="h-[48px] w-[201px] flex items-center justify-center gap-3 bg-[#216587] hover:bg-[#1b5570] text-white rounded-lg transition-colors duration-200 cursor-pointer no-underline"
+          className="flex h-[48px] w-[201px] cursor-pointer items-center justify-center gap-3 rounded-lg bg-[#216587] px-5 py-2 text-lg text-white no-underline transition-colors duration-200 hover:bg-[#1b5570]"
         >
           <FiHeart /> Doar agora
         </Link>
