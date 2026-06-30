@@ -12,7 +12,7 @@ const navLinks = [
   { label: "Abrangência", href: "/#abrangencia" },
   { label: "Seja Parceiro", href: "/seja-parceiro" },
   { label: "Transparência", href: "/#transparencia" },
-  { label: "Trabalhe Conosco", href: "/trabalhe-conosco" },
+  { label: "Eventos", href: "/eventos" },
 ];
 
 export default function Header() {
