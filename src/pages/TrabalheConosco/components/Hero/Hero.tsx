@@ -5,14 +5,14 @@ import { People } from "react-bootstrap-icons";
 import { Heart } from "react-bootstrap-icons";
 export default function Hero() {
   return (
-    <section className="relative left-1/2 -translate-x-1/2 w-screen h-[560px] lg:h-[739px] overflow-hidden rounded-b-[20px] bg-[var(--fundo)]">
+    <section className="relative left-1/2 -translate-x-1/2 w-screen h-[560px] lg:h-[739px] overflow-hidden  bg-[var(--fundo)]">
       <img
         src={trabalheConoscoHeroImg}
         alt="Grupo de pessoas do IPPS"
-        className="absolute inset-0 w-full h-full object-cover rounded-b-[20px]"
+        className="absolute inset-0 w-full h-full object-cover "
       />
 
-      <div className="absolute inset-0 rounded-b-[20px] bg-[linear-gradient(180deg,rgba(33,101,135,0.9)_0.0%,rgba(33,101,135,0.7)_45.47%,#216587_87.72%)] " />
+      <div className="absolute inset-0  bg-[linear-gradient(180deg,rgba(33,101,135,0.9)_0.0%,rgba(33,101,135,0.7)_45.47%,#216587_87.72%)] " />
 
       <div className="absolute top-50  left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1104px] text-[var(--branco)]">
         <div className="flex flex-col gap-3 items-center">
@@ -38,6 +38,7 @@ export default function Hero() {
             iconColor="text-[var(--fundo)]"
             bgColor="bg-[#3D738B]"
             fontColor="text-[var(--branco)]"
+            titleFontColor="text-[var(--branco)]"
           ></CardComIcone>
           <CardComIcone
             icone={<Trophy />}
@@ -47,6 +48,7 @@ export default function Hero() {
             iconColor="text-[var(--fundo)]"
             bgColor="bg-[#3D738B]"
             fontColor="text-[var(--branco)]"
+            titleFontColor="text-[var(--branco)]"
           ></CardComIcone>
           <CardComIcone
             icone={<Heart />}
@@ -56,6 +58,7 @@ export default function Hero() {
             iconColor="text-[var(--fundo)]"
             bgColor="bg-[#3D738B]"
             fontColor="text-[var(--branco)]"
+            titleFontColor="text-[var(--branco)]"
           ></CardComIcone>
         </div>
       </div>

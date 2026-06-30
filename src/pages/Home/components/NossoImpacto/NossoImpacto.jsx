@@ -3,12 +3,12 @@ import BlocoLayout from "../../../../layout/BlocoLayout.jsx";
 
 export function NossoImpacto() {
   return (
-    <BlocoLayout titulo={"Nosso Impacto"}>
+    <BlocoLayout id="impacto" titulo={"Nosso Impacto"}>
       <div className="bg-[var(--vermelho)] flex flex-col items-center justify-center content-center p-3 rounded-lg shadow-md">
         <h1 className="text-4xl text-[var(--branco)]  mt-8">
           Números que contam história
         </h1>
-        <p className="text-base text-[var(--branco)]">
+        <p className="text-xl text-[var(--branco)]">
           Cada número representa uma vida transformada, uma barreira superada,
           uma família fortalecida.
         </p>

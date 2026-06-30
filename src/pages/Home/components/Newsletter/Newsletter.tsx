@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 export function Newsletter() {
   return (
-    <BlocoLayout>
+    <BlocoLayout id="contato">
       <div className="bg-[var(--verde)] text-[var(--branco)] py-12 px-6 rounded-lg text-center shadow-lg flex flex-col items-center justify-center">
         <div className="p-6 bg-[var(--branco)] text-[var(--verde)] rounded-full mb-4 flex items-center justify-center w-16 h-16">
           <FontAwesomeIcon icon={faEnvelope} />

@@ -22,7 +22,8 @@ export function OutrosParceiros() {
       </p>
       <Carrossel
         imagens={[img1, img2, img3, img4, img5, img6, img7, img8, img9]}
-        imagensPorSlide={5}
+        imagensPorSlide={8}
+        isOutrosParceiros={true}
       />
     </BlocoLayout>
   );

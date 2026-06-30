@@ -10,9 +10,9 @@ import CardComImagem from "../../../../components/CardComImagem/CardComImagem.js
 
 export function NossosProjetos() {
   return (
-    <BlocoLayout titulo={"Nossos Projetos"}>
-      <h1>Transformando vidas através da ação</h1>
-      <p>
+    <BlocoLayout id="projetos" titulo={"Nossos Projetos"}>
+      <h1 className="text-4xl">Transformando vidas através da ação</h1>
+      <p className="text-xl">
         Conheça algumas das iniciativas que impactam diretamente a vida de
         milhares de pessoas.{" "}
       </p>

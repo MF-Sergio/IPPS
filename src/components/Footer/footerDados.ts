@@ -1,12 +1,11 @@
 export const footerNav = [
-  { label: "Quem somos", href: "/pages/historia.html" },
-  { label: "Nosso impacto", href: "/pages/numeros.html" },
-  { label: "Nossos projetos", href: "/pages/saudeintegral.html" },
-  { label: "Abrangência", href: "/pages/vivendoeacolhendo.html" },
-  { label: "Transparência", href: "/pages/transparencia.html" },
-  { label: "Parceiros", href: "/pages/parceiros.html" },
-  { label: "Eventos", href: "/pages/doeagora.html" },
-  { label: "Trabalhe conosco", href: "/pages/contato.html" },
+  { label: "Quem somos", href: "/quem-somos" },
+  { label: "Nosso impacto", href: "/#impacto" },
+  { label: "Nossos projetos", href: "/#projetos" },
+  { label: "Abrangência", href: "/#abrangencia" },
+  { label: "Transparência", href: "/#transparencia" },
+  { label: "Parceiros", href: "/#parceiros" },
+  { label: "Trabalhe conosco", href: "/trabalhe-conosco" },
 ];
 
 export const footerContato = {

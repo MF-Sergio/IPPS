@@ -5,9 +5,14 @@ import styles from "./carrossel.module.css";
 interface CarrosselProps {
   imagens: string[];
   imagensPorSlide?: number;
+  isOutrosParceiros?: boolean;
 }
 
-export function Carrossel({ imagens, imagensPorSlide = 3 }: CarrosselProps) {
+export function Carrossel({
+  imagens,
+  imagensPorSlide = 3,
+  isOutrosParceiros = false,
+}: CarrosselProps) {
   const slides: string[][] = [];
 
   for (let i = 0; i < imagens.length; i += imagensPorSlide) {
@@ -15,13 +20,19 @@ export function Carrossel({ imagens, imagensPorSlide = 3 }: CarrosselProps) {
   }
 
   return (
-    <Carousel showArrows infiniteLoop autoPlay>
+    <Carousel
+      showArrows
+      infiniteLoop
+      autoPlay
+      showThumbs={false}
+      showIndicators={false}
+    >
       {slides.map((slide, slideIndex) => (
         <div
           key={slideIndex}
           style={{
             display: "flex",
-            gap: "10px",
+            gap: isOutrosParceiros ? "65px" : "10px",
             justifyContent: "center",
           }}
         >
@@ -31,7 +42,8 @@ export function Carrossel({ imagens, imagensPorSlide = 3 }: CarrosselProps) {
               src={imagem}
               alt={`Imagem ${imageIndex + 1}`}
               style={{
-                width: `${100 / imagensPorSlide}%`,
+                width: isOutrosParceiros ? "75px" : `${100 / imagensPorSlide}%`,
+                height: isOutrosParceiros ? "75px" : "auto",
                 objectFit: "contain",
               }}
             />
