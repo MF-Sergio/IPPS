@@ -7,14 +7,10 @@ function AppContent() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 mt-15">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 mt-15 max-w-[1150px]">
         <Routes>
           {routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={route.element}
-            />
+            <Route key={route.path} path={route.path} element={route.element} />
           ))}
         </Routes>
       </main>

@@ -10,13 +10,15 @@ import BlocoLayout from "../../../../layout/BlocoLayout.jsx";
 export default function QuemSomos() {
   return (
     <BlocoLayout id="transparencia" titulo="Quem Somos">
-      <h3 className="text-xl text-black-700 font-bold mb-8 text-center ">
+      <h1 className="text-4xl text-black-700 font-bold mb-8 text-center ">
         Mais de 20 anos dedicados à inclusão social
-      </h3>
-      <p className="text-lg text-gray-700 mb-6">
-        O IPPS é uma associação sem fins lucrativos que promove cidadania e
-        bem-estar, com foco em pessoas com deficiência e suas famílias, atuando
-        nas áreas social, esportiva, cultural e de lazer.
+      </h1>
+      <p className="text-lg text-gray-700 mb-6 ">
+        O IPPS é uma associação civil sem fins lucrativos, dedicada a promover a
+        cidadania e o bem-estar de populações carentes, com um olhar especial
+        para pessoas com deficiência e seus familiares. Atuamos nas áreas
+        social, esportiva, cultural e de lazer, sempre com o compromisso de
+        construir uma sociedade mais inclusiva e justa.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Caixa

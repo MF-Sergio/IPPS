@@ -12,7 +12,7 @@ export function Parceira() {
           <ImagemPublic nomeImagem="seja_parceira.png"></ImagemPublic>
         </div>
         <div className="w-1/2 flex flex-col items-center justify-center">
-          <div className="p-6 bg-red-100 rounded-lg mb-4 flex items-center justify-center w-16 h-16">
+          <div className="p-6 bg-red-100 rounded-lg mb-4 flex items-center justify-center w-16 h-16 text-[var(--vermelho)]">
             <FontAwesomeIcon icon={faHandshake} />
           </div>
           <h1 className="text-2xl font-bold mb-8 text-center ">

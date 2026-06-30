@@ -7,7 +7,6 @@ import Parceira from "./components/Parceira/Parceira.jsx";
 import Doacao from "./components/Doacao/Doacao.tsx";
 import DonationModal from "./components/DonationModal/DonationModal.tsx";
 import { OutrosParceiros } from "./components/OutrosParceiros/OutrosParceiros.tsx";
-import { Newsletter } from "./components/Newsletter/Newsletter.tsx";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <Parceira />
       <Doacao />
       <OutrosParceiros />
-      <Newsletter />
       <DonationModal />
     </div>
   );

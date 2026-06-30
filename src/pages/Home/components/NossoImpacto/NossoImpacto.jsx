@@ -8,7 +8,7 @@ export function NossoImpacto() {
         <h1 className="text-4xl text-[var(--branco)]  mt-8">
           Números que contam história
         </h1>
-        <p className="text-base text-[var(--branco)]">
+        <p className="text-xl text-[var(--branco)]">
           Cada número representa uma vida transformada, uma barreira superada,
           uma família fortalecida.
         </p>
