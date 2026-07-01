@@ -6,6 +6,11 @@ import {
   ShieldCheck,
 } from "react-bootstrap-icons";
 import BlocoLayout from "../../../../layout/BlocoLayout.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHandHoldingHeart } from "@fortawesome/free-solid-svg-icons";
+import { faWheelchairMove } from "@fortawesome/free-solid-svg-icons";
+import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { faShield } from "@fortawesome/free-solid-svg-icons";
 
 export default function QuemSomos() {
   return (
@@ -22,22 +27,22 @@ export default function QuemSomos() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Caixa
-          icone={<PersonWheelchair />}
+          icone={<FontAwesomeIcon icon={faWheelchairMove} />}
           title="DESCRIÇÃO"
           descricao="Eliminamos barreiras arquitetônicas e atitudidinais para promover a inclusão plena."
         ></Caixa>
         <Caixa
-          icone={<Box2HeartFill />}
+          icone={<FontAwesomeIcon icon={faHandHoldingHeart} />}
           title="CIDADANIA"
           descricao="Desenvolvemos programas que promovem autonomia e direitos das pessoas com deficiência."
         ></Caixa>
         <Caixa
-          icone={<PeopleFill />}
+          icone={<FontAwesomeIcon icon={faUserGroup} />}
           title="COMUNIDADE"
           descricao="Atuamos junto a famílias em vulnerabilidade social, fortalecendo laços comunitários."
         ></Caixa>
         <Caixa
-          icone={<ShieldCheck />}
+          icone={<FontAwesomeIcon icon={faShield} />}
           title="TRANSPARÊNCIA"
           descricao="Eliminamos barreiras arquitetônicas e atitudidinais para promover a inclusão plena."
         ></Caixa>

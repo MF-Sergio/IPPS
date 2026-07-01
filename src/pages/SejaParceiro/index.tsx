@@ -63,7 +63,7 @@ export default function SejaParceiro() {
           iconColor="text-[var(--fundo)]"
         ></CardComIcone>
       </div>
-      <section className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden bg-gradient-to-t from-[#F2D9B5] to-[#3E6377]">
+      <section className="relative left-1/2 -translate-x-1/2 w-screen  bg-gradient-to-t from-[#F2D9B5] to-[#3E6377]">
         <Formulario></Formulario>
       </section>
     </div>
