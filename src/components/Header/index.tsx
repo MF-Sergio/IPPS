@@ -19,7 +19,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="mt-10 mx-auto flex w-full max-w-[1150px] px-4 sm:px-6 lg:px-8 text-black items-center justify-between my-6 font-semibold relative z-50">
+    <header className="mt-10 mx-auto flex w-full max-w-[1150px] text-black items-center justify-between my-6 font-semibold relative z-50">
       <Logo variant="nova" />
 
       <HeaderMobileToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
