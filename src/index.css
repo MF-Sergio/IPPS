@@ -4,7 +4,6 @@
 
 :root {
   --sans: "Source Sans 3", sans-serif;
-  --heading: "Source Sans 3", sans-serif;
   --sans-alt: "Inter", sans-serif;
   --titulo: #a9171a;
   --icones: #7b1e3d;
@@ -57,8 +56,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--heading);
+  font-family: var(--sans);
   font-weight: 600;
+}
+
+.transparencia-page,
+.transparencia-page * {
+  font-family: var(--sans-alt);
 }
 
 .titulo {
@@ -74,8 +78,7 @@ button:disabled {
 }
 
 .donation-modal-shell {
-  animation: donation-modal-expand 520ms cubic-bezier(0.22, 1, 0.36, 1)
-    both;
+  animation: donation-modal-expand 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .donation-modal-content {
