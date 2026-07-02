@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Projetos", href: "/#projetos" },
   { label: "Abrangência", href: "/#abrangencia" },
   { label: "Seja Parceiro", href: "/seja-parceiro" },
-  { label: "Transparência", href: "/#transparencia" },
+  { label: "Transparência", href: "/transparencia" },
   { label: "Eventos", href: "/eventos" },
 ];
 
