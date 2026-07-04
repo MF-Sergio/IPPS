@@ -19,6 +19,8 @@
     // Module Resolution
     "moduleResolution": "bundler",
     "baseUrl": "./src",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "paths": {
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
