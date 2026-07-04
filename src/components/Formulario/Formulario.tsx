@@ -25,11 +25,21 @@ export default function Formulario() {
         <form
           className="space-y-8"
           aria-label="Formulário para parceria com o IPPS"
+          action="https://formsubmit.co/84044efea8132045bcfaaefa8a233e64"
+          method="POST"
         >
           {/* Empresa */}
+          <input type="text" name="_honey" className="hidden" />
+          <input
+            type="hidden"
+            name="_cc"
+            value="ippromocaodasaude@gmail.com"
+            className="hidden"
+          />
+          <input type="hidden" name="_next" value="https://www.ipps.com.br/" />
           <div>
             <label
-              htmlFor="empresa"
+              htmlFor="fempresa"
               className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
             >
               <Building size={24} className="text-[#1E6795]" />
@@ -37,17 +47,19 @@ export default function Formulario() {
             </label>
 
             <input
-              id="empresa"
+              id="fempresa"
+              name="Empresa"
               type="text"
               placeholder="Digite o nome da empresa"
               className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
+              required
             />
           </div>
 
           {/* Responsável */}
           <div>
             <label
-              htmlFor="responsavel"
+              htmlFor="fresponsavel"
               className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
             >
               <Person size={24} className="text-[#1E6795]" />
@@ -55,10 +67,12 @@ export default function Formulario() {
             </label>
 
             <input
-              id="responsavel"
+              id="fresponsavel"
+              name="Responsavel"
               type="text"
               placeholder="Digite seu nome"
               className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
+              required
             />
           </div>
 
@@ -66,7 +80,7 @@ export default function Formulario() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
               <label
-                htmlFor="email"
+                htmlFor="femail"
                 className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
               >
                 <Envelope size={24} className="text-[#1E6795]" />
@@ -74,16 +88,18 @@ export default function Formulario() {
               </label>
 
               <input
-                id="email"
+                id="femail"
+                name="Email"
                 type="email"
                 placeholder="seuemail@empresa.com"
                 className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
+                required
               />
             </div>
 
             <div>
               <label
-                htmlFor="telefone"
+                htmlFor="ftelefone"
                 className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
               >
                 <Telephone size={24} className="text-[#1E6795]" />
@@ -91,7 +107,8 @@ export default function Formulario() {
               </label>
 
               <input
-                id="telefone"
+                id="ftelefone"
+                name="Telefone"
                 type="tel"
                 placeholder="(21) 99999-9999"
                 className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
@@ -102,7 +119,7 @@ export default function Formulario() {
           {/* Mensagem */}
           <div>
             <label
-              htmlFor="mensagem"
+              htmlFor="fmensagem"
               className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
             >
               <ChatLeftText size={24} className="text-[#1E6795]" />
@@ -110,7 +127,8 @@ export default function Formulario() {
             </label>
 
             <textarea
-              id="mensagem"
+              id="fmensagem"
+              name="Mensagem"
               rows={7}
               placeholder="Conte-nos como sua empresa pode contribuir com o IPPS"
               className="w-full rounded-3xl border border-gray-300 p-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
