@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { FaDownload } from "react-icons/fa6";
 import {
   cartoesTransparencia,
@@ -35,74 +35,41 @@ function LinkDownload({ label, href }: LinkDocumento) {
 function TituloSecao({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <div className="mx-auto max-w-4xl text-center">
-      <h2 className="text-4xl font-bold text-[#1C1D1D]">{title}</h2>
-      <p className="mt-3 text-xl text-[#1C1D1D]">{subtitle}</p>
+      <h2 className="text-[22px] font-semibold text-[#1C1D1D]">{title}</h2>
+      <p className="mt-3 text-[18px] font-medium text-[#1C1D1D]">{subtitle}</p>
     </div>
   );
 }
+
+type CartaoDocumentoProps = DadosCartaoDocumento & {
+  footer?: ReactNode;
+};
 
 function CartaoDocumento({
   icon,
   title,
   description,
   links,
-}: DadosCartaoDocumento) {
+  footer,
+}: CartaoDocumentoProps) {
   return (
     <article className="flex h-[430px] flex-col rounded-[6px] border border-[#b7b7b7] bg-white px-5 py-8 shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-[#f3dce7]">
+      <div className="mx-auto flex h-[73px] w-[73px] items-center justify-center rounded-xl bg-[#f3dce7]">
         <img src={icon} alt="" className="h-[35px] w-[35px] object-contain" />
       </div>
-      <h3 className="mt-6 text-[30px] font-bold text-[#1C1D1D]">{title}</h3>
-      <p className="mt-3 text-base leading-relaxed text-[#5a5a5a]">
-        {description}
-      </p>
-      <div className="mt-8 grid grid-cols-2 gap-3">
-        {links.map((link) => (
-          <LinkDownload key={link.label} {...link} />
-        ))}
-      </div>
-    </article>
-  );
-}
-
-function CartaoConveniosRapidos() {
-  const cartaoConvenios = cartoesTransparencia[2]!;
-
-  return (
-    <article className="flex h-[430px] flex-col items-center rounded-[16px] border border-[#d8d0d0] bg-[#fff9fb] px-6 py-7 text-center shadow-[0_2px_4px_rgba(0,0,0,0.18)] overflow-hidden">
-      <div className="flex h-[76px] w-[76px] items-center justify-center rounded-xl bg-[#f3dce7]">
-        <img
-          src={cartaoConvenios.icon}
-          alt=""
-          className="h-[35px] w-[35px] object-contain"
-        />
-      </div>
-
-      <h3 className="mt-8 text-[28px] font-bold text-[#1C1D1D]">Convênios</h3>
-      <p className="mt-3 max-w-[360px] text-[17px] leading-tight text-[#5a5a5a]">
-        Consulte informações e dados dos convênios firmados.
-      </p>
-
-      <div className="mt-8 flex w-full max-w-[360px] flex-1 flex-col justify-start gap-4">
-        <div>
-          <p className="text-[20px] font-bold text-[#1C1D1D]">SMAS</p>
-          <div className="mt-2 flex justify-center">
-            <LinkDownload {...conveniosTransparencia.smas} />
+      <div className="mt-6 flex flex-1 flex-col">
+        <h3 className="text-[20px] font-semibold text-[#1C1D1D]">{title}</h3>
+        <p className="mt-3 text-base font-medium leading-relaxed text-[#5a5a5a]">
+          {description}
+        </p>
+        {links.length > 0 ? (
+          <div className="mt-8 grid grid-cols-2 gap-3">
+            {links.map((link) => (
+              <LinkDownload key={link.label} {...link} />
+            ))}
           </div>
-        </div>
-
-        <div>
-          <p className="text-[20px] font-bold text-[#1C1D1D]">SMPD</p>
-          <div className="mt-2 flex justify-center">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-[var(--verde)] px-4 py-2 text-sm font-semibold text-[var(--verde)] transition-colors duration-200 hover:bg-[var(--verde)] hover:text-white"
-            >
-              <FaDownload className="text-[0.75rem]" />
-              TF 023/22 - Ativo
-            </button>
-          </div>
-        </div>
+        ) : null}
+        {footer ? <div className="mt-auto pt-8">{footer}</div> : null}
       </div>
     </article>
   );
@@ -110,9 +77,11 @@ function CartaoConveniosRapidos() {
 
 function CampoDetalhe({ title, lines }: { title: string; lines: string[] }) {
   return (
-    <div>
-      <p className="text-[16px] font-semibold text-[#1C1D1D]">{title}</p>
-      <div className="mt-2 space-y-1 text-[15px] text-[#1C1D1D]">
+    <div className="flex items-start gap-3">
+      <p className="shrink-0 text-[15px] font-semibold text-[#1C1D1D]">
+        {title}
+      </p>
+      <div className="flex flex-wrap gap-4 text-[15px] text-[#1C1D1D] font-medium">
         {lines.map((line) => (
           <p key={line}>{line}</p>
         ))}
@@ -123,15 +92,17 @@ function CampoDetalhe({ title, lines }: { title: string; lines: string[] }) {
 
 function CartaoSmpdDetalhado() {
   return (
-    <article className="h-[430px] w-full overflow-hidden rounded-[14px] bg-[#dde3e8] px-5 py-5 text-[#1C1D1D] shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
+    <article className="h-[430px] w-full overflow-hidden rounded-[14px] bg-[#dde3e8] px-[78px] py-[24.5px] text-[#1C1D1D] shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
       <div className="flex h-full flex-col justify-between">
+        <h3 className="self-start text-[18px] font-semibold text-[#1C1D1D]">
+          SMPD
+        </h3>
         <div className="flex items-start justify-between gap-5">
-          <div className="min-w-0 flex-1">
-            <h3 className="text-[18px] font-semibold text-[#1C1D1D]">SMPD</h3>
-            <h4 className="mt-4 text-[16px] font-bold text-[#216587]">
+          <div className="text-start min-w-0 flex-1">
+            <h4 className="text-[16px] font-bold text-[#216587]">
               Objeto da Parceria
             </h4>
-            <p className="mt-2 max-w-[690px] text-[15px] leading-relaxed text-[#1C1D1D]">
+            <p className="mt-2 max-w-[600px] text-[15px] leading-relaxed text-[#1C1D1D]">
               Execução de serviço de Proteção Especial para pessoas com
               Deficiências na modalidade Centro dia e similares, com
               disponibilidade de 200 metas (usuários cadastrados) visando
@@ -152,9 +123,9 @@ function CartaoSmpdDetalhado() {
           </div>
         </div>
 
-        <div className="grid grid-cols-[1fr_190px] gap-8">
+        <div className="pb-6 grid grid-cols-[1fr_190px] gap-8">
           <div>
-            <h4 className="text-[16px] font-bold text-[#216587]">
+            <h4 className="text-start text-[16px] font-bold text-[#216587]">
               Informações
             </h4>
             <div className="mt-2 space-y-4">
@@ -183,6 +154,7 @@ function CartaoSmpdDetalhado() {
 export default function SecaoTransparencia() {
   const cartaoInformacoes = cartoesTransparencia[0]!;
   const cartaoBalanco = cartoesTransparencia[1]!;
+  const cartaoConvenios = cartoesTransparencia[2]!;
   const [smpdAtivo, setSmpdAtivo] = useState(false);
 
   function abrirSmpd() {
@@ -197,7 +169,7 @@ export default function SecaoTransparencia() {
     <section className="w-full overflow-hidden py-6">
       <TituloSecao {...secaoTransparencia} />
 
-      <div className="mt-10">
+      <div className="mt-5">
         <div
           className="flex transition-transform duration-700 ease-in-out"
           style={{
@@ -206,48 +178,41 @@ export default function SecaoTransparencia() {
           }}
         >
           <div className="w-1/2 pr-4">
-            <div className="mt-10 grid grid-cols-3 gap-8">
+            <div className="mt-10 grid grid-cols-3 gap-[58px]">
               <CartaoDocumento {...cartaoInformacoes} />
               <CartaoDocumento {...cartaoBalanco} />
-              <article className="flex h-[430px] flex-col items-center rounded-[16px] border border-[#d8d0d0] bg-[#fff9fb] px-6 py-7 text-center shadow-[0_2px_4px_rgba(0,0,0,0.18)] overflow-hidden">
-                <div className="flex h-[76px] w-[76px] items-center justify-center rounded-xl bg-[#f3dce7]">
-                  <img
-                    src={cartoesTransparencia[2]!.icon}
-                    alt=""
-                    className="h-[35px] w-[35px] object-contain"
-                  />
-                </div>
+              <CartaoDocumento
+                {...cartaoConvenios}
+                links={[]}
+                footer={
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <p className="text-[13.5px] font-bold text-[#1C1D1D]">
+                        SMAS
+                      </p>
+                      <div className="mt-2 flex justify-center">
+                        <LinkDownload {...conveniosTransparencia.smas} />
+                      </div>
+                    </div>
 
-                <h3 className="mt-8 text-[28px] font-bold text-[#1C1D1D]">
-                  Convênios
-                </h3>
-                <p className="mt-3 max-w-[360px] text-[17px] leading-tight text-[#5a5a5a]">
-                  Consulte informações e dados dos convênios firmados.
-                </p>
-
-                <div className="mt-8 flex w-full max-w-[360px] flex-1 flex-col justify-start gap-4">
-                  <div>
-                    <p className="text-[20px] font-bold text-[#1C1D1D]">SMAS</p>
-                    <div className="mt-2 flex justify-center">
-                      <LinkDownload {...conveniosTransparencia.smas} />
+                    <div>
+                      <p className="text-[13.5px] font-bold text-[#1C1D1D]">
+                        SMPD
+                      </p>
+                      <div className="mt-2 flex justify-center">
+                        <button
+                          type="button"
+                          onClick={abrirSmpd}
+                          className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-[var(--verde)] px-4 py-2 text-sm font-semibold text-[var(--verde)] transition-colors duration-200 hover:bg-[var(--verde)] hover:text-white"
+                        >
+                          <FaDownload className="text-[0.75rem]" />
+                          TF 023/22 - Ativo
+                        </button>
+                      </div>
                     </div>
                   </div>
-
-                  <div>
-                    <p className="text-[20px] font-bold text-[#1C1D1D]">SMPD</p>
-                    <div className="mt-2 flex justify-center">
-                      <button
-                        type="button"
-                        onClick={abrirSmpd}
-                        className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-[var(--verde)] px-4 py-2 text-sm font-semibold text-[var(--verde)] transition-colors duration-200 hover:bg-[var(--verde)] hover:text-white"
-                      >
-                        <FaDownload className="text-[0.75rem]" />
-                        TF 023/22 - Ativo
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </article>
+                }
+              />
             </div>
           </div>
 
