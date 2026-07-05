@@ -94,7 +94,13 @@ export default function TrabalheConosco() {
           fontColor="text-[rgba(28,29,29,0.75)]"
         ></CardComIcone>
       </div>
-      <Formulario />
+      <Formulario
+        titulo="Candidate-se"
+        subtitulo="Preencha o formulário abaixo e envie seu currículo. Estamos ansiosos para conhecer você!"
+        ehTrabalheConosco={true}
+        tituloMensagem="Por que você quer trabalhar no IPPS? "
+        subtituloMensagem="Conte-nos um pouco sobre sua motivação e experiência..."
+      />
     </div>
   );
 }

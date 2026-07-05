@@ -7,28 +7,40 @@ import {
   Send,
 } from "react-bootstrap-icons";
 
-export default function Formulario() {
+interface FormularioProps {
+  titulo: string;
+  subtitulo: string;
+  ehTrabalheConosco: boolean;
+  tituloMensagem: string;
+  subtituloMensagem: string;
+}
+
+export default function Formulario({
+  titulo,
+  subtitulo,
+  ehTrabalheConosco,
+  tituloMensagem,
+  subtituloMensagem,
+}: FormularioProps) {
   return (
     <section className="w-full py-12 px-4">
       <div className="mx-auto max-w-4xl rounded-[40px] bg-white p-6 md:p-12 shadow-lg">
         {/* Cabeçalho */}
         <header className="mb-12 text-center">
           <h2 className="font-serif text-4xl font-bold uppercase text-[#1E6795] md:text-6xl">
-            Quero Ser Parceiro
+            {titulo}
           </h2>
 
-          <p className="mt-4 text-lg text-gray-600 md:text-2xl">
-            Preencha o formulário e nossa equipe entrará em contato
-          </p>
+          <p className="mt-4 text-lg text-gray-600 md:text-2xl">{subtitulo}</p>
         </header>
 
         <form
           className="space-y-8"
           aria-label="Formulário para parceria com o IPPS"
           action="https://formsubmit.co/84044efea8132045bcfaaefa8a233e64"
+          encType="multipart/form-data"
           method="POST"
         >
-          {/* Empresa */}
           <input type="text" name="_honey" className="hidden" />
           <input
             type="hidden"
@@ -37,24 +49,27 @@ export default function Formulario() {
             className="hidden"
           />
           <input type="hidden" name="_next" value="https://www.ipps.com.br/" />
-          <div>
-            <label
-              htmlFor="fempresa"
-              className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
-            >
-              <Building size={24} className="text-[#1E6795]" />
-              Nome da Empresa/Organização
-            </label>
+          {/* Empresa */}
+          {!ehTrabalheConosco ? (
+            <div>
+              <label
+                htmlFor="fempresa"
+                className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
+              >
+                <Building size={24} className="text-[#1E6795]" />
+                Nome da Empresa/Organização *
+              </label>
 
-            <input
-              id="fempresa"
-              name="Empresa"
-              type="text"
-              placeholder="Digite o nome da empresa"
-              className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
-              required
-            />
-          </div>
+              <input
+                id="fempresa"
+                name="Empresa"
+                type="text"
+                placeholder="Digite o nome da empresa"
+                className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
+                required
+              />
+            </div>
+          ) : null}
 
           {/* Responsável */}
           <div>
@@ -63,7 +78,7 @@ export default function Formulario() {
               className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
             >
               <Person size={24} className="text-[#1E6795]" />
-              Nome do Responsável
+              Nome do Responsável *
             </label>
 
             <input
@@ -84,7 +99,7 @@ export default function Formulario() {
                 className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
               >
                 <Envelope size={24} className="text-[#1E6795]" />
-                E-mail
+                E-mail *
               </label>
 
               <input
@@ -103,7 +118,7 @@ export default function Formulario() {
                 className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
               >
                 <Telephone size={24} className="text-[#1E6795]" />
-                Telefone
+                Telefone (Opcional)
               </label>
 
               <input
@@ -116,6 +131,70 @@ export default function Formulario() {
             </div>
           </div>
 
+          {/* Área de Interesse e Linkedin */}
+          {ehTrabalheConosco ? (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="farea"
+                  className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
+                >
+                  Área de Interesse *
+                </label>
+
+                <input
+                  id="farea"
+                  name="Area"
+                  type="text"
+                  placeholder="Ex: Administração"
+                  className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="flinkedin"
+                  className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
+                >
+                  Linked In (Opcional)
+                </label>
+
+                <input
+                  id="flinkedin"
+                  name="linked_in"
+                  type="tel"
+                  placeholder="https://linkedin.com/in/seu-perfil"
+                  className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
+                />
+              </div>
+            </div>
+          ) : null}
+
+          {/* PDF */}
+          {ehTrabalheConosco ? (
+            <div>
+              <label
+                htmlFor="fcurriculo"
+                className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
+              >
+                Currículo (PDF)
+              </label>
+              <input
+                type="file"
+                id="fcurriculo"
+                name="Curriculo"
+                accept=".pdf"
+                required
+                className="w-full text-slate-600 font-medium text-sm border border-slate-200 rounded-md cursor-pointer
+         focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
+         file:cursor-pointer file:border-0 file:py-2 file:px-3 file:mr-4
+         file:bg-gray-100 hover:file:bg-gray-200 file:text-slate-500
+         dark:text-slate-400 dark:border-neutral-700 dark:file:bg-neutral-800 dark:hover:file:bg-neutral-700"
+              />
+            </div>
+          ) : null}
+
           {/* Mensagem */}
           <div>
             <label
@@ -123,14 +202,14 @@ export default function Formulario() {
               className="mb-3 flex items-center gap-3 text-xl font-semibold text-zinc-900"
             >
               <ChatLeftText size={24} className="text-[#1E6795]" />
-              Mensagem
+              {tituloMensagem} (Opcional)
             </label>
 
             <textarea
               id="fmensagem"
               name="Mensagem"
               rows={7}
-              placeholder="Conte-nos como sua empresa pode contribuir com o IPPS"
+              placeholder={subtituloMensagem}
               className="w-full rounded-3xl border border-gray-300 p-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
             />
           </div>

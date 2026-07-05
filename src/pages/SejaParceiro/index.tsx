@@ -64,7 +64,13 @@ export default function SejaParceiro() {
         ></CardComIcone>
       </div>
       <section className="relative left-1/2 -translate-x-1/2 w-screen  bg-gradient-to-t from-[#F2D9B5] to-[#3E6377]">
-        <Formulario></Formulario>
+        <Formulario
+          titulo="Quero Ser Parceiro"
+          subtitulo="Preencha o formulário e nossa equipe entrará em contato"
+          ehTrabalheConosco={false}
+          tituloMensagem="Mensagem"
+          subtituloMensagem="Conte-nos como sua empresa pode contribuir com o IPPS"
+        ></Formulario>
       </section>
     </div>
   );
