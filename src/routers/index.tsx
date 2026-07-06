@@ -5,6 +5,7 @@ import QuemSomos from "../pages/QuemSomos";
 import DoeAgora from "../pages/DoeAgora";
 import Contato from "../pages/Contato";
 import Transparencia from "../pages/Transparencia";
+import Eventos from "../pages/Eventos";
 
 export const routes = [
   { path: "/", element: <Home /> },
@@ -14,4 +15,5 @@ export const routes = [
   { path: "/quem-somos", element: <QuemSomos /> },
   { path: "/contato", element: <Contato /> },
   { path: "/transparencia", element: <Transparencia /> },
+  { path: "/eventos", element: <Eventos /> },
 ];
