@@ -25,7 +25,7 @@ export default function QuemSomos() {
         social, esportiva, cultural e de lazer, sempre com o compromisso de
         construir uma sociedade mais inclusiva e justa.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-4 gap-6">
         <Caixa
           icone={<FontAwesomeIcon icon={faWheelchairMove} />}
           title="DESCRIÇÃO"
