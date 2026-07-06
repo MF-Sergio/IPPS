@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { FiCreditCard, FiFileText, FiLock } from "react-icons/fi";
+import { FiCreditCard, FiLock } from "react-icons/fi";
 import type { DoacaoData } from "../../index";
 import StepIndicator from "../StepIndicator/StepIndicator";
 
 interface StepPagamentoProps {
   dados: DoacaoData;
   onChange: (partial: Partial<DoacaoData>) => void;
-  onNext: () => void;
+  onSubmit: (metodoPagamento: MetodoPagamento) => void;
+  isSubmitting: boolean;
+  error: string | null;
   onBack: () => void;
   currentStep: number;
 }
@@ -18,14 +20,12 @@ const iconPath = "/img/donation-icons";
 export default function StepPagamento({
   dados,
   onChange,
-  onNext,
+  onSubmit,
+  isSubmitting,
+  error,
   currentStep,
 }: StepPagamentoProps) {
   const [metodo, setMetodo] = useState<MetodoPagamento>(dados.metodoPagamento);
-  const [cartaoNumero, setCartaoNumero] = useState("");
-  const [cartaoVencimento, setCartaoVencimento] = useState("");
-  const [cartaoCvv, setCartaoCvv] = useState("");
-  const [cartaoNome, setCartaoNome] = useState("");
 
   const methods = [
     { key: "pix" as const, label: "PIX", iconSrc: `${iconPath}/pix-icon.svg` },
@@ -43,44 +43,12 @@ export default function StepPagamento({
   };
 
   const handleContinuar = () => {
-    if (metodo === "cartao") {
-      onChange({
-        cartao: {
-          numero: cartaoNumero,
-          vencimento: cartaoVencimento,
-          cvv: cartaoCvv,
-          nome: cartaoNome,
-        },
-      });
-    }
-
-    onNext();
+    onChange({ metodoPagamento: metodo });
+    onSubmit(metodo);
   };
-
-  const formatCardNumber = (value: string) => {
-    const digits = value.replace(/\D/g, "").slice(0, 16);
-    return digits.replace(/(\d{4})(?=\d)/g, "$1 ");
-  };
-
-  const formatVencimento = (value: string) => {
-    const digits = value.replace(/\D/g, "").slice(0, 4);
-    if (digits.length > 2) {
-      return `${digits.slice(0, 2)}/${digits.slice(2)}`;
-    }
-
-    return digits;
-  };
-
-  const canProceed =
-    metodo === "pix" ||
-    metodo === "boleto" ||
-    (metodo === "cartao" &&
-      cartaoNumero &&
-      cartaoVencimento &&
-      cartaoCvv &&
-      cartaoNome);
 
   const formattedValue = dados.valor.toFixed(2).replace(".", ",");
+  const paymentDescription = getPaymentDescription(metodo);
 
   return (
     <section className="flex w-full justify-center px-4 py-12 sm:py-16">
@@ -138,110 +106,23 @@ export default function StepPagamento({
             })}
           </div>
 
-          {metodo === "cartao" && (
-            <div className="mt-7 max-w-77.5 space-y-4">
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#4d4045]">
-                  Número do cartão
-                </label>
-                <div className="relative mt-2">
-                  <input
-                    type="text"
-                    placeholder="0000 0000 0000 0000"
-                    value={cartaoNumero}
-                    onChange={(event) =>
-                      setCartaoNumero(formatCardNumber(event.target.value))
-                    }
-                    className="h-8.5 w-full rounded-md border-0 bg-[#F5F3F3] px-4 pr-10 text-[11px] text-gray-800 outline-none placeholder:text-[#c7c0c3] focus:bg-white focus:ring-2 focus:ring-[#a9171a]/30"
-                  />
-                  <FiCreditCard
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#c6c0c4]"
-                    size={15}
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-[130px_95px] gap-5">
-                <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#4d4045]">
-                    Vencimento
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="MM/AA"
-                    value={cartaoVencimento}
-                    onChange={(event) =>
-                      setCartaoVencimento(formatVencimento(event.target.value))
-                    }
-                    className="mt-2 h-8.5 w-full rounded-md border-0 bg-[#F5F3F3] px-4 text-[11px] text-gray-800 outline-none placeholder:text-[#c7c0c3] focus:bg-white focus:ring-2 focus:ring-[#a9171a]/30"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#4d4045]">
-                    CVV
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="123"
-                    value={cartaoCvv}
-                    onChange={(event) =>
-                      setCartaoCvv(
-                        event.target.value.replace(/\D/g, "").slice(0, 4),
-                      )
-                    }
-                    className="mt-2 h-8.5 w-full rounded-md border-0 bg-[#F5F3F3] px-4 text-[11px] text-gray-800 outline-none placeholder:text-[#c7c0c3] focus:bg-white focus:ring-2 focus:ring-[#a9171a]/30"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#4d4045]">
-                  Nome impresso no cartão
-                </label>
-                <input
-                  type="text"
-                  placeholder="NOME COMO NO CARTÃO"
-                  value={cartaoNome}
-                  onChange={(event) =>
-                    setCartaoNome(event.target.value.toUpperCase())
-                  }
-                  className="mt-2 h-9.5 w-full rounded-md border-0 bg-[#F5F3F3] px-4 text-[11px] text-gray-800 outline-none placeholder:text-[#c7c0c3] focus:bg-white focus:ring-2 focus:ring-[#a9171a]/30"
-                />
-              </div>
-            </div>
-          )}
-
-          {metodo === "pix" && (
-            <div className="mt-7 rounded-xl border border-[#ECEFF3] bg-[#F8F8F8] px-6 py-5 text-center">
-              <p className="text-[12px] leading-relaxed text-[#566070]">
-                Ao continuar, você receberá um{" "}
-                <strong className="text-[#1d2a38]">QR Code</strong> e{" "}
-                <strong className="text-[#1d2a38]">código copia e cola</strong>{" "}
-                para finalizar o pagamento.
-              </p>
-            </div>
-          )}
-
-          {metodo === "boleto" && (
-            <div className="mt-7 rounded-xl border border-[#ECEFF3] bg-[#F8F8F8] px-6 py-5 text-center">
-              <p className="text-[12px] leading-relaxed text-[#566070]">
-                Um boleto será gerado com vencimento em{" "}
-                <strong className="text-[#1d2a38]">3 dias úteis</strong>.
-              </p>
-            </div>
-          )}
+          <div className="mt-7 rounded-xl border border-[#ECEFF3] bg-[#F8F8F8] px-6 py-5 text-center">
+            <p className="text-[12px] font-bold uppercase tracking-wide text-[#1d2a38]">
+              {paymentDescription.title}
+            </p>
+            <p className="mt-2 text-[12px] leading-relaxed text-[#566070]">
+              {paymentDescription.description}
+            </p>
+          </div>
 
           <div className="mt-8 flex items-center justify-between border-y border-[#ECEFF3] py-5">
             <div>
               <p className="text-[13px] font-bold uppercase tracking-wide text-[#9aa4b1]">
                 Doação única
               </p>
-              {metodo === "cartao" && (
-                <p className="mt-2 text-[9px] leading-tight text-[#b3bac2]">
-                  Uma taxa de processamento de R$ 3,50 pode ser aplicada.
-                </p>
-              )}
+              <p className="mt-2 text-[9px] leading-tight text-[#b3bac2]">
+                Dados financeiros serão solicitados apenas pelo Mercado Pago.
+              </p>
             </div>
 
             <strong className="text-[20px] font-extrabold text-black">
@@ -249,27 +130,59 @@ export default function StepPagamento({
             </strong>
           </div>
 
+          {error && (
+            <div className="mt-6 rounded-lg border border-[#F2B8B5] bg-[#FFF4F2] px-4 py-3 text-center text-[12px] font-medium text-[#A40201]">
+              {error}
+            </div>
+          )}
+
           <button
             onClick={handleContinuar}
-            disabled={!canProceed}
+            disabled={isSubmitting}
             className={`mt-8 flex h-12.5 w-full items-center justify-center gap-2 rounded-lg text-[13px] font-bold uppercase tracking-wide text-white transition-all ${
-              canProceed
+              !isSubmitting
                 ? "bg-[#216587] hover:bg-[#1a4f6b]"
                 : "bg-[#216587]/45"
             }`}
           >
-            Continuar
-            <span className="text-lg leading-none">→</span>
+            {isSubmitting
+              ? "Conectando ao Mercado Pago..."
+              : "Ir para pagamento"}
+            {!isSubmitting && <span className="text-lg leading-none">→</span>}
           </button>
 
           <div className="mt-5 flex items-center justify-center gap-1.5">
             <FiLock size={11} className="text-[#BFC5CC]" />
             <p className="text-center text-[10px] text-[#BFC5CC]">
-              Pagamento seguro com criptografia SSL.
+              Checkout processado pelo Mercado Pago em ambiente seguro.
             </p>
           </div>
         </div>
       </div>
     </section>
   );
+}
+
+function getPaymentDescription(metodo: MetodoPagamento) {
+  if (metodo === "pix") {
+    return {
+      title: "Pix pelo Mercado Pago",
+      description:
+        "Você será redirecionado para gerar o QR Code ou código copia e cola no ambiente do Mercado Pago.",
+    };
+  }
+
+  if (metodo === "boleto") {
+    return {
+      title: "Boleto pelo Mercado Pago",
+      description:
+        "Você será redirecionado para gerar o boleto no checkout do Mercado Pago.",
+    };
+  }
+
+  return {
+    title: "Cartão pelo Mercado Pago",
+    description:
+      "Os dados do cartão serão digitados somente no checkout do Mercado Pago. O IPPS não acessa número, validade ou CVV.",
+  };
 }
