@@ -1,4 +1,5 @@
 import { FiLock } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import type { DoacaoData } from "../../index";
 import StepIndicator from "../StepIndicator/StepIndicator";
 
@@ -16,15 +17,9 @@ export default function StepDados({
   onNext,
   currentStep,
 }: StepDadosProps) {
-  const canProceed = dados.nome.trim() && dados.email.trim() && dados.cpf.trim();
-
-  const formatCPF = (value: string) => {
-    const digits = value.replace(/\D/g, "").slice(0, 11);
-    return digits
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-  };
+  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(dados.email.trim());
+  const canProceed =
+    dados.nome.trim().length >= 3 && emailValido && dados.aceitePrivacidade;
 
   return (
     <section className="flex w-full justify-center px-4 py-12 sm:py-16">
@@ -34,8 +29,8 @@ export default function StepDados({
             SEUS DADOS
           </h2>
           <p className="mx-auto mt-4 max-w-105 text-[13px] leading-relaxed tracking-[0.04em] text-[#6f6368]">
-            Sua generosidade transforma vidas. Precisamos de algumas
-            informações básicas para registrar sua contribuição.
+            Sua generosidade transforma vidas. Precisamos de algumas informações
+            básicas para iniciar sua contribuição com segurança.
           </p>
         </div>
 
@@ -73,20 +68,29 @@ export default function StepDados({
             />
           </div>
 
-          <div className="max-w-75">
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
-              CPF
-            </label>
+          <label className="flex items-start gap-3 rounded-lg border border-[#E7E1E3] bg-[#FAF8F8] px-4 py-4 text-left">
             <input
-              type="text"
-              placeholder="000.000.000-00"
-              value={dados.cpf}
+              type="checkbox"
+              checked={dados.aceitePrivacidade}
               onChange={(event) =>
-                onChange({ cpf: formatCPF(event.target.value) })
+                onChange({ aceitePrivacidade: event.target.checked })
               }
-              className="mt-2 h-12 w-full rounded-md border-0 bg-[#F5F3F3] px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:bg-white focus:ring-2 focus:ring-[#a9171a]/30"
+              className="mt-1 h-4 w-4 accent-[#216587]"
             />
-          </div>
+            <span className="text-[11px] leading-relaxed text-[#6f6368]">
+              Li e concordo com a{" "}
+              <Link
+                to="/politica-de-privacidade"
+                className="font-bold text-[#216587] underline-offset-2 hover:underline"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Política de Privacidade
+              </Link>
+              . Entendo que meus dados serão usados apenas para processar esta
+              doação e comunicações relacionadas.
+            </span>
+          </label>
         </div>
 
         <button
@@ -103,8 +107,8 @@ export default function StepDados({
         <div className="mt-6 flex items-center justify-center gap-1.5">
           <FiLock size={11} className="text-[#BFC5CC]" />
           <p className="text-center text-[10px] text-[#8c98a3]">
-            Ao continuar, você concorda com nossos termos de privacidade. Seus
-            dados estão seguros e protegidos por criptografia de ponta a ponta.
+            O pagamento será concluído no ambiente seguro do Mercado Pago. O
+            IPPS não coleta dados de cartão.
           </p>
         </div>
       </div>
