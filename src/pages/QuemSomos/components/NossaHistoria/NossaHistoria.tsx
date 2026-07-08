@@ -13,20 +13,20 @@ const slides = [
 
 export default function NossaHistoria() {
   return (
-    <section className="mx-auto mt-16 max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section className="mx-auto mt-16 max-w-6xl px-8">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-[var(--vermelho)] lg:text-4xl">
+        <h2 className="text-4xl font-bold text-[var(--vermelho)]">
           Nossa história
         </h2>
-        <p className="mx-auto mt-6 max-w-5xl text-left text-base leading-relaxed text-[rgba(28,29,29,0.82)] lg:text-lg">
+        <p className="mx-auto mt-6 max-w-5xl text-left text-lg leading-relaxed text-[rgba(28,29,29,0.82)]">
           Nós somos o Instituto de Pesquisa e Promoção da Saúde (IPPS), uma
           organização da sociedade civil sem fins lucrativos, fundada em 05 de
           fevereiro de 2002.
           <br />
           <br />
           Atuamos de forma técnica e social no desenvolvimento de ações e
-          programas voltados à promoção da saúde, da cidadania e da qualidade
-          de vida, abrangendo as áreas social, esportiva, cultural e de lazer.
+          programas voltados à promoção da saúde, da cidadania e da qualidade de
+          vida, abrangendo as áreas social, esportiva, cultural e de lazer.
           Somos uma instituição independente, pautada pela ética, pelo respeito
           à diversidade e pela não discriminação em todas as nossas atividades.
           <br />
@@ -82,7 +82,7 @@ export default function NossaHistoria() {
         >
           {slides.map((slide, slideIndex) => (
             <div key={slideIndex} className="px-4 pb-2">
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="grid grid-cols-3 gap-4">
                 {slide.map((imagem, imageIndex) => (
                   <div
                     key={`${slideIndex}-${imageIndex}`}
@@ -91,7 +91,7 @@ export default function NossaHistoria() {
                     <img
                       src={imagem}
                       alt={`Fotografia da história do IPPS ${slideIndex + 1}-${imageIndex + 1}`}
-                      className="h-[280px] w-full object-cover md:h-[420px]"
+                      className="h-[420px] w-full object-cover"
                     />
                   </div>
                 ))}

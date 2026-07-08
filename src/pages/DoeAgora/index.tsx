@@ -1,23 +1,17 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { FiCheckCircle, FiClock, FiXCircle } from "react-icons/fi";
 import StepValor from "./components/StepValor/StepValor";
 import StepDados from "./components/StepDados/StepDados";
 import StepPagamento from "./components/StepPagamento/StepPagamento";
-import StepConfirmacao from "./components/StepConfirmacao/StepConfirmacao";
-import StepPix from "./components/StepPix/StepPix";
+import { DonationApiError, criarPreferenciaDoacao } from "./services/doacaoApi";
 
 export interface DoacaoData {
   valor: number;
   nome: string;
   email: string;
-  cpf: string;
   metodoPagamento: "pix" | "cartao" | "boleto";
-  cartao?: {
-    numero: string;
-    vencimento: string;
-    cvv: string;
-    nome: string;
-  };
+  aceitePrivacidade: boolean;
 }
 
 const getInitialMetodo = (
@@ -31,22 +25,61 @@ const getInitialMetodo = (
 };
 
 export default function DoeAgora() {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [step, setStep] = useState(1);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [dados, setDados] = useState<DoacaoData>({
     valor: 0,
     nome: "",
     email: "",
-    cpf: "",
     metodoPagamento: getInitialMetodo(searchParams.get("metodo")),
+    aceitePrivacidade: false,
   });
 
-  const nextStep = () => setStep((s) => Math.min(s + 1, 5));
+  const nextStep = () => setStep((s) => Math.min(s + 1, 3));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
   const updateDados = (partial: Partial<DoacaoData>) => {
     setDados((prev) => ({ ...prev, ...partial }));
   };
+  const donationReturn = searchParams.get("doacao");
+
+  const iniciarCheckout = async (
+    metodoPagamento: DoacaoData["metodoPagamento"],
+  ) => {
+    setCheckoutError(null);
+    setIsSubmitting(true);
+
+    try {
+      const checkout = await criarPreferenciaDoacao({
+        ...dados,
+        metodoPagamento,
+      });
+      window.location.assign(checkout.checkoutUrl);
+    } catch (error) {
+      const message =
+        error instanceof DonationApiError
+          ? error.message
+          : "Não foi possível iniciar o pagamento. Tente novamente.";
+
+      setCheckoutError(message);
+      setIsSubmitting(false);
+    }
+  };
+
+  if (donationReturn) {
+    return (
+      <DonationReturnStatus
+        status={donationReturn}
+        onVoltar={() => {
+          navigate("/doe-agora", { replace: true });
+          setStep(1);
+        }}
+      />
+    );
+  }
 
   return (
     <div className="w-full">
@@ -70,23 +103,73 @@ export default function DoeAgora() {
         <StepPagamento
           dados={dados}
           onChange={updateDados}
-          onNext={() => {
-            if (dados.metodoPagamento === "pix") {
-              setStep(5);
-            } else {
-              nextStep();
-            }
-          }}
+          onSubmit={iniciarCheckout}
+          isSubmitting={isSubmitting}
+          error={checkoutError}
           onBack={prevStep}
           currentStep={3}
         />
       )}
-      {step === 4 && (
-        <StepConfirmacao dados={dados} onVoltar={() => setStep(1)} />
-      )}
-      {step === 5 && (
-        <StepPix dados={dados} onVoltar={() => setStep(1)} />
-      )}
     </div>
   );
+}
+
+interface DonationReturnStatusProps {
+  status: string;
+  onVoltar: () => void;
+}
+
+function DonationReturnStatus({ status, onVoltar }: DonationReturnStatusProps) {
+  const content = getReturnStatusContent(status);
+  const Icon = content.Icon;
+
+  return (
+    <section className="flex w-full justify-center px-4 py-12 sm:py-16">
+      <div className="w-full max-w-170 rounded-[20px] border border-[#E7E1E3] bg-white px-8 py-12 text-center shadow-[0_18px_48px_rgba(0,0,0,0.05)]">
+        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-[24px] bg-[#F5F3F3] text-[#216587]">
+          <Icon size={40} />
+        </div>
+        <h1 className="mx-auto mt-8 max-w-100 font-serif text-[24px] font-bold uppercase leading-tight text-[#1C1D1D]">
+          {content.title}
+        </h1>
+        <p className="mx-auto mt-4 max-w-115 text-[13px] leading-relaxed text-[#6f6368]">
+          {content.description}
+        </p>
+        <button
+          type="button"
+          onClick={onVoltar}
+          className="mx-auto mt-8 flex h-11 w-full max-w-62.5 items-center justify-center rounded-lg bg-[#216587] text-[12px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#1a4f6b]"
+        >
+          Fazer nova doação
+        </button>
+      </div>
+    </section>
+  );
+}
+
+function getReturnStatusContent(status: string) {
+  if (status === "sucesso") {
+    return {
+      Icon: FiCheckCircle,
+      title: "Doação iniciada com sucesso",
+      description:
+        "Recebemos o retorno do Mercado Pago. A confirmação final do pagamento será feita pelo próprio gateway.",
+    };
+  }
+
+  if (status === "pendente") {
+    return {
+      Icon: FiClock,
+      title: "Pagamento pendente",
+      description:
+        "Seu pagamento ainda está em processamento. Em Pix ou boleto, a confirmação pode acontecer depois da finalização no banco.",
+    };
+  }
+
+  return {
+    Icon: FiXCircle,
+    title: "Pagamento não concluído",
+    description:
+      "Não conseguimos concluir essa tentativa. Você pode voltar e iniciar uma nova doação com segurança.",
+  };
 }

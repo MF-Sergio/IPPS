@@ -9,11 +9,9 @@ type FooterLinksProps = {
 export default function FooterLinks({ title, links }: FooterLinksProps) {
   return (
     <section>
-      <h3 className="font-semibold tracking-[0.18em]">
-        {title}
-      </h3>
+      <h3 className="font-semibold tracking-[0.18em]">{title}</h3>
 
-      <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-x-10">
+      <ul className="mt-4 grid grid-cols-2 gap-x-10 gap-y-3">
         {links.map((link) => (
           <li key={link.label}>
             <a

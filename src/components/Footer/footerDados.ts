@@ -1,10 +1,11 @@
 export const footerNav = [
   { label: "Quem somos", href: "/quem-somos" },
-  { label: "Nosso impacto", href: "/#impacto" },
-  { label: "Nossos projetos", href: "/#projetos" },
-  { label: "Abrangência", href: "/#abrangencia" },
   { label: "Transparência", href: "/#transparencia" },
+  { label: "Nosso impacto", href: "/#impacto" },
   { label: "Parceiros", href: "/#parceiros" },
+  { label: "Nossos projetos", href: "/#projetos" },
+  { label: "Eventos", href: "/eventos" },
+  { label: "Abrangência", href: "/#abrangencia" },
   { label: "Trabalhe conosco", href: "/trabalhe-conosco" },
 ];
 

@@ -7,16 +7,15 @@ import Doacao from "../Home/components/Doacao/Doacao";
 import Newsletter from "../Home/components/Newsletter/Newsletter";
 
 export default function QuemSomos() {
-	return (
-		<div className="bg-[var(--fundo)] pb-16">
-			<Hero />
+  return (
+    <div className="bg-[var(--fundo)] pb-16">
+      <Hero />
 
-            <NossaHistoria />
-            <NossaTrajetoria />
-			<NossosNumeros />
-			<Doacao />
-			<Newsletter />
-
-		</div>
-	);
+      <NossaHistoria />
+      <NossaTrajetoria />
+      <NossosNumeros />
+      <Doacao />
+      {/* <Newsletter /> */}
+    </div>
+  );
 }
