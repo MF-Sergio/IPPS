@@ -6,11 +6,16 @@ type HeaderNavLink = {
 type HeaderNavProps = {
   navLinks: HeaderNavLink[];
   onNavigate?: () => void;
+  className?: string;
 };
 
-export default function HeaderNav({ navLinks, onNavigate }: HeaderNavProps) {
+export default function HeaderNav({
+  navLinks,
+  onNavigate,
+  className = "",
+}: HeaderNavProps) {
   return (
-    <nav className="flex items-center gap-6">
+    <nav className={className || "flex items-center gap-6"}>
       {navLinks.map((link) => (
         <a
           key={link.label}
