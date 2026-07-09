@@ -13,7 +13,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 export default function Contato() {
   return (
-    <div className="bg-[var(--fundo)]">
+    <div>
       <Hero />
       <h1 className="font-serif font-black text-3xl lg:text-[48px] leading-tight lg:leading-[70px]  uppercase text-center py-8">
         Informações de <span className="text-[var(--vermelho)]">Contato</span>

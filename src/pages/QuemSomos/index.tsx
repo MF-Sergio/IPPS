@@ -8,7 +8,7 @@ import Newsletter from "../Home/components/Newsletter/Newsletter";
 
 export default function QuemSomos() {
   return (
-    <div className="bg-[var(--fundo)] pb-16">
+    <div className="pb-16">
       <Hero />
 
       <NossaHistoria />

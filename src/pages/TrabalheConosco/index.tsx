@@ -13,7 +13,7 @@ import Formulario from "../../components/Formulario/Formulario";
 
 export default function TrabalheConosco() {
   return (
-    <div className="bg-[var(--fundo)]">
+    <div>
       <Hero />
       <h1 className="font-serif font-black text-3xl lg:text-[48px] leading-tight lg:leading-[70px]  uppercase text-center py-8">
         Conheça nossa <span className="text-[var(--vermelho)]">Ambiente</span>

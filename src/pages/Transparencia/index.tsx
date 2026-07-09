@@ -7,7 +7,7 @@ import { recursosTransparencia } from "./components/transparenciaDados.ts";
 
 export default function Transparencia() {
   return (
-    <div className="transparencia-page bg-(--fundo)">
+    <div className="transparencia-page">
       <Hero imagens={[recursosTransparencia.hero]} />
       <CabecalhoTransparencia />
       <SecaoTransparencia />

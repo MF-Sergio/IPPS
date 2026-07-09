@@ -10,7 +10,7 @@ import { Bullseye } from "react-bootstrap-icons";
 
 export default function SejaParceiro() {
   return (
-    <div className="bg-[var(--fundo)]">
+    <div>
       <Hero />
       <h1 className=" text-3xl lg:text-[48px] leading-tight lg:leading-[70px] text-[var(--vermelho)] uppercase text-center">
         BENEFÍCIOS DA PARCERIA
