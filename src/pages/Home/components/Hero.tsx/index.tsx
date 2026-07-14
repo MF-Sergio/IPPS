@@ -7,7 +7,7 @@ interface HeroProps {
 
 export default function Hero({ imagens = [img1] }: HeroProps) {
   return (
-    <section className="container mx-auto">
+    <section className="container mx-auto items-center">
       <Carrossel imagens={imagens} imagensPorSlide={1} />
     </section>
   );

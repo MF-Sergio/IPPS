@@ -10,7 +10,7 @@ import { OutrosParceiros } from "./components/OutrosParceiros/OutrosParceiros.ts
 
 export default function Home() {
   return (
-    <div className="bg-(--fundo)">
+    <div className="container bg-(--fundo) items-center">
       {/* Conteúdo da Home separe por sessoes, crie componentes de sessions para cada uma das sessões */}
       <Hero />
       <QuemSomos />
