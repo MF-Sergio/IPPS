@@ -23,7 +23,7 @@ export default function Formulario({
   subtituloMensagem,
 }: FormularioProps) {
   return (
-    <section className="w-full py-12 px-4">
+    <section className="w-full ">
       <div className="mx-auto max-w-4xl rounded-[40px] bg-white p-6 md:p-12 shadow-lg">
         {/* Cabeçalho */}
         <header className="mb-12 text-center">
@@ -64,7 +64,7 @@ export default function Formulario({
                 id="fempresa"
                 name="Empresa"
                 type="text"
-                placeholder="Digite o nome da empresa"
+                placeholder="Digite o nome da empresa ou N/A"
                 className="h-16 w-full rounded-3xl border border-gray-300 px-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
                 required
               />
@@ -212,6 +212,11 @@ export default function Formulario({
               placeholder={subtituloMensagem}
               className="w-full rounded-3xl border border-gray-300 p-6 text-lg outline-none transition focus:border-[#1E6795] focus:ring-2 focus:ring-[#1E6795]/20"
             />
+          </div>
+          <div className="flex">
+            <p>
+              <b>* Campos Obrigatórios</b>
+            </p>
           </div>
 
           {/* Botão */}

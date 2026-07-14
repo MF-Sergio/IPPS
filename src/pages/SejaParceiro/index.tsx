@@ -10,7 +10,7 @@ import { Bullseye } from "react-bootstrap-icons";
 
 export default function SejaParceiro() {
   return (
-    <div className="bg-[var(--fundo)]">
+    <div className="bg-[var(--fundo)] ">
       <Hero />
       <h1 className=" text-3xl lg:text-[48px] leading-tight lg:leading-[70px] text-[var(--vermelho)] uppercase text-center">
         BENEFÍCIOS DA PARCERIA
@@ -63,7 +63,7 @@ export default function SejaParceiro() {
           iconColor="text-[var(--fundo)]"
         ></CardComIcone>
       </div>
-      <section className="relative left-1/2 -translate-x-1/2 w-screen  bg-gradient-to-t from-[#F2D9B5] to-[#3E6377]">
+      <section className="relative left-1/2 -translate-x-1/2 w-screen  bg-gradient-to-t from-[#F2D9B5] to-[#3E6377] pt-24 pb-24">
         <Formulario
           titulo="Quero Ser Parceiro"
           subtitulo="Preencha o formulário e nossa equipe entrará em contato"
