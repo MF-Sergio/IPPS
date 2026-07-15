@@ -16,8 +16,7 @@ export function NossosProjetos() {
         Conheça algumas das iniciativas que impactam diretamente a vida de
         milhares de pessoas.{" "}
       </p>
-      <br />
-      <div className="flex flex-wrap gap-6 justify-center">
+      <div className="flex flex-wrap gap-6 justify-center mt-10">
         <CardComImagem
           imagemUrl="img_vivendo_acolhendo.jpg"
           titulo="Vivendo e Acolhendo"

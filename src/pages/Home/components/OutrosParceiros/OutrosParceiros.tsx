@@ -20,11 +20,13 @@ export function OutrosParceiros() {
         Unimos forças com organizações que compartilham nosso compromisso com o
         desenvolvimento social e a promoção da cidadania.
       </p>
-      <Carrossel
-        imagens={[img1, img2, img3, img4, img5, img6, img7, img8, img9]}
-        imagensPorSlide={8}
-        isOutrosParceiros={true}
-      />
+      <section className="mx-auto w-full max-w-7xl">
+        <Carrossel
+          imagens={[img1, img2, img3, img4, img5, img6, img7, img8, img9]}
+          imagensPorSlide={3}
+          isOutrosParceiros={true}
+        />
+      </section>
     </BlocoLayout>
   );
 }
