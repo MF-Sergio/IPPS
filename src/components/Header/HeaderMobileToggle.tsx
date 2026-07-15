@@ -17,7 +17,7 @@ export default function HeaderMobileToggle({
       aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
       aria-expanded={isOpen}
     >
-      {isOpen ? <FiX size={32} /> : <FiMenu size={32} />}
+      <FiMenu size={28} />
     </button>
   );
 }
