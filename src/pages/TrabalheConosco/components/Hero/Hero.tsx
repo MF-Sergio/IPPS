@@ -5,7 +5,7 @@ import { People } from "react-bootstrap-icons";
 import { Heart } from "react-bootstrap-icons";
 export default function Hero() {
   return (
-    <section className="relative left-1/2 -translate-x-1/2 w-screen h-[560px] lg:h-[739px] overflow-hidden  bg-[var(--fundo)]">
+    <section className="relative left-1/2 -translate-x-1/2 w-screen h-[1382px] md:h-[739px] overflow-hidden  bg-[var(--fundo)]">
       <img
         src={trabalheConoscoHeroImg}
         alt="Grupo de pessoas do IPPS"
@@ -16,7 +16,7 @@ export default function Hero() {
 
       <div className="absolute top-50  left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1104px] text-[var(--branco)]">
         <div className="flex flex-col gap-3 items-center">
-          <h1 className="font-serif font-black text-3xl lg:text-[48px] leading-tight lg:leading-[70px]  uppercase text-left">
+          <h1 className="font-serif font-black text-3xl lg:text-[48px] leading-tight lg:leading-[70px]  uppercase text-center lg:text-left">
             Faça parte da nossa <span className="text-[#FFD700]">família</span>
           </h1>
 
