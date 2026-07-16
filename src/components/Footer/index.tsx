@@ -8,12 +8,12 @@ import { footerContato, footerHorario, footerNav } from "./footerDados";
 export default function Footer() {
   return (
     <footer className="text-sm border-t border-white/10 bg-[#212529] shadow-[0_-8px_30px_rgba(0,0,0,0.08)]">
-      <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-10 sm:py-14">
+      <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-10 sm:py-14 text-start">
         <div className="flex flex-col gap-10 sm:gap-12">
           <FooterLogo />
 
-          <div className="grid grid-cols-1 gap-10 text-start sm:grid-cols-3 sm:justify-items-center sm:gap-12">
-            <FooterLinks title="O IPPS" links={footerNav} />
+          <div className="grid grid-cols-1 justify-items-center gap-10 text-start sm:grid-cols-3 sm:justify-items-center sm:gap-12 px-7">
+            <FooterLinks title="Navegação" links={footerNav} />
 
             <FooterContato
               email={footerContato.email}
