@@ -43,7 +43,7 @@ export default function Header() {
   return (
     <header className="relative z-50 mx-auto mt-4 w-[calc(100%-32px)] max-w-[1150px] bg-transparent px-4 py-5 font-semibold text-black shadow-none sm:mt-10 sm:px-6 lg:px-8">
       <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 md:flex md:justify-between md:gap-9">
-        <Logo variant="nova" imageClassName="h-11 w-auto sm:h-14" />
+        <Logo variant="nova" imageClassName="h-11 w-auto sm:h-19" />
 
         {/* Botão: mobile e tablet */}
         <div className="justify-self-center md:hidden">
