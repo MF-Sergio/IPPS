@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import {
   CartesianGrid,
-  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -118,19 +117,25 @@ export default function NossosNumeros() {
   const totalAcumulado = chartData[chartData.length - 1]?.value ?? 0;
 
   return (
-    <section className="mx-auto mt-16 max-w-6xl px-8">
-      <div className="overflow-hidden rounded-[2rem] bg-[#b70a0a] px-5 py-10 text-white shadow-lg lg:px-10">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold">Nossos Números</h2>
+    <section className="mx-auto mt-16 max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="overflow-hidden rounded-[2rem] bg-[#b70a0a] px-4 py-8 text-white shadow-lg sm:px-5 sm:py-10 lg:px-10">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <div className="mb-8 h-1.5 w-20 rounded-full bg-white/80 sm:mb-10" />
+          <h2 className="text-3xl font-bold uppercase tracking-wide sm:text-4xl">
+            Nossos Números
+          </h2>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
+            Acompanhe nosso crescimento e impacto ao longo dos anos
+          </p>
         </div>
 
-        <div className="mt-8 flex items-center justify-center gap-6 text-sm font-semibold">
-          <label className="flex items-center gap-3">
-            <span>Ano Inicial</span>
+        <div className="mt-8 flex flex-col gap-4 text-sm font-semibold lg:flex-row lg:items-center lg:justify-center lg:gap-6">
+          <label className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-[rgba(255,255,255,0.08)] px-4 py-4 backdrop-blur-sm lg:min-w-[180px] lg:justify-start lg:rounded-none lg:border-0 lg:bg-transparent lg:px-0 lg:py-0">
+            <span className="shrink-0">Ano Inicial</span>
             <select
               value={anoInicial}
               onChange={(event) => setAnoInicial(event.target.value)}
-              className="min-w-[84px] rounded-md border border-white/60 bg-transparent px-3 py-2 text-white outline-none transition focus:border-white"
+              className="min-w-[96px] flex-1 rounded-md border border-white/40 bg-transparent px-3 py-2 text-white outline-none transition focus:border-white lg:flex-none"
             >
               {anos.map((ano) => (
                 <option key={ano} value={ano} className="text-black">
@@ -140,12 +145,12 @@ export default function NossosNumeros() {
             </select>
           </label>
 
-          <label className="flex items-center gap-3">
-            <span>Ano Final</span>
+          <label className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-[rgba(255,255,255,0.08)] px-4 py-4 backdrop-blur-sm lg:min-w-[180px] lg:justify-start lg:rounded-none lg:border-0 lg:bg-transparent lg:px-0 lg:py-0">
+            <span className="shrink-0">Ano Final</span>
             <select
               value={anoFinal}
               onChange={(event) => setAnoFinal(event.target.value)}
-              className="min-w-[84px] rounded-md border border-white/60 bg-transparent px-3 py-2 text-white outline-none transition focus:border-white"
+              className="min-w-[96px] flex-1 rounded-md border border-white/40 bg-transparent px-3 py-2 text-white outline-none transition focus:border-white lg:flex-none"
             >
               {anos.map((ano) => (
                 <option key={ano} value={ano} className="text-black">
@@ -155,14 +160,14 @@ export default function NossosNumeros() {
             </select>
           </label>
 
-          <label className="flex items-center gap-3">
-            <span>Projeto</span>
+          <label className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-[rgba(255,255,255,0.08)] px-4 py-4 backdrop-blur-sm lg:min-w-[320px] lg:justify-start lg:rounded-none lg:border-0 lg:bg-transparent lg:px-0 lg:py-0">
+            <span className="shrink-0">Projeto</span>
             <select
               value={projetoSelecionado}
               onChange={(event) =>
                 setProjetoSelecionado(event.target.value as ProjetoKey)
               }
-              className="min-w-[200px] rounded-md border border-white/60 bg-transparent px-3 py-2 text-white outline-none transition focus:border-white"
+              className="min-w-[0] flex-1 rounded-md border border-white/40 bg-transparent px-3 py-2 text-white outline-none transition focus:border-white lg:min-w-[200px] lg:flex-none"
             >
               <option value="vivendo-e-acolhendo" className="text-black">
                 Vivendo e acolhendo
@@ -174,8 +179,8 @@ export default function NossosNumeros() {
           </label>
         </div>
 
-        <div className="mt-10 rounded-[1.5rem] bg-[#821111] p-6">
-          <div className="h-[360px] w-full">
+        <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-[#821111] p-4 sm:p-6">
+          <div className="h-[320px] w-full sm:h-[360px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={chartData}
@@ -210,7 +215,6 @@ export default function NossosNumeros() {
                     ] as [string, string]
                   }
                 />
-                <Legend wrapperStyle={{ color: "#fff" }} />
                 <Line
                   type="monotone"
                   dataKey="value"
@@ -225,7 +229,7 @@ export default function NossosNumeros() {
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-4 text-sm font-semibold text-white/90">
+        <div className="mt-6 flex flex-col items-center justify-center gap-3 text-sm font-semibold text-white/90 sm:flex-row sm:flex-wrap sm:gap-4">
           <div className="flex items-center gap-2">
             <span
               className="inline-block h-3 w-3 rounded-full"
