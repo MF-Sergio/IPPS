@@ -69,7 +69,7 @@ export default function Header() {
       </div>
 
       {isOpen ? (
-        <div className="absolute left-1/2 top-full z-50 mt-4 w-screen -translate-x-1/2 bg-[var(--fundo)] px-15 pt-19 pb-44 md:hidden">
+        <div className="absolute left-1/2 top-full z-50 w-screen -translate-x-1/2 bg-[var(--fundo)] px-15 pt-19 pb-44 md:hidden">
           <button
             type="button"
             onClick={() => setIsOpen(false)}
