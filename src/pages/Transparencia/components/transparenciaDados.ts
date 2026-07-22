@@ -1,4 +1,3 @@
-import transparenciaHero from "../../../assets/img/foto_hero_transparencia.png";
 import infoIcone from "../../../assets/img/info.svg";
 import contabilIcone from "../../../assets/img/contabil.svg";
 import conveniosIcone from "../../../assets/img/convenios.svg";
@@ -24,10 +23,6 @@ export type DadosCartaoDocumento = {
   title: string;
   description: string;
   links: LinkDocumento[];
-};
-
-export const recursosTransparencia = {
-  hero: transparenciaHero,
 };
 
 export const tituloTransparencia = "Transparência";
