@@ -10,7 +10,7 @@ import {
 
 function LinkDownload({ label, href }: LinkDocumento) {
   const baseClasses =
-    "inline-flex items-center justify-center gap-2 rounded-md border-2 border-[var(--verde)] px-4 py-2 text-sm font-semibold text-[var(--verde)] transition-colors duration-200 hover:bg-[var(--verde)] hover:text-white";
+    "inline-flex w-full items-center sm:justify-center gap-2 rounded-md border-2 border-[var(--verde)] px-4 py-2 text-sm font-semibold text-[var(--verde)] transition-colors duration-200 hover:bg-[var(--verde)] hover:text-white sm:max-w-[200px]";
 
   if (!href) {
     return (
@@ -53,23 +53,25 @@ function CartaoDocumento({
   footer,
 }: CartaoDocumentoProps) {
   return (
-    <article className="flex h-[430px] flex-col rounded-[6px] border border-[#b7b7b7] bg-white px-5 py-8 shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
+    <article className="flex min-h-[430px] flex-col rounded-[6px] border border-[#b7b7b7] bg-white px-4 py-6 shadow-[0_2px_4px_rgba(0,0,0,0.18)] md:h-[430px] md:px-5 md:py-8">
       <div className="mx-auto flex h-[73px] w-[73px] items-center justify-center rounded-xl bg-[#f3dce7]">
         <img src={icon} alt="" className="h-[35px] w-[35px] object-contain" />
       </div>
-      <div className="mt-6 flex flex-1 flex-col">
+      <div className="mt-6 flex flex-1 flex-col items-center text-center md:items-start md:text-left">
         <h3 className="text-[20px] font-semibold text-[#1C1D1D]">{title}</h3>
-        <p className="mt-3 text-base font-medium leading-relaxed text-[#5a5a5a]">
+        <p className="mt-3 max-w-[290px] text-base font-medium leading-relaxed text-[#5a5a5a] md:max-w-none">
           {description}
         </p>
         {links.length > 0 ? (
-          <div className="mt-8 grid grid-cols-2 gap-3">
+          <div className="mt-8 grid w-full grid-cols-1 gap-3 md:grid-cols-2 md:justify-items-start">
             {links.map((link) => (
               <LinkDownload key={link.label} {...link} />
             ))}
           </div>
         ) : null}
-        {footer ? <div className="mt-auto pt-8">{footer}</div> : null}
+        {footer ? (
+          <div className="mt-8 w-full md:mt-auto md:pt-8">{footer}</div>
+        ) : null}
       </div>
     </article>
   );
@@ -151,6 +153,68 @@ function CartaoSmpdDetalhado() {
   );
 }
 
+function BotaoArquivoCompacto({
+  href,
+  label,
+  tag,
+}: {
+  href: string;
+  label: string;
+  tag: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="flex w-full items-center justify-between rounded-md border-2 border-[var(--verde)] px-4 py-3 text-sm font-semibold text-[var(--verde)] transition-colors duration-200 hover:bg-[var(--verde)] hover:text-white"
+    >
+      <span className="flex items-center gap-2">
+        <FaDownload className="text-[0.75rem]" />
+        {label}
+      </span>
+      <span className="text-[13px] font-medium text-[#6b6b6b] hover:text-white">
+        {tag}
+      </span>
+    </a>
+  );
+}
+
+function SecaoTransparenciaMobile() {
+  const cartaoInformacoes = cartoesTransparencia[0]!;
+  const cartaoBalanco = cartoesTransparencia[1]!;
+  const cartaoConvenios = cartoesTransparencia[2]!;
+
+  return (
+    <section className="w-full overflow-hidden py-6 md:hidden">
+      <TituloSecao {...secaoTransparencia} />
+
+      <div className="mt-6 space-y-8 px-4">
+        <CartaoDocumento {...cartaoInformacoes} />
+        <CartaoDocumento {...cartaoBalanco} />
+        <CartaoDocumento
+          {...cartaoConvenios}
+          links={[]}
+          footer={
+            <div className="flex flex-col gap-4">
+              <BotaoArquivoCompacto
+                href={conveniosTransparencia.smas.href ?? ""}
+                label={conveniosTransparencia.smas.label}
+                tag="SMAS"
+              />
+              <BotaoArquivoCompacto
+                href={conveniosTransparencia.smpd.href ?? ""}
+                label={conveniosTransparencia.smpd.label}
+                tag="SMPD"
+              />
+            </div>
+          }
+        />
+      </div>
+    </section>
+  );
+}
+
 export default function SecaoTransparencia() {
   const cartaoInformacoes = cartoesTransparencia[0]!;
   const cartaoBalanco = cartoesTransparencia[1]!;
@@ -166,74 +230,78 @@ export default function SecaoTransparencia() {
   }
 
   return (
-    <section className="w-full overflow-hidden py-6">
-      <TituloSecao {...secaoTransparencia} />
+    <>
+      <SecaoTransparenciaMobile />
 
-      <div className="mt-5">
-        <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{
-            width: "200%",
-            transform: smpdAtivo ? "translateX(-50%)" : "translateX(0%)",
-          }}
-        >
-          <div className="w-1/2 pr-4">
-            <div className="mt-10 grid grid-cols-3 gap-[58px]">
-              <CartaoDocumento {...cartaoInformacoes} />
-              <CartaoDocumento {...cartaoBalanco} />
-              <CartaoDocumento
-                {...cartaoConvenios}
-                links={[]}
-                footer={
-                  <div className="flex flex-col gap-4">
-                    <div>
-                      <p className="text-[13.5px] font-bold text-[#1C1D1D]">
-                        SMAS
-                      </p>
-                      <div className="mt-2 flex justify-center">
-                        <LinkDownload {...conveniosTransparencia.smas} />
+      <section className="hidden w-full overflow-hidden py-6 md:block">
+        <TituloSecao {...secaoTransparencia} />
+
+        <div className="mt-5">
+          <div
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{
+              width: "200%",
+              transform: smpdAtivo ? "translateX(-50%)" : "translateX(0%)",
+            }}
+          >
+            <div className="w-1/2 pr-4">
+              <div className="mt-10 grid grid-cols-3 gap-[58px]">
+                <CartaoDocumento {...cartaoInformacoes} />
+                <CartaoDocumento {...cartaoBalanco} />
+                <CartaoDocumento
+                  {...cartaoConvenios}
+                  links={[]}
+                  footer={
+                    <div className="flex flex-col gap-4">
+                      <div>
+                        <p className="text-[13.5px] font-bold text-[#1C1D1D]">
+                          SMAS
+                        </p>
+                        <div className="mt-2 flex justify-center">
+                          <LinkDownload {...conveniosTransparencia.smas} />
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-[13.5px] font-bold text-[#1C1D1D]">
+                          SMPD
+                        </p>
+                        <div className="mt-2 flex justify-center">
+                          <button
+                            type="button"
+                            onClick={abrirSmpd}
+                            className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-[var(--verde)] px-4 py-2 text-sm font-semibold text-[var(--verde)] transition-colors duration-200 hover:bg-[var(--verde)] hover:text-white"
+                          >
+                            <FaDownload className="text-[0.75rem]" />
+                            TF 023/22 - Ativo
+                          </button>
+                        </div>
                       </div>
                     </div>
-
-                    <div>
-                      <p className="text-[13.5px] font-bold text-[#1C1D1D]">
-                        SMPD
-                      </p>
-                      <div className="mt-2 flex justify-center">
-                        <button
-                          type="button"
-                          onClick={abrirSmpd}
-                          className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-[var(--verde)] px-4 py-2 text-sm font-semibold text-[var(--verde)] transition-colors duration-200 hover:bg-[var(--verde)] hover:text-white"
-                        >
-                          <FaDownload className="text-[0.75rem]" />
-                          TF 023/22 - Ativo
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                }
-              />
+                  }
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="w-1/2 pl-4">
-            <div className="relative flex h-full items-start justify-center px-2 py-4">
-              <button
-                type="button"
-                onClick={voltarParaGeral}
-                className={`absolute right-3 top-0 rounded-full border-2 border-[var(--verde)] px-3 py-1 text-xs font-semibold text-[var(--verde)] transition-all duration-700 hover:bg-[var(--verde)] hover:text-white ${
-                  smpdAtivo ? "opacity-100" : "opacity-0 pointer-events-none"
-                }`}
-              >
-                Voltar
-              </button>
-              <div className="w-full pt-8">
-                <CartaoSmpdDetalhado />
+            <div className="w-1/2 pl-4">
+              <div className="relative flex h-full items-start justify-center px-2 py-4">
+                <button
+                  type="button"
+                  onClick={voltarParaGeral}
+                  className={`absolute right-3 top-0 rounded-full border-2 border-[var(--verde)] px-3 py-1 text-xs font-semibold text-[var(--verde)] transition-all duration-700 hover:bg-[var(--verde)] hover:text-white ${
+                    smpdAtivo ? "opacity-100" : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  Voltar
+                </button>
+                <div className="w-full pt-8">
+                  <CartaoSmpdDetalhado />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
