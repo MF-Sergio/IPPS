@@ -49,7 +49,7 @@ export default function Header() {
         <div className="justify-self-center md:hidden">
           <Botao
             {...donateButtonProps}
-            className="h-[35px] w-[136px] text-sm hover:bg-[#1b5570] sm:text-lg"
+            className="h-[35px] w-[145px] text-sm hover:bg-[#1b5570] sm:text-lg"
           />
         </div>
 
