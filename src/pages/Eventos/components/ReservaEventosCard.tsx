@@ -3,7 +3,7 @@ import { FaCalendarAlt, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 export function ReservaEventosCard() {
   return (
     <article className="overflow-hidden rounded-[1.75rem] border border-[#f4dfe3] bg-[#fdf4f5] p-6 shadow-[0_10px_28px_rgba(0,0,0,0.04)]">
-      <div className="grid grid-cols-[0.95fr_1.05fr] items-stretch gap-5">
+      <div className="grid sm:grid-cols-[0.95fr_1.05fr] items-stretch gap-5">
         <div className="relative min-h-[320px] overflow-hidden rounded-[1.35rem] bg-[linear-gradient(135deg,#f6d9df_0%,#fdebed_35%,#ffffff_100%)]">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(169,23,26,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(33,101,135,0.12),transparent_34%)]" />
           <div className="absolute inset-0 flex items-center justify-center p-8">

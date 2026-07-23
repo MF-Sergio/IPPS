@@ -15,14 +15,14 @@ export function CardsEventos() {
   const hasEvents = events.length > 0;
 
   return (
-    <section className="mx-auto w-full max-w-[1180px] px-8 pb-20">
+    <section className="mx-auto w-full max-w-[1180px] px-3 sm:px-8 pb-20">
       {hasEvents ? (
         events.map((event) => {
           const isImageRight = event.imagePosition === "right";
 
           return (
             <article
-              className={`mb-10 overflow-hidden rounded-[1.75rem] border border-[#f4dfe3] bg-[#fdf4f5] p-6 shadow-[0_10px_28px_rgba(0,0,0,0.04)] ${isImageRight ? "grid grid-cols-[1fr_1.25fr]" : "grid grid-cols-[1.25fr_1fr]"}`}
+              className={`mb-10 overflow-hidden rounded-[1.75rem] border border-[#f4dfe3] bg-[#fdf4f5] p-6 shadow-[0_10px_28px_rgba(0,0,0,0.04)] ${isImageRight ? "sm:grid grid-cols-[1fr_1.25fr]" : "sm:grid grid-cols-[1.25fr_1fr]"}`}
               key={event.title}
             >
               <div
@@ -34,7 +34,7 @@ export function CardsEventos() {
                 />
                 <div className="absolute inset-0 rounded-[1.35rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]" />
 
-                <div className="absolute inset-x-5 bottom-5 rounded-[1rem] bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(28,29,29,0.72)] shadow-sm backdrop-blur">
+                <div className="absolute inset-x-5 bottom-5 rounded-[1rem] bg-white/70 px-4 py-2 sm:text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(28,29,29,0.72)] shadow-sm backdrop-blur">
                   {event.title}
                 </div>
               </div>
@@ -52,43 +52,43 @@ export function CardsEventos() {
                   </p>
 
                   <div className="mt-5 space-y-3">
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-4 sm:gap-3 mb-4">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[var(--vermelho)] shadow-[0_4px_10px_rgba(0,0,0,0.08)]">
-                        <FaCalendarAlt className="text-sm" />
+                        <FaCalendarAlt className="sm:text-sm" />
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-[#232323]">
+                        <p className="sm:text-xs font-bold text-[#232323]">
                           Data:
                         </p>
-                        <p className="text-sm text-[rgba(28,29,29,0.7)]">
+                        <p className="sm:text-sm text-[rgba(28,29,29,0.7)]">
                           {event.date}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-4 sm:gap-3 mb-4">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[var(--verde)] shadow-[0_4px_10px_rgba(0,0,0,0.08)]">
-                        <FaMapMarkerAlt className="text-sm" />
+                        <FaMapMarkerAlt className="sm:text-sm" />
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-[#232323]">
+                        <p className="sm:text-xs font-bold text-[#232323]">
                           Local:
                         </p>
-                        <p className="text-sm leading-6 text-[rgba(28,29,29,0.7)]">
+                        <p className="sm:text-sm leading-6 text-[rgba(28,29,29,0.7)]">
                           {event.location}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-4 sm:gap-3 mb-4">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[var(--icones)] shadow-[0_4px_10px_rgba(0,0,0,0.08)]">
-                        <FaClock className="text-sm" />
+                        <FaClock className="sm:text-sm" />
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-[#232323]">
+                        <p className="sm:text-xs font-bold text-[#232323]">
                           Horário:
                         </p>
-                        <p className="text-sm text-[rgba(28,29,29,0.7)]">
+                        <p className="sm:text-sm text-[rgba(28,29,29,0.7)]">
                           {event.time}
                         </p>
                       </div>
@@ -96,7 +96,7 @@ export function CardsEventos() {
                   </div>
                 </div>
 
-                <button className="inline-flex w-full max-w-[360px] items-center justify-center gap-3 rounded-md bg-[#2a6f92] px-6 py-3 text-sm font-bold uppercase tracking-[0.14em] text-white shadow-[0_10px_20px_rgba(42,111,146,0.2)] transition duration-300 hover:bg-[#245f7c]">
+                <button className="inline-flex w-full max-w-[360px] items-center justify-center gap-3 rounded-md bg-[#2a6f92] px-6 py-3 sm:text-sm font-bold uppercase tracking-[0.14em] text-white shadow-[0_10px_20px_rgba(42,111,146,0.2)] transition duration-300 hover:bg-[#245f7c]">
                   Fazer inscrição
                 </button>
               </div>

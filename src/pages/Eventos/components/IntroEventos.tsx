@@ -20,17 +20,17 @@ const infos = [
 
 export function IntroEventos() {
   return (
-    <section className="mx-auto w-full max-w-[1180px] px-8 pb-14 pt-16">
+    <section className="mx-auto w-full max-w-[1180px] px-4 pb-14 pt-16">
       <div className="max-w-5xl">
-        <div className="flex items-start gap-4">
-          <span className="mt-2 h-12 w-[6px] rounded-full bg-[linear-gradient(180deg,var(--verde),var(--vermelho))]" />
+        <div className="relative flex items-start gap-4">
+          <span className="absolute left-[1%] bottom-[75%] sm:static mb-2 h-12 w-[8px] rounded-full bg-[linear-gradient(180deg,var(--verde),var(--vermelho))]" />
 
           <div>
-            <h1 className="text-[3.5rem] font-black uppercase leading-none tracking-[-0.03em] text-[var(--vermelho)]">
+            <h1 className="text-center sm:text-left text-[2rem] sm:text-[3rem] !font-black uppercase leading-none tracking-[-0.03em] text-[var(--vermelho)]">
               Nossos Eventos
             </h1>
 
-            <p className="mt-3 max-w-4xl text-lg leading-8 text-[rgba(28,29,29,0.74)]">
+            <p className="text-center mt-8 sm:mt-3 max-w-4xl text-lg leading-8 text-[rgba(28,29,29,0.74)] sm:text-left">
               Momentos de celebração, cuidado e transformação social. Participe
               dos nossos eventos e faça parte dessa história.
             </p>
@@ -38,7 +38,7 @@ export function IntroEventos() {
         </div>
       </div>
 
-      <div className="mt-10 grid grid-cols-3 gap-4">
+      <div className="mt-10 grid sm:grid-cols-3 gap-4">
         {infos.map((item) => (
           <div
             className="flex items-center gap-4 rounded-2xl border border-[#f0e3e5] bg-white px-4 py-4 text-left shadow-[0_8px_24px_rgba(0,0,0,0.03)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(0,0,0,0.05)]"
