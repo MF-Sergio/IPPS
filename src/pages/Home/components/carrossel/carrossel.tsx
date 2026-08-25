@@ -6,12 +6,14 @@ interface CarrosselProps {
   imagens: string[];
   imagensPorSlide?: number;
   isOutrosParceiros?: boolean;
+  altura?: string | number;
 }
 
 export function Carrossel({
   imagens,
   imagensPorSlide = 3,
   isOutrosParceiros = false,
+  altura = "auto",
 }: CarrosselProps) {
   const slides: string[][] = [];
 
@@ -32,8 +34,10 @@ export function Carrossel({
           key={slideIndex}
           style={{
             display: "flex",
-            gap: isOutrosParceiros ? "65px" : "10px",
+            gap: isOutrosParceiros ? "3rem" : "1rem",
             justifyContent: "center",
+            alignItems: "center",
+            height: altura,
           }}
         >
           {slide.map((imagem, imageIndex) => (
@@ -43,7 +47,7 @@ export function Carrossel({
               alt={`Imagem ${imageIndex + 1}`}
               style={{
                 width: isOutrosParceiros ? "75px" : `${100 / imagensPorSlide}%`,
-                height: isOutrosParceiros ? "75px" : "auto",
+                height: isOutrosParceiros ? "75px" : altura,
                 objectFit: "contain",
               }}
             />

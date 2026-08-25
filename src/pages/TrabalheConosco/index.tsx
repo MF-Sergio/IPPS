@@ -13,7 +13,7 @@ import Formulario from "../../components/Formulario/Formulario";
 
 export default function TrabalheConosco() {
   return (
-    <div className="bg-[var(--fundo)]">
+    <div className="mx-5 lg:mx-auto">
       <Hero />
       <h1 className="font-serif font-black text-3xl lg:text-[48px] leading-tight lg:leading-[70px]  uppercase text-center py-8">
         Conheça nossa <span className="text-[var(--vermelho)]">Ambiente</span>
@@ -44,7 +44,7 @@ export default function TrabalheConosco() {
       <p className="text-2xl leading-relaxed ">
         Oferecemos mais do que um emprego, oferecemos uma missão com propósito
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-8 lg:mb-16 lg:mt-16 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-8 lg:mb-16 lg:mt-16 justify-items-center mx-5 lg:mx-auto">
         <CardComIcone
           icone={<Lightbulb />}
           title="Reconhecimento Institucional"
@@ -101,6 +101,7 @@ export default function TrabalheConosco() {
         tituloMensagem="Por que você quer trabalhar no IPPS? "
         subtituloMensagem="Conte-nos um pouco sobre sua motivação e experiência..."
       />
+      <br />
     </div>
   );
 }

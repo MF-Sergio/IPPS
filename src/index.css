@@ -1,13 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  --sans: "Source Sans 3", sans-serif;
-  --sans-alt: "Inter", sans-serif;
+  --sans: "Inter", sans-serif;
+  --sans-heading: "DM Sans", sans-serif;
   --titulo: #a9171a;
   --icones: #7b1e3d;
   --fundo: #fef8f8;
+  --fundo-mobile: #fff;
   --borda: #7b7b7c;
   --vermelho: #a40201;
   --branco: #f8f9fa;
@@ -37,16 +38,14 @@ body,
 body {
   font-family: var(--sans);
   line-height: 1.6;
-  background-color: #fef8f8;
+  background-color: var(--fundo);
   color: #333;
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
-footer,
-footer h3 {
-  font-family: var(--sans-alt);
+footer {
   color: var(--fundo);
 }
 
@@ -56,13 +55,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--sans);
+  font-family: var(--sans-heading);
   font-weight: 600;
 }
 
 .transparencia-page,
 .transparencia-page * {
-  font-family: var(--sans-alt);
+  font-family: var(--sans);
 }
 
 .titulo {
@@ -120,5 +119,9 @@ button:disabled {
       clip-path: circle(150vmax at calc(100% - 56px) 42px);
       opacity: 1;
     }
+  }
+
+  body {
+    background-color: var(--fundo-mobile);
   }
 }

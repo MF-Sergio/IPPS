@@ -13,11 +13,11 @@ export default function HeaderMobileToggle({
     <button
       type="button"
       onClick={onClick}
-      className="flex items-center justify-center"
+      className="inline-flex items-center justify-center md:hidden"
       aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
       aria-expanded={isOpen}
     >
-      {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+      <FiMenu size={28} />
     </button>
   );
 }

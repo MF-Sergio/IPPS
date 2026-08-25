@@ -18,14 +18,14 @@ export default function QuemSomos() {
       <h1 className="text-4xl text-black-700 font-bold mb-8 text-center ">
         Mais de 20 anos dedicados à inclusão social
       </h1>
-      <p className="text-lg text-gray-700 mb-6 ">
+      <p className="text-lg text-gray-700 mb-6 mx-5 lg:mx-auto">
         O IPPS é uma associação civil sem fins lucrativos, dedicada a promover a
         cidadania e o bem-estar de populações carentes, com um olhar especial
         para pessoas com deficiência e seus familiares. Atuamos nas áreas
         social, esportiva, cultural e de lazer, sempre com o compromisso de
         construir uma sociedade mais inclusiva e justa.
       </p>
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
         <Caixa
           icone={<FontAwesomeIcon icon={faWheelchairMove} />}
           title="DESCRIÇÃO"

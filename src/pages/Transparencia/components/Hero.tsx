@@ -1,4 +1,5 @@
-import img from "../../../../assets/img/foto_hero_quem-somos.png";
+import transparenciaHero from "../../../assets/img/foto_hero_transparencia.png";
+import transparenciaHeroMobile from "../../../assets/img/foto_hero_transparencia-mobile.png";
 
 export default function Hero() {
   return (
@@ -10,9 +11,14 @@ export default function Hero() {
 
         <div className="relative">
           <img
-            src={img}
+            src={transparenciaHero}
             alt="Imagem de uma criança segurando um globo terrestre e outras crianças ao fundo"
-            className="h-[575px] w-full object-cover object-[50%_38%] sm:h-auto sm:object-contain sm:object-center"
+            className="w-full sm:h-auto sm:object-contain sm:object-center hidden sm:block"
+          />
+          <img
+            src={transparenciaHeroMobile}
+            alt="Imagem de uma criança segurando um globo terrestre e outras crianças ao fundo"
+            className="h-[375px] w-full object-cover object-[50%_38%] sm:hidden"
           />
 
           <div

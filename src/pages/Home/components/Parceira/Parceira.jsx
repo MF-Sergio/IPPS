@@ -7,8 +7,8 @@ import { faHandshake } from "@fortawesome/free-solid-svg-icons";
 export function Parceira() {
   return (
     <BlocoLayout id="parceiros">
-      <div className="flex justify-between items-center gap-8 mt-6 w-full">
-        <div className="w-1/2">
+      <div className="flex flex-col lg:flex-row justify-between items-center gap-8 mt-6 w-full">
+        <div className="w-full">
           <ImagemPublic nomeImagem="seja_parceira.png"></ImagemPublic>
         </div>
         <div className="w-1/2 flex flex-col items-center justify-center">

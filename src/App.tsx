@@ -7,7 +7,7 @@ function AppContent() {
   return (
     <>
       <Header />
-      <main className="mx-auto mt-15 w-full max-w-[1160px]">
+      <main className="mx-auto sm:mt-15 w-full max-w-[1160px]">
         <Routes>
           {routes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />

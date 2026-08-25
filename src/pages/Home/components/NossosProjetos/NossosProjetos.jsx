@@ -12,12 +12,11 @@ export function NossosProjetos() {
   return (
     <BlocoLayout id="projetos" titulo={"Nossos Projetos"}>
       <h1 className="text-4xl">Transformando vidas através da ação</h1>
-      <p className="text-xl">
+      <p className="text-xl mx-5 lg:mx-auto">
         Conheça algumas das iniciativas que impactam diretamente a vida de
         milhares de pessoas.{" "}
       </p>
-      <br />
-      <div className="flex flex-wrap gap-6 justify-center">
+      <div className="flex flex-wrap gap-6 justify-center mt-10 mx-5 lg:mx-auto">
         <CardComImagem
           imagemUrl="img_vivendo_acolhendo.jpg"
           titulo="Vivendo e Acolhendo"
