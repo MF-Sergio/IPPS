@@ -87,13 +87,16 @@ test("confirmada continua reconsultando, porque estorno acontece depois", async 
 test("marca pix como expirada apos 2 horas sem consultar a Cielo", async () => {
   const { create, status, clock, gateway } = setup();
   const { donation } = await create(pixInput);
-  const callsBefore = gateway.snapshots.size;
 
   clock.advanceMinutes(121);
   const view = await status(donation.id);
 
   assert.equal(view.status, "expirada");
-  assert.equal(gateway.snapshots.size, callsBefore);
+  // Prova de ausencia de chamada de rede: nenhuma das duas leituras da Cielo
+  // foi acionada, nao apenas "nenhuma escrita aconteceu" (getPaymentById e
+  // findPaymentByOrderId sao leituras e nunca mutam `snapshots`).
+  assert.equal(gateway.getPaymentCalls.length, 0);
+  assert.equal(gateway.findByOrderIdCalls.length, 0);
 });
 
 test("nao expira antes das 2 horas", async () => {

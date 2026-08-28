@@ -142,14 +142,24 @@ export function createDonationUseCase(deps: CreateDonationDeps) {
         expiresAt: new Date(now.getTime() + PIX_EXPIRATION_MS),
       });
     } catch (error) {
-      // A tentativa nao pode desaparecer: registra a falha antes de propagar.
+      // A tentativa nao pode desaparecer: registra a falha antes de tentar
+      // salvar, para que o diagnostico sobreviva mesmo se o proprio save
+      // falhar (ex.: Postgres fora do ar). O chamador sempre ve GatewayError,
+      // nunca o erro cru do repositorio.
       donation.transitionTo("falhou", deps.clock.now());
-      await deps.repository.save(donation);
       deps.logger.error("Falha ao criar pagamento na Cielo", {
         donationId: donation.id,
         method: donation.method,
         reason: error instanceof Error ? error.message : "desconhecido",
       });
+      try {
+        await deps.repository.save(donation);
+      } catch (saveError) {
+        deps.logger.error("Falha ao salvar doacao apos falha no gateway", {
+          donationId: donation.id,
+          reason: saveError instanceof Error ? saveError.message : "desconhecido",
+        });
+      }
       throw new GatewayError();
     }
 

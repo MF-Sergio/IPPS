@@ -17,6 +17,8 @@ export class FakeGateway implements PaymentGatewayPort {
   readonly createCalls: CreatePaymentInput[] = [];
   readonly captureCalls: AmountCall[] = [];
   readonly voidCalls: AmountCall[] = [];
+  readonly getPaymentCalls: string[] = [];
+  readonly findByOrderIdCalls: string[] = [];
   readonly snapshots = new Map<string, PaymentSnapshot>();
 
   #clock: ClockPort;
@@ -89,12 +91,14 @@ export class FakeGateway implements PaymentGatewayPort {
   }
 
   async getPaymentById(paymentId: string): Promise<PaymentSnapshot> {
+    this.getPaymentCalls.push(paymentId);
     const snapshot = this.snapshots.get(paymentId);
     if (!snapshot) throw new Error(`pagamento ${paymentId} nao existe no fake`);
     return snapshot;
   }
 
   async findPaymentByOrderId(orderId: string): Promise<PaymentSnapshot | null> {
+    this.findByOrderIdCalls.push(orderId);
     for (const snapshot of this.snapshots.values()) {
       if (snapshot.orderId === orderId) return snapshot;
     }

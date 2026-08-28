@@ -2,12 +2,30 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createDonationUseCase } from "../../src/application/create-donation.usecase.ts";
 import { GatewayError } from "../../src/application/application.errors.ts";
+import type { Donation } from "../../src/domain/donation/donation.entity.ts";
 import { ValidationError } from "../../src/domain/donation/donation.errors.ts";
+import type { DonationRepositoryPort } from "../../src/domain/ports/donation-repository.port.ts";
 import { Money } from "../../src/domain/shared/money.ts";
 import { FakeClock } from "../fakes/fake-clock.ts";
 import { FakeGateway } from "../fakes/fake-gateway.ts";
 import { FakeLogger } from "../fakes/fake-logger.ts";
 import { FakeRepository } from "../fakes/fake-repository.ts";
+
+/**
+ * Simula o adaptador Postgres (Task 16) falhando por conexao ao salvar —
+ * algo que o FakeRepository, por construcao, nunca faz.
+ */
+class ThrowingSaveRepository implements DonationRepositoryPort {
+  async save(): Promise<void> {
+    throw new Error("conexao com o banco falhou");
+  }
+  async findById(): Promise<Donation | null> {
+    return null;
+  }
+  async findByPaymentId(): Promise<Donation | null> {
+    return null;
+  }
+}
 
 function setup() {
   const clock = new FakeClock(new Date("2026-08-25T12:00:00.000Z"));
@@ -93,6 +111,27 @@ test("salva a doacao como falhou quando o gateway quebra", async () => {
   assert.equal(repository.saved.length, 1);
   assert.equal(repository.saved[0]?.status, "falhou");
   assert.equal(repository.saved[0]?.paymentId, null);
+});
+
+test("gateway falha e o proprio save tambem falha: GatewayError ainda assim propaga, com as duas falhas logadas", async () => {
+  const clock = new FakeClock(new Date("2026-08-25T12:00:00.000Z"));
+  const gateway = new FakeGateway(clock);
+  gateway.failNextCreate(new Error("timeout"));
+  const logger = new FakeLogger();
+
+  const execute = createDonationUseCase({
+    gateway, repository: new ThrowingSaveRepository(), clock, logger,
+    limits: { min: Money.fromReais(5), max: Money.fromReais(10000) },
+    privacyTermsVersion: "2026-07-05",
+  });
+
+  await assert.rejects(() => execute(pixInput), GatewayError);
+
+  const errorMessages = logger.entries
+    .filter((entry) => entry.level === "error")
+    .map((entry) => entry.message);
+  assert.ok(errorMessages.includes("Falha ao criar pagamento na Cielo"));
+  assert.ok(errorMessages.some((message) => message.includes("salvar")));
 });
 
 test("cartao vira confirmada e nunca persiste o PAN", async () => {

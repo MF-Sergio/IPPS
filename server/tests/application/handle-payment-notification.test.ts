@@ -2,11 +2,29 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createDonationUseCase } from "../../src/application/create-donation.usecase.ts";
 import { handlePaymentNotificationUseCase } from "../../src/application/handle-payment-notification.usecase.ts";
+import type { Donation } from "../../src/domain/donation/donation.entity.ts";
+import type { DonationRepositoryPort } from "../../src/domain/ports/donation-repository.port.ts";
 import { Money } from "../../src/domain/shared/money.ts";
 import { FakeClock } from "../fakes/fake-clock.ts";
 import { FakeGateway } from "../fakes/fake-gateway.ts";
 import { FakeLogger } from "../fakes/fake-logger.ts";
 import { FakeRepository } from "../fakes/fake-repository.ts";
+
+/**
+ * Simula o adaptador Postgres (Task 16) falhando por conexao — algo que o
+ * FakeRepository, por construcao, nunca faz.
+ */
+class ThrowingRepository implements DonationRepositoryPort {
+  async save(): Promise<void> {
+    throw new Error("nao deveria salvar neste teste");
+  }
+  async findById(): Promise<Donation | null> {
+    throw new Error("conexao com o banco falhou");
+  }
+  async findByPaymentId(): Promise<Donation | null> {
+    throw new Error("conexao com o banco falhou");
+  }
+}
 
 function setup() {
   const clock = new FakeClock(new Date("2026-08-25T12:00:00.000Z"));
@@ -77,4 +95,22 @@ test("nao lanca quando a transicao seria invalida", async () => {
   await assert.doesNotReject(() => notify({ paymentId: "pay-1", changeType: 1 }));
 
   assert.equal((await repository.findById(donation.id))?.status, "confirmada");
+});
+
+test("nao lanca quando o repositorio falha ao consultar a doacao", async () => {
+  const clock = new FakeClock(new Date("2026-08-25T12:00:00.000Z"));
+  const gateway = new FakeGateway(clock);
+  const logger = new FakeLogger();
+
+  gateway.setSnapshot({
+    paymentId: "pay-1", orderId: "IPPS-qualquer",
+    status: "confirmada", method: "pix", rawStatusCode: 2,
+  });
+
+  const notify = handlePaymentNotificationUseCase({
+    gateway, repository: new ThrowingRepository(), clock, logger,
+  });
+
+  await assert.doesNotReject(() => notify({ paymentId: "pay-1", changeType: 1 }));
+  assert.ok(logger.entries.some((entry) => entry.level === "error"));
 });

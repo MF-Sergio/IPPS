@@ -41,9 +41,22 @@ export function handlePaymentNotificationUseCase(deps: HandlePaymentNotification
       return;
     }
 
-    const donation =
-      (await deps.repository.findByPaymentId(input.paymentId)) ??
-      (await deps.repository.findById(snapshot.orderId));
+    // O repositorio real (Postgres) pode falhar por conexao, ao contrario do
+    // fake em memoria usado nos testes. Essa falha nao pode escapar: e so
+    // mais um motivo para a Cielo reenfileirar, entao logamos e retornamos.
+    let donation;
+    try {
+      donation =
+        (await deps.repository.findByPaymentId(input.paymentId)) ??
+        (await deps.repository.findById(snapshot.orderId));
+    } catch (error) {
+      deps.logger.error("Falha ao consultar doacao no repositorio", {
+        paymentId: snapshot.paymentId,
+        donationId: snapshot.orderId,
+        reason: error instanceof Error ? error.message : "desconhecido",
+      });
+      return;
+    }
 
     if (!donation) {
       // Esperado em serverless: a instancia que criou a doacao ja morreu.
