@@ -6,9 +6,17 @@ import type {
 } from "../../src/domain/ports/payment-gateway.port.ts";
 import type { ClockPort } from "../../src/domain/ports/clock.port.ts";
 import type { DonationStatus } from "../../src/domain/donation/donation-status.ts";
+import type { Money } from "../../src/domain/shared/money.ts";
+
+export interface AmountCall {
+  paymentId: string;
+  amount: Money | undefined;
+}
 
 export class FakeGateway implements PaymentGatewayPort {
   readonly createCalls: CreatePaymentInput[] = [];
+  readonly captureCalls: AmountCall[] = [];
+  readonly voidCalls: AmountCall[] = [];
   readonly snapshots = new Map<string, PaymentSnapshot>();
 
   #clock: ClockPort;
@@ -93,14 +101,16 @@ export class FakeGateway implements PaymentGatewayPort {
     return null;
   }
 
-  async capturePayment(paymentId: string): Promise<PaymentSnapshot> {
+  async capturePayment(paymentId: string, amount?: Money): Promise<PaymentSnapshot> {
+    this.captureCalls.push({ paymentId, amount });
     const snapshot = await this.getPaymentById(paymentId);
     const captured: PaymentSnapshot = { ...snapshot, status: "confirmada", rawStatusCode: 2 };
     this.snapshots.set(paymentId, captured);
     return captured;
   }
 
-  async voidPayment(paymentId: string): Promise<PaymentSnapshot> {
+  async voidPayment(paymentId: string, amount?: Money): Promise<PaymentSnapshot> {
+    this.voidCalls.push({ paymentId, amount });
     const snapshot = await this.getPaymentById(paymentId);
     const voided: PaymentSnapshot = { ...snapshot, status: "cancelada", rawStatusCode: 10 };
     this.snapshots.set(paymentId, voided);

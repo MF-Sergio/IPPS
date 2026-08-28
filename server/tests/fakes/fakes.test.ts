@@ -59,6 +59,20 @@ test("FakeRepository guarda e busca por id e por paymentId", async () => {
   assert.equal(await repository.findByPaymentId("inexistente"), null);
 });
 
+test("FakeRepository nao aliasa a entidade guardada — le uma copia reconstruida do snapshot", async () => {
+  const clock = new FakeClock(new Date("2026-08-25T12:00:00.000Z"));
+  const repository = new FakeRepository();
+  const donation = buildDonation(clock);
+  await repository.save(donation);
+
+  const first = await repository.findById(donation.id);
+  first?.attachPayment("pay-mutado", "confirmada", clock.now());
+
+  const second = await repository.findById(donation.id);
+  assert.equal(second?.status, "pendente");
+  assert.equal(second?.paymentId, null);
+});
+
 test("FakeGateway devolve resultado de pix e registra as chamadas", async () => {
   const clock = new FakeClock(new Date("2026-08-25T12:00:00.000Z"));
   const gateway = new FakeGateway(clock);
@@ -83,6 +97,24 @@ test("FakeGateway pode ser instruido a falhar", async () => {
     () => gateway.createPayment({ donation: buildDonation(clock), card: null, expiresAt: clock.now() }),
     /gateway fora do ar/,
   );
+});
+
+test("FakeGateway registra o amount recebido em capturePayment e voidPayment", async () => {
+  const clock = new FakeClock(new Date("2026-08-25T12:00:00.000Z"));
+  const gateway = new FakeGateway(clock);
+  const donation = buildDonation(clock);
+  const { paymentId } = await gateway.createPayment({ donation, card: null, expiresAt: clock.now() });
+
+  await gateway.capturePayment(paymentId, Money.fromReais(10));
+  await gateway.voidPayment(paymentId, Money.fromReais(5));
+
+  assert.equal(gateway.captureCalls.length, 1);
+  assert.equal(gateway.captureCalls[0]?.paymentId, paymentId);
+  assert.equal(gateway.captureCalls[0]?.amount?.cents, 1000);
+
+  assert.equal(gateway.voidCalls.length, 1);
+  assert.equal(gateway.voidCalls[0]?.paymentId, paymentId);
+  assert.equal(gateway.voidCalls[0]?.amount?.cents, 500);
 });
 
 test("FakeLogger acumula o que foi registrado", () => {
