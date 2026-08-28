@@ -26,3 +26,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Scratch do subagent-driven-development (ledger, briefs, review packages)
+.superpowers/
