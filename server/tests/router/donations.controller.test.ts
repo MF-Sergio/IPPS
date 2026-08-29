@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createDonationsController } from "../../src/router/controllers/donations.controller.ts";
-import { handleError } from "../../src/router/error-handler.ts";
+import { HttpError, handleError } from "../../src/router/error-handler.ts";
 import { createDonationUseCase } from "../../src/application/create-donation.usecase.ts";
 import { getDonationStatusUseCase } from "../../src/application/get-donation-status.usecase.ts";
 import { buildAppConfig } from "../../src/infrastructure/config/app.config.ts";
@@ -76,26 +76,32 @@ test("rejeita origem nao permitida com 403 antes de tocar no caso de uso", async
 });
 
 test("aplica rate limit antes de criar a doacao", async () => {
-  setup();
-  let limitCalls = 0;
+  const { gateway, repository, clock, logger } = setup();
+  const { res, state } = fakeResponse();
 
-  const clock = new FakeClock(new Date("2026-08-25T12:00:00.000Z"));
-  const repository = new FakeRepository();
-  const logger = new FakeLogger();
+  // Reusa os fakes de setup(), mas com um limitador proprio, para provar
+  // ordem — nao so invocacao. Se o rate limit corresse depois do caso de
+  // uso, gateway.createCalls teria 1 chamada mesmo com o limitador estourando.
   const controller = createDonationsController({
     config,
     createDonation: createDonationUseCase({
-      gateway: new FakeGateway(clock), repository, clock, logger,
+      gateway, repository, clock, logger,
       limits: config.donationLimits, privacyTermsVersion: config.privacyTermsVersion,
     }),
-    getDonationStatus: getDonationStatusUseCase({
-      gateway: new FakeGateway(clock), repository, clock, logger,
-    }),
-    enforceRateLimit: () => { limitCalls += 1; },
+    getDonationStatus: getDonationStatusUseCase({ gateway, repository, clock, logger }),
+    enforceRateLimit: () => {
+      throw new HttpError(429, "Muitas tentativas. Aguarde alguns minutos.", "RATE_LIMITED");
+    },
   });
 
-  await controller.create(fakeRequest({ body: pixBody }), fakeResponse().res);
-  assert.equal(limitCalls, 1);
+  try {
+    await controller.create(fakeRequest({ body: pixBody }), res);
+  } catch (error) {
+    handleError(res, error, new FakeLogger());
+  }
+
+  assert.equal(state.status, 429);
+  assert.equal(gateway.createCalls.length, 0);
 });
 
 test("GET status devolve o status atual", async () => {
