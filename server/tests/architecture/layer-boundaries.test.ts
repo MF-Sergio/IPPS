@@ -26,7 +26,15 @@ async function listTsFiles(dir: string): Promise<string[]> {
 }
 
 function importedPaths(source: string): string[] {
-  return [...source.matchAll(/from\s+["']([^"']+)["']/g)].map((match) => match[1] ?? "");
+  // Remove os `import type` antes de procurar imports: eles desaparecem em
+  // tempo de execucao e nao criam acoplamento real entre camadas.
+  const withoutTypeImports = source.replace(
+    /import\s+type\s[\s\S]*?from\s+["'][^"']+["']/g,
+    "",
+  );
+  return [...withoutTypeImports.matchAll(/from\s+["']([^"']+)["']/g)].map(
+    (match) => match[1] ?? "",
+  );
 }
 
 for (const [layer, banned] of Object.entries(forbidden)) {
