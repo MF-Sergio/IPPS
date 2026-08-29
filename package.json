@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:api": "node --watch server/index.mjs",
+    "dev:api": "node --watch server/index.ts",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node server/index.mjs",
+    "start": "node server/index.ts",
     "test:server": "node --test server/tests/**/*.test.ts",
     "typecheck:server": "tsc -p server/tsconfig.json"
   },
