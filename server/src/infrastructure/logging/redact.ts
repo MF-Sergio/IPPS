@@ -3,6 +3,7 @@ import type { LogMeta } from "../../domain/ports/logger.port.ts";
 const SENSITIVE = new Set([
   "cardnumber", "numero", "securitycode", "cvv", "cardtoken",
   "merchantkey", "merchantid", "identity", "cpf", "authorization",
+  "notificationheadervalue", "notificationheadername",
 ]);
 
 const MASK = "[REDACTED]";

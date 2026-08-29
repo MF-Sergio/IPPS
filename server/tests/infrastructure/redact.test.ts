@@ -33,3 +33,16 @@ test("nao entra em laco infinito com referencia circular", () => {
   circular["self"] = circular;
   assert.doesNotThrow(() => redact(circular));
 });
+
+test("mascara o segredo do webhook (notificationHeaderValue/Name)", () => {
+  const output = redact({
+    cielo: {
+      notificationHeaderName: "X-Webhook-Secret",
+      notificationHeaderValue: "s3gr3d0-super-secreto",
+    },
+  });
+
+  const serialized = JSON.stringify(output);
+  assert.ok(!serialized.includes("s3gr3d0-super-secreto"));
+  assert.ok(!serialized.includes("X-Webhook-Secret"));
+});

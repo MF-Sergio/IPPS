@@ -82,10 +82,14 @@ export function buildAppConfig(env: Env): AppConfig {
 
   const allowedOrigins = new Set<string>([
     new URL(appBaseUrl).origin,
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
     `http://localhost:${port}`,
   ]);
+  // Origens de dev nunca devem contar como confiaveis em producao — senao um
+  // request forjado com Origin localhost passaria pelo controle indevidamente.
+  if (env["NODE_ENV"] !== "production") {
+    allowedOrigins.add("http://localhost:5173");
+    allowedOrigins.add("http://127.0.0.1:5173");
+  }
   for (const origin of String(env["ALLOWED_ORIGINS"] ?? "").split(",")) {
     const trimmed = origin.trim();
     if (trimmed) allowedOrigins.add(trimmed);

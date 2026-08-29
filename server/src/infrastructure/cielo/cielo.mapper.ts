@@ -1,6 +1,7 @@
 import type { Donation } from "../../domain/donation/donation.entity.ts";
 import type { PaymentMethod } from "../../domain/donation/donation-status.ts";
 import type { PaymentResult, PaymentSnapshot } from "../../domain/ports/payment-gateway.port.ts";
+import { toCieloText } from "../../domain/shared/address.ts";
 import type { CardCredentials } from "../../domain/shared/card-credentials.ts";
 import type { CieloConfig } from "../config/app.config.ts";
 import { mapCieloStatus } from "./cielo-status.map.ts";
@@ -44,12 +45,8 @@ export function buildSaleRequest(donation: Donation, options: BuildSaleOptions):
   const { config, cardToken, card, now } = options;
 
   const customer: Record<string, unknown> = {
-    Name: donation.donor.name
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toUpperCase()
-      .replace(/[^A-Z \-']/g, "")
-      .trim(),
+    // Mesma normalizacao do Address: a Cielo exige a mesma grafia para Customer.Name.
+    Name: toCieloText(donation.donor.name),
     Identity: donation.donor.cpf.digits,
     IdentityType: donation.donor.cpf.identityType,
     Email: donation.donor.email.value,
@@ -177,8 +174,14 @@ export function parsePaymentSnapshot(raw: unknown): PaymentSnapshot {
     throw new CieloResponseError("Resposta da Cielo sem PaymentId ou Status.");
   }
 
-  const method =
-    METHOD_FROM_CIELO[String(payment["Type"] ?? "").toLowerCase()] ?? "pix";
+  const rawType = String(payment["Type"] ?? "");
+  const method = METHOD_FROM_CIELO[rawType.toLowerCase()];
+  if (!method) {
+    // Nao supor um metodo: com Status 1 significando coisas diferentes por
+    // metodo, adivinhar "pix" poderia dizer a um doador que um boleto foi
+    // aceito quando so foi emitido.
+    throw new CieloResponseError(`Resposta da Cielo com Type desconhecido: "${rawType}".`);
+  }
   const orderId = String((raw as Record<string, unknown>)["MerchantOrderId"] ?? "");
 
   return {

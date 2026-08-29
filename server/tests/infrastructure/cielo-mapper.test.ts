@@ -167,3 +167,42 @@ test("parsePaymentSnapshot le o MerchantOrderId, que e o id da doacao", () => {
 test("parsePaymentSnapshot falha em resposta sem PaymentId", () => {
   assert.throws(() => parsePaymentSnapshot({ Payment: {} }), CieloResponseError);
 });
+
+test("parsePaymentSnapshot falha com Type desconhecido em vez de supor pix", () => {
+  assert.throws(
+    () => parsePaymentSnapshot({
+      MerchantOrderId: "IPPS0123456789abcdef0123456789abcd",
+      Payment: { PaymentId: "p1", Status: 1, Type: "Voucher" },
+    }),
+    CieloResponseError,
+  );
+});
+
+test("parsePaymentSnapshot falha quando Type esta ausente", () => {
+  assert.throws(
+    () => parsePaymentSnapshot({
+      MerchantOrderId: "IPPS0123456789abcdef0123456789abcd",
+      Payment: { PaymentId: "p1", Status: 1 },
+    }),
+    CieloResponseError,
+  );
+});
+
+test("Customer.Name colapsa espacos duplos, igual ao Address", () => {
+  const donation = Donation.create({
+    id: asDonationId("IPPS0123456789abcdef0123456789abce"),
+    amount: Money.fromReais(50),
+    donor: {
+      name: "Maria  Silva   Souza",
+      email: Email.parse("maria@exemplo.com"),
+      cpf: Cpf.parse("52998224725"),
+      address: null,
+    },
+    method: "pix",
+    privacyTermsVersion: "2026-07-05",
+    now,
+  });
+
+  const body = buildSaleRequest(donation, { config, cardToken: null, card: null, now }) as any;
+  assert.equal(body.Customer.Name, "MARIA SILVA SOUZA");
+});

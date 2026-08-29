@@ -46,3 +46,17 @@ test("le as origens permitidas", () => {
   assert.ok(config.allowedOrigins.has("https://ipps.com.br"));
   assert.ok(config.allowedOrigins.has("https://www.ipps.com.br"));
 });
+
+test("nao inclui origens de dev quando NODE_ENV e production", () => {
+  const config = buildAppConfig({ ...minimal, NODE_ENV: "production" });
+
+  assert.ok(!config.allowedOrigins.has("http://localhost:5173"));
+  assert.ok(!config.allowedOrigins.has("http://127.0.0.1:5173"));
+});
+
+test("inclui origens de dev fora de production", () => {
+  const config = buildAppConfig(minimal);
+
+  assert.ok(config.allowedOrigins.has("http://localhost:5173"));
+  assert.ok(config.allowedOrigins.has("http://127.0.0.1:5173"));
+});
