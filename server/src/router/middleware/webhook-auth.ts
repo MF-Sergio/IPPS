@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import type { IncomingMessage } from "node:http";
-import type { AppConfig } from "../../infrastructure/config/app.config.ts";
+import type { RouterConfig } from "../router-config.ts";
 import { HttpError } from "../http-context.ts";
 
 /**
@@ -9,7 +9,7 @@ import { HttpError } from "../http-context.ts";
  * Por isso o corpo do POST nunca e fonte de verdade: o caso de uso reconsulta
  * a Cielo antes de mudar qualquer status.
  */
-export function assertWebhookAuthentic(req: IncomingMessage, config: AppConfig): void {
+export function assertWebhookAuthentic(req: IncomingMessage, config: RouterConfig): void {
   const name = config.cielo.notificationHeaderName;
   const expected = config.cielo.notificationHeaderValue;
 

@@ -104,6 +104,33 @@ test("aplica rate limit antes de criar a doacao", async () => {
   assert.equal(gateway.createCalls.length, 0);
 });
 
+test("aplica rate limit tambem na rota de status", async () => {
+  const { gateway, repository, clock, logger } = setup();
+
+  const controller = createDonationsController({
+    config,
+    createDonation: createDonationUseCase({
+      gateway, repository, clock, logger,
+      limits: config.donationLimits, privacyTermsVersion: config.privacyTermsVersion,
+    }),
+    getDonationStatus: getDonationStatusUseCase({ gateway, repository, clock, logger }),
+    enforceRateLimit: () => {
+      throw new HttpError(429, "Muitas tentativas. Aguarde alguns minutos.", "RATE_LIMITED");
+    },
+  });
+
+  const { res, state } = fakeResponse();
+  try {
+    await controller.status(fakeRequest({ method: "GET" }), res, "IPPS0123456789abcdef0123456789abcd");
+  } catch (error) {
+    handleError(res, error, new FakeLogger());
+  }
+
+  assert.equal(state.status, 429);
+  assert.equal(gateway.getPaymentCalls.length, 0);
+  assert.equal(gateway.findByOrderIdCalls.length, 0);
+});
+
 test("GET status devolve o status atual", async () => {
   const { controller, gateway } = setup();
 

@@ -24,10 +24,25 @@ export class ValidationError extends DomainError {
   }
 }
 
+/**
+ * A mensagem e generica de proposito: `from`/`to` sao vocabulario interno do
+ * dominio (nomes de status) e nunca devem chegar ao doador — o handler de
+ * erro devolve `message` verbatim para qualquer `DomainError`. Quem precisa
+ * do detalhe usa os campos `from`/`to`, tipicamente so em log.
+ */
 export class InvalidStatusTransitionError extends DomainError {
+  readonly from: string;
+  readonly to: string;
+
   constructor(from: string, to: string) {
-    super("INVALID_STATUS_TRANSITION", `Transicao invalida de ${from} para ${to}.`, 409);
+    super(
+      "INVALID_STATUS_TRANSITION",
+      "Nao foi possivel atualizar o status da doacao agora.",
+      409,
+    );
     this.name = "InvalidStatusTransitionError";
+    this.from = from;
+    this.to = to;
   }
 }
 

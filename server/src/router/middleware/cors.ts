@@ -1,10 +1,10 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import type { AppConfig } from "../../infrastructure/config/app.config.ts";
+import type { RouterConfig } from "../router-config.ts";
 
 export function applyCors(
   req: IncomingMessage,
   res: ServerResponse,
-  config: AppConfig,
+  config: RouterConfig,
 ): void {
   const origin = req.headers.origin;
   if (!origin || !config.allowedOrigins.has(origin)) return;
@@ -20,7 +20,7 @@ export function isApiPreflight(req: IncomingMessage, url: URL): boolean {
   return req.method === "OPTIONS" && url.pathname.startsWith("/api/");
 }
 
-export function isTrustedBrowserRequest(req: IncomingMessage, config: AppConfig): boolean {
+export function isTrustedBrowserRequest(req: IncomingMessage, config: RouterConfig): boolean {
   const origin = req.headers.origin;
   if (origin) return config.allowedOrigins.has(origin);
 

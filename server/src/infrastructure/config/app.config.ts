@@ -80,13 +80,13 @@ export function buildAppConfig(env: Env): AppConfig {
   const port = toPositiveNumber(env["PORT"] ?? env["API_PORT"], 3001);
   const appBaseUrl = (env["APP_BASE_URL"] ?? `http://localhost:${port}`).replace(/\/$/, "");
 
-  const allowedOrigins = new Set<string>([
-    new URL(appBaseUrl).origin,
-    `http://localhost:${port}`,
-  ]);
+  const allowedOrigins = new Set<string>([new URL(appBaseUrl).origin]);
   // Origens de dev nunca devem contar como confiaveis em producao — senao um
   // request forjado com Origin localhost passaria pelo controle indevidamente.
+  // `localhost:${port}` entra na mesma guarda: e origem de dev tanto quanto
+  // as de :5173, so que do servidor local, nao do Vite.
   if (env["NODE_ENV"] !== "production") {
+    allowedOrigins.add(`http://localhost:${port}`);
     allowedOrigins.add("http://localhost:5173");
     allowedOrigins.add("http://127.0.0.1:5173");
   }

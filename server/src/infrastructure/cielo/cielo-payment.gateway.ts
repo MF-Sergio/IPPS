@@ -40,7 +40,13 @@ export function createCieloGateway(deps: CieloGatewayDeps): PaymentGatewayPort {
     },
 
     async getPaymentById(paymentId: string): Promise<PaymentSnapshot> {
-      const response = await client.get<unknown>(config.queryBaseUrl, `/1/sales/${paymentId}`);
+      // `paymentId` pode vir de fora (webhook da Cielo, sem assinatura) — o
+      // controller ja valida o formato, mas codificar aqui tambem garante que
+      // nenhum caractere de path/query escape para a URL montada.
+      const response = await client.get<unknown>(
+        config.queryBaseUrl,
+        `/1/sales/${encodeURIComponent(paymentId)}`,
+      );
       return parsePaymentSnapshot(response);
     },
 
@@ -71,7 +77,7 @@ export function createCieloGateway(deps: CieloGatewayDeps): PaymentGatewayPort {
       const query = amount ? `?amount=${amount.cents}` : "";
       await client.put<unknown>(
         config.transactionBaseUrl,
-        `/1/sales/${paymentId}/capture${query}`,
+        `/1/sales/${encodeURIComponent(paymentId)}/capture${query}`,
       );
       return this.getPaymentById(paymentId);
     },
@@ -80,7 +86,7 @@ export function createCieloGateway(deps: CieloGatewayDeps): PaymentGatewayPort {
       const query = amount ? `?amount=${amount.cents}` : "";
       await client.put<unknown>(
         config.transactionBaseUrl,
-        `/1/sales/${paymentId}/void${query}`,
+        `/1/sales/${encodeURIComponent(paymentId)}/void${query}`,
       );
       return this.getPaymentById(paymentId);
     },

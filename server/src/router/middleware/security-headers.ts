@@ -1,7 +1,7 @@
 import type { ServerResponse } from "node:http";
-import type { AppConfig } from "../../infrastructure/config/app.config.ts";
+import type { RouterConfig } from "../router-config.ts";
 
-export function setBaseSecurityHeaders(res: ServerResponse, config: AppConfig): void {
+export function setBaseSecurityHeaders(res: ServerResponse, config: RouterConfig): void {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("X-Frame-Options", "DENY");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");

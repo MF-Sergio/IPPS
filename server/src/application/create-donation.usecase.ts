@@ -16,7 +16,7 @@ import type { CardInput } from "../domain/shared/card-credentials.ts";
 import { Cpf } from "../domain/shared/cpf.ts";
 import { Email } from "../domain/shared/email.ts";
 import { Money } from "../domain/shared/money.ts";
-import { GatewayError } from "./application.errors.ts";
+import { GatewayError, PaymentDeniedError } from "./application.errors.ts";
 
 const PIX_EXPIRATION_MS = 2 * 60 * 60 * 1000;
 
@@ -163,8 +163,46 @@ export function createDonationUseCase(deps: CreateDonationDeps) {
       throw new GatewayError();
     }
 
-    donation.attachPayment(payment.paymentId, payment.status, deps.clock.now());
-    await deps.repository.save(donation);
+    try {
+      donation.attachPayment(payment.paymentId, payment.status, deps.clock.now());
+    } catch (error) {
+      // A Cielo devolveu um status que a maquina de estados nao aceita a
+      // partir de "pendente" (ex.: venda ja veio cancelada). O dinheiro pode
+      // ja ter sido debitado, entao a tentativa nao pode sumir: registra como
+      // falha, mesma regra do caminho de falha do gateway.
+      deps.logger.error("Cielo devolveu um status inesperado ao criar o pagamento", {
+        donationId: donation.id,
+        paymentId: payment.paymentId,
+        method: donation.method,
+        cieloStatus: payment.status,
+        reason: error instanceof Error ? error.message : "desconhecido",
+      });
+      donation.transitionTo("falhou", deps.clock.now());
+      try {
+        await deps.repository.save(donation);
+      } catch (saveError) {
+        deps.logger.error("Falha ao salvar doacao apos status inesperado da Cielo", {
+          donationId: donation.id,
+          reason: saveError instanceof Error ? saveError.message : "desconhecido",
+        });
+      }
+      throw new GatewayError();
+    }
+
+    try {
+      await deps.repository.save(donation);
+    } catch (error) {
+      // O pagamento foi processado com sucesso na Cielo; so o registro local
+      // falhou (ex.: Postgres fora do ar). Nao ha novo lugar para persistir —
+      // so propagar um erro sem vocabulario interno de dominio.
+      deps.logger.error("Falha ao salvar doacao apos pagamento processado", {
+        donationId: donation.id,
+        paymentId: donation.paymentId,
+        status: donation.status,
+        reason: error instanceof Error ? error.message : "desconhecido",
+      });
+      throw new GatewayError();
+    }
 
     deps.logger.info("Doacao criada", {
       donationId: donation.id,
@@ -173,6 +211,12 @@ export function createDonationUseCase(deps: CreateDonationDeps) {
       status: donation.status,
       amountCents: donation.amount.cents,
     });
+
+    // A tentativa recusada ja esta persistida como "negada" acima — o doador
+    // ve 402, nao um 201 disfarcado de sucesso.
+    if (donation.status === "negada") {
+      throw new PaymentDeniedError();
+    }
 
     return { donation, payment };
   };

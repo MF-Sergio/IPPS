@@ -54,9 +54,24 @@ test("nao inclui origens de dev quando NODE_ENV e production", () => {
   assert.ok(!config.allowedOrigins.has("http://127.0.0.1:5173"));
 });
 
+test("nao inclui localhost:porta em producao — isso e o controle de origem inteiro de POST /api/doacoes", () => {
+  // APP_BASE_URL precisa ser o dominio real de producao aqui: sem ele, o
+  // fallback do proprio appBaseUrl tambem e localhost, e o teste nao isolaria
+  // o bug (a segunda adicao de localhost:porta, fora da guarda de NODE_ENV).
+  const config = buildAppConfig({
+    ...minimal,
+    NODE_ENV: "production",
+    PORT: "3001",
+    APP_BASE_URL: "https://ipps.com.br",
+  });
+
+  assert.ok(!config.allowedOrigins.has("http://localhost:3001"));
+});
+
 test("inclui origens de dev fora de production", () => {
   const config = buildAppConfig(minimal);
 
   assert.ok(config.allowedOrigins.has("http://localhost:5173"));
   assert.ok(config.allowedOrigins.has("http://127.0.0.1:5173"));
+  assert.ok(config.allowedOrigins.has(`http://localhost:${config.port}`));
 });

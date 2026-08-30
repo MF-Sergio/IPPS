@@ -26,13 +26,11 @@ async function listTsFiles(dir: string): Promise<string[]> {
 }
 
 function importedPaths(source: string): string[] {
-  // Remove os `import type` antes de procurar imports: eles desaparecem em
-  // tempo de execucao e nao criam acoplamento real entre camadas.
-  const withoutTypeImports = source.replace(
-    /import\s+type\s[\s\S]*?from\s+["'][^"']+["']/g,
-    "",
-  );
-  return [...withoutTypeImports.matchAll(/from\s+["']([^"']+)["']/g)].map(
+  // Sem isencao para `import type`: em runtime tipo realmente some, mas em
+  // arquitetura um `import type` ainda expressa uma dependencia de design que
+  // a regra de camada existe para proibir (foi assim que o ciclo
+  // router/ <-> composition/ ficou invisivel por uma onda inteira).
+  return [...source.matchAll(/from\s+["']([^"']+)["']/g)].map(
     (match) => match[1] ?? "",
   );
 }

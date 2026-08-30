@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createDonationUseCase } from "../../src/application/create-donation.usecase.ts";
-import { GatewayError } from "../../src/application/application.errors.ts";
+import { GatewayError, PaymentDeniedError } from "../../src/application/application.errors.ts";
 import type { Donation } from "../../src/domain/donation/donation.entity.ts";
 import { ValidationError } from "../../src/domain/donation/donation.errors.ts";
 import type { DonationRepositoryPort } from "../../src/domain/ports/donation-repository.port.ts";
@@ -132,6 +132,28 @@ test("gateway falha e o proprio save tambem falha: GatewayError ainda assim prop
     .map((entry) => entry.message);
   assert.ok(errorMessages.includes("Falha ao criar pagamento na Cielo"));
   assert.ok(errorMessages.some((message) => message.includes("salvar")));
+});
+
+test("cartao recusado rejeita com PaymentDeniedError e persiste a doacao como negada", async () => {
+  const { execute, repository, gateway } = setup();
+  gateway.setNextCreateStatus("negada");
+
+  await assert.rejects(
+    () =>
+      execute({
+        ...pixInput,
+        metodoPagamento: "cartao",
+        cartao: {
+          numero: "4532117080573703", titular: "Maria Silva",
+          validade: "12/2030", cvv: "123", bandeira: "Visa",
+        },
+      }),
+    PaymentDeniedError,
+  );
+
+  assert.equal(repository.saved.length, 1);
+  assert.equal(repository.saved[0]?.status, "negada");
+  assert.equal(repository.saved[0]?.paymentId, "pay-1");
 });
 
 test("cartao vira confirmada e nunca persiste o PAN", async () => {

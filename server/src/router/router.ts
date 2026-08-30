@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import type { Container } from "../composition/container.ts";
+import type { AppHandlers } from "./app-handlers.ts";
 import { handleError } from "./error-handler.ts";
 import { HttpError } from "./http-context.ts";
 
@@ -9,7 +9,7 @@ export async function handleRequest(
   req: IncomingMessage,
   res: ServerResponse,
   url: URL,
-  container: Container,
+  container: AppHandlers,
 ): Promise<void> {
   try {
     const method = req.method ?? "GET";

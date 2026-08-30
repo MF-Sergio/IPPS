@@ -4,7 +4,7 @@ import type {
   CreateDonationOutput,
 } from "../../application/create-donation.usecase.ts";
 import type { DonationStatusView } from "../../application/get-donation-status.usecase.ts";
-import type { AppConfig } from "../../infrastructure/config/app.config.ts";
+import type { RouterConfig } from "../router-config.ts";
 import { parseCreateDonationRequest } from "../dto/create-donation.request.ts";
 import { toDonationResponse, toStatusResponse } from "../dto/donation.response.ts";
 import { HttpError, readJsonBody, sendJson } from "../http-context.ts";
@@ -14,7 +14,7 @@ export type CreateDonationExecutor = (input: CreateDonationInput) => Promise<Cre
 export type GetStatusExecutor = (id: string) => Promise<DonationStatusView>;
 
 export interface DonationsControllerDeps {
-  config: AppConfig;
+  config: RouterConfig;
   createDonation: CreateDonationExecutor;
   getDonationStatus: GetStatusExecutor;
   enforceRateLimit: (req: IncomingMessage) => void;
@@ -40,6 +40,10 @@ export function createDonationsController(deps: DonationsControllerDeps) {
       if (!isTrustedBrowserRequest(req, deps.config)) {
         throw new HttpError(403, "Origem nao autorizada.", "ORIGIN_NOT_ALLOWED");
       }
+
+      // Rota faz chamada externa a Cielo por requisicao — mesmo risco de
+      // "oraculo de teste" que create(), so que sem cartao envolvido.
+      deps.enforceRateLimit(req);
 
       // O id vira MerchantOrderId numa consulta a Cielo, que so aceita
       // alfanumerico — validar aqui evita montar URL invalida.

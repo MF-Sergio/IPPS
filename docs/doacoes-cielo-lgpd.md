@@ -28,6 +28,18 @@ A Cielo **não assina** o Post de Notificação. A proteção é dupla:
 A URL cadastrada precisa ser **estática** e ter até 255 caracteres, então URLs de
 preview da Vercel não servem.
 
+Sem o par de header configurado, a checagem é **fail-open**: qualquer origem
+pode POSTar em `/api/cielo/notificacao`, sem que a requisição seja rejeitada.
+Isso é intencional — exigir a variável no boot derrubaria um deploy legítimo
+enquanto o cadastro manual no Suporte Cielo não é concluído — mas por causa
+disso o `composition/container.ts` registra um **alerta alto no boot**
+(`logger.warn`) sempre que `NODE_ENV=production` e o par não está configurado.
+Esse alerta aparecendo no log de produção significa que o webhook está aberto
+e o cadastro no Suporte Cielo ainda não foi feito ou não terminou. O dano de
+um webhook sem esse header já é limitado pela validação de formato do
+`PaymentId` e pelo rate limit dedicado da rota (ver itens 3 e 4 da revisão
+final da branch).
+
 ## Arquitetura
 
 ```text

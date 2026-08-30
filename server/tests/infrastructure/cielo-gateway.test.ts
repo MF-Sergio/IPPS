@@ -144,6 +144,19 @@ test("nunca loga o PAN nem o CVV mesmo em erro", async () => {
   assert.ok(!JSON.stringify(logger.entries).includes("0123456789012345678901234567890123456789"));
 });
 
+test("getPaymentById codifica o paymentId na URL, sem deixar path/query escapar", async () => {
+  const { gateway, calls } = buildGateway([
+    { status: 200, body: { MerchantOrderId: "IPPS1", Payment: { PaymentId: "p1", Status: 2, Type: "Pix" } } },
+  ]);
+
+  await gateway.getPaymentById("../../../evil?x=1");
+
+  const call = calls[0];
+  assert.ok(call?.url.startsWith("https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/"));
+  assert.ok(!call?.url.includes("/1/sales/../"));
+  assert.ok(call?.url.endsWith(encodeURIComponent("../../../evil?x=1")));
+});
+
 test("findPaymentByOrderId devolve null quando a Cielo nao acha o pedido", async () => {
   const { gateway } = buildGateway([{ status: 404, body: {} }]);
   assert.equal(await gateway.findPaymentByOrderId("IPPSinexistente"), null);

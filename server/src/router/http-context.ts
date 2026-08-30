@@ -33,8 +33,20 @@ export function sendJson(
 }
 
 export function getClientIp(req: IncomingMessage): string {
-  const forwardedFor = String(req.headers["x-forwarded-for"] ?? "").split(",").at(0)?.trim();
+  // `x-real-ip` e preenchido pela Vercel com o IP real da conexao, sem passar
+  // pelo cliente. `x-forwarded-for` pode ter varias entradas concatenadas
+  // pelos proxies no caminho: a PRIMEIRA e a ponta que o cliente controla (e
+  // pode forjar rotacionando o header a cada tentativa); a ULTIMA e a que o
+  // proxy mais proximo de nos de fato viu.
+  const realIp = String(req.headers["x-real-ip"] ?? "").trim();
+  const forwardedFor = String(req.headers["x-forwarded-for"] ?? "")
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .at(-1);
+
   return (
+    realIp ||
     forwardedFor ||
     String(req.headers["cf-connecting-ip"] ?? "") ||
     req.socket?.remoteAddress ||

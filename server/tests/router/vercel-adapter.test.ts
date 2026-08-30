@@ -50,6 +50,21 @@ test("pipeline da Vercel responde preflight OPTIONS com 204", async () => {
   assert.equal(state.status, 204);
 });
 
+test("host malformado nao escapa do pipeline: vira erro tratado, nao excecao crua", async () => {
+  // `requestUrl` monta `new URL(req.url, protocolo://host)` a partir de
+  // `req.headers.host`, fornecido pelo cliente e nao validado. Um host com
+  // espaco faz `new URL(...)` lancar; essa excecao precisa passar pelo mesmo
+  // catch que devolve JSON, Cache-Control e log — nao escapar do handler.
+  const handler = buildHandler();
+  const { res, state } = fakeResponse();
+
+  await handler(fakeRequest({ method: "GET", url: "/api/health", headers: { host: "a b" } }), res);
+
+  assert.equal(state.status, 500);
+  assert.equal(state.headers["Cache-Control"], "no-store");
+  assert.equal(readBody(state)["code"], "INTERNAL_ERROR");
+});
+
 test("pipeline da Vercel aplica os headers de seguranca e roteia normalmente", async () => {
   const handler = buildHandler();
   const { res, state } = fakeResponse();

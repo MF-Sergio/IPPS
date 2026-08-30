@@ -4,7 +4,7 @@ import { applyCors, isTrustedBrowserRequest } from "../../src/router/middleware/
 import { createRateLimiter } from "../../src/router/middleware/rate-limit.ts";
 import { setBaseSecurityHeaders } from "../../src/router/middleware/security-headers.ts";
 import { assertWebhookAuthentic } from "../../src/router/middleware/webhook-auth.ts";
-import { HttpError } from "../../src/router/http-context.ts";
+import { getClientIp, HttpError } from "../../src/router/http-context.ts";
 import { buildAppConfig } from "../../src/infrastructure/config/app.config.ts";
 
 const config = buildAppConfig({
@@ -58,6 +58,19 @@ test("rate limit bloqueia acima do teto configurado", () => {
   limiter(req);
   limiter(req);
   assert.throws(() => limiter(req), HttpError);
+});
+
+test("getClientIp prefere x-real-ip, que a Vercel preenche sem depender do cliente", () => {
+  const ip = getClientIp(fakeReq({ "x-real-ip": "9.9.9.9", "x-forwarded-for": "1.1.1.1, 2.2.2.2" }));
+  assert.equal(ip, "9.9.9.9");
+});
+
+test("sem x-real-ip, getClientIp usa a ULTIMA entrada de x-forwarded-for, nao a primeira", () => {
+  // A primeira entrada e a ponta que o proprio cliente envia e pode forjar
+  // rotacionando o header a cada tentativa — a ultima e a que o proxy mais
+  // proximo de nos realmente viu.
+  const ip = getClientIp(fakeReq({ "x-forwarded-for": "1.1.1.1, 2.2.2.2, 3.3.3.3" }));
+  assert.equal(ip, "3.3.3.3");
 });
 
 test("rate limit isola por IP", () => {

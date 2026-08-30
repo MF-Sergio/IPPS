@@ -1,5 +1,5 @@
 import type { IncomingMessage } from "node:http";
-import type { AppConfig } from "../../infrastructure/config/app.config.ts";
+import type { RouterConfig } from "../router-config.ts";
 import { getClientIp, HttpError } from "../http-context.ts";
 
 interface Record_ {
@@ -12,7 +12,7 @@ interface Record_ {
  * teto efetivo e por instancia, nao global — divida tecnica registrada na spec
  * (§14, risco 2). A correcao real e rate limit no edge ou em store compartilhado.
  */
-export function createRateLimiter(config: AppConfig) {
+export function createRateLimiter(config: RouterConfig) {
   const store = new Map<string, Record_>();
 
   return function enforceRateLimit(req: IncomingMessage): void {
