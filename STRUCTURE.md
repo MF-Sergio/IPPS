@@ -47,6 +47,13 @@ IPPS/
 │   └── index.css           # Estilos globais
 ├── pages/                  # Páginas HTML antigas (será removido)
 ├── public/                 # Arquivos públicos (favicon, ícones)
+├── server/                 # Backend de doações (Clean Architecture)
+│   ├── src/domain/         # Regras de doação — não conhece HTTP nem Cielo
+│   ├── src/application/    # Casos de uso
+│   ├── src/infrastructure/ # Cielo, repositório, config, log
+│   ├── src/router/         # Borda HTTP
+│   └── tests/              # node:test, sem rede
+├── api/                    # Vercel Functions (finas, chamam o server/)
 ├── package.json            # Lista de dependências e scripts
 ├── vite.config.js          # Configuração do compilador
 └── STRUCTURE.md            # Documentação de estrutura
