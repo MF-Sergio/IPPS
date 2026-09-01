@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type BotaoProps = {
   texto: string;
@@ -9,7 +9,8 @@ type BotaoProps = {
   icone?: IconDefinition;
   mensagemAlert?: string;
   className?: string;
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
+  iconClassName?: string;
 };
 
 export function Botao({
@@ -18,19 +19,20 @@ export function Botao({
   href,
   icone,
   mensagemAlert,
-  className = '',
-  type = 'button',
+  className = "",
+  type = "button",
+  iconClassName = "text-[1.05rem] sm:text-[1.15rem]",
 }: BotaoProps) {
   const navigate = useNavigate();
 
   const content = (
     <>
-      {icone && <FontAwesomeIcon icon={icone} />}
+      {icone && <FontAwesomeIcon icon={icone} className={iconClassName} />}
       {texto}
     </>
   );
 
-  const baseClasses = `flex items-center justify-center gap-3 py-2 px-5 bg-[#216587] text-white rounded-lg transition-colors duration-200 cursor-pointer ${className}`;
+  const baseClasses = `inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#216587] px-4 py-2.5 text-white font-semibold no-underline shadow-[0_10px_20px_rgba(33,101,135,0.18)] transition-colors duration-200 hover:bg-[#1b5570] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#216587]/30 ${className}`;
 
   if (href) {
     return (

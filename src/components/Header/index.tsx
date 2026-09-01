@@ -6,7 +6,6 @@ import { Botao } from "../Botao/Botao";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { FiHeart } from "react-icons/fi";
 
 const desktopNavLinks = [
   { label: "Quem somos", href: "/quem-somos" },
@@ -35,7 +34,7 @@ const mobileNavLinks = [
 
 const donateButtonProps = {
   texto: "Doar agora",
-  href: "/pages/doeagora.html",
+  pagina: "/?doar=1",
   icone: faHeart,
 };
 
@@ -47,11 +46,11 @@ export default function Header() {
       <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 md:flex md:justify-between md:gap-9">
         <Logo variant="nova" imageClassName="h-11 w-auto sm:h-19" />
 
-        {/* Botão: mobile e tablet */}
         <div className="justify-self-center md:hidden">
           <Botao
             {...donateButtonProps}
-            className="h-[35px] w-[145px] text-sm hover:bg-[#1b5570] sm:text-lg"
+            className="h-[38px] w-[146px] text-sm sm:h-[42px] sm:w-[160px] sm:text-[15px]"
+            iconClassName="text-base sm:text-lg"
           />
         </div>
 
@@ -60,15 +59,13 @@ export default function Header() {
           onClick={() => setIsOpen((currentValue) => !currentValue)}
         />
 
-        {/* Botão: desktop */}
         <div className="hidden md:flex md:items-center md:gap-9">
           <HeaderNav navLinks={desktopNavLinks} />
-          <Link
-            to="/?doar=1"
-            className="flex items-center justify-center gap-3 py-2 px-5 bg-[#216587] hover:bg-[#1b5570] text-white rounded-lg transition-colors duration-200 cursor-pointer no-underline"
-          >
-            <FiHeart /> Doar agora
-          </Link>
+          <Botao
+            {...donateButtonProps}
+            className="h-[44px] w-[170px] text-sm md:text-[15px] lg:text-base"
+            iconClassName="text-base md:text-lg"
+          />
         </div>
       </div>
 
