@@ -5,6 +5,8 @@ import HeaderMobileToggle from "./HeaderMobileToggle";
 import { Botao } from "../Botao/Botao";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FiX } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { FiHeart } from "react-icons/fi";
 
 const desktopNavLinks = [
   { label: "Quem somos", href: "/quem-somos" },
@@ -61,10 +63,12 @@ export default function Header() {
         {/* Botão: desktop */}
         <div className="hidden md:flex md:items-center md:gap-9">
           <HeaderNav navLinks={desktopNavLinks} />
-          <Botao
-            {...donateButtonProps}
-            className="h-[48px] w-[201px] text-lg hover:bg-[#1b5570]"
-          />
+          <Link
+            to="/?doar=1"
+            className="flex items-center justify-center gap-3 py-2 px-5 bg-[#216587] hover:bg-[#1b5570] text-white rounded-lg transition-colors duration-200 cursor-pointer no-underline"
+          >
+            <FiHeart /> Doar agora
+          </Link>
         </div>
       </div>
 
