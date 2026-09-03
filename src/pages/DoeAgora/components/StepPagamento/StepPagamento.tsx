@@ -49,7 +49,52 @@ export default function StepPagamento({
     onSubmit(metodo);
   };
 
-  const isBoletoSelected = metodo === "boleto";
+  const cartaoValido =
+    metodo === "cartao" &&
+    dados.cartao.numero.replace(/\D/g, "").length >= 13 &&
+    dados.cartao.titular.trim().length >= 3 &&
+    /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(dados.cartao.validade) &&
+    dados.cartao.cvv.replace(/\D/g, "").length >= 3 &&
+    !!dados.cartao.bandeira;
+
+  const handleNumeroCartao = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 19);
+    const parts: string[] = [];
+
+    for (let i = 0; i < digits.length; i += 4) {
+      parts.push(digits.slice(i, i + 4));
+    }
+
+    onChange({
+      cartao: {
+        ...dados.cartao,
+        numero: parts.join(" "),
+      },
+    });
+  };
+
+  const handleValidadeCartao = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 4);
+    const formatted =
+      digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits;
+
+    onChange({
+      cartao: {
+        ...dados.cartao,
+        validade: formatted,
+      },
+    });
+  };
+
+  const handleCvvCartao = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 4);
+    onChange({
+      cartao: {
+        ...dados.cartao,
+        cvv: digits,
+      },
+    });
+  };
 
   const formattedValue = dados.valor.toFixed(2).replace(".", ",");
   const paymentDescription = getPaymentDescription(metodo);
@@ -119,6 +164,99 @@ export default function StepPagamento({
             </p>
           </div>
 
+          {metodo === "cartao" && (
+            <div className="mt-7 rounded-xl border border-[#ECEFF3] bg-[#FAF8F8] p-5">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                Dados do cartão
+              </p>
+
+              <div className="mt-4 space-y-4">
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    Bandeira
+                  </label>
+                  <select
+                    value={dados.cartao.bandeira}
+                    onChange={(event) =>
+                      onChange({
+                        cartao: { ...dados.cartao, bandeira: event.target.value },
+                      })
+                    }
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors focus:ring-2 focus:ring-[#a9171a]/30"
+                  >
+                    <option value="Visa">Visa</option>
+                    <option value="Master">Mastercard</option>
+                    <option value="Amex">Amex</option>
+                    <option value="Elo">Elo</option>
+                    <option value="Hipercard">Hipercard</option>
+                    <option value="Diners">Diners</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    Número do cartão
+                  </label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    placeholder="1234 5678 9012 3456"
+                    value={dados.cartao.numero}
+                    onChange={(event) => handleNumeroCartao(event.target.value)}
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    Nome do titular
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Nome impresso no cartão"
+                    value={dados.cartao.titular}
+                    onChange={(event) =>
+                      onChange({
+                        cartao: { ...dados.cartao, titular: event.target.value },
+                      })
+                    }
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                      Validade
+                    </label>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      placeholder="MM/AAAA"
+                      value={dados.cartao.validade}
+                      onChange={(event) => handleValidadeCartao(event.target.value)}
+                      className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                      CVV
+                    </label>
+                    <input
+                      type="password"
+                      inputMode="numeric"
+                      placeholder="123"
+                      value={dados.cartao.cvv}
+                      onChange={(event) => handleCvvCartao(event.target.value)}
+                      className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="mt-8 flex items-center justify-between border-y border-[#ECEFF3] py-5">
             <div>
               <p className="text-[13px] font-bold uppercase tracking-wide text-[#9aa4b1]">
@@ -142,14 +280,18 @@ export default function StepPagamento({
 
           <button
             onClick={handleContinuar}
-            disabled={isSubmitting}
+            disabled={isSubmitting || (metodo === "cartao" && !cartaoValido)}
             className={`mt-8 flex h-12.5 w-full items-center justify-center gap-2 rounded-lg text-[13px] font-bold uppercase tracking-wide text-white transition-all ${
-              !isSubmitting
+              !isSubmitting && (!((metodo === "cartao") && !cartaoValido))
                 ? "bg-[#216587] hover:bg-[#1a4f6b]"
                 : "bg-[#216587]/45"
             }`}
           >
-            {isSubmitting ? "Conectando à Cielo..." : "Ir para pagamento"}
+            {isSubmitting
+              ? "Conectando à Cielo..."
+              : metodo === "cartao"
+                ? "Finalizar pagamento"
+                : "Ir para pagamento"}
             {!isSubmitting && <span className="text-lg leading-none">→</span>}
           </button>
 

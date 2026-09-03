@@ -6,6 +6,7 @@ import StepDados from "./components/StepDados/StepDados";
 import StepPagamento from "./components/StepPagamento/StepPagamento";
 import StepPix from "./components/StepPix/StepPix";
 import StepBoleto from "./components/StepBoleto/StepBoleto";
+import StepCartao from "./components/StepCartao/StepCartao";
 import { DonationApiError, criarDoacao } from "./services/doacaoApi";
 
 // Aguardando a Cielo confirmar se o QR Code retornara sempre uma imagem PNG em
@@ -23,6 +24,11 @@ export interface BoletoPagamento {
   vencimento: string;
 }
 
+export interface CartaoPagamento {
+  bandeira: string;
+  ultimosDigitos: string;
+}
+
 export interface DoacaoResposta {
   id: string;
   status: string;
@@ -30,10 +36,15 @@ export interface DoacaoResposta {
   metodoPagamento: "pix" | "boleto" | "cartao";
   pix?: PixPagamento;
   boleto?: BoletoPagamento;
-  cartao?: {
-    bandeira: string;
-    ultimosDigitos: string;
-  };
+  cartao?: CartaoPagamento;
+}
+
+export interface CartaoData {
+  numero: string;
+  titular: string;
+  validade: string;
+  cvv: string;
+  bandeira: string;
 }
 
 export interface EnderecoData {
@@ -55,6 +66,7 @@ export interface DoacaoData {
   email: string;
   metodoPagamento: "pix" | "cartao" | "boleto";
   endereco: EnderecoData;
+  cartao: CartaoData;
   aceitePrivacidade: boolean;
 }
 
@@ -66,6 +78,14 @@ const emptyEndereco: EnderecoData = {
   cidade: "",
   uf: "",
   cep: "",
+};
+
+const emptyCartao: CartaoData = {
+  numero: "",
+  titular: "",
+  validade: "",
+  cvv: "",
+  bandeira: "Visa",
 };
 
 const getInitialMetodo = (
@@ -96,6 +116,7 @@ export default function DoeAgora() {
     email: "",
     metodoPagamento: getInitialMetodo(searchParams.get("metodo")),
     endereco: emptyEndereco,
+    cartao: emptyCartao,
     aceitePrivacidade: false,
   });
 
@@ -171,6 +192,12 @@ export default function DoeAgora() {
         />
       ) : step === 3 && paymentResult?.metodoPagamento === "boleto" ? (
         <StepBoleto
+          dados={dados}
+          payment={paymentResult}
+          onVoltar={() => setPaymentResult(null)}
+        />
+      ) : step === 3 && paymentResult?.metodoPagamento === "cartao" ? (
+        <StepCartao
           dados={dados}
           payment={paymentResult}
           onVoltar={() => setPaymentResult(null)}

@@ -42,7 +42,16 @@ export async function criarDoacao(
       cpf: dados.cpf,
       metodoPagamento: dados.metodoPagamento,
       aceitePrivacidade: dados.aceitePrivacidade,
-      cartao: null,
+      cartao:
+        dados.metodoPagamento === "cartao"
+          ? {
+              numero: dados.cartao.numero,
+              titular: dados.cartao.titular,
+              validade: dados.cartao.validade,
+              cvv: dados.cartao.cvv,
+              bandeira: dados.cartao.bandeira,
+            }
+          : null,
       endereco:
         dados.metodoPagamento === "boleto"
           ? {
@@ -97,6 +106,17 @@ export async function criarDoacao(
       throw new DonationApiError(
         "A resposta do boleto veio incompleta. Tente novamente.",
         "BOLETO_RESPONSE_INCOMPLETE",
+      );
+    }
+
+    return successPayload;
+  }
+
+  if (successPayload.metodoPagamento === "cartao") {
+    if (!successPayload.id || !successPayload.cartao?.bandeira) {
+      throw new DonationApiError(
+        "A resposta do cartão veio incompleta. Tente novamente.",
+        "CARD_RESPONSE_INCOMPLETE",
       );
     }
 
