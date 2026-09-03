@@ -58,6 +58,8 @@ export function buildSaleRequest(donation: Donation, options: BuildSaleOptions):
   };
 
   if (donation.method === "cartao") {
+    // CIELO: confirmar o fluxo oficial de tokenização, adquirente, parcelas,
+    // captura e antifraude antes de habilitar este request em produção.
     if (!cardToken || !card) {
       throw new CieloResponseError("Pagamento com cartao exige token e credenciais.");
     }
@@ -65,6 +67,8 @@ export function buildSaleRequest(donation: Donation, options: BuildSaleOptions):
     payment["Capture"] = true;
     payment["SoftDescriptor"] = config.softDescriptor;
     payment["CreditCard"] = {
+      // CIELO: revisar nomes e formato de CardToken, SecurityCode e Brand com
+      // o contrato da conta e o SDK/ambiente utilizado.
       CardToken: cardToken,
       SecurityCode: card.reveal().cvv,
       Brand: card.brand,
@@ -72,6 +76,8 @@ export function buildSaleRequest(donation: Donation, options: BuildSaleOptions):
   }
 
   if (donation.method === "boleto") {
+    // CIELO: preencher provider, cedente, identificacao e instrucoes com os
+    // dados oficiais fornecidos para a conta emissora do boleto.
     const address = donation.donor.address;
     if (!address) {
       throw new CieloResponseError("Boleto exige endereco do doador.");
@@ -129,6 +135,8 @@ export function parsePaymentResult(
   }
 
   if (donation.method === "boleto") {
+    // CIELO: confirmar os campos retornados pelo emissor e o tratamento de
+    // vencimento, linha digitável, código de barras e URL do boleto.
     const url = String(payment["Url"] ?? "");
     const digitableLine = String(payment["DigitableLine"] ?? "");
     const barCode = String(payment["BarCodeNumber"] ?? "");
@@ -144,6 +152,8 @@ export function parsePaymentResult(
   }
 
   const creditCard = (payment["CreditCard"] ?? {}) as Record<string, unknown>;
+  // CIELO: confirmar se CardNumber retorna mascarado, se Brand é confiável e
+  // quais códigos/status devem ser exibidos ao doador como resultado final.
   const maskedNumber = String(creditCard["CardNumber"] ?? "");
 
   return {

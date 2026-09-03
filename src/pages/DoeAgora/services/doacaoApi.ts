@@ -45,6 +45,8 @@ export async function criarDoacao(
       cartao:
         dados.metodoPagamento === "cartao"
           ? {
+              // CIELO: substituir dados sensíveis pelo token do SDK quando o
+              // contrato de tokenização e o ambiente de produção forem definidos.
               numero: dados.cartao.numero,
               titular: dados.cartao.titular,
               validade: dados.cartao.validade,
@@ -55,6 +57,8 @@ export async function criarDoacao(
       endereco:
         dados.metodoPagamento === "boleto"
           ? {
+              // CIELO: confirmar o mapeamento do endereço para Customer.Address
+              // e quais campos o emissor do boleto realmente exige.
               logradouro: dados.endereco.logradouro,
               numero: dados.endereco.numero,
               complemento: dados.endereco.complemento,
@@ -98,6 +102,8 @@ export async function criarDoacao(
   }
 
   if (successPayload.metodoPagamento === "boleto") {
+    // CIELO: validar os nomes definitivos dos campos de URL, linha digitável,
+    // código de barras e vencimento no retorno do emissor contratado.
     if (
       !successPayload.id ||
       !successPayload.boleto?.url ||
@@ -113,6 +119,8 @@ export async function criarDoacao(
   }
 
   if (successPayload.metodoPagamento === "cartao") {
+    // CIELO: confirmar quais dados podem retornar no response e se o status
+    // representa autorizado, capturado, pendente ou recusado.
     if (!successPayload.id || !successPayload.cartao?.bandeira) {
       throw new DonationApiError(
         "A resposta do cartão veio incompleta. Tente novamente.",

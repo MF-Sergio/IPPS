@@ -173,6 +173,8 @@ export default function StepDados({
 
           {dados.metodoPagamento === "boleto" && (
             <div className="rounded-xl border border-[#E7E1E3] bg-[#FAF8F8] p-5">
+              {/* CIELO: confirmar se todos estes dados são obrigatórios para o
+                  cedente, o formato do CEP/UF e os limites de cada campo. */}
               <p className="text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
                 Endereço para emissão do boleto
               </p>

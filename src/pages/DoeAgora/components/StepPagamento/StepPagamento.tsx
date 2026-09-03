@@ -111,12 +111,15 @@ export default function StepPagamento({
 
           {metodo === "cartao" && (
             <div className="mt-7 rounded-xl border border-[#ECEFF3] bg-[#FAF8F8] p-5">
+              {/* CIELO: confirmar se o fluxo deve receber dados brutos ou um token
+                  gerado pelo SDK e revisar bandeiras, parcelas e antifraude. */}
               <p className="text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
                 Dados do cartão
               </p>
 
               <div className="mt-4 space-y-4">
                 <div>
+                  {/* CIELO: confirmar os valores oficiais de Brand aceitos pela API. */}
                   <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
                     Bandeira
                   </label>
@@ -142,6 +145,8 @@ export default function StepPagamento({
                 </div>
 
                 <div>
+                  {/* CIELO: não persistir nem enviar o número sem confirmar o
+                      mecanismo de tokenização exigido para o ambiente contratado. */}
                   <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
                     Número do cartão
                   </label>
@@ -156,6 +161,8 @@ export default function StepPagamento({
                 </div>
 
                 <div>
+                  {/* CIELO: confirmar o formato esperado para validade e o nome
+                      do titular usado na autorização. */}
                   <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
                     Nome do titular
                   </label>
@@ -177,6 +184,7 @@ export default function StepPagamento({
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
+                    {/* CIELO: confirmar se a validade deve ser MM/AA ou MM/AAAA. */}
                     <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
                       Validade
                     </label>
@@ -193,6 +201,8 @@ export default function StepPagamento({
                   </div>
 
                   <div>
+                    {/* CIELO: confirmar tamanho do CVV por bandeira e se ele deve
+                        ser enviado apenas na autorização ou também na captura. */}
                     <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
                       CVV
                     </label>
