@@ -12,7 +12,7 @@ import img9 from "../../../../assets/img/logos/UCBLogo.jpg";
 
 export function OutrosParceiros() {
   return (
-    <BlocoLayout>
+    <BlocoLayout id="parceiros" titulo="Nossos parceiros">
       <h2 className="text-3xl font-bold mb-4">
         Juntos ampliamos o nosso impacto
       </h2>

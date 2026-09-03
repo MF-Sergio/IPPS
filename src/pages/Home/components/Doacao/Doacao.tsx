@@ -4,7 +4,7 @@ import { Botao } from "../../../../components/Botao/Botao.tsx";
 
 export function Doacao() {
   return (
-    <BlocoLayout id="doacao">
+    <BlocoLayout id="doacao" titulo="Faça uma doação">
       <div className="bg-[#EAAEC6]/60 text-black py-12 px-6 rounded-lg text-center shadow-lg flex flex-col items-center justify-center  mx-5 lg:mx-auto">
         <h2 className="text-3xl font-bold mb-4">
           Sua doação transforma vidas!
