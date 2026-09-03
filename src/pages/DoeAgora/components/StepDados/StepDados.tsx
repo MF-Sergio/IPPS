@@ -1,4 +1,3 @@
-import { FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import type { DoacaoData } from "../../index";
 import StepIndicator from "../StepIndicator/StepIndicator";
@@ -11,6 +10,62 @@ interface StepDadosProps {
   currentStep: number;
 }
 
+// Aguardando a Cielo confirmar se o CPF deve ser exibido formatado ou enviado
+// somente como 11 digitos; o backend ja normaliza o valor antes da transacao.
+const formatarCPF = (valor: string) => {
+  return valor
+    .replace(/\D/g, "")
+    .slice(0, 11)
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+};
+
+// Aguardando a confirmacao do cliente sobre regras adicionais de identificacao
+// exigidas pela conta Cielo, alem da validacao oficial do backend.
+const validarCPF = (cpf: string) => {
+  cpf = cpf.replace(/\D/g, "");
+
+  if (cpf.length !== 11) {
+    return false;
+  }
+
+  // Bloqueia 000.000.000-00, 111.111.111-11 etc.
+  if (/^(\d)\1{10}$/.test(cpf)) {
+    return false;
+  }
+
+  let soma = 0;
+
+  for (let i = 0; i < 9; i++) {
+    soma += Number(cpf[i]) * (10 - i);
+  }
+
+  let digito1 = (soma * 10) % 11;
+
+  if (digito1 === 10) {
+    digito1 = 0;
+  }
+
+  if (digito1 !== Number(cpf[9])) {
+    return false;
+  }
+
+  soma = 0;
+
+  for (let i = 0; i < 10; i++) {
+    soma += Number(cpf[i]) * (11 - i);
+  }
+
+  let digito2 = (soma * 10) % 11;
+
+  if (digito2 === 10) {
+    digito2 = 0;
+  }
+
+  return digito2 === Number(cpf[10]);
+};
+
 export default function StepDados({
   dados,
   onChange,
@@ -18,8 +73,14 @@ export default function StepDados({
   currentStep,
 }: StepDadosProps) {
   const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(dados.email.trim());
+  const cpfCompleto = dados.cpf.length === 11;
+  const cpfValido = cpfCompleto && validarCPF(dados.cpf);
+
   const canProceed =
-    dados.nome.trim().length >= 3 && emailValido && dados.aceitePrivacidade;
+    dados.nome.trim().length >= 3 &&
+    emailValido &&
+    cpfValido &&
+    dados.aceitePrivacidade;
 
   return (
     <section className="flex w-full justify-center px-4 py-12 sm:py-16">
@@ -47,12 +108,44 @@ export default function StepDados({
               Nome Completo
             </label>
             <input
+              required
               type="text"
               placeholder="Como devemos chamar você?"
               value={dados.nome}
               onChange={(event) => onChange({ nome: event.target.value })}
               className="mt-2 h-12 w-full rounded-md border-0 bg-[#F5F3F3] px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:bg-white focus:ring-2 focus:ring-[#a9171a]/30"
             />
+          </div>
+
+          <div>
+            <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+              CPF
+            </label>
+
+            {/* Aguardando confirmacao da Cielo sobre campos adicionais do doador. */}
+            <input
+              type="text"
+              inputMode="numeric"
+              placeholder="000.000.000-00"
+              value={formatarCPF(dados.cpf)}
+              onChange={(event) => {
+                const cpf = event.target.value.replace(/\D/g, "").slice(0, 11);
+
+                onChange({ cpf });
+              }}
+              maxLength={14}
+              className={`mt-2 h-12 w-full rounded-md border-0 bg-[#F5F3F3] px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:bg-white focus:ring-2 ${
+                cpfCompleto && !cpfValido
+                  ? "ring-2 ring-red-500 focus:ring-red-500"
+                  : "focus:ring-[#a9171a]/30"
+              }`}
+            />
+
+            {cpfCompleto && !cpfValido && (
+              <p className="mt-1 text-xs text-red-500">
+                CPF inválido. Verifique os números informados.
+              </p>
+            )}
           </div>
 
           <div>
@@ -103,14 +196,6 @@ export default function StepDados({
           Próximo
           <span className="text-lg leading-none">→</span>
         </button>
-
-        <div className="mt-6 flex items-center justify-center gap-1.5">
-          <FiLock size={11} className="text-[#BFC5CC]" />
-          <p className="text-center text-[10px] text-[#8c98a3]">
-            O pagamento será concluído no ambiente seguro do Mercado Pago. O
-            IPPS não coleta dados de cartão.
-          </p>
-        </div>
       </div>
     </section>
   );

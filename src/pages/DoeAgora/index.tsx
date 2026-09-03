@@ -4,11 +4,31 @@ import { FiCheckCircle, FiClock, FiXCircle } from "react-icons/fi";
 import StepValor from "./components/StepValor/StepValor";
 import StepDados from "./components/StepDados/StepDados";
 import StepPagamento from "./components/StepPagamento/StepPagamento";
-import { DonationApiError, criarPreferenciaDoacao } from "./services/doacaoApi";
+import StepPix from "./components/StepPix/StepPix";
+import { DonationApiError, criarDoacao } from "./services/doacaoApi";
 
+// Aguardando a Cielo confirmar se o QR Code retornara sempre uma imagem PNG em
+// Base64 ou se o provider contratado podera devolver outro MIME type.
+export interface PixPagamento {
+  qrCodeBase64: string;
+  qrCodeString: string;
+  expiraEm: string;
+}
+
+export interface DoacaoResposta {
+  id: string;
+  status: string;
+  valor: number;
+  metodoPagamento: "pix";
+  pix: PixPagamento;
+}
+
+// Aguardando a confirmacao da Cielo sobre campos adicionais obrigatorios para
+// o doador Pix; neste primeiro fluxo o backend exige nome, email e CPF.
 export interface DoacaoData {
   valor: number;
   nome: string;
+  cpf: string;
   email: string;
   metodoPagamento: "pix" | "cartao" | "boleto";
   aceitePrivacidade: boolean;
@@ -30,9 +50,13 @@ export default function DoeAgora() {
   const [step, setStep] = useState(1);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Aguardando as credenciais Cielo para validar a resposta real no sandbox;
+  // enquanto isso, este estado recebe respostas simuladas ou do ambiente local.
+  const [pixPayment, setPixPayment] = useState<DoacaoResposta | null>(null);
   const [dados, setDados] = useState<DoacaoData>({
     valor: 0,
     nome: "",
+    cpf: "",
     email: "",
     metodoPagamento: getInitialMetodo(searchParams.get("metodo")),
     aceitePrivacidade: false,
@@ -46,6 +70,8 @@ export default function DoeAgora() {
   };
   const donationReturn = searchParams.get("doacao");
 
+  // Aguardando confirmar com a Cielo se a criacao Pix pode retornar pendente
+  // em todos os casos ou se algum provider exige tratamento adicional.
   const iniciarCheckout = async (
     metodoPagamento: DoacaoData["metodoPagamento"],
   ) => {
@@ -53,11 +79,11 @@ export default function DoeAgora() {
     setIsSubmitting(true);
 
     try {
-      const checkout = await criarPreferenciaDoacao({
+      const payment = await criarDoacao({
         ...dados,
         metodoPagamento,
       });
-      window.location.assign(checkout.checkoutUrl);
+      setPixPayment(payment);
     } catch (error) {
       const message =
         error instanceof DonationApiError
@@ -99,7 +125,15 @@ export default function DoeAgora() {
           currentStep={2}
         />
       )}
-      {step === 3 && (
+      {step === 3 && pixPayment?.metodoPagamento === "pix" ? (
+        // Aguardando a confirmacao da Cielo sobre o MIME da imagem e o prazo
+        // final do QR Code; ambos sao consumidos do payload da API.
+        <StepPix
+          dados={dados}
+          payment={pixPayment}
+          onVoltar={() => setPixPayment(null)}
+        />
+      ) : step === 3 ? (
         <StepPagamento
           dados={dados}
           onChange={updateDados}
@@ -109,7 +143,7 @@ export default function DoeAgora() {
           onBack={prevStep}
           currentStep={3}
         />
-      )}
+      ) : null}
     </div>
   );
 }
@@ -153,7 +187,7 @@ function getReturnStatusContent(status: string) {
       Icon: FiCheckCircle,
       title: "Doação iniciada com sucesso",
       description:
-        "Recebemos o retorno do Mercado Pago. A confirmação final do pagamento será feita pelo próprio gateway.",
+        "Recebemos o retorno do gateway. A confirmação final do pagamento será feita pela Cielo.",
     };
   }
 

@@ -1,10 +1,4 @@
-import type { DoacaoData } from "../index";
-
-interface CriarPreferenciaResponse {
-  preferenceId: string;
-  checkoutUrl: string;
-  externalReference: string;
-}
+import type { DoacaoData, DoacaoResposta } from "../index";
 
 interface ApiErrorResponse {
   code?: string;
@@ -13,7 +7,7 @@ interface ApiErrorResponse {
 }
 
 export class DonationApiError extends Error {
-  code?: string;
+  code: string | undefined;
   details?: Record<string, string>;
 
   constructor(
@@ -24,14 +18,18 @@ export class DonationApiError extends Error {
     super(message);
     this.name = "DonationApiError";
     this.code = code;
-    this.details = details;
+    if (details !== undefined) {
+      this.details = details;
+    }
   }
 }
 
-export async function criarPreferenciaDoacao(
+// Aguardando as credenciais Cielo para validar este contrato contra o sandbox;
+// a rota e o formato abaixo ja correspondem ao backend implementado no projeto.
+export async function criarDoacao(
   dados: DoacaoData,
-): Promise<CriarPreferenciaResponse> {
-  const response = await fetch(buildApiUrl("/api/doacoes/preferencia"), {
+): Promise<DoacaoResposta> {
+  const response = await fetch(buildApiUrl("/api/doacoes"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -41,12 +39,15 @@ export async function criarPreferenciaDoacao(
       valor: dados.valor,
       nome: dados.nome,
       email: dados.email,
-      metodoPagamento: dados.metodoPagamento,
+      cpf: dados.cpf,
+      metodoPagamento: "pix",
       aceitePrivacidade: dados.aceitePrivacidade,
+      cartao: null,
+      endereco: null,
     }),
   });
   const payload = (await response.json().catch(() => ({}))) as
-    CriarPreferenciaResponse | ApiErrorResponse;
+    DoacaoResposta | ApiErrorResponse;
 
   if (!response.ok) {
     const errorPayload = payload as ApiErrorResponse;
@@ -59,11 +60,16 @@ export async function criarPreferenciaDoacao(
     );
   }
 
-  const successPayload = payload as CriarPreferenciaResponse;
-  if (!successPayload.checkoutUrl) {
+  const successPayload = payload as DoacaoResposta;
+  if (
+    successPayload.metodoPagamento !== "pix" ||
+    !successPayload.id ||
+    !successPayload.pix?.qrCodeBase64 ||
+    !successPayload.pix.qrCodeString
+  ) {
     throw new DonationApiError(
-      "A resposta do pagamento veio incompleta. Tente novamente.",
-      "CHECKOUT_URL_MISSING",
+      "A resposta do Pix veio incompleta. Tente novamente.",
+      "PIX_RESPONSE_INCOMPLETE",
     );
   }
 

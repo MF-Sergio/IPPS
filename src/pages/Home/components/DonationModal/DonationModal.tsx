@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import DonationPaymentMethodModal from "./components/DonationPaymentMethodModal/DonationPaymentMethodModal";
-import DonationPixReceiptModal from "./components/DonationPixReceiptModal/DonationPixReceiptModal";
 import DonationStartModal from "./components/DonationStartModal/DonationStartModal";
 import type { PaymentMethod } from "./types";
 
-type DonationModalStep = "tipoDoacao" | "formaPagamento" | "pix";
+type DonationModalStep = "tipoDoacao" | "formaPagamento";
 
 export default function DonationModal() {
   const navigate = useNavigate();
@@ -38,11 +37,6 @@ export default function DonationModal() {
   };
 
   const handlePaymentSelect = (method: PaymentMethod) => {
-    if (method === "pix") {
-      setStep("pix");
-      return;
-    }
-
     navigate(`/doe-agora?metodo=${method}`);
   };
 
@@ -51,15 +45,6 @@ export default function DonationModal() {
       <DonationPaymentMethodModal
         onBack={() => setStep("tipoDoacao")}
         onSelect={handlePaymentSelect}
-      />
-    );
-  }
-
-  if (step === "pix") {
-    return (
-      <DonationPixReceiptModal
-        valor={25}
-        onBack={() => setStep("formaPagamento")}
       />
     );
   }

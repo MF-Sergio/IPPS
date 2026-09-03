@@ -1,3 +1,16 @@
+interface CardComIconeProps {
+  icone: React.ReactNode;
+  title: string;
+  descricao: string;
+  bgColor?: string;
+  iconBgColor?: string;
+  iconColor?: string;
+  fontColor?: string;
+  titleFontColor?: string;
+  tipoFlex?: string;
+  margemCaixaTexto?: string;
+}
+
 export function CardComIcone({
   icone,
   title,
@@ -9,7 +22,7 @@ export function CardComIcone({
   titleFontColor = "text-black",
   tipoFlex = "flex-col",
   margemCaixaTexto = "",
-}) {
+}: CardComIconeProps) {
   return (
     <div
       className={`flex ${tipoFlex} p-6 rounded-lg shadow-md items-start justify-start w-100% content-start ${bgColor} text-left`}

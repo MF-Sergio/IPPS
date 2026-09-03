@@ -41,7 +41,6 @@ export default function DonationPaymentMethodModal({
         {paymentOptions.map((option) => (
           <DonationOptionCard
             key={option.key}
-            icon={option.icon}
             iconSrc={option.iconSrc}
             title={option.title}
             onClick={() => onSelect(option.key)}

@@ -15,6 +15,8 @@ interface StepPagamentoProps {
 
 type MetodoPagamento = "pix" | "cartao" | "boleto";
 
+// Aguardando a Cielo confirmar os campos obrigatorios e o fluxo de captura
+// para cartao e boleto; nesta etapa somente o Pix esta integrado ao backend.
 const iconPath = "/img/donation-icons";
 
 export default function StepPagamento({
@@ -121,7 +123,7 @@ export default function StepPagamento({
                 Doação única
               </p>
               <p className="mt-2 text-[9px] leading-tight text-[#b3bac2]">
-                Dados financeiros serão solicitados apenas pelo Mercado Pago.
+                Os dados serão enviados ao a Cielo conforme o método escolhido.
               </p>
             </div>
 
@@ -145,16 +147,14 @@ export default function StepPagamento({
                 : "bg-[#216587]/45"
             }`}
           >
-            {isSubmitting
-              ? "Conectando ao Mercado Pago..."
-              : "Ir para pagamento"}
+            {isSubmitting ? "Conectando à Cielo..." : "Ir para pagamento"}
             {!isSubmitting && <span className="text-lg leading-none">→</span>}
           </button>
 
           <div className="mt-5 flex items-center justify-center gap-1.5">
             <FiLock size={11} className="text-[#BFC5CC]" />
             <p className="text-center text-[10px] text-[#BFC5CC]">
-              Checkout processado pelo Mercado Pago em ambiente seguro.
+              Pagamento processado pela Cielo em ambiente seguro.
             </p>
           </div>
         </div>
@@ -163,26 +163,28 @@ export default function StepPagamento({
   );
 }
 
+// Aguardando a confirmação da Cielo sobre mensagens, prazos e campos de cada
+// método para substituir estas descrições provisórias por regras definitivas.
 function getPaymentDescription(metodo: MetodoPagamento) {
   if (metodo === "pix") {
     return {
-      title: "Pix pelo Mercado Pago",
+      title: "Pix pela Cielo",
       description:
-        "Você será redirecionado para gerar o QR Code ou código copia e cola no ambiente do Mercado Pago.",
+        "O QR Code e o código copia e cola serão gerados pela Cielo nesta página.",
     };
   }
 
   if (metodo === "boleto") {
     return {
-      title: "Boleto pelo Mercado Pago",
+      title: "Boleto pela Cielo",
       description:
-        "Você será redirecionado para gerar o boleto no checkout do Mercado Pago.",
+        "O boleto será disponibilizado após a confirmação dos campos exigidos pela Cielo.",
     };
   }
 
   return {
-    title: "Cartão pelo Mercado Pago",
+    title: "Cartão pela Cielo",
     description:
-      "Os dados do cartão serão digitados somente no checkout do Mercado Pago. O IPPS não acessa número, validade ou CVV.",
+      "A coleta segura e a tokenização do cartão aguardam a confirmação do fluxo Cielo.",
   };
 }

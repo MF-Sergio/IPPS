@@ -16,6 +16,8 @@ export default function StepConfirmacao({
   dados,
   onVoltar,
 }: StepConfirmacaoProps) {
+  // Aguardando a API devolver o identificador oficial da doacao; este valor
+  // provisoriamente local nao deve ser usado como comprovante ao publicar.
   const transactionId = `#RC-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
   const formattedValue = dados.valor.toFixed(2).replace(".", ",");
 

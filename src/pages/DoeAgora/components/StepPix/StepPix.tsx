@@ -6,17 +6,17 @@ import {
   FiHeart,
   FiShield,
 } from "react-icons/fi";
-import qrCode from "../../../../assets/img/qrcode_ipps.jpg";
 import type { DoacaoData } from "../../index";
+import type { DoacaoResposta } from "../../index";
 
 interface StepPixProps {
   dados: DoacaoData;
+  payment: DoacaoResposta;
   onVoltar: () => void;
 }
 
-const pixCode =
-  "00020126580014br.gov.bcb.pix0136ippromocaodasaude@gmail.com5204000053039865802BR";
-
+// Aguardando a Cielo confirmar o prazo efetivo de expiracao do QR Code no
+// ambiente contratado; a tela deve usar sempre a data devolvida pela API.
 const instructions = [
   {
     num: "01",
@@ -35,12 +35,14 @@ const instructions = [
   },
 ];
 
-export default function StepPix({ dados }: StepPixProps) {
+export default function StepPix({ dados, payment }: StepPixProps) {
   const [copied, setCopied] = useState(false);
   const formattedValue = dados.valor.toFixed(2).replace(".", ",");
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(pixCode);
+  // Aguardando confirmar se o campo QrCodeString sera sempre o payload Pix
+  // copia e cola completo em todos os providers habilitados para a conta.
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(payment.pix.qrCodeString);
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
   };
@@ -82,8 +84,8 @@ export default function StepPix({ dados }: StepPixProps) {
           <div className="rounded-[28px] bg-white p-8 shadow-[0_20px_42px_rgba(0,0,0,0.08)]">
             <div className="rounded bg-[#242020] p-5 shadow-[7px_7px_0_rgba(0,0,0,0.25)]">
               <img
-                src={qrCode}
-                alt="QR Code PIX"
+                src={`data:image/png;base64,${payment.pix.qrCodeBase64}`}
+                alt="QR Code para pagamento via Pix"
                 className="h-35.5 w-35.5 object-contain"
               />
             </div>
