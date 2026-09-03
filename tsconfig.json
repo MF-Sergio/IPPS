@@ -9,8 +9,7 @@
     // See also https://aka.ms/tsconfig/module
     "module": "esnext",
     "target": "esnext",
-    "ignoreDeprecations": "6.0",
-    "types": [],
+    "types": ["node", "vite/client"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -18,15 +17,16 @@
 
     // Module Resolution
     "moduleResolution": "bundler",
-    "baseUrl": "./src",
     "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "checkJs": false,
     "noEmit": true,
     "paths": {
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@assets/*": ["assets/*"],
-      "@routers/*": ["routers/*"],
-      "@styles/*": ["styles/*"]
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@routers/*": ["./src/routers/*"],
+      "@styles/*": ["./src/styles/*"]
     },
 
     // Other Outputs
