@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { FiCreditCard, FiLock } from "react-icons/fi";
+import { FiLock } from "react-icons/fi";
 import type { DoacaoData } from "../../index";
 import StepIndicator from "../StepIndicator/StepIndicator";
 
@@ -15,10 +14,6 @@ interface StepPagamentoProps {
 
 type MetodoPagamento = "pix" | "cartao" | "boleto";
 
-// Aguardando a Cielo confirmar os campos obrigatorios e o fluxo de captura
-// para cartao e boleto; nesta etapa somente o Pix esta integrado ao backend.
-const iconPath = "/img/donation-icons";
-
 export default function StepPagamento({
   dados,
   onChange,
@@ -27,22 +22,7 @@ export default function StepPagamento({
   error,
   currentStep,
 }: StepPagamentoProps) {
-  const [metodo, setMetodo] = useState<MetodoPagamento>(dados.metodoPagamento);
-
-  const methods = [
-    { key: "pix" as const, label: "PIX", iconSrc: `${iconPath}/pix-icon.svg` },
-    { key: "cartao" as const, label: "Cartão", Icon: FiCreditCard },
-    {
-      key: "boleto" as const,
-      label: "Boleto",
-      iconSrc: `${iconPath}/boleto-icon.svg`,
-    },
-  ];
-
-  const handleMetodoChange = (selectedMethod: MetodoPagamento) => {
-    setMetodo(selectedMethod);
-    onChange({ metodoPagamento: selectedMethod });
-  };
+  const metodo: MetodoPagamento = dados.metodoPagamento;
 
   const handleContinuar = () => {
     onChange({ metodoPagamento: metodo });
@@ -120,41 +100,6 @@ export default function StepPagamento({
         </div>
 
         <div className="mx-auto mt-9 w-full max-w-130">
-          <div className="flex items-center justify-start gap-5">
-            {methods.map(({ key, label, iconSrc, Icon }) => {
-              const isSelected = metodo === key;
-
-              return (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => handleMetodoChange(key)}
-                  className={`flex h-18.5 w-18.5 flex-col items-center justify-center gap-2 rounded-2xl border transition-all ${
-                    isSelected
-                      ? "border-[#a9171a] bg-[#a9171a] text-white shadow-[0_8px_18px_rgba(164,2,1,0.18)]"
-                      : "border-transparent bg-[#F5F3F3] text-[#6d7480] hover:border-[#D8DDE4]"
-                  }`}
-                >
-                  {iconSrc ? (
-                    <img
-                      src={iconSrc}
-                      alt=""
-                      aria-hidden="true"
-                      className={`h-5 w-5 object-contain ${
-                        isSelected ? "brightness-0 invert" : "opacity-75"
-                      }`}
-                    />
-                  ) : (
-                    Icon && <Icon size={21} strokeWidth={2.4} />
-                  )}
-                  <span className="text-[10px] font-bold uppercase tracking-[0.08em]">
-                    {label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
           <div className="mt-7 rounded-xl border border-[#ECEFF3] bg-[#F8F8F8] px-6 py-5 text-center">
             <p className="text-[12px] font-bold uppercase tracking-wide text-[#1d2a38]">
               {paymentDescription.title}
@@ -179,7 +124,10 @@ export default function StepPagamento({
                     value={dados.cartao.bandeira}
                     onChange={(event) =>
                       onChange({
-                        cartao: { ...dados.cartao, bandeira: event.target.value },
+                        cartao: {
+                          ...dados.cartao,
+                          bandeira: event.target.value,
+                        },
                       })
                     }
                     className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors focus:ring-2 focus:ring-[#a9171a]/30"
@@ -217,7 +165,10 @@ export default function StepPagamento({
                     value={dados.cartao.titular}
                     onChange={(event) =>
                       onChange({
-                        cartao: { ...dados.cartao, titular: event.target.value },
+                        cartao: {
+                          ...dados.cartao,
+                          titular: event.target.value,
+                        },
                       })
                     }
                     className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
@@ -234,7 +185,9 @@ export default function StepPagamento({
                       inputMode="numeric"
                       placeholder="MM/AAAA"
                       value={dados.cartao.validade}
-                      onChange={(event) => handleValidadeCartao(event.target.value)}
+                      onChange={(event) =>
+                        handleValidadeCartao(event.target.value)
+                      }
                       className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
                     />
                   </div>
@@ -282,7 +235,7 @@ export default function StepPagamento({
             onClick={handleContinuar}
             disabled={isSubmitting || (metodo === "cartao" && !cartaoValido)}
             className={`mt-8 flex h-12.5 w-full items-center justify-center gap-2 rounded-lg text-[13px] font-bold uppercase tracking-wide text-white transition-all ${
-              !isSubmitting && (!((metodo === "cartao") && !cartaoValido))
+              !isSubmitting && !(metodo === "cartao" && !cartaoValido)
                 ? "bg-[#216587] hover:bg-[#1a4f6b]"
                 : "bg-[#216587]/45"
             }`}
