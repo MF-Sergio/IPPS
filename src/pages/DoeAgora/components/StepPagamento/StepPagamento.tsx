@@ -49,6 +49,8 @@ export default function StepPagamento({
     onSubmit(metodo);
   };
 
+  const isBoletoSelected = metodo === "boleto";
+
   const formattedValue = dados.valor.toFixed(2).replace(".", ",");
   const paymentDescription = getPaymentDescription(metodo);
 

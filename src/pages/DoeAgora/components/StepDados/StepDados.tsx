@@ -75,11 +75,21 @@ export default function StepDados({
   const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(dados.email.trim());
   const cpfCompleto = dados.cpf.length === 11;
   const cpfValido = cpfCompleto && validarCPF(dados.cpf);
+  const cepNumerico = dados.endereco.cep.replace(/\D/g, "");
+  const enderecoValido =
+    dados.metodoPagamento !== "boleto" ||
+    (!!dados.endereco.logradouro.trim() &&
+      !!dados.endereco.numero.trim() &&
+      !!dados.endereco.bairro.trim() &&
+      !!dados.endereco.cidade.trim() &&
+      dados.endereco.uf.trim().length === 2 &&
+      cepNumerico.length === 8);
 
   const canProceed =
     dados.nome.trim().length >= 3 &&
     emailValido &&
     cpfValido &&
+    enderecoValido &&
     dados.aceitePrivacidade;
 
   return (
@@ -160,6 +170,163 @@ export default function StepDados({
               className="mt-2 h-12 w-full rounded-md border-0 bg-[#F5F3F3] px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:bg-white focus:ring-2 focus:ring-[#a9171a]/30"
             />
           </div>
+
+          {dados.metodoPagamento === "boleto" && (
+            <div className="rounded-xl border border-[#E7E1E3] bg-[#FAF8F8] p-5">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                Endereço para emissão do boleto
+              </p>
+
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                <div className="md:col-span-2">
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    Logradouro
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Rua, avenida, etc."
+                    value={dados.endereco.logradouro}
+                    onChange={(event) =>
+                      onChange({
+                        endereco: {
+                          ...dados.endereco,
+                          logradouro: event.target.value,
+                        },
+                      })
+                    }
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    Número
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="123"
+                    value={dados.endereco.numero}
+                    onChange={(event) =>
+                      onChange({
+                        endereco: {
+                          ...dados.endereco,
+                          numero: event.target.value,
+                        },
+                      })
+                    }
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    Complemento
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Opcional"
+                    value={dados.endereco.complemento}
+                    onChange={(event) =>
+                      onChange({
+                        endereco: {
+                          ...dados.endereco,
+                          complemento: event.target.value,
+                        },
+                      })
+                    }
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    Bairro
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Bairro"
+                    value={dados.endereco.bairro}
+                    onChange={(event) =>
+                      onChange({
+                        endereco: {
+                          ...dados.endereco,
+                          bairro: event.target.value,
+                        },
+                      })
+                    }
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    Cidade
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Cidade"
+                    value={dados.endereco.cidade}
+                    onChange={(event) =>
+                      onChange({
+                        endereco: {
+                          ...dados.endereco,
+                          cidade: event.target.value,
+                        },
+                      })
+                    }
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    UF
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="SP"
+                    value={dados.endereco.uf}
+                    maxLength={2}
+                    onChange={(event) =>
+                      onChange({
+                        endereco: {
+                          ...dados.endereco,
+                          uf: event.target.value.toUpperCase(),
+                        },
+                      })
+                    }
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#4d4045]">
+                    CEP
+                  </label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    placeholder="00000-000"
+                    value={dados.endereco.cep}
+                    maxLength={9}
+                    onChange={(event) => {
+                      const cep = event.target.value
+                        .replace(/\D/g, "")
+                        .slice(0, 8);
+                      const formattedCep =
+                        cep.length > 5
+                          ? `${cep.slice(0, 5)}-${cep.slice(5)}`
+                          : cep;
+                      onChange({
+                        endereco: { ...dados.endereco, cep: formattedCep },
+                      });
+                    }}
+                    className="mt-2 h-12 w-full rounded-md border-0 bg-white px-5 text-sm text-gray-800 outline-none transition-colors placeholder:text-[#b6adb1] focus:ring-2 focus:ring-[#a9171a]/30"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
 
           <label className="flex items-start gap-3 rounded-lg border border-[#E7E1E3] bg-[#FAF8F8] px-4 py-4 text-left">
             <input

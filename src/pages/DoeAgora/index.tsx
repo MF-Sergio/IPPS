@@ -5,6 +5,7 @@ import StepValor from "./components/StepValor/StepValor";
 import StepDados from "./components/StepDados/StepDados";
 import StepPagamento from "./components/StepPagamento/StepPagamento";
 import StepPix from "./components/StepPix/StepPix";
+import StepBoleto from "./components/StepBoleto/StepBoleto";
 import { DonationApiError, criarDoacao } from "./services/doacaoApi";
 
 // Aguardando a Cielo confirmar se o QR Code retornara sempre uma imagem PNG em
@@ -15,12 +16,34 @@ export interface PixPagamento {
   expiraEm: string;
 }
 
+export interface BoletoPagamento {
+  url: string;
+  linhaDigitavel: string;
+  codigoBarras: string;
+  vencimento: string;
+}
+
 export interface DoacaoResposta {
   id: string;
   status: string;
   valor: number;
-  metodoPagamento: "pix";
-  pix: PixPagamento;
+  metodoPagamento: "pix" | "boleto" | "cartao";
+  pix?: PixPagamento;
+  boleto?: BoletoPagamento;
+  cartao?: {
+    bandeira: string;
+    ultimosDigitos: string;
+  };
+}
+
+export interface EnderecoData {
+  logradouro: string;
+  numero: string;
+  complemento: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+  cep: string;
 }
 
 // Aguardando a confirmacao da Cielo sobre campos adicionais obrigatorios para
@@ -31,8 +54,19 @@ export interface DoacaoData {
   cpf: string;
   email: string;
   metodoPagamento: "pix" | "cartao" | "boleto";
+  endereco: EnderecoData;
   aceitePrivacidade: boolean;
 }
+
+const emptyEndereco: EnderecoData = {
+  logradouro: "",
+  numero: "",
+  complemento: "",
+  bairro: "",
+  cidade: "",
+  uf: "",
+  cep: "",
+};
 
 const getInitialMetodo = (
   metodo: string | null,
@@ -52,13 +86,16 @@ export default function DoeAgora() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Aguardando as credenciais Cielo para validar a resposta real no sandbox;
   // enquanto isso, este estado recebe respostas simuladas ou do ambiente local.
-  const [pixPayment, setPixPayment] = useState<DoacaoResposta | null>(null);
+  const [paymentResult, setPaymentResult] = useState<DoacaoResposta | null>(
+    null,
+  );
   const [dados, setDados] = useState<DoacaoData>({
     valor: 0,
     nome: "",
     cpf: "",
     email: "",
     metodoPagamento: getInitialMetodo(searchParams.get("metodo")),
+    endereco: emptyEndereco,
     aceitePrivacidade: false,
   });
 
@@ -83,7 +120,8 @@ export default function DoeAgora() {
         ...dados,
         metodoPagamento,
       });
-      setPixPayment(payment);
+      setPaymentResult(payment);
+      setIsSubmitting(false);
     } catch (error) {
       const message =
         error instanceof DonationApiError
@@ -125,13 +163,17 @@ export default function DoeAgora() {
           currentStep={2}
         />
       )}
-      {step === 3 && pixPayment?.metodoPagamento === "pix" ? (
-        // Aguardando a confirmacao da Cielo sobre o MIME da imagem e o prazo
-        // final do QR Code; ambos sao consumidos do payload da API.
+      {step === 3 && paymentResult?.metodoPagamento === "pix" ? (
         <StepPix
           dados={dados}
-          payment={pixPayment}
-          onVoltar={() => setPixPayment(null)}
+          payment={paymentResult}
+          onVoltar={() => setPaymentResult(null)}
+        />
+      ) : step === 3 && paymentResult?.metodoPagamento === "boleto" ? (
+        <StepBoleto
+          dados={dados}
+          payment={paymentResult}
+          onVoltar={() => setPaymentResult(null)}
         />
       ) : step === 3 ? (
         <StepPagamento

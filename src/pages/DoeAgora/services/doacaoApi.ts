@@ -40,10 +40,21 @@ export async function criarDoacao(
       nome: dados.nome,
       email: dados.email,
       cpf: dados.cpf,
-      metodoPagamento: "pix",
+      metodoPagamento: dados.metodoPagamento,
       aceitePrivacidade: dados.aceitePrivacidade,
       cartao: null,
-      endereco: null,
+      endereco:
+        dados.metodoPagamento === "boleto"
+          ? {
+              logradouro: dados.endereco.logradouro,
+              numero: dados.endereco.numero,
+              complemento: dados.endereco.complemento,
+              bairro: dados.endereco.bairro,
+              cidade: dados.endereco.cidade,
+              uf: dados.endereco.uf,
+              cep: dados.endereco.cep,
+            }
+          : null,
     }),
   });
   const payload = (await response.json().catch(() => ({}))) as
@@ -61,15 +72,41 @@ export async function criarDoacao(
   }
 
   const successPayload = payload as DoacaoResposta;
-  if (
-    successPayload.metodoPagamento !== "pix" ||
-    !successPayload.id ||
-    !successPayload.pix?.qrCodeBase64 ||
-    !successPayload.pix.qrCodeString
-  ) {
+
+  if (successPayload.metodoPagamento === "pix") {
+    if (
+      !successPayload.id ||
+      !successPayload.pix?.qrCodeBase64 ||
+      !successPayload.pix.qrCodeString
+    ) {
+      throw new DonationApiError(
+        "A resposta do Pix veio incompleta. Tente novamente.",
+        "PIX_RESPONSE_INCOMPLETE",
+      );
+    }
+
+    return successPayload;
+  }
+
+  if (successPayload.metodoPagamento === "boleto") {
+    if (
+      !successPayload.id ||
+      !successPayload.boleto?.url ||
+      !successPayload.boleto?.linhaDigitavel
+    ) {
+      throw new DonationApiError(
+        "A resposta do boleto veio incompleta. Tente novamente.",
+        "BOLETO_RESPONSE_INCOMPLETE",
+      );
+    }
+
+    return successPayload;
+  }
+
+  if (!successPayload.id) {
     throw new DonationApiError(
-      "A resposta do Pix veio incompleta. Tente novamente.",
-      "PIX_RESPONSE_INCOMPLETE",
+      "A resposta do pagamento veio incompleta. Tente novamente.",
+      "PAYMENT_RESPONSE_INCOMPLETE",
     );
   }
 
