@@ -79,7 +79,7 @@ test("boleto envia endereco normalizado e dados do cedente", () => {
   }) as any;
 
   assert.equal(body.Payment.Type, "Boleto");
-  assert.equal(body.Payment.Provider, "Bradesco2");
+  assert.equal(body.Payment.Provider, "BancoDoBrasil3");
   assert.equal(body.Payment.Identification, "11884926000154");
   assert.equal(body.Payment.ExpirationDate, "2026-08-28");
   assert.equal(body.Customer.Address.Street, "AV CAMARA");
