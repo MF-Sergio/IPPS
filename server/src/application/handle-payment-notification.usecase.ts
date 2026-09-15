@@ -71,7 +71,7 @@ export function handlePaymentNotificationUseCase(deps: HandlePaymentNotification
 
     try {
       donation.transitionTo(snapshot.status, deps.clock.now());
-      await deps.repository.save(donation);
+      await deps.repository.save(donation, "webhook");
       deps.logger.info("Doacao atualizada por notificacao", {
         donationId: donation.id,
         paymentId: snapshot.paymentId,

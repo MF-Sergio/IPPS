@@ -36,7 +36,7 @@ export function getDonationStatusUseCase(deps: GetDonationStatusDeps) {
 
       if (pixExpired) {
         donation.transitionTo("expirada", now);
-        await deps.repository.save(donation);
+        await deps.repository.save(donation, "expiration");
         return { id: donation.id, status: donation.status, updatedAt: donation.updatedAt };
       }
 
@@ -49,7 +49,7 @@ export function getDonationStatusUseCase(deps: GetDonationStatusDeps) {
       if (donation.paymentId) {
         const snapshot = await deps.gateway.getPaymentById(donation.paymentId);
         donation.transitionTo(snapshot.status, deps.clock.now());
-        await deps.repository.save(donation);
+        await deps.repository.save(donation, "polling");
         return { id: donation.id, status: donation.status, updatedAt: donation.updatedAt };
       }
     }

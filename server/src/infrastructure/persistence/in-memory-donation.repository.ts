@@ -1,6 +1,9 @@
 import { Donation } from "../../domain/donation/donation.entity.ts";
 import type { Donor, DonationSnapshot } from "../../domain/donation/donation.entity.ts";
-import type { DonationRepositoryPort } from "../../domain/ports/donation-repository.port.ts";
+import type {
+  DonationRepositoryPort,
+  DonationStatusChangeSource,
+} from "../../domain/ports/donation-repository.port.ts";
 import { Cpf } from "../../domain/shared/cpf.ts";
 import { Email } from "../../domain/shared/email.ts";
 
@@ -20,7 +23,11 @@ interface StoredDonation {
 export class InMemoryDonationRepository implements DonationRepositoryPort {
   #store = new Map<string, StoredDonation>();
 
-  async save(donation: Donation): Promise<void> {
+  async save(
+    donation: Donation,
+    _source?: DonationStatusChangeSource,
+  ): Promise<void> {
+    // A origem e aceita para manter o mesmo contrato; memoria nao audita SQL.
     this.#store.set(donation.id, {
       snapshot: donation.toSnapshot(),
       address: donation.donor.address,

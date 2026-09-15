@@ -153,7 +153,7 @@ export function createDonationUseCase(deps: CreateDonationDeps) {
         reason: error instanceof Error ? error.message : "desconhecido",
       });
       try {
-        await deps.repository.save(donation);
+        await deps.repository.save(donation, "create");
       } catch (saveError) {
         deps.logger.error("Falha ao salvar doacao apos falha no gateway", {
           donationId: donation.id,
@@ -179,7 +179,7 @@ export function createDonationUseCase(deps: CreateDonationDeps) {
       });
       donation.transitionTo("falhou", deps.clock.now());
       try {
-        await deps.repository.save(donation);
+        await deps.repository.save(donation, "create");
       } catch (saveError) {
         deps.logger.error("Falha ao salvar doacao apos status inesperado da Cielo", {
           donationId: donation.id,
@@ -190,7 +190,7 @@ export function createDonationUseCase(deps: CreateDonationDeps) {
     }
 
     try {
-      await deps.repository.save(donation);
+      await deps.repository.save(donation, "create");
     } catch (error) {
       // O pagamento foi processado com sucesso na Cielo; so o registro local
       // falhou (ex.: Postgres fora do ar). Nao ha novo lugar para persistir —

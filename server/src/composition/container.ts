@@ -8,6 +8,7 @@ import { buildAppConfig } from "../infrastructure/config/app.config.ts";
 import type { AppConfig } from "../infrastructure/config/app.config.ts";
 import { createConsoleLogger } from "../infrastructure/logging/console.logger.ts";
 import { InMemoryDonationRepository } from "../infrastructure/persistence/in-memory-donation.repository.ts";
+import { PostgresDonationRepository } from "../infrastructure/persistence/postgres-donation.repository.ts";
 import { SystemClock } from "../infrastructure/system.clock.ts";
 import type { AppHandlers } from "../router/app-handlers.ts";
 import { createDonationsController } from "../router/controllers/donations.controller.ts";
@@ -39,7 +40,10 @@ export function buildContainer(
   const config = buildAppConfig(env);
   const logger = createConsoleLogger();
   const clock = new SystemClock();
-  const repository = new InMemoryDonationRepository();
+  // Produção usa o banco persistente; testes unitários continuam isolados em memória.
+  const repository = env["DATABASE_URL"]
+    ? new PostgresDonationRepository()
+    : new InMemoryDonationRepository();
 
   if (
     env["NODE_ENV"] === "production" &&

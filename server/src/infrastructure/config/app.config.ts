@@ -119,7 +119,7 @@ export function buildAppConfig(env: Env): AppConfig {
       timeoutMs: toPositiveNumber(env["CIELO_TIMEOUT_MS"], 20_000),
       softDescriptor: normalizeSoftDescriptor(env["CIELO_SOFT_DESCRIPTOR"] ?? "IPPS"),
       boleto: {
-        provider: env["CIELO_BOLETO_PROVIDER"] ?? "Bradesco2",
+        provider: env["CIELO_BOLETO_PROVIDER"] ?? "BancoDoBrasil3",
         assignor: env["CIELO_BOLETO_ASSIGNOR"] ?? "IPPS",
         identification: String(env["CIELO_BOLETO_IDENTIFICATION"] ?? "").replace(/\D/g, ""),
         instructions:
