@@ -36,7 +36,27 @@ export function createCieloGateway(deps: CieloGatewayDeps): PaymentGatewayPort {
       });
 
       const response = await client.post<unknown>(config.transactionBaseUrl, "/1/sales/", body);
-      return parsePaymentResult(response, input.donation, input.expiresAt);
+
+      try {
+        return parsePaymentResult(response, input.donation, input.expiresAt);
+      } catch (error) {
+        // Diagnostico seguro para respostas de homologacao incompletas: registra
+        // somente a estrutura da resposta, nunca o QR Code ou dados sensiveis.
+        if (input.donation.method === "pix" && error instanceof Error) {
+          const payment = readPaymentKeys(response);
+          deps.logger.error("Resposta Pix da Cielo sem campos esperados", {
+            paymentKeys: payment.keys,
+            paymentIdPresent: payment.paymentIdPresent,
+            statusPresent: payment.statusPresent,
+            status: payment.status,
+            type: payment.type,
+            provider: payment.provider,
+            returnCode: payment.returnCode,
+            returnMessage: payment.returnMessage,
+          });
+        }
+        throw error;
+      }
     },
 
     async getPaymentById(paymentId: string): Promise<PaymentSnapshot> {
@@ -91,4 +111,50 @@ export function createCieloGateway(deps: CieloGatewayDeps): PaymentGatewayPort {
       return this.getPaymentById(paymentId);
     },
   };
+}
+
+function readPaymentKeys(value: unknown): {
+  keys: string[];
+  paymentIdPresent: boolean;
+  statusPresent: boolean;
+  status: string | number | null;
+  type: string | null;
+  provider: string | null;
+  returnCode: string | number | null;
+  returnMessage: string | null;
+} {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return {
+      keys: [], paymentIdPresent: false, statusPresent: false,
+      status: null, type: null, provider: null, returnCode: null, returnMessage: null,
+    };
+  }
+
+  const payment = (value as Record<string, unknown>)["Payment"];
+  if (!payment || typeof payment !== "object" || Array.isArray(payment)) {
+    return {
+      keys: [], paymentIdPresent: false, statusPresent: false,
+      status: null, type: null, provider: null, returnCode: null, returnMessage: null,
+    };
+  }
+
+  const paymentRecord = payment as Record<string, unknown>;
+  return {
+    keys: Object.keys(paymentRecord),
+    paymentIdPresent: Boolean(paymentRecord["PaymentId"]),
+    statusPresent: paymentRecord["Status"] !== undefined,
+    status: readSafeScalar(paymentRecord["Status"]),
+    type: readSafeString(paymentRecord["Type"]),
+    provider: readSafeString(paymentRecord["Provider"]),
+    returnCode: readSafeScalar(paymentRecord["ReturnCode"]),
+    returnMessage: readSafeString(paymentRecord["ReturnMessage"]),
+  };
+}
+
+function readSafeScalar(value: unknown): string | number | null {
+  return typeof value === "string" || typeof value === "number" ? value : null;
+}
+
+function readSafeString(value: unknown): string | null {
+  return typeof value === "string" ? value : null;
 }
