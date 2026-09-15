@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "start": "node server/index.ts",
     "test:server": "node --test server/tests/**/*.test.ts",
+    "test:server:postgres": "node --test server/tests/postgres-donation.repository.integration.ts",
     "typecheck:server": "tsc -p server/tsconfig.json"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
     "@tailwindcss/vite": "^4.2.2",
+    "pg": "^8.23.0",
     "react": "^19.2.4",
     "react-bootstrap-icons": "^1.11.6",
     "react-dom": "^19.2.4",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.4",
     "@types/node": "^26.4.0",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
