@@ -1,5 +1,20 @@
 import type { DoacaoData, DoacaoResposta } from "../index";
 
+export type StatusDoacao =
+  | "pendente"
+  | "autorizada"
+  | "confirmada"
+  | "negada"
+  | "cancelada"
+  | "falhou"
+  | "expirada";
+
+export interface StatusDoacaoResponse {
+  id: string;
+  status: StatusDoacao;
+  atualizadoEm: string;
+}
+
 interface ApiErrorResponse {
   code?: string;
   message?: string;
@@ -153,4 +168,40 @@ function buildApiUrl(path: string) {
 
 function getRequestCredentials(): RequestCredentials {
   return import.meta.env.VITE_API_BASE_URL ? "omit" : "same-origin";
+}
+
+export async function consultarStatusDoacao(
+  id: string,
+  signal?: AbortSignal,
+): Promise<StatusDoacaoResponse> {
+  const response = await fetch(buildApiUrl(`/api/doacoes/${id}/status`), {
+    headers: {
+      Accept: "application/json",
+    },
+    credentials: getRequestCredentials(),
+    ...(signal ? { signal } : {}),
+  });
+
+  const payload = (await response.json().catch(() => ({}))) as
+    | StatusDoacaoResponse
+    | ApiErrorResponse;
+
+  if (!response.ok) {
+    const errorPayload = payload as ApiErrorResponse;
+    throw new DonationApiError(
+      errorPayload.message || "Não foi possível consultar o pagamento.",
+      errorPayload.code,
+      errorPayload.details,
+    );
+  }
+
+  const statusPayload = payload as StatusDoacaoResponse;
+  if (!statusPayload.id || !statusPayload.status || !statusPayload.atualizadoEm) {
+    throw new DonationApiError(
+      "A resposta do status veio incompleta. Tente novamente.",
+      "STATUS_RESPONSE_INCOMPLETE",
+    );
+  }
+
+  return statusPayload;
 }

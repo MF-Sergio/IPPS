@@ -69,18 +69,12 @@ export default function StepBoleto({ dados, payment }: StepBoletoProps) {
         </div>
 
         <div className="mt-6 rounded-2xl border border-[#E7E1E3] bg-[#F8F8F8] p-4">
+          {/* A linha digitavel e o dado pratico para copiar; o PDF exibe o codigo visual. */}
           <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#4d4045]">
             Linha digitável
           </p>
           <p className="mt-2 break-all text-[12px] font-semibold leading-relaxed text-[#1C1D1D]">
             {boleto.linhaDigitavel}
-          </p>
-          <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.08em] text-[#4d4045]">
-            Código de barras
-          </p>
-          <p className="mt-2 break-all text-[12px] font-medium leading-relaxed text-[#566070]">
-            {boleto.codigoBarras ||
-              "Código de barras não disponível no retorno atual."}
           </p>
         </div>
 
