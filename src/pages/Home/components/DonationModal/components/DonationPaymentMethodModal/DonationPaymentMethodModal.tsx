@@ -21,7 +21,7 @@ const paymentOptions = [
     iconSrc: `${iconPath}/pix-icon.svg`,
   },
   {
-    key: "money" as const,
+    key: "cartao" as const,
     title: "Cartão de crédito",
     iconSrc: `${iconPath}/money-icon.svg`,
   },
