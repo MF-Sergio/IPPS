@@ -30,23 +30,19 @@ test("normaliza UF e CEP", () => {
   assert.equal(address.country, "BRA");
 });
 
-test("rejeita quando logradouro, numero, complemento e bairro passam de 60 caracteres", () => {
-  assert.throws(
-    () => Address.parse({ ...base, logradouro: "A".repeat(55) }),
-    InvalidAddressError,
-  );
+test("aceita campos validos mesmo quando a soma passa de 60 caracteres", () => {
+  assert.doesNotThrow(() => Address.parse({
+    ...base,
+    logradouro: "A".repeat(55),
+    bairro: "B".repeat(10),
+  }));
 });
 
-test("aceita exatamente 60 caracteres somados", () => {
-  // 44 + 3 + 8 + 5 = 60
-  const address = Address.parse({
-    ...base,
-    logradouro: "A".repeat(44),
-    numero: "160",
-    complemento: "SALA 934",
-    bairro: "CENTR",
-  });
-  assert.equal(address.street.length, 44);
+test("rejeita campos que excedem seus limites individuais", () => {
+  assert.throws(() => Address.parse({ ...base, logradouro: "A".repeat(61) }), InvalidAddressError);
+  assert.throws(() => Address.parse({ ...base, numero: "1".repeat(11) }), InvalidAddressError);
+  assert.throws(() => Address.parse({ ...base, complemento: "A".repeat(31) }), InvalidAddressError);
+  assert.throws(() => Address.parse({ ...base, bairro: "B".repeat(31) }), InvalidAddressError);
 });
 
 test("rejeita UF invalida e CEP invalido", () => {

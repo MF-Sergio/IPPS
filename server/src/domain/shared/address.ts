@@ -43,6 +43,13 @@ function required(field: string, value: string): string {
   return normalized;
 }
 
+function bounded(field: string, value: string, maxLength: number): string {
+  if (value.length > maxLength) {
+    throw new InvalidAddressError(field, `${field} deve ter no maximo ${maxLength} caracteres.`);
+  }
+  return value;
+}
+
 export class Address {
   readonly street: string;
   readonly number: string;
@@ -64,11 +71,11 @@ export class Address {
   }
 
   static parse(input: AddressInput): Address {
-    const street = required("logradouro", input.logradouro);
-    const number = required("numero", input.numero);
-    const complement = toCieloText(input.complemento);
-    const district = required("bairro", input.bairro);
-    const city = required("cidade", input.cidade);
+    const street = bounded("logradouro", required("logradouro", input.logradouro), 60);
+    const number = bounded("numero", required("numero", input.numero), 10);
+    const complement = bounded("complemento", toCieloText(input.complemento), 30);
+    const district = bounded("bairro", required("bairro", input.bairro), 30);
+    const city = bounded("cidade", required("cidade", input.cidade), 60);
     const state = toCieloText(input.uf);
     const zipCode = String(input.cep ?? "").replace(/\D/g, "");
 
@@ -77,14 +84,6 @@ export class Address {
     }
     if (zipCode.length !== 8) {
       throw new InvalidAddressError("cep", "Informe um CEP com 8 digitos.");
-    }
-
-    const combined = street.length + number.length + complement.length + district.length;
-    if (combined > 60) {
-      throw new InvalidAddressError(
-        "logradouro",
-        "Logradouro, numero, complemento e bairro somam no maximo 60 caracteres.",
-      );
     }
 
     return new Address({ street, number, complement, district, city, state, zipCode });
