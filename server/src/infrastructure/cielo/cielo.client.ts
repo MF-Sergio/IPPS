@@ -80,6 +80,8 @@ export function createCieloClient(
         logger.error("Cielo respondeu com erro", {
           requestId, method, path,
           status: response.status,
+          contentType: response.headers.get("content-type"),
+          bodyLength: text.length,
           cieloCode: described.code,
           cieloMessage: described.message,
         });

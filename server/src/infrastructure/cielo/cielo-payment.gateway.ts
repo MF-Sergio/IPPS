@@ -25,7 +25,7 @@ export function createCieloGateway(deps: CieloGatewayDeps): PaymentGatewayPort {
     async createPayment(input: CreatePaymentInput): Promise<PaymentResult> {
       const cardToken =
         input.donation.method === "cartao" && input.card
-          ? await tokenizeCard(client, config, input.card)
+          ? await tokenizeCard(client, config, input.card, input.donation.donor.name)
           : null;
 
       const body = buildSaleRequest(input.donation, {

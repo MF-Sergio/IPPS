@@ -111,7 +111,10 @@ test("cartao tokeniza antes de cobrar e nunca envia o PAN na venda", async () =>
 
   assert.equal(calls.length, 2);
   assert.ok(calls[0]?.url.endsWith("/1/card/"));
-  assert.ok(String(calls[0]?.init.body).includes("4532117080573703"));
+  const tokenizationBody = String(calls[0]?.init.body);
+  assert.ok(tokenizationBody.includes("4532117080573703"));
+  assert.ok(tokenizationBody.includes('"CustomerName":"Maria Silva"'));
+  assert.ok(tokenizationBody.includes('"Holder":"MARIA SILVA"'));
   assert.ok(calls[1]?.url.endsWith("/1/sales/"));
   assert.ok(!String(calls[1]?.init.body).includes("4532117080573703"));
   assert.ok(String(calls[1]?.init.body).includes("token-abc"));

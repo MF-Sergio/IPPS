@@ -11,12 +11,13 @@ export async function tokenizeCard(
   client: CieloClient,
   config: CieloConfig,
   card: CardCredentials,
+  customerName: string,
 ): Promise<string> {
   const response = await client.post<{ CardToken?: string }>(
     config.transactionBaseUrl,
     "/1/card/",
     {
-      CustomerName: card.holder,
+      CustomerName: customerName,
       CardNumber: card.reveal().number,
       Holder: card.holder,
       ExpirationDate: card.expirationDate,
