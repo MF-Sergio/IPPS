@@ -15,7 +15,10 @@ export class CieloHttpError extends Error {
  * Erro da Cielo vem em dois formatos: array de `{ Code, Message }` (validacao)
  * ou objeto com `Message`. Esta funcao normaliza os dois.
  */
-export function describeCieloError(payload: unknown): { message: string; code: string | null } {
+export function describeCieloError(
+  payload: unknown,
+  rawText = "",
+): { message: string; code: string | null } {
   if (Array.isArray(payload) && payload.length > 0) {
     const first = payload[0] as Record<string, unknown>;
     return {
@@ -32,5 +35,6 @@ export function describeCieloError(payload: unknown): { message: string; code: s
     };
   }
 
-  return { message: "Resposta sem corpo", code: null };
+  const textMessage = rawText.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, 256);
+  return { message: textMessage || "Resposta sem corpo", code: null };
 }

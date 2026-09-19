@@ -137,6 +137,27 @@ test("traduz erro HTTP da Cielo em CieloHttpError com o codigo dela", async () =
   );
 });
 
+test("preserva erro textual da Cielo quando a resposta nao e JSON", async () => {
+  const { fetchImpl } = (() => {
+    const fetchImpl = (async () => new Response("Merchant blocked", {
+      status: 400,
+      headers: { "Content-Type": "text/plain" },
+    })) as unknown as typeof fetch;
+    return { fetchImpl };
+  })();
+  const logger = new FakeLogger();
+  const client = createCieloClient(config, fetchImpl, logger);
+
+  await assert.rejects(
+    () => client.post(config.transactionBaseUrl, "/1/card/", {}),
+    (error: unknown) => error instanceof CieloHttpError && error.message === "Merchant blocked",
+  );
+  const lastEntry = logger.entries.at(-1);
+  assert.ok(lastEntry);
+  assert.ok(lastEntry.meta);
+  assert.equal(lastEntry.meta.cieloMessage, "Merchant blocked");
+});
+
 test("nunca loga o PAN nem o CVV mesmo em erro", async () => {
   const { gateway, logger } = buildGateway([{ status: 500, body: { Message: "erro" } }]);
 

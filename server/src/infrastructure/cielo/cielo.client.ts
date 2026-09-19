@@ -75,7 +75,7 @@ export function createCieloClient(
       }
 
       if (!response.ok) {
-        const described = describeCieloError(payload);
+        const described = describeCieloError(payload, text);
         // O `meta` passa pelo redact do logger, entao MerchantKey nunca sai daqui.
         logger.error("Cielo respondeu com erro", {
           requestId, method, path,
