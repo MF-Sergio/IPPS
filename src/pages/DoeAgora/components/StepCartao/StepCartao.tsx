@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { FiCheckCircle, FiCreditCard, FiShield } from "react-icons/fi";
+import { FiCreditCard, FiShield } from "react-icons/fi";
 import type { DoacaoData, DoacaoResposta } from "../../index";
 
 interface StepCartaoProps {
@@ -9,19 +8,12 @@ interface StepCartaoProps {
 }
 
 export default function StepCartao({ dados, payment }: StepCartaoProps) {
-  const [copied, setCopied] = useState(false);
   const formattedValue = dados.valor.toFixed(2).replace(".", ",");
   const cartao = payment.cartao;
 
   if (!cartao) {
     return null;
   }
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(`**** ${cartao.ultimosDigitos}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
-  };
 
   return (
     <section className="flex w-full justify-center px-4 py-12 sm:py-16">
@@ -64,22 +56,6 @@ export default function StepCartao({ dados, payment }: StepCartaoProps) {
               Autorizado
             </span>
           </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={handleCopy}
-          className={`mt-6 flex h-11.5 w-full items-center justify-center gap-2 rounded-lg text-[12px] font-bold uppercase tracking-wide text-white transition-colors ${
-            copied ? "bg-green-600" : "bg-[#216587] hover:bg-[#1a4f6b]"
-          }`}
-        >
-          {copied ? <FiCheckCircle size={16} /> : <FiCreditCard size={16} />}
-          {copied ? "Detalhes copiados" : "Verifique os últimos dígitos"}
-        </button>
-
-        <div className="mt-7 rounded-full bg-[#F1F0EF] px-5 py-3 text-center text-[11px] leading-relaxed text-[#6f7680]">
-          Sua contribuição já está em processamento e será confirmada conforme a
-          operação da Cielo.
         </div>
 
         <div className="mt-9 flex items-center justify-center gap-1.5 text-[#BFC5CC]">
