@@ -1,4 +1,5 @@
 import { FiCreditCard, FiShield } from "react-icons/fi";
+import CieloLogo from "../../../../components/CieloLogo/CieloLogo";
 import type { DoacaoData, DoacaoResposta } from "../../index";
 
 interface StepCartaoProps {
@@ -37,8 +38,8 @@ export default function StepCartao({ dados, payment }: StepCartaoProps) {
             Pagamento confirmado
           </h2>
           <p className="mx-auto mt-2 max-w-90 text-[12px] leading-relaxed text-[#6f6368]">
-            Sua doação foi processada com segurança pela Cielo. O cartão foi
-            autorizado e o comprovante foi registrado.
+            Sua doação foi processada com segurança. O cartão foi autorizado e o
+            comprovante foi registrado.
           </p>
         </div>
 
@@ -61,6 +62,7 @@ export default function StepCartao({ dados, payment }: StepCartaoProps) {
         <div className="mt-9 flex items-center justify-center gap-1.5 text-[#BFC5CC]">
           <FiShield size={12} />
           <p className="text-[10px]">Ambiente protegido para sua doação.</p>
+          <CieloLogo className="h-4 w-auto opacity-70" />
         </div>
       </div>
     </section>

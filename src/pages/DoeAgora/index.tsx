@@ -256,7 +256,7 @@ function getReturnStatusContent(status: string) {
       Icon: FiCheckCircle,
       title: "Doação iniciada com sucesso",
       description:
-        "Recebemos o retorno do gateway. A confirmação final do pagamento será feita pela Cielo.",
+        "Recebemos o retorno do sistema. A confirmação final do pagamento será informada assim que concluída.",
     };
   }
 

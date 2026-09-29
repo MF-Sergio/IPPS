@@ -1,4 +1,5 @@
 import { FiLock } from "react-icons/fi";
+import CieloLogo from "../../../../components/CieloLogo/CieloLogo";
 import type { DoacaoData } from "../../index";
 import StepIndicator from "../StepIndicator/StepIndicator";
 
@@ -226,7 +227,7 @@ export default function StepPagamento({
                 Doação única
               </p>
               <p className="mt-2 text-[9px] leading-tight text-[#b3bac2]">
-                Os dados serão enviados ao a Cielo conforme o método escolhido.
+                Os dados serão processados conforme o método escolhido.
               </p>
             </div>
 
@@ -251,7 +252,7 @@ export default function StepPagamento({
             }`}
           >
             {isSubmitting
-              ? "Conectando à Cielo..."
+              ? "Conectando ao pagamento..."
               : metodo === "cartao"
                 ? "Finalizar pagamento"
                 : "Ir para pagamento"}
@@ -261,8 +262,9 @@ export default function StepPagamento({
           <div className="mt-5 flex items-center justify-center gap-1.5">
             <FiLock size={11} className="text-[#BFC5CC]" />
             <p className="text-center text-[10px] text-[#BFC5CC]">
-              Pagamento processado pela Cielo em ambiente seguro.
+              Ambiente seguro.
             </p>
+            <CieloLogo className="h-4 w-auto opacity-70" />
           </div>
         </div>
       </div>
@@ -270,28 +272,26 @@ export default function StepPagamento({
   );
 }
 
-// Aguardando a confirmação da Cielo sobre mensagens, prazos e campos de cada
-// método para substituir estas descrições provisórias por regras definitivas.
 function getPaymentDescription(metodo: MetodoPagamento) {
   if (metodo === "pix") {
     return {
-      title: "Pix pela Cielo",
+      title: "Pagamento via Pix",
       description:
-        "O QR Code e o código copia e cola serão gerados pela Cielo nesta página.",
+        "O QR Code e o código copia e cola serão gerados nesta página.",
     };
   }
 
   if (metodo === "boleto") {
     return {
-      title: "Boleto pela Cielo",
+      title: "Pagamento via boleto",
       description:
-        "O boleto será disponibilizado após a confirmação dos campos exigidos pela Cielo.",
+        "O boleto será disponibilizado após a confirmação dos dados necessários.",
     };
   }
 
   return {
-    title: "Cartão pela Cielo",
+    title: "Pagamento com cartão",
     description:
-      "A coleta segura e a tokenização do cartão aguardam a confirmação do fluxo Cielo.",
+      "Os dados do cartão serão tratados com segurança para concluir o pagamento.",
   };
 }
