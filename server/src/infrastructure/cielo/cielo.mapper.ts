@@ -135,14 +135,14 @@ export function parsePaymentResult(
   }
 
   if (donation.method === "boleto") {
-    // CIELO: confirmar os campos retornados pelo emissor e o tratamento de
-    // vencimento, linha digitável, código de barras e URL do boleto.
+    // Banco do Brasil pode não retornar DigitableLine; BarCodeNumber é o
+    // identificador alternativo documentado pela Cielo nesse provider.
     const url = String(payment["Url"] ?? "");
     const digitableLine = String(payment["DigitableLine"] ?? "");
     const barCode = String(payment["BarCodeNumber"] ?? "");
 
-    if (!url || !digitableLine) {
-      throw new CieloResponseError("Resposta de boleto sem URL ou linha digitavel.");
+    if (!url || (!digitableLine && !barCode)) {
+      throw new CieloResponseError("Resposta de boleto sem URL ou codigo de barras.");
     }
 
     return {

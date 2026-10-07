@@ -117,12 +117,12 @@ export async function criarDoacao(
   }
 
   if (successPayload.metodoPagamento === "boleto") {
-    // CIELO: validar os nomes definitivos dos campos de URL, linha digitável,
-    // código de barras e vencimento no retorno do emissor contratado.
+    // Banco do Brasil pode não retornar linha digitável; o código de barras
+    // também é uma resposta válida conforme a documentação da Cielo.
     if (
       !successPayload.id ||
       !successPayload.boleto?.url ||
-      !successPayload.boleto?.linhaDigitavel
+      (!successPayload.boleto.linhaDigitavel && !successPayload.boleto.codigoBarras)
     ) {
       throw new DonationApiError(
         "A resposta do boleto veio incompleta. Tente novamente.",

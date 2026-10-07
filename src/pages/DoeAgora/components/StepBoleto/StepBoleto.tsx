@@ -24,7 +24,7 @@ export default function StepBoleto({ dados, payment }: StepBoletoProps) {
   }
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(boleto.linhaDigitavel);
+    await navigator.clipboard.writeText(boleto.linhaDigitavel || boleto.codigoBarras);
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
   };
@@ -69,12 +69,12 @@ export default function StepBoleto({ dados, payment }: StepBoletoProps) {
         </div>
 
         <div className="mt-6 rounded-2xl border border-[#E7E1E3] bg-[#F8F8F8] p-4">
-          {/* A linha digitavel e o dado pratico para copiar; o PDF exibe o codigo visual. */}
+          {/* BB pode retornar apenas o codigo de barras; ambos permitem copiar o boleto. */}
           <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#4d4045]">
-            Linha digitável
+            {boleto.linhaDigitavel ? "Linha digitável" : "Código de barras"}
           </p>
           <p className="mt-2 break-all text-[12px] font-semibold leading-relaxed text-[#1C1D1D]">
-            {boleto.linhaDigitavel}
+            {boleto.linhaDigitavel || boleto.codigoBarras}
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function StepBoleto({ dados, payment }: StepBoletoProps) {
             }`}
           >
             {copied ? <FiCheckCircle size={16} /> : <FiCopy size={16} />}
-            {copied ? "Linha copiada" : "Copiar linha"}
+            {copied ? "Código copiado" : "Copiar código"}
           </button>
 
           <button
