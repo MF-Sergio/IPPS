@@ -24,7 +24,9 @@ export default function StepBoleto({ dados, payment }: StepBoletoProps) {
   }
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(boleto.linhaDigitavel || boleto.codigoBarras);
+    await navigator.clipboard.writeText(
+      boleto.linhaDigitavel || boleto.codigoBarras,
+    );
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
   };
