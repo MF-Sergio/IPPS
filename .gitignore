@@ -1,23 +1,32 @@
-# Dependencies
-node_modules/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Build output
-dist/
-dist-ssr/
-
-# Local environment files
 .env
 .env.*
 !.env.example
 
-# Local logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-pnpm-debug.log*
+node_modules
+dist
+dist-ssr
+*.local
+*.test
 
-# Editor and OS files
+# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea/
+.idea
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Scratch do subagent-driven-development (ledger, briefs, review packages)
+.superpowers/

@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --sans: "Inter", sans-serif;
+  --sans-heading: "DM Sans", sans-serif;
+  --titulo: #a9171a;
+  --icones: #7b1e3d;
+  --fundo: #fef8f8;
+  --fundo-mobile: #fff;
+  --borda: #7b7b7c;
+  --vermelho: #a40201;
+  --branco: #f8f9fa;
+  --verde: #216587;
+  --mono: ui-monospace, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+safe-padding-mobile {
+  padding: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  line-height: 1.6;
+  background-color: var(--fundo);
+  color: #333;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+footer {
+  color: var(--fundo);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--sans-heading);
+  font-weight: 600;
+}
+
+.transparencia-page,
+.transparencia-page * {
+  font-family: var(--sans);
+}
+
+.titulo {
+  color: var(--titulo);
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.donation-modal-shell {
+  animation: donation-modal-expand 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.donation-modal-content {
+  animation: donation-modal-content-in 420ms ease-out 120ms both;
+}
+
+@keyframes donation-modal-expand {
+  from {
+    clip-path: circle(18px at calc(100% - 150px) 58px);
+    opacity: 0.75;
+  }
+
+  to {
+    clip-path: circle(150vmax at calc(100% - 150px) 58px);
+    opacity: 1;
+  }
+}
+
+@keyframes donation-modal-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  @keyframes donation-modal-expand {
+    from {
+      clip-path: circle(18px at calc(100% - 56px) 42px);
+      opacity: 0.75;
+    }
+
+    to {
+      clip-path: circle(150vmax at calc(100% - 56px) 42px);
+      opacity: 1;
+    }
+  }
+
+  body {
+    background-color: var(--fundo-mobile);
+  }
+}

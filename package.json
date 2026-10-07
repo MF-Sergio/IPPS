@@ -1,5 +1,49 @@
 {
+  "name": "ipps",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "node --watch server/index.ts",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "start": "node server/index.ts",
+    "test:server": "node --test server/tests/**/*.test.ts",
+    "test:server:postgres": "node --test server/tests/postgres-donation.repository.integration.ts",
+    "typecheck:server": "tsc -p server/tsconfig.json"
+  },
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/free-regular-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@fortawesome/react-fontawesome": "^3.3.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.1",
+    "@vitejs/plugin-react": "^6.1.1",
+    "autoprefixer": "^10.6.1",
+    "pg": "^8.23.0",
+    "postcss": "^8.5.28",
+    "react": "^19.2.4",
+    "react-bootstrap-icons": "^1.11.6",
+    "react-dom": "^19.2.4",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^7.13.1",
+    "recharts": "^3.9.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "react-icons": "^5.6.0"
   }
 }
