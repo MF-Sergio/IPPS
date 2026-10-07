@@ -14,6 +14,14 @@ jobs:
       - name: 🚚 Obter código mais recente
         uses: actions/checkout@v4
 
+      - name: 📦 Instalar dependências
+        run: npm ci
+
+      - name: 🏗️ Gerar build de produção
+        run: npm run build
+        env:
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+
       - name: 📤 Enviar arquivos via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -21,5 +29,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          local-dir: ${{ secrets.FTP_LOCAL_DIR }}
+          local-dir: ./dist/
           dangerous-clean-slate: true
