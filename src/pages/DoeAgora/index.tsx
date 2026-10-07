@@ -91,7 +91,7 @@ const emptyCartao: CartaoData = {
 const getInitialMetodo = (
   metodo: string | null,
 ): DoacaoData["metodoPagamento"] => {
-  if (metodo === "boleto" || metodo === "cartao" || metodo === "pix") {
+  if (metodo === "cartao" || metodo === "pix") {
     return metodo;
   }
 

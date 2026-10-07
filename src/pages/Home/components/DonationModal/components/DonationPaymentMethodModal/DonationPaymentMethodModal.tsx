@@ -11,11 +11,6 @@ interface DonationPaymentMethodModalProps {
 
 const paymentOptions = [
   {
-    key: "boleto" as const,
-    title: "Boleto",
-    iconSrc: `${iconPath}/boleto-icon.svg`,
-  },
-  {
     key: "pix" as const,
     title: "PIX",
     iconSrc: `${iconPath}/pix-icon.svg`,
@@ -37,7 +32,7 @@ export default function DonationPaymentMethodModal({
       description="Sua doação fortalece projetos que promovem desenvolvimento social e mudam vidas de forma concreta. Escolha como você deseja contribuir e gere impacto de forma direta."
       onBack={onBack}
     >
-      <div className="mt-12 grid w-full max-w-208.75 grid-cols-1 justify-items-center gap-6 sm:mt-10.5 sm:grid-cols-3">
+      <div className="mt-12 grid w-full max-w-208.75 grid-cols-1 justify-items-center gap-6 sm:mt-10.5 sm:grid-cols-2">
         {paymentOptions.map((option) => (
           <DonationOptionCard
             key={option.key}
