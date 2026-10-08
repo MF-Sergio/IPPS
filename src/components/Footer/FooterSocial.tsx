@@ -1,8 +1,12 @@
-import { FaInstagram, FaWhatsapp } from 'react-icons/fa6';
+import { FaInstagram, FaWhatsapp } from "react-icons/fa6";
 
 const socialLinks = [
-  { label: 'Instagram', href: '#', icon: FaInstagram },
-  { label: 'WhatsApp', href: '#', icon: FaWhatsapp },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/ippsrealengo/",
+    icon: FaInstagram,
+  },
+  { label: "WhatsApp", href: "https://wa.me/5521985856380", icon: FaWhatsapp },
 ];
 
 export default function FooterSocial() {
