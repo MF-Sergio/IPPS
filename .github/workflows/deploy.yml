@@ -22,12 +22,20 @@ jobs:
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
+      - name: ✅ Conferir artefato React
+        shell: bash
+        run: |
+          test -f dist/index.html
+          ! grep -q '/src/main.tsx' dist/index.html
+          grep -Eq '/assets/index-[^"]+\.js' dist/index.html
+          test -n "$(find dist/assets -maxdepth 1 -name 'Logo_of_Cielo-*.png' -print -quit)"
+
       - name: 📤 Enviar arquivos via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/
+          server-dir: public_html/
           local-dir: ./dist/
           dangerous-clean-slate: true
