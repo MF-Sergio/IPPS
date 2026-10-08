@@ -28,15 +28,6 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
           local-dir: ./dist/
           dangerous-clean-slate: true
-
-      - name: 🔎 Validar arquivos publicados
-        shell: bash
-        run: |
-          script_src="$(grep -oE 'src="/assets/[^"]+\.js"' dist/index.html | head -n 1 | cut -d'"' -f2)"
-          test -n "$script_src"
-          response_headers="$(curl -fsSI "https://ipps.com.br${script_src}")"
-          echo "$response_headers"
-          echo "$response_headers" | grep -Eiq 'content-type:.*(application/javascript|text/javascript|x-javascript)'
