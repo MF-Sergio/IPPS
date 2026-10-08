@@ -28,7 +28,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
           local-dir: ./dist/
           dangerous-clean-slate: true
 
@@ -39,4 +39,7 @@ jobs:
           test -n "$script_src"
           response_headers="$(curl -fsSI "https://ipps.com.br${script_src}")"
           echo "$response_headers"
-          echo "$response_headers" | grep -Eiq 'content-type:.*(application/javascript|text/javascript|x-javascript)'
+          if ! echo "$response_headers" | grep -Eiq 'content-type:.*(application/javascript|text/javascript|x-javascript)'; then
+            echo "::error::O domínio não está servindo o bundle publicado (${script_src}). Verifique FTP_SERVER_DIR: o conteúdo de dist deve ir diretamente para public_html, sem criar public_html/dist."
+            exit 1
+          fi
