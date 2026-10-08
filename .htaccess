@@ -1,9 +1,0 @@
-RewriteEngine On
-
-# Preserve existing files and directories, including Vite assets.
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-
-# Let React Router handle client-side routes.
-RewriteRule ^ index.html [L]
