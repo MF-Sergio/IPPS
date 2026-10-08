@@ -28,6 +28,18 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: domains/ipps.com.br/public_html/
           local-dir: ./dist/
           dangerous-clean-slate: true
+
+      - name: 🔎 Validar página publicada
+        shell: bash
+        run: |
+          expected_script="$(grep -oE 'src="/assets/[^"]+\.js"' dist/index.html | head -n 1 | cut -d'"' -f2)"
+          test -n "$expected_script"
+          published_html="$(curl -fsSL "https://ipps.com.br/?deploy=${GITHUB_SHA}")"
+          echo "$published_html" | grep -Fq "$expected_script"
+          if echo "$published_html" | grep -Fq '/src/main.tsx'; then
+            echo "::error::O domínio ainda está servindo o index.html fonte, não o dist/index.html."
+            exit 1
+          fi
