@@ -3,7 +3,7 @@ name: 🚀 Deploy site estático via FTP
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   ftp-deploy:
@@ -28,7 +28,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: domains/ipps.com.br/public_html/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
           local-dir: ./dist/
           dangerous-clean-slate: true
 
