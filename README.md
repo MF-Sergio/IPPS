@@ -1,4 +1,4 @@
-# IPPS — Instituto de Promoção e Proteção Social
+# IPPS — Instituto de Pesquisa e Promoção da Saúde
 
 > Plataforma institucional e de doações do IPPS, criada para ampliar o alcance de uma organização do terceiro setor e tornar sua atuação mais acessível, transparente e conectada.
 
