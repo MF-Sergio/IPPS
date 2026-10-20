@@ -61,7 +61,7 @@ export default function DonationContactModal({
           </div>
 
           <a
-            href="tel:+5521985856380"
+            href="tel:+5521975520198"
             className="flex items-start gap-4 transition-opacity hover:opacity-70"
           >
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#D8E7EC] text-[#216587]">
@@ -71,7 +71,7 @@ export default function DonationContactModal({
               <p className="text-[11px] font-bold uppercase tracking-wide text-[#4d4045]">
                 Telefone e WhatsApp
               </p>
-              <p className="mt-1 text-[13px] text-[#1C1D1D]">(21) 98585-6380</p>
+              <p className="mt-1 text-[13px] text-[#1C1D1D]">(21) 97552-0198</p>
             </div>
           </a>
 

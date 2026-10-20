@@ -1,9 +1,17 @@
-export function ImagemPublic({ nomeImagem }) {
-  const imgUrl = new URL(`../../assets/img/${nomeImagem}`, import.meta.url)
-    .href;
-
+// Recebe a imagem já importada: caminho dinâmico fazia o Vite empacotar todo o assets/img.
+export function ImagemPublic({ src, srcSet, sizes, alt, width, height }) {
   return (
-    <img src={imgUrl} alt={`Imagem ${nomeImagem}`} className=" object-cover" />
+    <img
+      src={src}
+      srcSet={srcSet}
+      sizes={sizes}
+      alt={alt}
+      width={width}
+      height={height}
+      loading="lazy"
+      decoding="async"
+      className="h-auto w-full object-cover"
+    />
   );
 }
 

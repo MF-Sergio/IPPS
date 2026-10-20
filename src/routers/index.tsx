@@ -1,12 +1,15 @@
+import { lazy } from "react";
 import Home from "../pages/Home";
-import SejaParceiro from "../pages/SejaParceiro";
-import TrabalheConosco from "../pages/TrabalheConosco";
-import QuemSomos from "../pages/QuemSomos";
-import DoeAgora from "../pages/DoeAgora";
-import PoliticaPrivacidade from "../pages/PoliticaPrivacidade";
-import Contato from "../pages/Contato";
-import Transparencia from "../pages/Transparencia";
-import Eventos from "../pages/Eventos";
+
+// Home fica no bundle principal (página de entrada/LCP); as demais rotas viram chunks sob demanda.
+const SejaParceiro = lazy(() => import("../pages/SejaParceiro"));
+const TrabalheConosco = lazy(() => import("../pages/TrabalheConosco"));
+const QuemSomos = lazy(() => import("../pages/QuemSomos"));
+const DoeAgora = lazy(() => import("../pages/DoeAgora"));
+const PoliticaPrivacidade = lazy(() => import("../pages/PoliticaPrivacidade"));
+const Contato = lazy(() => import("../pages/Contato"));
+const Transparencia = lazy(() => import("../pages/Transparencia"));
+const Eventos = lazy(() => import("../pages/Eventos"));
 
 export const routes = [
   { path: "/", element: <Home /> },
