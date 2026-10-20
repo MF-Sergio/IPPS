@@ -1,10 +1,38 @@
-import { Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { routes } from "./routers";
 
+const SITE_URL = "https://ipps.com.br";
+
+function setHead(selector: string, attr: string, value: string) {
+  document.head.querySelector(selector)?.setAttribute(attr, value);
+}
+
+// index.html traz os valores da Home (fallback sem JS); aqui cada rota sobrescreve title/description/canonical/robots
+function useRouteSeo() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const route = routes.find((r) => r.path === pathname) ?? routes.find((r) => r.path === "*");
+    if (!route) return;
+    const { title, description, noindex } = route.seo;
+    const url = route.path === "*" ? `${SITE_URL}/` : `${SITE_URL}${route.path === "/" ? "/" : route.path}`;
+
+    document.title = title;
+    setHead('meta[name="description"]', "content", description);
+    setHead('meta[name="robots"]', "content", noindex ? "noindex, follow" : "index, follow");
+    setHead('link[rel="canonical"]', "href", url);
+    setHead('meta[property="og:title"]', "content", title);
+    setHead('meta[property="og:description"]', "content", description);
+    setHead('meta[property="og:url"]', "content", url);
+  }, [pathname]);
+}
+
 function AppContent() {
+  useRouteSeo();
+
   return (
     <>
       <a
