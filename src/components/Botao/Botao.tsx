@@ -32,7 +32,7 @@ export function Botao({
     </>
   );
 
-  const baseClasses = `inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#216587] px-4 py-2.5 text-white font-semibold no-underline shadow-[0_10px_20px_rgba(33,101,135,0.18)] transition-colors duration-200 hover:bg-[#1b5570] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#216587]/30 ${className}`;
+  const baseClasses = `inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#216587] px-4 py-2.5 text-white font-semibold no-underline shadow-[0_10px_20px_rgba(33,101,135,0.18)] transition-colors duration-200 hover:bg-[#1b5570] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#216587] focus-visible:ring-offset-2 ${className}`;
 
   if (href) {
     return (

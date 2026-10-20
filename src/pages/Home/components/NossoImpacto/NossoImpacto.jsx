@@ -5,9 +5,9 @@ export function NossoImpacto() {
   return (
     <BlocoLayout id="impacto" titulo={"Nosso Impacto"}>
       <div className="bg-[var(--vermelho)] flex flex-col items-center justify-center content-center p-3 rounded-lg shadow-md mx-5 lg:mx-auto">
-        <h1 className="text-4xl text-[var(--branco)]  mt-8">
+        <h2 className="text-4xl text-[var(--branco)]  mt-8">
           Números que contam história
-        </h1>
+        </h2>
         <p className="text-xl text-[var(--branco)]">
           Cada número representa uma vida transformada, uma barreira superada,
           uma família fortalecida.

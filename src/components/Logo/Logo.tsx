@@ -1,5 +1,5 @@
-import logoNova from '../../assets/img/novaLogo.svg';
-import logoPadrao from '../../assets/img/logo.png';
+import logoNova from '../../assets/img/novaLogo.webp';
+import logoPadrao from '../../assets/img/logo.webp';
 
 type LogoProps = {
   className?: string;
@@ -8,9 +8,10 @@ type LogoProps = {
   variant?: 'default' | 'nova';
 };
 
+// width/height intrínsecos: reservam o espaço e evitam layout shift
 const logoVariants = {
-  default: logoPadrao,
-  nova: logoNova,
+  default: { src: logoPadrao, width: 174, height: 184 },
+  nova: { src: logoNova, width: 172, height: 158 },
 };
 
 export default function Logo({
@@ -19,11 +20,11 @@ export default function Logo({
   href = '/',
   variant = 'default',
 }: LogoProps) {
-  const source = logoVariants[variant];
+  const { src, width, height } = logoVariants[variant];
 
   return (
     <a href={href} className={`inline-flex items-center shrink-0 ${className}`.trim()}>
-      <img src={source} alt="Logo IPPS" className={imageClassName} />
+      <img src={src} width={width} height={height} alt="Logo IPPS" className={imageClassName} />
     </a>
   );
 }

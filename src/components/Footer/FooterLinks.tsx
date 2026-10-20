@@ -18,7 +18,7 @@ export default function FooterLinks({ title, links }: FooterLinksProps) {
           <li key={link.label}>
             <a
               href={link.href}
-              className="block transition hover:text-white hover:underline underline-offset-4"
+              className="block min-h-6 transition hover:text-white hover:underline underline-offset-4"
             >
               {link.label}
             </a>
