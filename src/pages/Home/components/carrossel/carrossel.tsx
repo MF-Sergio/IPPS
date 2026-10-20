@@ -88,7 +88,8 @@ export function Carrossel({
               }
               width={imagemLargura}
               height={imagemAltura}
-              loading={prioritario && slideIndex === 0 ? "eager" : "lazy"}
+              // logos de parceiros são leves (~32 KB juntas): lazy deixava slides/clones vazios na transição do carrossel
+              loading={isOutrosParceiros || (prioritario && slideIndex === 0) ? "eager" : "lazy"}
               fetchPriority={prioritario && slideIndex === 0 ? "high" : "auto"}
               decoding="async"
               style={{
