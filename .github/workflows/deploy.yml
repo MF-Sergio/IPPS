@@ -3,7 +3,7 @@ name: 🚀 Deploy site estático via FTP
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   ftp-deploy:
@@ -14,6 +14,14 @@ jobs:
       - name: 🚚 Obter código mais recente
         uses: actions/checkout@v4
 
+      - name: 📦 Instalar dependências
+        run: npm ci
+
+      - name: 🏗️ Gerar build de produção
+        run: npm run build
+        env:
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+
       - name: 📤 Enviar arquivos via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -21,5 +29,17 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          local-dir: ${{ secrets.FTP_LOCAL_DIR }}
+          local-dir: ./dist/
           dangerous-clean-slate: true
+
+      - name: 🔎 Validar página publicada
+        shell: bash
+        run: |
+          expected_script="$(grep -oE 'src="/assets/[^"]+\.js"' dist/index.html | head -n 1 | cut -d'"' -f2)"
+          test -n "$expected_script"
+          published_html="$(curl -fsSL "https://ipps.com.br/?deploy=${GITHUB_SHA}")"
+          echo "$published_html" | grep -Fq "$expected_script"
+          if echo "$published_html" | grep -Fq '/src/main.tsx'; then
+            echo "::error::O domínio ainda está servindo o index.html fonte, não o dist/index.html."
+            exit 1
+          fi
