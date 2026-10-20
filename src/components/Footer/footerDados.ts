@@ -15,7 +15,8 @@ export const footerContato = {
     "Bairro: Realengo / CEP: 21.710-255",
   ],
   email: "ippromocaodasaude@gmail.com",
-  phone: "+55 (21) 98585-6380",
+  phone: "+55 (21) 97552-0198",
+  cnpj: "05.039.198/0001-30",
 };
 
 export const footerHorario = "Segunda a sexta das 8h às 17h48";

@@ -1,9 +1,12 @@
+import { lazy, Suspense } from "react";
 import { PeopleFill, ShieldCheck, HeartFill } from "react-bootstrap-icons";
 import Hero from "./components/Hero/Hero";
 import NossaHistoria from "./components/NossaHistoria/NossaHistoria";
 import NossaTrajetoria from "./components/NossaTrajetoria/NossaTrajetoria";
-import NossosNumeros from "./components/NossosNumeros/NossosNumeros";
 import Doacao from "../Home/components/Doacao/Doacao";
+
+// recharts (~250 kB) só é baixado quando a seção de gráficos renderiza
+const NossosNumeros = lazy(() => import("./components/NossosNumeros/NossosNumeros"));
 import { OutrosParceiros } from "../Home/components/OutrosParceiros/OutrosParceiros";
 import Newsletter from "../Home/components/Newsletter/Newsletter";
 
@@ -13,7 +16,9 @@ export default function QuemSomos() {
       <Hero />
       <NossaHistoria />
       <NossaTrajetoria />
-      <NossosNumeros />
+      <Suspense fallback={<div className="min-h-[500px]" />}>
+        <NossosNumeros />
+      </Suspense>
       <Doacao />
       <OutrosParceiros />
       {/* <Newsletter /> */}

@@ -32,6 +32,10 @@ export default function Footer() {
             © 2026 IPPS - Instituto de Pesquisa e Promoção da Saúde. Todos os
             direitos reservados.
           </p>
+
+          <p className="max-w-[280px] text-[13px] leading-6 text-white/65 sm:max-w-none sm:text-sm">
+            CNPJ: {footerContato.cnpj}
+          </p>
         </div>
       </div>
     </footer>

@@ -47,6 +47,7 @@ export default function DonationOptionCard({
       <button
         type="button"
         onClick={onClick}
+        aria-label={`Doar: ${title}`}
         className={`${description ? "mt-5" : "mt-8"} h-10.5 w-42 cursor-pointer rounded-lg bg-[#216587] text-[10px] font-semibold text-white transition-colors hover:bg-[#1a4f6b]`}
       >
         Doar

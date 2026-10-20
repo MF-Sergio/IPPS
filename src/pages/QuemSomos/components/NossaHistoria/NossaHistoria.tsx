@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -31,6 +32,11 @@ const fotosMobile = [
 ];
 
 export default function NossaHistoria() {
+  // WCAG 2.2.2: autoplay precisa de pausa; começa pausado com reduced-motion
+  const [pausado, setPausado] = useState(
+    () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false,
+  );
+
   return (
     <section className="mx-auto max-w-6xl">
       {/* Versão mobile: abaixo de 640px */}
@@ -124,11 +130,19 @@ export default function NossaHistoria() {
           </p>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-[2rem] bg-white p-4 shadow-sm ring-1 ring-black/5">
+        <div className="relative mt-10 overflow-hidden rounded-[2rem] bg-white p-4 shadow-sm ring-1 ring-black/5">
+          <button
+            type="button"
+            onClick={() => setPausado((atual) => !atual)}
+            aria-pressed={pausado}
+            className="absolute right-6 bottom-6 z-30 cursor-pointer rounded-md bg-white/90 px-3 py-1 text-xs font-semibold text-black shadow"
+          >
+            {pausado ? "Retomar carrossel" : "Pausar carrossel"}
+          </button>
           <Carousel
             showArrows
             infiniteLoop
-            autoPlay
+            autoPlay={!pausado}
             showStatus={false}
             showThumbs={false}
             showIndicators={false}

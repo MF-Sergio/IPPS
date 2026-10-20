@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -36,6 +34,8 @@ body,
 }
 
 body {
+  /* seções full-bleed usam w-screen (100vw inclui a barra de rolagem): corta o estouro sem criar container de scroll */
+  overflow-x: clip;
   font-family: var(--sans);
   line-height: 1.6;
   background-color: var(--fundo);

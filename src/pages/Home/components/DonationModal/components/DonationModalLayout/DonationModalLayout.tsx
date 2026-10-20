@@ -1,6 +1,7 @@
-import type { ReactNode } from "react";
+import { useEffect, useId, useRef } from "react";
+import type { KeyboardEvent, ReactNode } from "react";
 import { FiArrowLeft } from "react-icons/fi";
-import logo from "../../../../../../assets/img/logo.png";
+import logo from "../../../../../../assets/img/logo.webp";
 
 interface DonationModalLayoutProps {
   title: string;
@@ -23,8 +24,51 @@ export default function DonationModalLayout({
   imageGapClassName = "mt-16 sm:mt-[124px]",
   imageClassName = "h-[260px] sm:h-[488px]",
 }: DonationModalLayoutProps) {
+  const titleId = useId();
+  const dialogRef = useRef<HTMLElement>(null);
+
+  // foco entra no diálogo ao abrir e volta para quem o abriu ao fechar
+  useEffect(() => {
+    const previous = document.activeElement as HTMLElement | null;
+    dialogRef.current?.focus();
+    return () => previous?.focus?.();
+  }, []);
+
+  // Esc fecha; Tab fica preso dentro do diálogo
+  function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
+    if (event.key === "Escape") {
+      event.stopPropagation();
+      onBack();
+      return;
+    }
+    if (event.key !== "Tab" || !dialogRef.current) return;
+
+    const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!first || !last) return;
+    const active = document.activeElement;
+
+    if (event.shiftKey && (active === first || active === dialogRef.current)) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   return (
-    <section className="donation-modal-shell fixed inset-0 z-100 h-dvh w-full overflow-y-auto overflow-x-hidden bg-[#FAEEF1] text-black">
+    <section
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+      tabIndex={-1}
+      onKeyDown={handleKeyDown}
+      className="donation-modal-shell outline-none fixed inset-0 z-100 h-dvh w-full overflow-y-auto overflow-x-hidden bg-[#FAEEF1] text-black">
       <button
         type="button"
         onClick={onBack}
@@ -39,6 +83,8 @@ export default function DonationModalLayout({
       >
         <img
           src={logo}
+          width={174}
+          height={184}
           alt="Instituto de Pesquisa e Promocao da Saude"
           className="h-18.5 w-18.5 object-contain"
           style={{
@@ -48,7 +94,7 @@ export default function DonationModalLayout({
         />
 
         <header className={`mt-12 text-center sm:mt-13.5 ${headerClassName}`}>
-          <h1 className="text-[25px] font-bold leading-tight text-[#1C1D1D] sm:text-[26px]">
+          <h1 id={titleId} className="text-[25px] font-bold leading-tight text-[#1C1D1D] sm:text-[26px]">
             {title}
           </h1>
           {description && (
