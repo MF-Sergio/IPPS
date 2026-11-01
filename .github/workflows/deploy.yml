@@ -7,7 +7,7 @@ on:
 
 jobs:
   ftp-deploy:
-    name: 📂 Deploy direto para Hostinger
+    name: 📂 Deploy do front-end via FTP
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
-      - name: 📤 Enviar arquivos via FTP
+      - name: 📤 Enviar arquivos para a hospedagem
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -30,14 +30,18 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
           local-dir: ./dist/
+          # A pasta de destino deve ser exclusiva do site (public_html/Web).
           dangerous-clean-slate: true
 
       - name: 🔎 Validar página publicada
         shell: bash
+        env:
+          PUBLIC_SITE_URL: ${{ secrets.PUBLIC_SITE_URL }}
         run: |
+          public_site_url="${PUBLIC_SITE_URL:-https://ipps.com.br}"
           expected_script="$(grep -oE 'src="/assets/[^"]+\.js"' dist/index.html | head -n 1 | cut -d'"' -f2)"
           test -n "$expected_script"
-          published_html="$(curl -fsSL "https://ipps.com.br/?deploy=${GITHUB_SHA}")"
+          published_html="$(curl -fsSL "${public_site_url%/}/?deploy=${GITHUB_SHA}")"
           echo "$published_html" | grep -Fq "$expected_script"
           if echo "$published_html" | grep -Fq '/src/main.tsx'; then
             echo "::error::O domínio ainda está servindo o index.html fonte, não o dist/index.html."

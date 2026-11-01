@@ -96,7 +96,8 @@ No back-end, o domínio financeiro não depende diretamente de HTTP, banco ou pr
 - **Node Test Runner** para testes unitários e de integração.
 - **TypeScript Compiler** para verificação de tipos da API.
 - **GitHub Actions** para build e publicação contínua.
-- Deploy do front-end compilado para a hospedagem de produção via FTP seguro por credenciais protegidas.
+- Deploy do front-end compilado para a hospedagem de produção via FTP/FTPS por credenciais protegidas.
+- A hospedagem serve somente o front-end; a API e o PostgreSQL permanecem nas funções da Vercel e no Neon.
 - Validação pós-deploy que confirma que o domínio está servindo o bundle de produção, e não os arquivos-fonte.
 
 ## API pública da aplicação
