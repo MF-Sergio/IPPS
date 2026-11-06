@@ -167,7 +167,7 @@ O site oficial está disponível em [ipps.com.br](https://ipps.com.br/). A plata
 
 ## Créditos
 
-Projeto desenvolvido voluntariamente para o **Instituto de Promoção e Proteção Social (IPPS)**, com foco em transformação digital, inclusão e fortalecimento do terceiro setor.
+Projeto desenvolvido voluntariamente para o **Instituto de Pesquisa e Promoção da Saúde (IPPS)**, com foco em transformação digital, inclusão e fortalecimento do terceiro setor.
 
 - [Sergio Mendes — GitHub](https://github.com/MF-Sergio)
 - [Lucas Hideaki — GitHub](https://github.com/Twistywasabi)
