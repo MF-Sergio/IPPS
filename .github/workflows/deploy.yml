@@ -39,11 +39,76 @@ jobs:
           PUBLIC_SITE_URL: ${{ secrets.PUBLIC_SITE_URL }}
         run: |
           public_site_url="${PUBLIC_SITE_URL:-https://ipps.com.br}"
-          expected_script="$(grep -oE 'src="/assets/[^"]+\.js"' dist/index.html | head -n 1 | cut -d'"' -f2)"
-          test -n "$expected_script"
-          published_html="$(curl -fsSL "${public_site_url%/}/?deploy=${GITHUB_SHA}")"
-          echo "$published_html" | grep -Fq "$expected_script"
-          if echo "$published_html" | grep -Fq '/src/main.tsx'; then
-            echo "::error::O domínio ainda está servindo o index.html fonte, não o dist/index.html."
+          site_root="${public_site_url%/}"
+          check_url="${site_root}/?deploy=${GITHUB_SHA}"
+          max_attempts=5
+          retry_delay=15
+
+          expected_script="$(grep -oE 'src="/assets/[^"]+\.js"' dist/index.html | head -n 1 | cut -d'"' -f2 || true)"
+          if [ -z "$expected_script" ]; then
+            echo "::error::Não foi possível identificar o script principal em dist/index.html."
             exit 1
           fi
+          echo "Script esperado no HTML publicado: ${expected_script}"
+
+          # A hospedagem pode bloquear requisições vindas dos runners do GitHub
+          # (HTTP 403 por IP de datacenter ou User-Agent). Por isso usamos um
+          # User-Agent de navegador e algumas tentativas antes de concluir.
+          user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+
+          fetch() {
+            # Imprime apenas o código HTTP ("000" se não houver conexão).
+            curl -sSL -A "$user_agent" -H 'Cache-Control: no-cache' \
+              --max-time 30 -o "$2" -w '%{http_code}' "$1" || true
+          }
+
+          state=""
+          for attempt in $(seq 1 "$max_attempts"); do
+            http_code="$(fetch "$check_url" published.html)"
+            echo "Tentativa ${attempt}/${max_attempts}: HTTP ${http_code}"
+
+            if [ "$http_code" = "200" ]; then
+              if grep -Fq '/src/main.tsx' published.html; then
+                echo "::error::O domínio está servindo o index.html fonte (/src/main.tsx), não o dist/index.html."
+                exit 1
+              fi
+              if grep -Fq "$expected_script" published.html; then
+                state="ok"
+                break
+              fi
+              state="stale"
+            elif [ "$http_code" = "401" ] || [ "$http_code" = "403" ] || [ "$http_code" = "429" ]; then
+              state="blocked"
+            else
+              state="http_${http_code}"
+            fi
+
+            if [ "$attempt" -lt "$max_attempts" ]; then
+              sleep "$retry_delay"
+            fi
+          done
+
+          case "$state" in
+            ok)
+              asset_code="$(fetch "${site_root}${expected_script}" /dev/null)"
+              if [ "$asset_code" = "200" ]; then
+                echo "✅ HTML publicado referencia ${expected_script} e o arquivo responde 200."
+              elif [ "$asset_code" = "401" ] || [ "$asset_code" = "403" ] || [ "$asset_code" = "429" ]; then
+                echo "::warning::HTML publicado está correto, mas a hospedagem bloqueou (HTTP ${asset_code}) a checagem de ${expected_script}."
+              else
+                echo "::error::HTML publicado referencia ${expected_script}, mas o arquivo respondeu HTTP ${asset_code}. Os assets podem não ter sido enviados."
+                exit 1
+              fi
+              ;;
+            blocked)
+              echo "::warning::A hospedagem bloqueou a verificação vinda do GitHub Actions (HTTP 401/403/429). O upload por FTP terminou, mas o conteúdo publicado não pôde ser conferido automaticamente. Confira ${site_root} no navegador."
+              ;;
+            stale)
+              echo "::error::O domínio responde, mas não referencia ${expected_script}. Verifique FTP_SERVER_DIR/document root ou cache da hospedagem."
+              exit 1
+              ;;
+            *)
+              echo "::error::Falha ao acessar ${check_url} (${state})."
+              exit 1
+              ;;
+          esac
