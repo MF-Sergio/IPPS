@@ -73,7 +73,7 @@ function CartaoDocumento({
       <div className="mx-auto flex h-[73px] w-[73px] items-center justify-center rounded-xl bg-[#f3dce7]">
         <img src={icon} alt="" className="h-[35px] w-[35px] object-contain" />
       </div>
-      <div className="mt-6 flex flex-1 flex-col items-center text-center md:items-start md:text-left">
+      <div className="mt-6 flex flex-1 flex-col items-center text-center">
         <h3 className="text-[20px] font-semibold text-[#1C1D1D]">{title}</h3>
         <p className="mt-3 max-w-[290px] text-base font-medium leading-relaxed text-[#5a5a5a] md:max-w-none">
           {description}
@@ -426,7 +426,7 @@ function SecaoTransparenciaDesktop() {
                   <div className="flex flex-col gap-4">
                     {convenios.map((convenio) => (
                       <div key={convenio.id}>
-                        <p className="text-[13.5px] font-bold text-[#1C1D1D]">
+                        <p className="text-center text-[13.5px] font-bold text-[#1C1D1D]">
                           {convenio.sigla}
                         </p>
                         <div className="mt-2 flex justify-center">
